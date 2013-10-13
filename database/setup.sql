@@ -23,9 +23,21 @@ userID INT,
 title VARCHAR(30),
 dateListed TIMESTAMP,
 category VARCHAR(20),
-description VARCHAR,
+description VARCHAR(500),
 FOREIGN KEY (userID) REFERENCES Users(userID)
 ) engine = innodb;
+
+# create the ConditionLookup table
+create table if not exists ConditionLookup(
+conditionID INT primary key,
+itemCondition VARCHAR(10)
+);
+
+# create the BikeType table
+create table if not exists BikeType(
+bikeTypeID INT primary key,
+bikeType VARCHAR(20)
+);
 
 # create the Bikes table
 create table if not exists Bikes(
@@ -37,10 +49,10 @@ FOREIGN KEY (listingID) REFERENCES Listings(listingID),
 FOREIGN KEY (bikeTypeID) REFERENCES BikeType(bikeTypeID)
 ) engine = innodb;
 
-# create the BikeType table
-create table if not exists BikeType(
-bikeTypeID INT primary key,
-bikeType VARCHAR(20)
+# create the BookType table
+create table if not exists BookType(
+bookTypeID INT primary key,
+bookType VARCHAR (20)
 );
 
 # create the Books table
@@ -57,10 +69,10 @@ FOREIGN KEY (bookTypeID) REFERENCES BookType(bookTypeID),
 FOREIGN KEY (conditionID) REFERENCES ConditionLookup(conditionID)
 ) engine = innodb;
 
-# create the ConditionLookup table
-create table if not exists ConditionLookup(
-conditionID INT primary key,
-condition VARCHAR(10)
+# create the ElectronicsType table
+create table if not exists ElectronicsType(
+electronicsTypeID INT primary key,
+electronicsType VARCHAR(30)
 );
 
 # create the Electronics table
@@ -74,26 +86,26 @@ FOREIGN KEY (listingID) REFERENCES Listings(listingID),
 FOREIGN KEY (electronicsTypeID) REFERENCES ElectronicsType(electronicsTypeID)
 ) engine = innodb;
 
-# create the ElectronicsType table
-create table if not exists ElectronicsType(
-electronicsTypeID INT primary key,
-electronicsType VARCHAR(30)
+# create the FurnitureType table
+create table if not exists FurnitureType(
+furnitureTypeID INT primary key,
+furnitureType VARCHAR(30)
 );
 
 # create the Furniture table
 create table if not exists Furniture(
 listingID INT primary key,
 furnitureTypeID INT,
-conditionID INT
+conditionID INT,
 FOREIGN KEY (listingID) REFERENCES Listings(listingID),
 FOREIGN KEY (furnitureTypeID) REFERENCES FurnitureType(furnitureTypeID),
 FOREIGN KEY (conditionID) REFERENCES ConditionLookup(conditionID)
 ) engine = innodb;
 
-# create the FurnitureType table
-create table if not exists FurnitureType(
-furnitureTypeID INT primary key,
-furnitureType VARCHAR(30)
+# create the MeetupType table
+create table if not exists MeetupType(
+meetupTypeID INT primary key,
+meetupType VARCHAR(20)
 );
 
 # create the Meetups table
@@ -106,12 +118,6 @@ time TIME,
 FOREIGN KEY (listingID) REFERENCES Listings(listingID),
 FOREIGN KEY (meetupTypeID) REFERENCES MeetupType(meetupTypeID)
 ) engine = innodb;
-
-# create the MeetupType table
-create table if not exists MeetupType(
-meetupTypeID INT primary key,
-meetupType VARCHAR(20)
-);
 
 # create the Miscellaneous table
 create table if not exists Miscellaneous(
