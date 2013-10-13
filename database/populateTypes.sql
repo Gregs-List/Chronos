@@ -2,7 +2,7 @@
 use GregsList;
 
 # populate the ConditionLookup table
-INSERT INTO ConditionLookup(0, "other");
+INSERT INTO ConditionLookup(0, "unspecified");
 INSERT INTO ConditionLookup(1, "new");
 INSERT INTO ConditionLookup(2, "excellent");
 INSERT INTO ConditionLookup(3, "light wear");
@@ -27,5 +27,27 @@ INSERT INTO BookType(3, "poetry");
 INSERT INTO BookType(4, "reference");
 INSERT INTO BookType(5, "nonfiction");
 INSERT INTO BookType(6, "graphic novel");
+
+# populate the ElectronicsType table
+INSERT INTO ElectronicsType(0, "other");
+INSERT INTO ElectronicsType(1, "TV");
+INSERT INTO ElectronicsType(2, "computer");
+INSERT INTO ElectronicsType(3, "portable music player");
+INSERT INTO ElectronicsType(4, "stereo");
+INSERT INTO ElectronicsType(5, "media player");
+
+# populate the FurnitureType table
+INSERT INTO FurnitureType(0, "other");
+INSERT INTO FurnitureType(1, "couch");
+INSERT INTO FurnitureType(2, "bed");
+INSERT INTO FurnitureType(3, "chair");
+INSERT INTO FurnitureType(4, "table");
+INSERT INTO FurnitureType(5, "futon");
+INSERT INTO FurnitureType(6, "shelves");
+
+# populate MeetupType table
+INSERT INTO MeetupType(0, "other");
+INSERT INTO MeetupType(1, "study group");
+INSERT INTO MeetupType(2, "social");
 
 
