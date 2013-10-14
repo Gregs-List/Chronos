@@ -30,7 +30,7 @@ FOREIGN KEY (userID) REFERENCES Users(userID)
 # create the ConditionLookup table
 create table if not exists ConditionLookup(
 conditionID INT primary key,
-itemCondition VARCHAR(10)
+itemCondition VARCHAR(20)
 );
 
 # create the BikeType table
