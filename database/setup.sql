@@ -21,7 +21,7 @@ create table if not exists Listings(
 listingID INT primary key auto_increment,
 userID INT,
 title VARCHAR(30),
-dateListed TIMESTAMP,
+dateListed TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 category VARCHAR(20),
 description VARCHAR(500),
 FOREIGN KEY (userID) REFERENCES Users(userID)
