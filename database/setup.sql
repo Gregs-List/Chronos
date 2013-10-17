@@ -8,7 +8,7 @@ use GregsList;
 create table if not exists Users(
 userID int primary key auto_increment,
 email varchar(40) not null,
-pass varchar(20), 
+pword varchar(20), 
 fullName varchar(50),  
 feedbackRating INT, 
 location varchar(20),

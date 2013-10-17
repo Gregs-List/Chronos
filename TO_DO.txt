@@ -1,0 +1,18 @@
+Unassigned:
+- Figure out what functions are needed in the php API
+- Implement php API functions
+- write Iteration 1 plan
+- create HTML for GregsList webpages
+- create website CSS
+
+Carter Dewey:
+
+Amanda Doyle:
+
+Bobby Santoski:
+
+Greg Walters:
+X Create MySQL database setup script
+X Create MySQL population script for type and status lookup tables
+
+Morgan Winslow:
