@@ -1,4 +1,4 @@
-Chronos
+Greg's List
 =======
 
-Schedule Manager
+SMU's Personal trading site
