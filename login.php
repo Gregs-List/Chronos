@@ -6,6 +6,7 @@
 	}
 	//Function to check the log in of a user
 	function login(){
+    echo 'meow';
 	$query = "select userID from Users where email ='$_GET[email]'";
 	$result = mysql($query);
 	while ($row = mysql_fetch_assoc($id_query_result)){
