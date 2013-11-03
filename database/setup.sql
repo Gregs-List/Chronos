@@ -13,6 +13,7 @@ fullName varchar(50),
 feedbackRating INT, 
 location varchar(20),
 phoneNumber varchar(20),
+admin BIT(1) DEFAULT 0,
 UNIQUE(email)
 );
 
@@ -138,3 +139,9 @@ returnTime TIME,
 FOREIGN KEY (listingID) REFERENCES Listings(listingID)
 ) engine = innodb;
 
+#create the Photos table
+create table if not exists Photos(
+listingID INT,
+photoURL VARCHAR(20),
+FOREIGN KEY (listingID) REFERENCES Listings(listingID)
+) engine = innodb;

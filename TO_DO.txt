@@ -22,8 +22,8 @@ Bobby Santoski:
 Greg Walters:
 X Create MySQL database setup script
 X Create MySQL population script for type and status lookup tables
-- Add Admin bit flag to users table
-- Add photo table with URL listings
+X Add Admin bit flag to users table
+X Add photo table with URL listings
 - Write SQL queries for Iteration 1 (insert user, select user info, insert listing to miscellaneous, view user listings)
 
 Morgan Winslow:
