@@ -47,12 +47,15 @@ public class LoginActivity extends Activity {
     }
     
     public void sendMessage(View view) {
-    	/*
+    	
     	EditText email = (EditText)findViewById(R.id.email);
     	EditText password = (EditText)findViewById(R.id.password);
-    	String text = new StringBuilder().append(email.getText()).append("\n").append(password.getText()).toString();
-    	*/
-        new DownloadFilesTask().execute("http://ec2-54-242-12-103.compute-1.amazonaws.com/test.php");
+    	//String text = new StringBuilder().append(email.getText()).append("\n").append(password.getText()).toString();
+    	String url = "http://ec2-50-112-191-198.us-west-2.compute.amazonaws.com/GregsList/test.php";
+    	StringBuilder text = new StringBuilder().append(url).append("?email=").append(email.getText()).append("&password=").append(password.getText());
+        String full_url = text.toString();
+        Log.d("check",full_url);
+    	new DownloadFilesTask().execute(full_url);
 }
     
     private class DownloadFilesTask extends AsyncTask<String, Void, String> {
