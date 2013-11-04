@@ -6,5 +6,11 @@ $(document).click(function(){
 			e.preventDefault();
 			alert("Your passwords don't match");
 		}
+		var email = $('#newEmail').val();
+		var len = email.length;
+		var smu = email.substring(len-8,len);
+		if(smu != 'smu.edu'){
+			alert("You must use a valid smu email address.");
+		}
 	});
 });
