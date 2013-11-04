@@ -1,12 +1,13 @@
 var request = new XMLHttpRequest();
 var listings = [];
 var json;
-var url = "getListing.php";
-request.open("GET", url, true);
-request.send();
+//var url = "getListing.php";
+request.open("GET", 'getListing.php', true);
+
 request.onreadystatechange = function(e)
 {
-	if(request.readyState == 4){
+	if(request.readyState == 4 || request.status== 200){
+		console.log(request.responseText);
 		json = JSON.parse(request.responseText);
 		
 		for(var x = 0; x < json.length; x++){
@@ -22,8 +23,7 @@ request.onreadystatechange = function(e)
 	}
 	console.log(listings);
 }
-
-
+request.send();
 
 function listingInfo(){
 	var category;
@@ -32,7 +32,7 @@ function listingInfo(){
 	var id;
 	var title;
 	var userID;
-}
+};
 
 $(document).ready( function() {
 	var myListings = $('#listings');

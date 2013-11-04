@@ -9,16 +9,18 @@
 	mysql_select_db("GregsList", $con)
 		or die("Unable to select database:" . mysql_error());
 
-	$result = mysql_query("SELECT * FROM Listings WHERE userID = 2 ORDER BY dateListed DESC");
+	$result = mysql_query("SELECT * FROM Listings WHERE userID = '$_SESSION[userID]' ORDER BY dateListed DESC");
 
 	#converts to json
 	$rows = array();
-	while($r = mysql_fetch_assoc($result)) 
+	while($r = mysql_fetch_array($result)) 
 	{
-    		$rows[] = $r;
+    		//$rows[] = $r;
+		echo "Title:" . '&nbsp;&nbsp;&nbsp;&nbsp;' . $r['title'] . '&nbsp;&nbsp;&nbsp;&nbsp;' . "Date Posted:" . '&nbsp;&nbsp;&nbsp;&nbsp;' . $r['dateListed'];
+		echo "<br>";
 	}
 
 	#If you want to see if correct json is printing use ---> print json_encode($rows);
 	
-	return json_encode($rows);
+	//return json_encode($rows);
 ?>

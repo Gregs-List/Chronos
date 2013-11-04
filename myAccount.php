@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>
-		<script type="text/javascript" src="myAccount.js"></script>
+		<!--<script type="text/javascript" src="myAccount.js"></script>-->
 		<link rel="stylesheet" type="text/css" href="navBar.css">
 		<link rel="stylesheet" type="text/css" href="myAccount.css">
 		<title>My Account</title>
@@ -36,8 +36,7 @@
 
 		<div id="myListings">
 			<h3>My Listings</h3>
-			<ul id="listings">
-			</ul>
+			<?php include 'getListing.php';?>
 		</div>
 
 		<div id="watchedListings">
