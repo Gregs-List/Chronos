@@ -1,8 +1,7 @@
 #navBar{
 	width:97%;
-
-	position: fixed;
 	border: solid 2px;
+	display: block;
 }
 a {
 	margin-right: 20px;
