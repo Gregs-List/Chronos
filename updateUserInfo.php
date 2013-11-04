@@ -9,6 +9,7 @@
   mysql_select_db("GregsList", $con)
      or die("Unable to select database:" . mysql_error());
 
+/*
 # check/update fullName
 	if(isset ($_POST['fullName'])
 	{
@@ -24,6 +25,7 @@
 		$query = "UPDATE Users SET location='$location' WHERE userID='$userID'";
 		mysql_query($query);
 	}
+*/
 
 #check/update phoneNumber
 	if(isset ($_POST['phone'])
@@ -32,7 +34,7 @@
 		$query = "UPDATE Users SET phoneNumber='$phone' WHERE userID='$userID'";
 		mysql_query($query);
 	}
-
+/*
 #check/update password
 	if(isset ($_POST['password'])
 	{
@@ -40,5 +42,6 @@
 		$query = "UPDATE Users SET pword='$password' WHERE userID='$userID'";
 		mysql_query($query);
 	}
+*/
 	mysql_close($con)
 ?>
