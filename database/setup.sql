@@ -24,6 +24,7 @@ userID INT,
 title VARCHAR(30),
 dateListed TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 category VARCHAR(20),
+price DECIMAL(7,2),
 description VARCHAR(500),
 FOREIGN KEY (userID) REFERENCES Users(userID)
 ) engine = innodb;

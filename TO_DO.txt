@@ -1,9 +1,5 @@
 Unassigned:
-- Figure out what functions are needed in the php API
-- Implement php API functions
-- write Iteration 1 plan
-- create HTML for GregsList webpages
-- create website CSS
+
 
 Future Work:
 - Buy Tasks category a la Task Rabbit
@@ -11,20 +7,19 @@ Future Work:
 - additional/alternate e-mail field
 
 Carter Dewey:
-- Signup page
+X Signup page
 
 Amanda Doyle:
-- Android: (login, display user info)
+X Android: (login, display user info)
 
 Bobby Santoski:
-- PHP: signup, login
+X PHP: signup, login
 
 Greg Walters:
 X Create MySQL database setup script
 X Create MySQL population script for type and status lookup tables
 X Add Admin bit flag to users table
 X Add photo table with URL listings
-- Write SQL queries for Iteration 1 (insert user, select user info, insert listing to miscellaneous, view user listings)
 
 Morgan Winslow:
-- PHP: anything, everything, whatever
+X Iteration 1 phpAPI
