@@ -23,7 +23,9 @@
         $database_password = $row ['pword'];
     }
     if($_GET['password'] != $database_password){
-        header('Location: index.html');//Enter webpage to show if the login credentials are invalid
+
+        echo "<script type='text/javascript'>alert('Invalid username or Password. If you do not have an account, 
+            register below.');</script>";
     }
     else{
         header('Location: home.html');//Enter webpage to show if login credentials are valid
