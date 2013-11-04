@@ -27,7 +27,7 @@
 			<h3>Contact Information</h3>
 			<label  for="email">Email Address:</label>
 			<?php include 'email.php';?>
-			<form name="phone" action="" method="post">
+			<form name="phone" action="updateUserInfo.php" method="post">
 				<label  for="phoneNumber">Phone Number:</label>
 				<input type="text" name="phoneNumber" id="phoneNumber" pattern = "[^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$" title="Enter a valid phone number" required> 
 				<input type="submit" value="Save" id="savePhone">

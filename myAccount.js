@@ -1,8 +1,9 @@
 var request = new XMLHttpRequest();
 var listings = [];
 var json;
-var url = "phpAPI.php";
+var url = "getListing.php";
 request.open("GET", url, true);
+request.send();
 request.onreadystatechange = function(e)
 {
 	if(request.readyState == 4){
@@ -21,7 +22,7 @@ request.onreadystatechange = function(e)
 	}
 	console.log(listings);
 }
-request.send();
+
 
 
 function listingInfo(){

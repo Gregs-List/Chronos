@@ -9,7 +9,7 @@
 	mysql_select_db("GregsList", $con)
 		or die("Unable to select database:" . mysql_error());
 
-	$result = mysql_query("SELECT * FROM Listings WHERE userID = '$_SESSION[userID]' ORDER BY dateListed DESC");
+	$result = mysql_query("SELECT * FROM Listings WHERE userID = 2 ORDER BY dateListed DESC");
 
 	#converts to json
 	$rows = array();
