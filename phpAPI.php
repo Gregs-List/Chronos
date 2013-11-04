@@ -133,4 +133,6 @@ function updateUserInfo()
 			$query = "UPDATE Users SET pword='$password' WHERE userID='$userID'";
 			mysql_query($query);
 		}
+		mysql_close($con)
+	}
 ?>
