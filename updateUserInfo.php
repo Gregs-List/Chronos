@@ -28,12 +28,10 @@
 */
 
 #check/update phoneNumber
-	if(isset ($_POST['phone'])
-	{
-		$phone = $_POST['phone'];
-		$query = "UPDATE Users SET phoneNumber='$phone' WHERE userID='$userID'";
+		$phone = $_POST['phoneNumber'];
+		$query = "UPDATE Users SET phoneNumber='$phone' WHERE userID='$_SESSION[userID]'";
 		mysql_query($query);
-	}
+	
 /*
 #check/update password
 	if(isset ($_POST['password'])
