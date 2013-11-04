@@ -18,4 +18,5 @@
 	mysql_query($query);
 	$query = "INSERT INTO Miscellaneous VALUES(last_insert_id(), '$_POST[itemName]')";
 	mysql_query($query);
+	Header('Location: home.html');
 ?>
