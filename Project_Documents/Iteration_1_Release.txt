@@ -1,7 +1,6 @@
 Iteration_1_Release
 
 1) Features not completed:
-	- Show user listings
 	- SMU e-mail address validation
 
 2) Android APK
