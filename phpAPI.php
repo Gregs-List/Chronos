@@ -20,7 +20,7 @@ if(isset ($_POST['userID'])
 #inserts into Listings and Miscellaneous table. Receives values from JavaScript
 function insertIntoMiscellaneous($userID, $title, $category, $description, $itemName) 
 {
-	$con = mysql_connect("localhost", "gregslist", "greg");
+	$con = mysql_connect("localhost", "listAdmin", "hermes");
 	if(!$con)
 	{
 		die('Could not connect: ' . mysql_error());
@@ -31,14 +31,14 @@ function insertIntoMiscellaneous($userID, $title, $category, $description, $item
 
 	$query = "INSERT INTO Listings VALUES(NULL, '$userID', '$title',NULL, '$category', '$desciption')";
 
-	$query = "INSERT INTO Miscellaneous VALUES(mysql_insert_id(), '$itemName')";
+	$query = "INSERT INTO Miscellaneous VALUES(LAST_INSERT_ID(), '$itemName')";
 	mysql_query($query);
 }
 
 #returns JSON of all of a users listings. INCOMPLETE...only works for miscellaneous right now. Should be fine for Iteration 1
 function returnUserListings($userID) #return short listing: title, category, datelisted
 {
-	$con = mysql_connect("localhost", "gregslist", "greg");
+	$con = mysql_connect("localhost", "listAdmin", "hermes");
 	if(!$con)
 	{
 		die('Could not connect: ' . mysql_error());
