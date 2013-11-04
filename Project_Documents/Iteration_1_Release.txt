@@ -1,0 +1,15 @@
+Iteration_1_Release
+
+1) Features not completed:
+	- SMU e-mail address validation
+
+2) Android APK
+https://github.com/Gregs-List/Chronos/tree/master/gregsList
+
+3) Website Link:
+http://ec2-50-112-191-198.us-west-2.compute.amazonaws.com/GregsList/
+
+4) Login Credentials
+(create an account. If account creation fails, use:)
+UN: jdoe@lyle.smu.edu
+PW: doeadeere
