@@ -9,8 +9,6 @@
     mysql_select_db("GregsList", $con) 
         or die("Unable to select database:" . mysql_error());
 
-        error_reporting(E_ALL);
-        ini_set('display_errors', '1');
     //Function to check the log in of a user
     $query = "select userID from Users where email ='$_GET[email]'";
     $result = mysql_query($query);
