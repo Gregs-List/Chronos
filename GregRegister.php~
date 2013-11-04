@@ -1,5 +1,5 @@
 <?php
-	$con = mysql_connect("localhost", "gregslist", "greg");
+	$con = mysql_connect("localhost", "ListAdmin", "hermes");
 	if (!$con)
 	{
 		die('Could not connect: ' . mysql_error());
