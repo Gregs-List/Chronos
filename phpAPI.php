@@ -93,4 +93,44 @@ function getRecentListings()	#incomplete
 	mysql_query($query); 
 }*/
 
+/* Update user info:
+Check to see if a field is filled out--
+If so, change value in that user's row */
+function updateUserInfo()
+	{
+		$con = mysql_connect("localhost", "listAdmin", "hermes");
+    if (!$con)
+    {
+       die('Could not connect: ' . mysql_error());
+    }
+    mysql_select_db("GregsList", $con)
+       or die("Unable to select database:" . mysql_error());
+
+		if(isset ($_POST['fullName'])
+		{
+			$fullName = $_POST['fullName'];
+			$query = "UPDATE Users SET fullName='$fullName' WHERE userID='$userID'";
+			mysql_query($query);
+		}
+
+		if(isset ($_POST['location'])
+		{
+			$location = $_POST['location'];
+			$query = "UPDATE Users SET location='$location' WHERE userID='$userID'";
+			mysql_query($query);
+		}
+
+		if(isset ($_POST['phone'])
+		{
+			$phone = $_POST['phone'];
+			$query = "UPDATE Users SET phoneNumber='$phone' WHERE userID='$userID'";
+			mysql_query($query);
+		}
+
+		if(isset ($_POST['password'])
+		{
+			$password = $_POST['password'];
+			$query = "UPDATE Users SET pword='$password' WHERE userID='$userID'";
+			mysql_query($query);
+		}
 ?>
