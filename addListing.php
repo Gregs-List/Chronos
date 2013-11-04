@@ -1,7 +1,7 @@
 <?php
 
 	session_start();
-	$con = mysql_connect("localhost", "gregslist", "greg");
+	$con = mysql_connect("localhost", "listAdmin", "hermes");
 	if(!$con)
 	{
 		die('Could not connect: ' . mysql_error());
