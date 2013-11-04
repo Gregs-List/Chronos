@@ -41,6 +41,6 @@
 		mysql_query($query);
 	}
 */
-	mysql_close($con)
+	mysql_close($con);
 Header('Location:myAccount.html');
 ?>
