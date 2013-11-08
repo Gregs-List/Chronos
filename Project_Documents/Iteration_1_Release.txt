@@ -1,7 +1,6 @@
 Iteration_1_Release
 
 1) Features not completed:
-	- SMU e-mail address validation
 
 2) Android APK
 https://github.com/Gregs-List/Chronos/tree/master/gregsList

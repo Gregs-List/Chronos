@@ -1,5 +1,15 @@
 Unassigned:
-
+- write php to sanitize input text
+- create alert for successful registration
+- create alert for failed registration, cancel redirect
+- create alert for failed login, cancel redirect
+- fix password match verification
+- prevent updating phone number from clearing all other data on page
+- validate phone numbers
+- create price field in Create Listing
+- change Category field to drop menu in Create Listing
+- format Date Listed from raw JSON (MM/DD/YYYY rather than YYYY/MM/DD and is time necessary?)
+- change login from GET to POST (why was it ever get?!)
 
 Future Work:
 - Buy Tasks category a la Task Rabbit
@@ -8,6 +18,7 @@ Future Work:
 
 Carter Dewey:
 X Signup page
+- re-update smu.edu e-mail checker
 
 Amanda Doyle:
 X Android: (login, display user info)
@@ -20,6 +31,8 @@ X Create MySQL database setup script
 X Create MySQL population script for type and status lookup tables
 X Add Admin bit flag to users table
 X Add photo table with URL listings
+- edit php API to do listing inserts as transactions
+- add price back to Listings table
 
 Morgan Winslow:
 X Iteration 1 phpAPI
