@@ -1,19 +1,19 @@
 <?php
 
 #Calls insertIntoMiscellaneous if these attributes are set
-if(isset ($_GET['userID'] && $_GET['title'] && $_GET['category'] && $_GET['description'] && $_GET['itemName'])
+if(isset ($_POST['userID'] && $_POST['title'] && $_POST['category'] && $_POST['description'] && $_POST['itemName'])
 {
-	$userID = $_GET['userID'];
-	$title = $_GET['title'];
-	$category = $_GET['category'];
-	$description = $_GET['description'];
-	$itemName = $_GET['itemName'];
+	$userID = $_POST['userID'];
+	$title = $_POST['title'];
+	$category = $_POST['category'];
+	$description = $_POST['description'];
+	$itemName = $_POST['itemName'];
 	insertIntoMiscellaneous($userID, $title, $category, $description,$itemName);
 }
 #Calls returnUserListings if these attributes are set
-if(isset ($_GET['userID'])
+if(isset ($_POST['userID'])
 {
-	$userID = $_GET['userID'];
+	$userID = $_POST['userID'];
 	returnUserListings($userID);
 }
 
