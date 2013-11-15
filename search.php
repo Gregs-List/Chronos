@@ -62,9 +62,4 @@
 		#return json_encode($rows);
 	}
 
-	function sortByCategory()
-	{
-		$price = $
-	}
-
 ?>
