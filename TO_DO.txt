@@ -10,29 +10,46 @@ Unassigned:
 - change Category field to drop menu in Create Listing
 - format Date Listed from raw JSON (MM/DD/YYYY rather than YYYY/MM/DD and is time necessary?)
 - change login from GET to POST (why was it ever get?!)
+- create slideshow of listings
 
 Future Work:
+- Watched listings
 - Buy Tasks category a la Task Rabbit
 - e-mail verification
 - additional/alternate e-mail field
 
 Carter Dewey:
 X Signup page
-- re-update smu.edu e-mail checker
+X re-update smu.edu e-mail checker
+- create HTML for basically everything
+- update fields based on category
+- edit and display user info
+- create sidebar (Gregbar)
 
 Amanda Doyle:
 X Android: (login, display user info)
+- Android: everything else
 
 Bobby Santoski:
 X PHP: signup, login
+- PHP for upload photos
+- funtion: display all listing information
+- function: display contact info
+- edit existing listing
+- search bar for searching
 
 Greg Walters:
 X Create MySQL database setup script
 X Create MySQL population script for type and status lookup tables
 X Add Admin bit flag to users table
 X Add photo table with URL listings
-- edit php API to do listing inserts as transactions
-- add price back to Listings table
+X edit php API to do listing inserts as transactions
+X add price back to Listings table
+- PHP for insert into any category
+- PHP for upload photos
 
 Morgan Winslow:
 X Iteration 1 phpAPI
+- Search by listings
+- Search by description
+- Refine search by category
