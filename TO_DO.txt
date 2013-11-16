@@ -1,9 +1,5 @@
 Unassigned:
 - write php to sanitize input text
-- create alert for successful registration
-- create alert for failed registration, cancel redirect
-- create alert for failed login, cancel redirect
-- fix password match verification
 - prevent updating phone number from clearing all other data on page
 - validate phone numbers
 - change Category field to drop menu in Create Listing
@@ -21,14 +17,19 @@ Future Work:
 Carter Dewey:
 X Signup page
 X re-update smu.edu e-mail checker
+X fix password match verification
 - create HTML for basically everything
 - update fields based on category
 - edit and display user info
 - create sidebar (Gregbar)
 
+
 Amanda Doyle:
 X Android: (login, display user info)
 - Android: everything else
+- create alert for successful registration
+- create alert for failed registration, cancel redirect
+- create alert for failed login, cancel redirect
 
 Bobby Santoski:
 X PHP: signup, login
