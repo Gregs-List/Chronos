@@ -1,7 +1,7 @@
 <?PHP
 
 #inserts into Listings and <Category> table. Receives values from JavaScript
-function insertIntoAll($userID, $title, $category, $description, $itemName) 
+function insertIntoAll() 
 {
 	$con = mysql_connect("localhost", "listAdmin", "hermes");
 	if(!$con)
@@ -11,6 +11,11 @@ function insertIntoAll($userID, $title, $category, $description, $itemName)
 	
 	mysql_select_db("GregsList", $con)
 		or die("Unable to select database:" . mysql_error());
+	$userID = $_SESSION['userID'];
+	$title = $_POST['title'];
+	$category = $_POST['category'];
+	$description = $_POST['description'];
+	$itemName = $_POST['itemName'];
 
 	$listQuery = "INSERT INTO Listings VALUES(NULL, '$userID', '$title',NULL, '$category', '$desciption')";
 
