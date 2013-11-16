@@ -6,11 +6,11 @@ Unassigned:
 - fix password match verification
 - prevent updating phone number from clearing all other data on page
 - validate phone numbers
-- create price field in Create Listing
 - change Category field to drop menu in Create Listing
 - format Date Listed from raw JSON (MM/DD/YYYY rather than YYYY/MM/DD and is time necessary?)
 - change login from GET to POST (why was it ever get?!)
 - create slideshow of listings
+- create price field in Create Listing (DECIMAL(7,2))
 
 Future Work:
 - Watched listings
@@ -45,11 +45,11 @@ X Add Admin bit flag to users table
 X Add photo table with URL listings
 X edit php API to do listing inserts as transactions
 X add price back to Listings table
-- PHP for insert into any category
+X PHP for insert into any category
 - PHP for upload photos
 
 Morgan Winslow:
 X Iteration 1 phpAPI
-- Search by listings
-- Search by description
-- Refine search by category
+X Search by listings
+X Search by description
+X Refine search by category
