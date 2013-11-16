@@ -54,3 +54,5 @@ X Iteration 1 phpAPI
 X Search by listings
 X Search by description
 X Refine search by category
+- view recent listings (all/home)
+- view recent listings (by category)
