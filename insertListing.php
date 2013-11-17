@@ -22,7 +22,7 @@ function insertIntoAll()
 
 	if($category=="Bikes")
 	{
-		$catQuery .= "INSERT INTO Bikes VALUES(last_insert_id(), '$_POST[bikeTypeID]', '$_POST[make]', '$_POST[model]', '$_POST[itemName]'); \n";
+		$catQuery .= "INSERT INTO Bikes VALUES(last_insert_id(), '$_POST[bikeTypeID]', '$_POST[make]', '$_POST[model]'); \n";
 	}
 	
 	if($category=="Books")
@@ -47,7 +47,7 @@ function insertIntoAll()
 
 	if($category=="Miscellaneous")
 	{
-		$catQuery .= "INSERT INTO Miscellaneous VALUES(last_insert_id(), '$_POST[itemName]'); \n";
+		$catQuery .= "INSERT INTO Miscellaneous VALUES(last_insert_id(), '); \n";
 	}
 
 	if($category=="Rides")
