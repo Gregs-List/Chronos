@@ -4,6 +4,8 @@
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<script type="text/javascript" src="createListing.js"></script>
 		<link rel="stylesheet" type="text/css" href="navBar.css">
+		<link rel="stylesheet" type="text/css" href="categoryBar.css">
+		<link rel="stylesheet" type="text/css" href="createListing.css">
 		<title>Greg's List New Listing</title>
 	</head>
 	<body>
@@ -16,13 +18,12 @@
 
 		<nav id = "categoryBar">
 			<h4>Categories</h4>
-			<ul>
-				<li><a>Books</a></li>
-				<li><a>Furniture</a></li>
-				<li><a>Electronics</a></li>
-				<li><a>Bikes</a></li>
-			</ul>
+				<a>Books</a>
+				<a>Furniture</a>
+				<a>Electronics</a>
+				<a>Bikes</a>
 		</nav>
+		<h1>Create a Listing</h1>
 		<div id="listing">
 			<form name="newListing" action="addListing.php" method="post">
 				<label for="category">Category</label>
@@ -42,9 +43,6 @@
 				<input type="text" name="price" id="price"><br>
 				<label for="description">Description</label>
 				<input type="text" name="description" id="description"><br>
-				<label for="photos">Photos</label>
-				<input type="file" name="photos" id="photos" multiple><br>
-				<input type="submit" value="Create Listing" id="newListing" class="center">
 
 
 				<div id="bookFields"  style="display:none">
@@ -135,6 +133,9 @@
 					<label for="bModel">Model</label>
 					<input type="text" name="bModel" id="bModel"><br>
 				</div>
+				<label for="photos">Photos</label>
+				<input type="file" name="photos" id="photos" multiple><br>
+				<input type="submit" value="Create Listing" id="newListing" class="center">
 			</form>
 		</div>
 	</body>

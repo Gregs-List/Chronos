@@ -1,0 +1,8 @@
+#categoryBar a{
+	display:block;
+}
+
+#categoryBar{
+	float:left;
+	border: solid 2px;
+}

@@ -1,0 +1,14 @@
+h1{
+	text-align: center;
+}
+#listing {
+	margin-left: auto;
+	margin-right: auto;
+	width:50%;
+	border: solid 2px;
+}
+
+#listing *{
+	float:none;
+	text-align: center;
+}

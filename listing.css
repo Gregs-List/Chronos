@@ -1,0 +1,15 @@
+#contactInfo{
+	float: right;
+	top:10%;
+}
+
+header *{
+	text-align: center;
+}
+
+#listing {
+	margin-left: auto;
+	margin-right: auto;
+	width:50%;
+	border: solid 2px;
+}
