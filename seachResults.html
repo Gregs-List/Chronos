@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>
+		<link rel="stylesheet" type="text/css" href="navBar.css">
+		<script type="text/javascript" src="index.js"></script>
+		<title>Greg's List Search</title>
+	</head>
+
+	<body>
+
+		<nav id = "navBar"> 
+				<a href="home.html">Home</a>
+				<a href="myAccount.php">My Account</a>
+				<a href="createListing.html">Create Listing</a>
+				<a href="index.html">Logout</a>
+		</nav>
+
+		<nav id = "categoryBar">
+			<h4>Categories</h4>
+			<ul>
+				<li><a>Books</a></li>
+				<li><a>Furniture</a></li>
+				<li><a>Electronics</a></li>
+				<li><a>Bikes</a></li>
+			</ul>
+		</nav>
+		<header>
+			<h1> Greg's List</h1>
+			<h3>Results</h3>
+		</header>
+
+		<div id = "filterButtons">
+			<button type="button" id="bookFilter">Books</button>
+			<button type="button" id="furnitureFilter">Furniture</button>
+			<button type="button" id="electronicsFilter">Electronics</button>
+			<button type="button" id="bikesFilter">Bikes</button>
+		</div>
+
+		<table>
+			<tr>
+				<td>Category</td>
+				<td>Title</td>
+				<td>Price</td>
+			</tr>
+		</table>
+
+
+	</body>
+</html>
