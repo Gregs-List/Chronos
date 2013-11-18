@@ -26,27 +26,68 @@ public final class R {
         public static final int sign_in=0x7f020002;
     }
     public static final class id {
-        public static final int action_settings=0x7f080004;
-        public static final int email=0x7f080001;
-        public static final int login_button=0x7f080003;
+        public static final int SMU_email=0x7f080008;
+        public static final int action_settings=0x7f080012;
+        public static final int content_frame=0x7f08000d;
+        public static final int drawer_layout=0x7f08000c;
+        public static final int drawer_list=0x7f080010;
+        public static final int email=0x7f080003;
+        public static final int fname=0x7f080006;
+        public static final int lname=0x7f080007;
+        public static final int login=0x7f080002;
+        public static final int login_button=0x7f080005;
         public static final int logo=0x7f080000;
-        public static final int password=0x7f080002;
+        public static final int logout=0x7f08000f;
+        public static final int navbar=0x7f08000e;
+        public static final int password=0x7f080004;
+        public static final int password_signup=0x7f080009;
+        public static final int password_signup_two=0x7f08000a;
+        public static final int sign_up_button=0x7f08000b;
+        public static final int signup=0x7f080001;
+        public static final int text1=0x7f080011;
     }
     public static final class layout {
-        public static final int activity_login=0x7f030000;
+        public static final int activity_home_page=0x7f030000;
+        public static final int activity_login=0x7f030001;
+        public static final int activity_sign_up=0x7f030002;
+        public static final int activity_user_home=0x7f030003;
+        public static final int drawer_list_item=0x7f030004;
     }
     public static final class menu {
-        public static final int login=0x7f070000;
+        public static final int home_page=0x7f070000;
+        public static final int login=0x7f070001;
+        public static final int sign_up=0x7f070002;
+        public static final int user_home=0x7f070003;
     }
     public static final class string {
+        public static final int SMU_email=0x7f05000d;
         public static final int action_settings=0x7f050001;
         public static final int app_name=0x7f050000;
+        public static final int bikes=0x7f050015;
+        public static final int books=0x7f050016;
         public static final int desc=0x7f050003;
+        public static final int electronics=0x7f050017;
+        public static final int fname=0x7f05000b;
+        public static final int furniture=0x7f050018;
         public static final int hello_world=0x7f050002;
-        public static final int hint1=0x7f050005;
-        public static final int hint2=0x7f050006;
-        public static final int login_button=0x7f050007;
-        public static final int login_text=0x7f050004;
+        public static final int hint1=0x7f050004;
+        public static final int hint2=0x7f050005;
+        public static final int lname=0x7f05000c;
+        public static final int login_button=0x7f050006;
+        public static final int login_button_home=0x7f050009;
+        public static final int meetups=0x7f050019;
+        public static final int misc=0x7f05001b;
+        public static final int nav1=0x7f050011;
+        public static final int nav2=0x7f050012;
+        public static final int nav3=0x7f050013;
+        public static final int password=0x7f05000e;
+        public static final int password2=0x7f05000f;
+        public static final int rides=0x7f05001a;
+        public static final int signup_button=0x7f050008;
+        public static final int signup_text=0x7f050014;
+        public static final int title_activity_home_page=0x7f050007;
+        public static final int title_activity_sign_up=0x7f05000a;
+        public static final int title_activity_user_home=0x7f050010;
     }
     public static final class style {
         /** 
