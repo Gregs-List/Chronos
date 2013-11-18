@@ -1,6 +1,9 @@
 package com.example.gregslist;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLEncoder;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -65,7 +68,13 @@ public class AccountActivity extends Activity {
 		String url = "http://ec2-50-112-191-198.us-west-2.compute.amazonaws.com/GregsList/Android_API/account_email.php";
     	StringBuilder text = new StringBuilder().append(url).append("?userID=").append(String.valueOf(value));
         String full_url = text.toString();
-		new DownloadFilesTask().execute(full_url);
+        String urls[] = new String[2];
+        urls[0] = full_url;
+        String url2 = "http://ec2-50-112-191-198.us-west-2.compute.amazonaws.com/GregsList/Android_API/account_phone.php";
+        StringBuilder text2 = new StringBuilder().append(url2).append("?userID=").append(String.valueOf(value));
+        String full_url_2 = text2.toString();
+        urls[1] = full_url_2;
+		new DownloadFilesTask().execute(urls);
 		
 	}
 	
@@ -79,10 +88,12 @@ public class DownloadFilesTask extends AsyncTask<String, Void, String> {
         
     	protected String doInBackground(String... urls) {
     		String url = urls[0];
+    		String url2 = urls[1];
     		String result = " ";
-            Log.d("check","doInBackground has been called");
+    		String result2 = " ";
         	HttpClient client = new DefaultHttpClient();
         	HttpGet get = new HttpGet(url);
+        	HttpGet get2 = new HttpGet(url2);
         	try {
         		HttpResponse response = client.execute(get);
         		HttpEntity entity = response.getEntity();
@@ -94,13 +105,35 @@ public class DownloadFilesTask extends AsyncTask<String, Void, String> {
         	} catch (IOException e) {
         		e.printStackTrace();
         	}
-           return result;
-        }
+        	
+        	try {
+        		HttpResponse response2 = client.execute(get2);
+        		HttpEntity entity2 = response2.getEntity();
+        			if (null != entity2) {
+        				result2 = EntityUtils.toString(entity2);  
+        			}
+        	} catch (ClientProtocolException e) {
+        		e.printStackTrace();
+        	} catch (IOException e) {
+        		e.printStackTrace();
+        	}
+        	if (result2.equals("")) {
+        		result2 = "No phone number";
+        	}
+           return result + "#" + result2;
+           }
 
         protected void onPostExecute(String result) {
+        	Log.d("ALD",result);
+        	String[] separated = result.split("#");
+        	String email_get = separated[0]; 
+        	String phone_get = separated[1];
         	TextView email = (TextView) findViewById(R.id.email_account);
-        	StringBuilder email_line = new StringBuilder().append("Email Address: ").append(result);
+        	StringBuilder email_line = new StringBuilder().append("Email Address: ").append(email_get);
         	email.setText(email_line.toString());
+        	TextView phone = (TextView) findViewById(R.id.phone);
+        	StringBuilder phone_line = new StringBuilder().append("Phone Number: ").append(phone_get);
+        	phone.setText(phone_line.toString());
         }
     }
 
