@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script type="text/javascript" src="createListing.js"></script>
 		<link rel="stylesheet" type="text/css" href="navBar.css">
 		<title>Greg's List New Listing</title>
 	</head>
@@ -26,12 +27,14 @@
 			<form name="newListing" action="addListing.php" method="post">
 				<label for="category">Category</label>
 				<select id="category" required>
-					<option>Book</option>
-					<option>Furniture</option>
-					<option>Electronic</option>
-					<option>Bike</option>
 					<option>Misellanious</option>
+					<option>Books</option>
+					<option>Furniture</option>
+					<option>Electronics</option>
+					<option>Bikes</option>
 				</select><br>
+
+
 
 				<label for="title">Title</label>
 				<input type="text" name="title" id="title"><br>
@@ -42,6 +45,96 @@
 				<label for="photos">Photos</label>
 				<input type="file" name="photos" id="photos" multiple><br>
 				<input type="submit" value="Create Listing" id="newListing" class="center">
+
+
+				<div id="bookFields"  style="display:none">
+					<label for="BookType">Book Type</label>
+					<select id="BookType" required>
+						<option value="1">Textbook</option>
+						<option value="2">Literature</option>
+						<option value="3">Poetry</option>
+						<option value="4">Reference</option>
+						<option value="5">Nonfiction</option>
+						<option value="6">Graphic Novel</option>
+						<option value="0">Other</option>
+					</select><br>
+
+					<label for="bookCondition">Book Codition</label>
+					<select id="bookCondition" required>
+						<option value="1">New</option>
+						<option value="2">Excellent</option>
+						<option value="3">Light Wear</option>
+						<option value="4">Normal Wear</option>
+						<option value="5">Damaged</option>
+						<option value="0">Unspecified</option>
+					</select><br> 
+
+					<label for="bookTitle">Book Title</label>
+					<input type="text" name="bookTitle" id="bookTitle" required><br>
+					<label for="author">Author</label>
+					<input type="text" name="author" id="author" required><br>
+					<label for="isbn">ISBN</label>
+					<input type="text" name="isbn" id="isbn" required><br>
+					<label for="course">Assigned Course</label>
+					<input type="text" name="course" id="course"><br>
+				</div>
+
+				<div id="furnitureFields" style="display:none" >
+					<label for="FurnitureType">Furniture Type</label>
+					<select id="FurnitureType" required>
+						<option value="1">Couch</option>
+						<option value="2">Bed</option>
+						<option value="3">Chair</option>
+						<option value="4">Table</option>
+						<option value="5">Futon</option>
+						<option value="6">Shelves</option>
+						<option value="0">Other</option>
+					</select><br>
+
+					<label for="furnitureCondition">Furniture Codition</label>
+					<select id="furnitureCondition" required>
+						<option value="1">New</option>
+						<option value="2">Excellent</option>
+						<option value="3">Light Wear</option>
+						<option value="4">Normal Wear</option>
+						<option value="5">Damaged</option>
+						<option value="0">Unspecified</option>
+					</select><br> 
+				</div>
+
+				<div id="electronicFields" style="display:none" >
+					<label for="ElectronicType">Electronic Type</label>
+					<select id="ElectronicType" required>
+						<option value="1">TV</option>
+						<option value="2">Computer</option>
+						<option value="3">Portable Music Player</option>
+						<option value="4">Speakers</option>
+						<option value="5">Media Player</option>
+						<option value="0">Other</option>
+					</select><br>
+					<label for="eMake">Make</label>
+					<input type="text" name="eMake" id="eMake"><br>
+					<label for="eModel">Model</label>
+					<input type="text" name="eModel" id="eModel"><br>
+				</div>
+
+				<div id="bikeFields" style="display:none" >
+					<label for="BikeType">Bike Type</label>
+					<select id="BikeType" required>
+						<option value="1">Road</option>
+						<option value="2">City</option>
+						<option value="3">Mountain</option>
+						<option value="4">Cruiser</option>
+						<option value="5">Hybrid</option>
+						<option value="6">Unicycle</option>
+						<option value="7">Electric</option>
+						<option value="0">Other</option>
+					</select><br>
+					<label for="bMake">Make</label>
+					<input type="text" name="bMake" id="bMake"><br>
+					<label for="bModel">Model</label>
+					<input type="text" name="bModel" id="bModel"><br>
+				</div>
 			</form>
 		</div>
 	</body>
