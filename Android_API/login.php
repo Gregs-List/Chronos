@@ -33,8 +33,7 @@
    		echo 'error';
     }
     else{
-   		echo "Name: " . $name . "\r\n" . "Location: " . $location . "\r\n" . 
-        "Phone: " . $phoneNumber;
+   		echo $id;
         }
     mysql_close($con);
     ?>

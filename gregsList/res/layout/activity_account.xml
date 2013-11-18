@@ -1,4 +1,4 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -31,10 +31,25 @@
         android:text = "@string/nav3"
         android:textSize = "12dp"/>
     </LinearLayout>
-    
-    <TextView
+
+  <FrameLayout
+        android:id="@+id/menu_ll"
+        android:layout_width="fill_parent" 
+        android:layout_height="wrap_content"
+        android:layout_below="@id/navbar">
+        
+        <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id = "@+id/user_id"/>
+        android:id = "@+id/email_account"/>
+        
+        <TextView
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:id = "@+id/phone"/>
+            
+       
+    </FrameLayout>
 
-</FrameLayout>
+
+</RelativeLayout>

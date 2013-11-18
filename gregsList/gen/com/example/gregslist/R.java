@@ -26,29 +26,31 @@ public final class R {
         public static final int sign_in=0x7f020002;
     }
     public static final class id {
-        public static final int SMU_email=0x7f08000d;
+        public static final int SMU_email=0x7f08000f;
         public static final int account=0x7f080002;
-        public static final int action_settings=0x7f080016;
-        public static final int content_frame=0x7f080012;
-        public static final int drawer_layout=0x7f080011;
-        public static final int drawer_list=0x7f080014;
-        public static final int email=0x7f080008;
-        public static final int fname=0x7f08000b;
+        public static final int action_settings=0x7f080018;
+        public static final int content_frame=0x7f080014;
+        public static final int drawer_layout=0x7f080013;
+        public static final int drawer_list=0x7f080016;
+        public static final int email=0x7f08000a;
+        public static final int email_account=0x7f080005;
+        public static final int fname=0x7f08000d;
         public static final int home=0x7f080001;
-        public static final int lname=0x7f08000c;
-        public static final int login=0x7f080007;
-        public static final int login_button=0x7f08000a;
-        public static final int logo=0x7f080005;
+        public static final int lname=0x7f08000e;
+        public static final int login=0x7f080009;
+        public static final int login_button=0x7f08000c;
+        public static final int logo=0x7f080007;
         public static final int logout=0x7f080003;
+        public static final int menu_ll=0x7f080004;
         public static final int navbar=0x7f080000;
-        public static final int password=0x7f080009;
-        public static final int password_signup=0x7f08000e;
-        public static final int password_signup_two=0x7f08000f;
-        public static final int sign_up_button=0x7f080010;
-        public static final int signup=0x7f080006;
-        public static final int text1=0x7f080015;
-        public static final int user_activity=0x7f080013;
-        public static final int user_id=0x7f080004;
+        public static final int password=0x7f08000b;
+        public static final int password_signup=0x7f080010;
+        public static final int password_signup_two=0x7f080011;
+        public static final int phone=0x7f080006;
+        public static final int sign_up_button=0x7f080012;
+        public static final int signup=0x7f080008;
+        public static final int text1=0x7f080017;
+        public static final int user_activity=0x7f080015;
     }
     public static final class layout {
         public static final int activity_account=0x7f030000;
