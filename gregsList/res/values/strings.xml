@@ -29,6 +29,6 @@
     <string name="meetups">Meetups</string>
     <string name="rides">Rides</string>
     <string name="misc">Miscellaneous</string>
-    
+    <string name="title_activity_account">AccountActivity</string>
 
 </resources>

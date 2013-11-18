@@ -36,6 +36,10 @@
             android:name="com.example.gregslist.UserHome"
             android:label="@string/title_activity_user_home" >
         </activity>
+        <activity
+            android:name="com.example.gregslist.AccountActivity"
+            android:label="@string/title_activity_account" >
+        </activity>
     </application>
 
 </manifest>

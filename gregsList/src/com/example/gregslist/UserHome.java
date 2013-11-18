@@ -22,7 +22,7 @@ public class UserHome extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_user_home);
 		Bundle b = getIntent().getExtras();
-		int value = b.getInt("id");
+		final int value = b.getInt("id");
 		//TextView id = (TextView) findViewById(R.id.user);
 		//id.setText(String.valueOf(value));
 		
@@ -35,6 +35,23 @@ public class UserHome extends Activity {
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, 
 				R.layout.drawer_list_item, categories);
 		mDrawerList.setAdapter(adapter);
+		
+		
+		TextView id = (TextView) findViewById(R.id.user_activity);
+		id.setText(String.valueOf(value));
+		
+		Button account = (Button) findViewById(R.id.account);
+		account.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(UserHome.this,AccountActivity.class);
+				Bundle c = new Bundle();
+	        	   c.putInt("id", value); //Your id
+	        	   i.putExtras(c);
+				startActivity(i);
+			}
+		});
 		
 		Button logout = (Button) findViewById(R.id.logout);
 		logout.setOnClickListener(new View.OnClickListener() {
