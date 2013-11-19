@@ -19,7 +19,7 @@ function retrieveFromAll()
 	$category = $_GET['category'];
 
 // Query database for Listing information
-	$listQuery = "SELECT title, dateListed, price, fullName, description FROM Listings";
+	$listQuery = "SELECT title, dateListed, price, description FROM Listings";
 	$result1 = mysql_query($listQuery);
 	if(!$result1)
 	{
@@ -29,11 +29,12 @@ function retrieveFromAll()
 	}
 // store results in an array
 	$listing = mysql_fetch_array($result1, MYSQL_ASSOC);
+	$fullName = mysql_query("SELECT fullName FROM Users WHERE userID = $userID;");
 // print results to screen
 	echo "Title: {$listing[title]}<br>
 Date listed: {$listing[dateListed]}<br>
 Price: {$listing[price]}<br>
-Contact: {$listing[fullName]}<br>";
+Contact: $fullName<br>";
 
 
 // Print Bike information, if Bike
