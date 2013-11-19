@@ -34,23 +34,66 @@
 
   <LinearLayout
         android:id="@+id/menu_ll"
-        android:layout_width="fill_parent" 
+        android:layout_width="310dp" 
         android:layout_height="wrap_content"
         android:layout_below="@id/navbar"
-        android:orientation="vertical">
-        
+        android:orientation="vertical"
+        android:background="@drawable/outline"
+        android:layout_centerHorizontal="true">
+       
+       <TextView 
+       android:layout_width="wrap_content"
+       android:layout_height = "wrap_content"
+       android:text= "@string/contact"
+       android:textStyle="bold"
+       android:textColor= "#10294f"
+       />
+       
         <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id = "@+id/email_account"/>
+        android:id = "@+id/email_account"
+        android:textColor= "#10294f"/>
         
         <TextView
             android:layout_width = "wrap_content"
             android:layout_height = "wrap_content"
             android:id = "@+id/phone"
+            android:textColor= "#10294f"
+            /> 
+    </LinearLayout>
+    
+    <LinearLayout 
+        android:layout_width = "310dp"
+        android:layout_height = "200dp"
+        android:background="@drawable/outline"
+        android:layout_below="@id/menu_ll"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/listings" >       
+    <TextView
+        android:layout_height = "wrap_content"
+        android:layout_width = "wrap_content"
+        android:text="@string/mylisting"
+        android:textColor= "#10294f"
+        android:textStyle="bold"
+        />
+    </LinearLayout>
+
+    <LinearLayout
+	    android:layout_width = "310dp"
+        android:layout_height = "150dp"
+        android:background="@drawable/outline"
+        android:layout_below="@id/listings"
+        android:layout_centerHorizontal="true">
+    
+        <TextView
+        android:layout_height = "wrap_content"
+        android:layout_width = "wrap_content"
+        android:text="@string/watched"
+        android:textColor= "#10294f"
+        android:textStyle="bold"
             />
-            
-       
+
     </LinearLayout>
 
 

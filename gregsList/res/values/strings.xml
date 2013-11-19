@@ -30,5 +30,13 @@
     <string name="rides">Rides</string>
     <string name="misc">Miscellaneous</string>
     <string name="title_activity_account">My Account</string>
+    <string name="contact">Contact Information</string>
+    <string name="home_heading">Most Recent Listings</string>
+    <string name="title">Title</string>
+    <string name="category">Category</string>
+    <string name="mylisting">My Listings</string>
+    <string name="watched">Watched Listings</string>
+     
+    
 
 </resources>

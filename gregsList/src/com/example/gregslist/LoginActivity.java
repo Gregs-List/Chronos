@@ -110,6 +110,7 @@ public class LoginActivity extends Activity {
 		        	   Log.d("ALD","Login Success");
 		           	   Intent i = new Intent(LoginActivity.this, UserHome.class);
 		        	   Bundle b = new Bundle();
+		        	   Log.d("ALD",result);
 		        	   b.putInt("id", Integer.parseInt(result)); //Your id
 		        	   i.putExtras(b);
 		        	   startActivity(i);
