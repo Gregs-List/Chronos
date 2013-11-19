@@ -18,6 +18,7 @@ function retrieveFromAll()
 	$listingID = $_GET['listingID'];
 	$category = $_GET['category'];
 
+
 // Query database for Listing information
 	$listQuery = "SELECT title, dateListed, price, description FROM Listings";
 	$result1 = mysql_query($listQuery);
@@ -145,12 +146,13 @@ Condition: $condition<br>";
 Location: {$cat[location]}<br>
 Date: {$cat[date]}<br>
 Time: {$cat[time]}<br>";
-
 	}
 
+
+// if Miscellaneous, do nothing
 	if($category=="Miscellaneous")
 	{
-		
+		// no unique info
 	}
 
 	if($category=="Rides")
@@ -173,7 +175,6 @@ Departure time: {$cat[departureTime]}<br>
 Return date: {$cat[returnDate]}<br>
 Return time: {$cat[returnTime]}<br>";
 	}
-
 
 
 //Print general description last
