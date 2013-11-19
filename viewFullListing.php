@@ -108,11 +108,43 @@ Size: {$cat[size]}<br>";
 	if($category=="Furniture")
 	{
 		$catQuery .= "SELECT furnitureTypeID, conditionID FROM Furniture WHERE listingID = '$listingID'";
+	$result2 = mysql_query($catQuery);
+//  error if query fails
+	if(!$result2)
+	{
+		$message = 'Database query failed: ' . mysql_error() . "\n";
+    $message .= 'Query: ' . $catQuery;
+    die($message);
+	}
+// convert to array and print
+	$cat = mysql_fetch_array($result2, MYSQL_ASSOC);
+	$furnitureType = mysql_query("SELECT furnitureType FROM FurnitureType WHERE furnitureTypeID = {$cat[furnitureTypeID]};");
+	$condition = mysql_query("SELECT itemCondition FROM ConditionLookup where conditionID = {$cat[conditionID]};");
+	echo "Type: $furnitureType<br>
+Condition: $condition<br>";
 	}
 
+
+// Print Meetups information, if Meetup
 	if($category=="Meetups")
 	{
-		$catQuery .= "SELECT meetupTypeID, location, date, time FROM Meetups WHERE listingID = '$listingID'";
+	$catQuery .= "SELECT meetupTypeID, location, date, time FROM Meetups WHERE listingID = '$listingID'";
+	$result2 = mysql_query($catQuery);
+//  error if query fails
+	if(!$result2)
+	{
+		$message = 'Database query failed: ' . mysql_error() . "\n";
+    $message .= 'Query: ' . $catQuery;
+    die($message);
+	}
+// convert to array and print
+	$cat = mysql_fetch_array($result2, MYSQL_ASSOC);
+	$meetupType = mysql_query("SELECT meetupType FROM MeetupType WHERE meetupTypeID = {$cat[meetupTypeID]};");
+	echo "Purpose: $meetupType<br>
+Location: {$cat[location]}<br>
+Date: {$cat[date]}<br>
+Time: {$cat[time]}<br>";
+
 	}
 
 	if($category=="Miscellaneous")
@@ -122,8 +154,26 @@ Size: {$cat[size]}<br>";
 
 	if($category=="Rides")
 	{
-		$catQuery .= "SELECT leavingFrom, goingTo, departureDate, departureTime, returnDate, returnTime FROM Rides WHERE listingID = '$listingID'";
+	$catQuery .= "SELECT leavingFrom, goingTo, departureDate, departureTime, returnDate, returnTime FROM Rides WHERE listingID = '$listingID'";
+	$result2 = mysql_query($catQuery);
+//  error if query fails
+	if(!$result2)
+	{
+		$message = 'Database query failed: ' . mysql_error() . "\n";
+    $message .= 'Query: ' . $catQuery;
+    die($message);
 	}
+// convert to array and print
+	$cat = mysql_fetch_array($result2, MYSQL_ASSOC);
+	echo "Leaving from: {$cat[leavingFrom]}<br>
+Going to: {$cat[goingTo]}<br>
+Departure date: {$cat[departureDate]}<br>
+Departure time: {$cat[departureTime]}<br>
+Return date: {$cat[returnDate]}<br>
+Return time: {$cat[returnTime]}<br>";
+	}
+
+
 
 //Print general description last
 	echo "Description: $listing[description]<br><br>";
