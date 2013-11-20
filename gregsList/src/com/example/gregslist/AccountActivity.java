@@ -35,6 +35,7 @@ public class AccountActivity extends Activity {
 		setContentView(R.layout.activity_account);
 		Bundle b = getIntent().getExtras();
 		final int value = b.getInt("id");
+		//Log.d("ALD",String.valueOf(value));
 		//TextView id = (TextView) findViewById(R.id.user_id);
 		//id.setText(String.valueOf(value));
 		

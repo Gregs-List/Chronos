@@ -8,7 +8,7 @@
         android:layout_height = "wrap_content" 
         android:layout_width = "wrap_content"
         android:orientation = "horizontal"
-        android:id = "@+id/navbar">
+        android:id = "@+id/listing_navbar">
     <Button 
         android:id="@+id/home"
         android:layout_height = "35dp"
@@ -37,7 +37,7 @@
         android:id="@+id/menu_ll"
         android:layout_width="310dp" 
         android:layout_height="wrap_content"
-        android:layout_below="@id/navbar"
+        android:layout_below="@id/listing_navbar"
         android:orientation="vertical"
         android:background="@drawable/outline"
         android:layout_centerHorizontal="true">

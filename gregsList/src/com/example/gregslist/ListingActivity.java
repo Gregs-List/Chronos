@@ -22,6 +22,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
+import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -38,6 +40,8 @@ public class ListingActivity extends Activity {
 		final String category = b.getString("category");
 		final String userID = b.getString("user");
 		final String title = b.getString("title");
+		final String loggedIn = b.getString("loggedIn");
+		Log.d("ALD",loggedIn);
 		final TextView title_textview = new TextView(this);
 		title_textview.setText(title);
 		RelativeLayout listLayout= (RelativeLayout) findViewById(R.id.listing_view);
@@ -46,6 +50,44 @@ public class ListingActivity extends Activity {
 		String url = "http://ec2-50-112-191-198.us-west-2.compute.amazonaws.com/GregsList/Android_API/listing_contact_info.php";
     	StringBuilder text = new StringBuilder().append(url).append("?userID=").append(userID);
         String full_url = text.toString();
+        
+        Button account = (Button) findViewById(R.id.account);
+        account.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				Intent i = new Intent(ListingActivity.this, AccountActivity.class);
+				Bundle b = new Bundle();
+				b.putInt("id", Integer.parseInt(loggedIn));
+	        	i.putExtras(b);
+	            startActivity(i);
+			}
+		});
+        
+        Button home = (Button) findViewById(R.id.home);
+        home.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(ListingActivity.this, UserHome.class);
+				Bundle b = new Bundle();
+				b.putInt("id", Integer.parseInt(loggedIn));
+	        	i.putExtras(b);
+	            startActivity(i);
+			}
+		});
+        
+        Button logout = (Button) findViewById(R.id.logout);
+        logout.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(ListingActivity.this, HomePage.class);
+				startActivity(i);
+				
+			}
+		});
+        
         new DownloadFilesTask().execute(full_url);
 	}
 

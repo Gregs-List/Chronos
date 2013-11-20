@@ -154,12 +154,16 @@ public class DownloadFilesTask extends AsyncTask<String, Void, String> {
     	                int position, long id) {
     	              //final Listing item = (Listing) parent.getItemAtPosition(position);
     	              Log.d("ALD",listings.get(position).getTitle());
+		        	  Bundle a = getIntent().getExtras();
+		      		  final int value = a.getInt("id");
+		      		  Log.d("ALD",String.valueOf(value));
     	              Intent i = new Intent(UserHome.this, ListingActivity.class);
     	              Bundle b = new Bundle();
 		        	  b.putString("id", listings.get(position).getListingID());
 		        	  b.putString("category", listings.get(position).getCategory());
 		        	  b.putString("user", listings.get(position).getUserID());
 		        	  b.putString("title", listings.get(position).getTitle());
+		        	  b.putString("loggedIn", String.valueOf(value));
 		        	  i.putExtras(b);
     	              startActivity(i);
     	            }
