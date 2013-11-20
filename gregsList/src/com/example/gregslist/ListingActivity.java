@@ -89,6 +89,27 @@ public class DownloadFilesTask extends AsyncTask<String, Void, String> {
 	        	TextView listing_name = (TextView) findViewById(R.id.listing_name);
 	        	StringBuilder name_field = new StringBuilder().append("Name: ").append(name);
 	        	listing_name.setText(name_field.toString());
+	        	TextView listing_email = (TextView) findViewById(R.id.listing_email);
+	        	StringBuilder email_field = new StringBuilder().append("Email: ").append(email);
+	        	listing_email.setText(email_field.toString());
+	        	TextView listing_location = (TextView) findViewById(R.id.listing_location);
+	        	StringBuilder location_field;
+	        	if (location.equals("null")) {
+	        		 location_field = new StringBuilder().append("Location: No location");
+	        	} else {
+	        		location_field = new StringBuilder().append("Location: ").append(location);
+	        	}
+	        	listing_location.setText(location_field.toString());
+	        	
+	        	TextView listing_phone = (TextView) findViewById(R.id.listing_phone);
+	        	StringBuilder phone_field;
+	        	if (phone.equals("null")) {
+	        		 phone_field = new StringBuilder().append("Phone Number: No phone number");
+	        	} else {
+	        		phone_field = new StringBuilder().append("Phone Number: ").append(phone);
+	        	}
+	        	listing_phone.setText(phone_field.toString());
+	        	
 	        	
 	        	
 			} catch (JSONException e) {
