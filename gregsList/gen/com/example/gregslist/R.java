@@ -30,7 +30,8 @@ public final class R {
     public static final class id {
         public static final int SMU_email=0x7f080010;
         public static final int account=0x7f080002;
-        public static final int action_settings=0x7f08001a;
+        public static final int action_settings=0x7f08001c;
+        public static final int category=0x7f08001b;
         public static final int content_frame=0x7f080015;
         public static final int drawer_layout=0x7f080014;
         public static final int drawer_list=0x7f080018;
@@ -54,6 +55,7 @@ public final class R {
         public static final int sign_up_button=0x7f080013;
         public static final int signup=0x7f080009;
         public static final int text1=0x7f080019;
+        public static final int title=0x7f08001a;
         public static final int user_activity=0x7f080016;
     }
     public static final class layout {
@@ -63,6 +65,7 @@ public final class R {
         public static final int activity_sign_up=0x7f030003;
         public static final int activity_user_home=0x7f030004;
         public static final int drawer_list_item=0x7f030005;
+        public static final int row_layout=0x7f030006;
     }
     public static final class menu {
         public static final int account=0x7f070000;

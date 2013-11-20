@@ -10,7 +10,12 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
+import com.example.gregslist.CustomAdapter;
+import com.example.gregslist.R;
 import com.example.gregslist.LoginActivity.DownloadFilesTask;
 
 import android.os.AsyncTask;
@@ -31,6 +36,7 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.example.gregslist.Listing;
 
 public class UserHome extends Activity {
 
@@ -52,15 +58,6 @@ public class UserHome extends Activity {
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, 
 				R.layout.drawer_list_item, categories);
 		mDrawerList.setAdapter(adapter);
-	
-		    /*String[] values = new String[] { "Android", "iPhone", "WindowsMobile",
-		        "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
-		        "Linux", "OS/2", "Ubuntu", "Windows7", "Max OS X", "Linux",
-		        "OS/2", "Ubuntu", "Windows7", "Max OS X", "Linux", "OS/2",
-		        "Android", "iPhone", "WindowsMobile" };*/
-		
-		//TextView id = (TextView) findViewById(R.id.user_activity);
-		//id.setText(String.valueOf(value));
 		    
 		new DownloadFilesTask().execute("http://ec2-50-112-191-198.us-west-2.compute.amazonaws.com/GregsList/Android_API/listings.php");
 		
@@ -114,23 +111,47 @@ public class DownloadFilesTask extends AsyncTask<String, Void, String> {
         	} catch (IOException e) {
         		e.printStackTrace();
         	}
-           return result;
+            return result;
         }
 
         protected void onPostExecute(String result) {
-        	String[] separated = result.split("#");
-        	for (int counter = 0; counter < separated.length; counter++) {
-        		Log.d("ALD",separated[counter]);
-        	}
-		    final ArrayList<String> list = new ArrayList<String>();
-		    for (int i = 0; i < separated.length; i+=2) {
-		      list.add(separated[i]);
-		    }
-			final ListView listview = (ListView) findViewById(R.id.listview);
-		    final ArrayAdapter list_adapter = new ArrayAdapter(UserHome.this,
-		        android.R.layout.simple_list_item_1, list);
-		    listview.setAdapter(list_adapter);
-        } 
+        	Log.d("ALD",result);
+			ArrayList<Listing> listings = new ArrayList<Listing>();
+        	try {
+    			JSONObject j = new JSONObject(result);
+    			JSONArray jsonPerson = j.getJSONArray("listings");
+    			for (int counter = 0; counter < 10; counter++) {
+        			String listing_id = ((JSONObject)jsonPerson.get(counter)).getString("listingID");
+        			String user_id = ((JSONObject)jsonPerson.get(counter)).getString("userListingID");
+        			String title = ((JSONObject)jsonPerson.get(counter)).getString("title");
+        			String dateListed = ((JSONObject)jsonPerson.get(counter)).getString("dateListed");
+        			String category = ((JSONObject)jsonPerson.get(counter)).getString("category");
+        			String price = ((JSONObject)jsonPerson.get(counter)).getString("price");
+        			String description = ((JSONObject)jsonPerson.get(counter)).getString("description");
+    				Listing new_listing = new Listing(listing_id,user_id,title,dateListed,category,price,description);
+    				listings.add(new_listing);
+    			}
+    			
+    			ArrayList<String> titles = new ArrayList<String>();
+    			ArrayList<String> categories = new ArrayList<String>();
+    			
+    			for (int i = 0; i < listings.size(); i++) {
+    				titles.add(listings.get(i).getTitle());
+    				categories.add(listings.get(i).getCategory());
+    				Log.d("ALD",listings.get(i).getCategory());
+    			}
+    			
+    			
+    			
+    			final ListView listview = (ListView) findViewById(R.id.listview);
+    	        final ArrayAdapter adapter;
+    		    adapter = new CustomAdapter(UserHome.this,titles,categories);
+    	        listview.setAdapter(adapter);
+    	        
+    		} catch (JSONException e) {
+    			e.printStackTrace();
+    		}
+        }
     }
  
 
