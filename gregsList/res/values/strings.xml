@@ -37,5 +37,6 @@
     <string name="mylisting">My Listings</string>
     <string name="watched">Watched Listings</string>
     <string name="title_activity_listing">View Listing</string>
+    <string name="title_activity_search">Search Results</string>
 
 </resources>

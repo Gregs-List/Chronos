@@ -28,10 +28,12 @@ import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -45,6 +47,7 @@ public class UserHome extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_user_home);
+		getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 		Bundle b = getIntent().getExtras();
 		final int value = b.getInt("id");
 		//TextView id = (TextView) findViewById(R.id.user);
@@ -52,13 +55,13 @@ public class UserHome extends Activity {
 		
 		String[] categories = {"Bikes","Books","Electronics","Furniture","Meetups","Rides","Miscellaneous"};
 	
-		DrawerLayout mDrawerLayout;
-		ListView mDrawerList;
-		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-		mDrawerList = (ListView) findViewById(R.id.drawer_list);
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, 
-				R.layout.drawer_list_item, categories);
-		mDrawerList.setAdapter(adapter);
+		//DrawerLayout mDrawerLayout;
+		//ListView mDrawerList;
+		//mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+		//mDrawerList = (ListView) findViewById(R.id.drawer_list);
+		//ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, 
+			//	R.layout.drawer_list_item, categories);
+		//mDrawerList.setAdapter(adapter);
 		    
 		new DownloadFilesTask().execute("http://ec2-50-112-191-198.us-west-2.compute.amazonaws.com/GregsList/Android_API/listings.php");
 		
@@ -82,6 +85,20 @@ public class UserHome extends Activity {
 			public void onClick(View v) {
 				Intent i = new Intent(UserHome.this, HomePage.class);
 				startActivity(i);
+			}
+		});
+		
+		ImageButton search = (ImageButton) findViewById(R.id.search);
+		search.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				
+				Intent i = new Intent(UserHome.this,SearchActivity.class);
+				Bundle d = new Bundle();
+	        	   d.putInt("id", value); //Your id
+	        	   i.putExtras(d);
+				   startActivity(i);
 			}
 		});
 	}

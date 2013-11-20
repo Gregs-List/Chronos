@@ -1,10 +1,5 @@
-<android.support.v4.widget.DrawerLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/drawer_layout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <!-- The main content view -->
     <FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/content_frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"> 
@@ -55,14 +50,23 @@
           android:text="@string/home_heading"
           android:textStyle="bold"
           android:textColor= "#10294f"
-          android:paddingRight="90dp"
+          android:paddingRight="70dp"
           />
           <EditText
               android:layout_height = "wrap_content"
               android:layout_width = "wrap_content"
               android:hint="Search"
               android:textSize="13dp"
+              android:inputType="textNoSuggestions"
               />
+
+          <ImageButton
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:background="@drawable/search" 
+              android:layout_gravity="center_vertical"
+              android:id="@+id/search"/>
+
                </LinearLayout>
                
           <LinearLayout
@@ -101,13 +105,3 @@
         
     </LinearLayout>
     </FrameLayout>
-    <!-- The navigation drawer -->
-    <ListView android:id="@+id/drawer_list"
-        android:layout_width="240dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:choiceMode="singleChoice"
-        android:divider="@android:color/transparent"
-        android:dividerHeight="0dp"
-        android:background="#111"/>
-</android.support.v4.widget.DrawerLayout>
