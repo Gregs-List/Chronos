@@ -1,0 +1,80 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AccountActivity"
+    android:id ="@+id/listing_view" >
+           <LinearLayout
+        android:layout_height = "wrap_content" 
+        android:layout_width = "wrap_content"
+        android:orientation = "horizontal"
+        android:id = "@+id/navbar">
+    <Button 
+        android:id="@+id/home"
+        android:layout_height = "35dp"
+        android:layout_width = "112dp"
+        android:text = "@string/nav1"
+        android:textSize = "12dp"
+        android:layout_marginRight="-9dp"/>
+    
+     <Button 
+        android:id="@+id/account"
+        android:layout_height = "35dp"
+        android:layout_width = "114dp"
+        android:text = "@string/nav2"
+        android:textSize = "12dp"
+        android:layout_marginRight="-9dp"/>
+     
+      <Button 
+        android:id= "@+id/logout"
+        android:layout_height = "35dp"
+        android:layout_width = "112dp"
+        android:text = "@string/nav3"
+        android:textSize = "12dp"/>
+    </LinearLayout>
+
+  <LinearLayout
+        android:id="@+id/menu_ll"
+        android:layout_width="310dp" 
+        android:layout_height="wrap_content"
+        android:layout_below="@id/navbar"
+        android:orientation="vertical"
+        android:background="@drawable/outline"
+        android:layout_centerHorizontal="true">
+       
+       <TextView 
+       android:layout_width="wrap_content"
+       android:layout_height = "wrap_content"
+       android:text= "@string/contact"
+       android:textStyle="bold"
+       android:textColor= "#10294f"
+       />
+       
+        <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id = "@+id/listing_name"
+        android:textColor= "#10294f"/>
+        
+        <TextView
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:id = "@+id/listing_email"
+            android:textColor= "#10294f"
+            /> 
+            
+        <TextView
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:id = "@+id/listing_phone"
+            android:textColor= "#10294f"
+            /> 
+            
+        <TextView
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:id = "@+id/listing_location"
+            android:textColor= "#10294f"
+            /> 
+    </LinearLayout>
+    </RelativeLayout>

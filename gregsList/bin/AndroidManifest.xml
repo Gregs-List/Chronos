@@ -40,6 +40,10 @@
             android:name="com.example.gregslist.AccountActivity"
             android:label="@string/title_activity_account" >
         </activity>
+        <activity
+            android:name="com.example.gregslist.ListingActivity"
+            android:label="@string/title_activity_listing" >
+        </activity>
     </application>
 
 </manifest>

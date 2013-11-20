@@ -28,6 +28,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -115,8 +116,7 @@ public class DownloadFilesTask extends AsyncTask<String, Void, String> {
         }
 
         protected void onPostExecute(String result) {
-        	Log.d("ALD",result);
-			ArrayList<Listing> listings = new ArrayList<Listing>();
+			final ArrayList<Listing> listings = new ArrayList<Listing>();
         	try {
     			JSONObject j = new JSONObject(result);
     			JSONArray jsonPerson = j.getJSONArray("listings");
@@ -138,7 +138,6 @@ public class DownloadFilesTask extends AsyncTask<String, Void, String> {
     			for (int i = 0; i < listings.size(); i++) {
     				titles.add(listings.get(i).getTitle());
     				categories.add(listings.get(i).getCategory());
-    				Log.d("ALD",listings.get(i).getCategory());
     			}
     			
     			
@@ -147,6 +146,25 @@ public class DownloadFilesTask extends AsyncTask<String, Void, String> {
     	        final ArrayAdapter adapter;
     		    adapter = new CustomAdapter(UserHome.this,titles,categories);
     	        listview.setAdapter(adapter);
+    	        
+    	        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+    	            @Override
+    	            public void onItemClick(AdapterView<?> parent, final View view,
+    	                int position, long id) {
+    	              //final Listing item = (Listing) parent.getItemAtPosition(position);
+    	              Log.d("ALD",listings.get(position).getTitle());
+    	              Intent i = new Intent(UserHome.this, ListingActivity.class);
+    	              Bundle b = new Bundle();
+		        	  b.putString("id", listings.get(position).getListingID());
+		        	  b.putString("category", listings.get(position).getCategory());
+		        	  b.putString("user", listings.get(position).getUserID());
+		        	  b.putString("title", listings.get(position).getTitle());
+		        	  i.putExtras(b);
+    	              startActivity(i);
+    	            }
+
+    	          });
     	        
     		} catch (JSONException e) {
     			e.printStackTrace();
