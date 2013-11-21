@@ -45,11 +45,7 @@ public class ListingActivity extends Activity {
 		final TextView title_textview = new TextView(this);
 		title_textview.setText(title);
 		RelativeLayout listLayout= (RelativeLayout) findViewById(R.id.listing_view);
-		//listLayout.addView(title_textview);
-		
-		String url = "http://ec2-50-112-191-198.us-west-2.compute.amazonaws.com/GregsList/Android_API/listing_contact_info.php";
-    	StringBuilder text = new StringBuilder().append(url).append("?userID=").append(userID);
-        String full_url = text.toString();
+		//listLayout.addView(title_textview)
         
         Button account = (Button) findViewById(R.id.account);
         account.setOnClickListener(new View.OnClickListener() {
@@ -87,7 +83,9 @@ public class ListingActivity extends Activity {
 				
 			}
 		});
-        
+		String url = "http://ec2-50-112-191-198.us-west-2.compute.amazonaws.com/GregsList/Android_API/listing_contact_info.php";
+    	StringBuilder text = new StringBuilder().append(url).append("?userID=").append(userID);
+        String full_url = text.toString();
         new DownloadFilesTask().execute(full_url);
 	}
 
