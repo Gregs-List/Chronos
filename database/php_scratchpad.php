@@ -1,66 +1,46 @@
-<?PHP
+<?php
 
-#inserts into Listings and <Category> table. Receives values from JavaScript
-function insertIntoAll($userID, $title, $category, $description, $itemName) 
-{
-	$con = mysql_connect("localhost", "listAdmin", "hermes");
-	if(!$con)
-	{
-		die('Could not connect: ' . mysql_error());
-	}
-	
-	mysql_select_db("GregsList", $con)
-		or die("Unable to select database:" . mysql_error());
+$last = mysql_query("SELECT photoID FROM Photos ORDER BY DESC LIMIT 1;");
+$lastPhoto = mysql_fetch_array($last, MYSQL_ASSOC);
+$lastPhotoID = $lastPhoto['photoID'];
 
-	$listQuery = "INSERT INTO Listings VALUES(NULL, '$userID', '$title',NULL, '$category', '$desciption')";
+$allowedExts = array("gif", "jpeg", "jpg", "png");
+$temp = explode(".", $_FILES["file"]["name"]);
+$extension = end($temp);
+if ((($_FILES["file"]["type"] == "image/gif")
+|| ($_FILES["file"]["type"] == "image/jpeg")
+|| ($_FILES["file"]["type"] == "image/jpg")
+|| ($_FILES["file"]["type"] == "image/pjpeg")
+|| ($_FILES["file"]["type"] == "image/x-png")
+|| ($_FILES["file"]["type"] == "image/png"))
+&& ($_FILES["file"]["size"] < 20000)
+&& in_array($extension, $allowedExts))
+  {
+  if ($_FILES["file"]["error"] > 0)
+    {
+    echo "Return Code: " . $_FILES["file"]["error"] . "<br>";
+    }
+  else
+    {
+    echo "Upload: " . $_FILES["file"]["name"] . "<br>";
+    echo "Type: " . $_FILES["file"]["type"] . "<br>";
+    echo "Size: " . ($_FILES["file"]["size"] / 1024) . " kB<br>";
+    echo "Temp file: " . $_FILES["file"]["tmp_name"] . "<br>";
 
-
-	if($category=="Bikes")
-	{
-		$catQuery .= "INSERT INTO Bikes VALUES(last_insert_id(), '$_GET[bikeTypeID]', '$_GET[make]', '$_GET[model]', '$_GET[itemName]'); \n";
-	}
-	
-	if($category=="Books")
-	{
-		$catQuery .= "INSERT INTO Books VALUES(last_insert_id(), '$_GET[bookTypeID]', '$_GET[title]', '$_GET[author]', '$_GET[isbn]', '$_GET[assignedCourse]', '$_GET[conditionID]'); \n";
-	}
-
-	if($category=="Electronics")
-	{
-		$catQuery .= "INSERT INTO Electronics VALUES(last_insert_id(), '$_GET[electronicsTypeID]', '$_GET[make]', '$_GET[model]', '$_GET[size]'); \n";
-	}
-
-	if($category=="Furniture")
-	{
-		$catQuery .= "INSERT INTO Bikes VALUES(last_insert_id(), '$_GET[furnitureTypeID]', '$_GET[conditionID]'); \n";
-	}
-
-	if($category=="Meetups")
-	{
-		$catQuery .= "INSERT INTO Meetups VALUES(last_insert_id(), '$_GET[meetupTypeID]', '$_GET[location]', '$_GET[date]', '$_GET[time]'); \n";
-	}
-
-	if($category=="Miscellaneous")
-	{
-		$catQuery .= "INSERT INTO Miscellaneous VALUES(last_insert_id(), '$_GET[itemName]'); \n";
-	}
-
-	if($category=="Rides")
-	{
-		$catQuery .= "INSERT INTO Rides VALUES(last_insert_id(), '$_GET[leavingFrom]', '$_GET[goingTo]', '$_GET[departureDate]', '$_GET[departureTime]', '$_GET[returnDate]', '$_GET[returnTime]'); \n";
-	}
-
-	$query = "START TRANSACTION;\n";
-	$query.=$listQuery . '\n';
-	$query.=$catQuery . '\n';
-	$query.="\nCOMMIT;"
-	$ins=mysql_query($query);
-	if(!$ins)
-	{
-		$message = 'Database insert failed: ' . mysql_error() . "\n";
-    $message .= 'Whole statement: ' . $query;
-    die($message);
-	}
-}
-
+    if (file_exists("upload/" . $_FILES["file"]["name"]))
+      {
+      echo $_FILES["file"]["name"] . " already exists. ";
+      }
+    else
+      {
+      move_uploaded_file($_FILES["file"]["tmp_name"],
+      "upload/" . $_FILES["file"]["name"]);
+      echo "Stored in: " . "upload/" . $_FILES["file"]["name"];
+      }
+    }
+  }
+else
+  {
+  echo "Invalid file";
+  }
 ?>
