@@ -9,7 +9,9 @@
     mysql_select_db("GregsList", $con) 
         or die("Unable to select database:" . mysql_error());
 
-$query = "Select * from Listings where userID = '$_GET['userID']' order by listingID DESC";
+$id = $_GET['userID'];
+
+$query = "Select * from Listings where userID = '$id' order by listingID DESC";
 
     $result = mysql_query($query);
     $info = array();
@@ -25,7 +27,6 @@ $query = "Select * from Listings where userID = '$_GET['userID']' order by listi
         array_push($info, $listing);
     }
     $full_array= array("listings"=>$info);
-
     $json = json_encode($full_array);
     echo $json;
     
