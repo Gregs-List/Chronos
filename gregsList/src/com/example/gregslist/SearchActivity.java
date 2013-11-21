@@ -1,6 +1,10 @@
 package com.example.gregslist;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 
 import org.apache.http.HttpEntity;
@@ -27,8 +31,11 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class SearchActivity extends Activity {
 
@@ -43,8 +50,31 @@ public class SearchActivity extends Activity {
 		
 		String url = "http://ec2-50-112-191-198.us-west-2.compute.amazonaws.com/GregsList/Android_API/search.php";
 		StringBuilder full_url = new StringBuilder().append(url).append("?search_term=").append(search_term);
+			URI url_spaces;
+			try {
+				url_spaces = new URI(full_url.toString().replaceAll(" ","%20"));
+				Log.d("ALD",url_spaces.toString());
+				new DownloadFilesTask().execute(url_spaces.toString());
+			} catch (URISyntaxException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		
-		new DownloadFilesTask().execute(full_url.toString());
+		ImageButton search = (ImageButton) findViewById(R.id.search);
+		search.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				EditText new_search_term = (EditText) findViewById(R.id.search_text);
+				Intent intent = getIntent();
+			    Bundle b = new Bundle();
+			    b.putInt("id",value);
+			    b.putString("search_term", new_search_term.getText().toString());
+			    intent.putExtras(b);
+				finish();
+				startActivity(intent);
+			}
+		});
 		
         Button account = (Button) findViewById(R.id.account);
         account.setOnClickListener(new View.OnClickListener() {
@@ -137,7 +167,21 @@ public class DownloadFilesTask extends AsyncTask<String, Void, String> {
     				categories.add(listings.get(i).getCategory());
     			}
     			
+    			if (titles.size() == 0) {
+    				final int duration = Toast.LENGTH_SHORT;
+					Toast toast1 = Toast.makeText(getApplicationContext(), "There are no search results for this search term", duration);
+		        	toast1.show();
+    			}
+    			
     			Button bikes = (Button) findViewById(R.id.bikes);
+    			Button books = (Button) findViewById(R.id.books);
+    			Button electronics = (Button) findViewById(R.id.electronics);
+    			Button furniture = (Button) findViewById(R.id.furniture);
+    			Button meetups = (Button) findViewById(R.id.meetups);
+    			Button rides = (Button) findViewById(R.id.rides);
+    			Button misc = (Button) findViewById(R.id.misc);
+    			Button all = (Button) findViewById(R.id.all);
+    			
     			bikes.setOnClickListener(new View.OnClickListener() {
 					
 					@Override
@@ -157,10 +201,208 @@ public class DownloadFilesTask extends AsyncTask<String, Void, String> {
 			        	        text.setText("Search Results - Bikes");
 							}
 						}
+						
+						if (titles_bikes.size() == 0) {
+							final int duration = Toast.LENGTH_SHORT;
+							Toast toast1 = Toast.makeText(getApplicationContext(), "There are no search results in the Bikes category", duration);
+				        	toast1.show();
+						}
 					}
 				});
-
     			
+      			books.setOnClickListener(new View.OnClickListener() {
+					
+    					@Override
+    					public void onClick(View arg0) {
+    						ArrayList<String> titles_books = new ArrayList<String>();
+    		    			ArrayList<String> categories_books = new ArrayList<String>();
+    						for (int i = 0; i < listings.size(); i++) {
+    							if(listings.get(i).getCategory().equals("Books")) {
+    								titles_books.add(listings.get(i).getTitle());
+    			    				categories_books.add(listings.get(i).getCategory());
+    			    				final ListView listview = (ListView) findViewById(R.id.listview2);
+    			        	        final ArrayAdapter adapter;
+    			        		    adapter = new CustomAdapter(SearchActivity.this,titles_books,categories_books);
+    			        	        listview.setAdapter(adapter);
+    			        	        
+    			        	        TextView text = (TextView) findViewById(R.id.search_heading);
+    			        	        text.setText("Search Results - Books");
+    							}
+    						}
+    						
+    						if (titles_books.size() == 0) {
+    							final int duration = Toast.LENGTH_SHORT;
+    							Toast toast1 = Toast.makeText(getApplicationContext(), "There are no search results in the Books category", duration);
+    				        	toast1.show();
+    						}
+    					}
+    				});
+      			
+      			electronics.setOnClickListener(new View.OnClickListener() {
+					
+    					@Override
+    					public void onClick(View arg0) {
+    						ArrayList<String> titles_electronics = new ArrayList<String>();
+    		    			ArrayList<String> categories_electronics = new ArrayList<String>();
+    						for (int i = 0; i < listings.size(); i++) {
+    							if(listings.get(i).getCategory().equals("Electronics")) {
+    								titles_electronics.add(listings.get(i).getTitle());
+    			    				categories_electronics.add(listings.get(i).getCategory());
+    			    				final ListView listview = (ListView) findViewById(R.id.listview2);
+    			        	        final ArrayAdapter adapter;
+    			        		    adapter = new CustomAdapter(SearchActivity.this,titles_electronics,categories_electronics);
+    			        	        listview.setAdapter(adapter);
+    			        	        
+    			        	        TextView text = (TextView) findViewById(R.id.search_heading);
+    			        	        text.setText("Search Results - Electronics");
+    							}
+    						}
+    						
+    						if (titles_electronics.size() == 0) {
+    							final int duration = Toast.LENGTH_SHORT;
+    							Toast toast1 = Toast.makeText(getApplicationContext(), "There are no search results in the Electronics category", duration);
+    				        	toast1.show();
+    						}
+    					}
+    				});
+      			
+      			furniture.setOnClickListener(new View.OnClickListener() {
+					
+    					@Override
+    					public void onClick(View arg0) {
+    						ArrayList<String> titles_furniture = new ArrayList<String>();
+    		    			ArrayList<String> categories_furniture = new ArrayList<String>();
+    						for (int i = 0; i < listings.size(); i++) {
+    							if(listings.get(i).getCategory().equals("Furniture")) {
+    								titles_furniture.add(listings.get(i).getTitle());
+    			    				categories_furniture.add(listings.get(i).getCategory());
+    			    				final ListView listview = (ListView) findViewById(R.id.listview2);
+    			        	        final ArrayAdapter adapter;
+    			        		    adapter = new CustomAdapter(SearchActivity.this,titles_furniture,categories_furniture);
+    			        	        listview.setAdapter(adapter);
+    			        	        
+    			        	        TextView text = (TextView) findViewById(R.id.search_heading);
+    			        	        text.setText("Search Results - Furniture");
+    							}
+    						}
+    						
+    						if (titles_furniture.size() == 0) {
+    							final int duration = Toast.LENGTH_SHORT;
+    							Toast toast1 = Toast.makeText(getApplicationContext(), "There are no search results in the Furniture category", duration);
+    				        	toast1.show();
+    						}
+    					}
+    				});
+      			
+      			meetups.setOnClickListener(new View.OnClickListener() {
+					
+    					@Override
+    					public void onClick(View arg0) {
+    						ArrayList<String> titles_meetups = new ArrayList<String>();
+    		    			ArrayList<String> categories_meetups = new ArrayList<String>();
+    						for (int i = 0; i < listings.size(); i++) {
+    							if(listings.get(i).getCategory().equals("Meetups")) {
+    								titles_meetups.add(listings.get(i).getTitle());
+    			    				categories_meetups.add(listings.get(i).getCategory());
+    			    				final ListView listview = (ListView) findViewById(R.id.listview2);
+    			        	        final ArrayAdapter adapter;
+    			        		    adapter = new CustomAdapter(SearchActivity.this,titles_meetups,categories_meetups);
+    			        	        listview.setAdapter(adapter);
+    			        	        
+    			        	        TextView text = (TextView) findViewById(R.id.search_heading);
+    			        	        text.setText("Search Results - Meetups");
+    							}
+    						}
+    						
+    						if (titles_meetups.size() == 0) {
+    							final int duration = Toast.LENGTH_SHORT;
+    							Toast toast1 = Toast.makeText(getApplicationContext(), "There are no search results in the Meetups category", duration);
+    				        	toast1.show();
+    						}
+    					}
+    				});
+      			
+      			rides.setOnClickListener(new View.OnClickListener() {
+					
+    					@Override
+    					public void onClick(View arg0) {
+    						ArrayList<String> titles_rides = new ArrayList<String>();
+    		    			ArrayList<String> categories_rides = new ArrayList<String>();
+    						for (int i = 0; i < listings.size(); i++) {
+    							if(listings.get(i).getCategory().equals("Rides")) {
+    								titles_rides.add(listings.get(i).getTitle());
+    			    				categories_rides.add(listings.get(i).getCategory());
+    			    				final ListView listview = (ListView) findViewById(R.id.listview2);
+    			        	        final ArrayAdapter adapter;
+    			        		    adapter = new CustomAdapter(SearchActivity.this,titles_rides,categories_rides);
+    			        	        listview.setAdapter(adapter);
+    			        	        
+    			        	        TextView text = (TextView) findViewById(R.id.search_heading);
+    			        	        text.setText("Search Results - Rides");
+    							}
+    						}
+    						if (titles_rides.size() == 0) {
+    							final int duration = Toast.LENGTH_SHORT;
+    							Toast toast1 = Toast.makeText(getApplicationContext(), "There are no search results in the Rides category", duration);
+    				        	toast1.show();
+    						}
+    					}
+    				});
+      			
+
+
+      			misc.setOnClickListener(new View.OnClickListener() {
+					
+    					@Override
+    					public void onClick(View arg0) {
+    						ArrayList<String> titles_misc = new ArrayList<String>();
+    		    			ArrayList<String> categories_misc = new ArrayList<String>();
+    						for (int i = 0; i < listings.size(); i++) {
+    							if(listings.get(i).getCategory().equals("Miscellaneous")) {
+    								titles_misc.add(listings.get(i).getTitle());
+    			    				categories_misc.add(listings.get(i).getCategory());
+    			    				final ListView listview = (ListView) findViewById(R.id.listview2);
+    			        	        final ArrayAdapter adapter;
+    			        		    adapter = new CustomAdapter(SearchActivity.this,titles_misc,categories_misc);
+    			        	        listview.setAdapter(adapter);
+    			        	        
+    			        	        TextView text = (TextView) findViewById(R.id.search_heading);
+    			        	        text.setText("Search Results - Miscellaneous");
+    							}
+    						}
+    						if (titles_misc.size() == 0) {
+    							final int duration = Toast.LENGTH_SHORT;
+    							Toast toast1 = Toast.makeText(getApplicationContext(), "There are no search results in the Miscellaneous category", duration);
+    				        	toast1.show();
+    						}
+    					}
+    				});
+      			
+      			all.setOnClickListener(new View.OnClickListener() {
+					
+    					@Override
+    					public void onClick(View arg0) {
+    						ArrayList<String> titles_all = new ArrayList<String>();
+    		    			ArrayList<String> categories_all = new ArrayList<String>();
+    						for (int i = 0; i < listings.size(); i++) {
+    								titles_all.add(listings.get(i).getTitle());
+    			    				categories_all.add(listings.get(i).getCategory());
+    			    				final ListView listview = (ListView) findViewById(R.id.listview2);
+    			        	        final ArrayAdapter adapter;
+    			        		    adapter = new CustomAdapter(SearchActivity.this,titles_all,categories_all);
+    			        	        listview.setAdapter(adapter);
+    			        	        
+    			        	        TextView text = (TextView) findViewById(R.id.search_heading);
+    			        	        text.setText("Search Results - All Categories");
+    						}
+    						
+    						if (titles_all.size() == 0) {
+    		    				final int duration = Toast.LENGTH_SHORT;
+    							Toast toast1 = Toast.makeText(getApplicationContext(), "There are no search results for this search term", duration);
+    				        	toast1.show();
+    		    			}
+    					}
+    				});
     			final ListView listview = (ListView) findViewById(R.id.listview2);
     	        final ArrayAdapter adapter;
     		    adapter = new CustomAdapter(SearchActivity.this,titles,categories);
