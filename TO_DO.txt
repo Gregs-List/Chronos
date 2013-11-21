@@ -7,6 +7,7 @@ Unassigned:
 - change login from GET to POST (why was it ever get?!)
 - create slideshow of listings
 - create price field in Create Listing (DECIMAL(7,2))
+- upload multiple photos
 
 Future Work:
 - Watched listings
@@ -14,6 +15,7 @@ Future Work:
 - e-mail verification
 - additional/alternate e-mail field
 - password reset
+- add captions to photos
 
 Carter Dewey:
 X Signup page
