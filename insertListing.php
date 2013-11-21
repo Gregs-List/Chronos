@@ -22,37 +22,37 @@ function insertIntoAll()
 
 	if($category=="Bikes")
 	{
-		$catQuery .= "INSERT INTO Bikes VALUES(last_insert_id(), '$_POST[bikeTypeID]', '$_POST[make]', '$_POST[model]'); \n";
+		$catQuery = "INSERT INTO Bikes VALUES(last_insert_id(), '$_POST[bikeTypeID]', '$_POST[make]', '$_POST[model]'); \n";
 	}
 	
 	if($category=="Books")
 	{
-		$catQuery .= "INSERT INTO Books VALUES(last_insert_id(), '$_POST[bookTypeID]', '$_POST[title]', '$_POST[author]', '$_POST[isbn]', '$_POST[assignedCourse]', '$_POST[conditionID]'); \n";
+		$catQuery = "INSERT INTO Books VALUES(last_insert_id(), '$_POST[bookTypeID]', '$_POST[title]', '$_POST[author]', '$_POST[isbn]', '$_POST[assignedCourse]', '$_POST[conditionID]'); \n";
 	}
 
 	if($category=="Electronics")
 	{
-		$catQuery .= "INSERT INTO Electronics VALUES(last_insert_id(), '$_POST[electronicsTypeID]', '$_POST[make]', '$_POST[model]', '$_POST[size]'); \n";
+		$catQuery = "INSERT INTO Electronics VALUES(last_insert_id(), '$_POST[electronicsTypeID]', '$_POST[make]', '$_POST[model]', '$_POST[size]'); \n";
 	}
 
 	if($category=="Furniture")
 	{
-		$catQuery .= "INSERT INTO Bikes VALUES(last_insert_id(), '$_POST[furnitureTypeID]', '$_POST[conditionID]'); \n";
+		$catQuery = "INSERT INTO Bikes VALUES(last_insert_id(), '$_POST[furnitureTypeID]', '$_POST[conditionID]'); \n";
 	}
 
 	if($category=="Meetups")
 	{
-		$catQuery .= "INSERT INTO Meetups VALUES(last_insert_id(), '$_POST[meetupTypeID]', '$_POST[location]', '$_POST[date]', '$_POST[time]'); \n";
+		$catQuery = "INSERT INTO Meetups VALUES(last_insert_id(), '$_POST[meetupTypeID]', '$_POST[location]', '$_POST[date]', '$_POST[time]'); \n";
 	}
 
 	if($category=="Miscellaneous")
 	{
-		$catQuery .= "INSERT INTO Miscellaneous VALUES(last_insert_id(), '); \n";
+		$catQuery = "INSERT INTO Miscellaneous VALUES(last_insert_id(), '); \n";
 	}
 
 	if($category=="Rides")
 	{
-		$catQuery .= "INSERT INTO Rides VALUES(last_insert_id(), '$_POST[leavingFrom]', '$_POST[goingTo]', '$_POST[departureDate]', '$_POST[departureTime]', '$_POST[returnDate]', '$_POST[returnTime]'); \n";
+		$catQuery = "INSERT INTO Rides VALUES(last_insert_id(), '$_POST[leavingFrom]', '$_POST[goingTo]', '$_POST[departureDate]', '$_POST[departureTime]', '$_POST[returnDate]', '$_POST[returnTime]'); \n";
 	}
 
 	$query = "START TRANSACTION;\n";
