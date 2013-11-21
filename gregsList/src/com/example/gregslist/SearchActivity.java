@@ -136,6 +136,29 @@ public class DownloadFilesTask extends AsyncTask<String, Void, String> {
     				titles.add(listings.get(i).getTitle());
     				categories.add(listings.get(i).getCategory());
     			}
+    			
+    			Button bikes = (Button) findViewById(R.id.bikes);
+    			bikes.setOnClickListener(new View.OnClickListener() {
+					
+					@Override
+					public void onClick(View arg0) {
+						ArrayList<String> titles_bikes = new ArrayList<String>();
+		    			ArrayList<String> categories_bikes = new ArrayList<String>();
+						for (int i = 0; i < listings.size(); i++) {
+							if(listings.get(i).getCategory().equals("Bikes")) {
+								titles_bikes.add(listings.get(i).getTitle());
+			    				categories_bikes.add(listings.get(i).getCategory());
+			    				final ListView listview = (ListView) findViewById(R.id.listview2);
+			        	        final ArrayAdapter adapter;
+			        		    adapter = new CustomAdapter(SearchActivity.this,titles_bikes,categories_bikes);
+			        	        listview.setAdapter(adapter);
+			        	        
+			        	        TextView text = (TextView) findViewById(R.id.search_heading);
+			        	        text.setText("Search Results - Bikes");
+							}
+						}
+					}
+				});
 
     			
     			final ListView listview = (ListView) findViewById(R.id.listview2);

@@ -30,10 +30,10 @@ public final class R {
     public static final class id {
         public static final int SMU_email=0x7f080023;
         public static final int account=0x7f080002;
-        public static final int action_settings=0x7f08002a;
+        public static final int action_settings=0x7f08002b;
         public static final int bikes=0x7f080016;
         public static final int books=0x7f080017;
-        public static final int category=0x7f080029;
+        public static final int category=0x7f08002a;
         public static final int content_frame=0x7f080015;
         public static final int electronics=0x7f080018;
         public static final int email=0x7f080012;
@@ -65,12 +65,13 @@ public final class R {
         public static final int phone=0x7f080006;
         public static final int rides=0x7f08001b;
         public static final int search=0x7f08001f;
+        public static final int search_heading=0x7f08001d;
         public static final int search_text=0x7f08001e;
         public static final int sign_up_button=0x7f080026;
         public static final int signup=0x7f08000a;
-        public static final int text1=0x7f080027;
-        public static final int title=0x7f080028;
-        public static final int user_activity=0x7f08001d;
+        public static final int text1=0x7f080028;
+        public static final int title=0x7f080029;
+        public static final int user_activity=0x7f080027;
     }
     public static final class layout {
         public static final int activity_account=0x7f030000;
