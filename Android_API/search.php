@@ -7,8 +7,8 @@ $con = mysql_connect("localhost", "listAdmin", "hermes");
 	mysql_select_db("GregsList", $con)
 		or die("Unable to select database:" . mysql_error());
 
-//$search_term = $_GET['search_term'];
-$search_term = 'test';
+$search_term = $_GET['search_term'];
+//$search_term = 'test';
 
 $query = "Select * from Listings where title LIKE '%$search_term%' order by listingID DESC";
 
