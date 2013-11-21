@@ -36,5 +36,84 @@
         android:text = "@string/nav3"
         android:textSize = "12dp"/>
     </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width = "wrap_content"
+        android:layout_height = "wrap_content"
+        android:orientation = "vertical"
+        android:layout_gravity = "center"
+        android:background = "@drawable/outline">
+      
+        <TextView
+            android:layout_height = "wrap_content"
+            android:layout_width = "wrap_content"
+            android:text = "Filter by category"
+            android:layout_gravity = "center"
+            android:textStyle = "bold"
+            android:textColor = "#10294f"/>
+        
+        <LinearLayout
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+            
+            <Button 
+                android:layout_width = "wrap_content"
+                android:layout_height = "wrap_content"
+                android:text = "@string/bikes"
+                android:id="@+id/bikes"
+                android:textSize="10sp"/>
+            <Button 
+                android:layout_width = "wrap_content"
+                android:layout_height = "wrap_content"
+                android:text = "@string/books"
+                android:id="@+id/books"
+                android:textSize="10sp"/>
+              <Button 
+                android:layout_width = "wrap_content"
+                android:layout_height = "wrap_content"
+                android:text = "@string/electronics"
+                android:id="@+id/electronics"
+                android:textSize="10sp"/>
+              
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content" 
+            android:layout_height = "wrap_content"
+            android:orientation = "horizontal"
+			android:layout_gravity="center">
+              
+            <Button 
+                android:layout_width = "wrap_content"
+                android:layout_height = "wrap_content"
+                android:text = "@string/furniture"
+                android:id="@+id/furniture"
+                android:textSize="10sp"/>
+              
+              <Button 
+                android:layout_width = "wrap_content"
+                android:layout_height = "wrap_content"
+                android:text = "@string/meetups"
+                android:id="@+id/meetups"
+                android:textSize="10sp"/>
+              
+              <Button 
+                android:layout_width = "wrap_content"
+                android:layout_height = "wrap_content"
+                android:text = "@string/rides"
+                android:id="@+id/rides"
+                android:textSize="10sp"/>
+              
+              <Button 
+                android:layout_width = "wrap_content"
+                android:layout_height = "wrap_content"
+                android:text = "@string/misc"
+                android:id="@+id/misc"
+                android:textSize="10sp"/>
+            
+            
+        </LinearLayout>
+            </LinearLayout>
     </LinearLayout>
     </FrameLayout>

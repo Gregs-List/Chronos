@@ -17,6 +17,8 @@ public class SearchActivity extends Activity {
 		setContentView(R.layout.activity_search);
 		Bundle b = getIntent().getExtras();
 		final int value = b.getInt("id");
+		final String search_term = b.getString("search_term");
+		Log.d("ALD",search_term);
         Button account = (Button) findViewById(R.id.account);
         account.setOnClickListener(new View.OnClickListener() {
 			

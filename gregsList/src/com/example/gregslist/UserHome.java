@@ -33,6 +33,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -54,14 +55,7 @@ public class UserHome extends Activity {
 		//id.setText(String.valueOf(value));
 		
 		String[] categories = {"Bikes","Books","Electronics","Furniture","Meetups","Rides","Miscellaneous"};
-	
-		//DrawerLayout mDrawerLayout;
-		//ListView mDrawerList;
-		//mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-		//mDrawerList = (ListView) findViewById(R.id.drawer_list);
-		//ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, 
-			//	R.layout.drawer_list_item, categories);
-		//mDrawerList.setAdapter(adapter);
+
 		    
 		new DownloadFilesTask().execute("http://ec2-50-112-191-198.us-west-2.compute.amazonaws.com/GregsList/Android_API/listings.php");
 		
@@ -93,12 +87,19 @@ public class UserHome extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				
-				Intent i = new Intent(UserHome.this,SearchActivity.class);
-				Bundle d = new Bundle();
-	        	   d.putInt("id", value); //Your id
-	        	   i.putExtras(d);
-				   startActivity(i);
+				EditText text = (EditText) findViewById(R.id.search_text);
+				if (text.getText().toString().trim().equals("")) {
+					final int duration = Toast.LENGTH_SHORT;
+					Toast toast1 = Toast.makeText(getApplicationContext(), "Enter a search term", duration);
+		        	toast1.show();
+				} else {
+					Intent i = new Intent(UserHome.this,SearchActivity.class);
+					Bundle d = new Bundle();
+		        	   d.putInt("id", value); //Your id
+		        	   d.putString("search_term", text.getText().toString());
+		        	   i.putExtras(d);
+					   startActivity(i);
+				}
 			}
 		});
 	}
