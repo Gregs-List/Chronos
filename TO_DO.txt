@@ -13,6 +13,7 @@ Future Work:
 - Buy Tasks category a la Task Rabbit
 - e-mail verification
 - additional/alternate e-mail field
+- password reset
 
 Carter Dewey:
 X Signup page
