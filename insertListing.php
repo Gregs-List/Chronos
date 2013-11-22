@@ -15,15 +15,13 @@ session_start();
 	$description = $_POST['description'];
 	$itemName = $_POST['itemName'];
 	$price = $_POST['price'];
-
-	echo $_POST['description'] . "<br>";
 	
 	$last = mysql_query("SELECT photoID FROM Photos ORDER BY DESC LIMIT 1"); 
 	$lastPhoto = mysql_fetch_array($last, MYSQL_ASSOC); 		
 	$lastPhotoID = $lastPhoto['photoID'];
 	$photoID = $lastPhotoID + 1;
 
-	$listQuery = "INSERT INTO Listings VALUES(NULL, '$userID', '$title',NULL, '$category', '$price', '$desciption')";
+	$listQuery = "INSERT INTO Listings VALUES(NULL, '$userID', '$title',NULL, '$category', '$price', '$description')";
 
 
 	if($category=="Bikes")
