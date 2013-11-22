@@ -18,23 +18,23 @@
 	{
 		$category = $_GET['category']; 
 		$price = $_GET['price'];
-		$query = "SELECT * FROM Listings WHERE category='$category' and title or description LIKE '%$search' HAVING price <= '$price'";
+		$query = "SELECT * FROM Listings WHERE category='$category' and title or description LIKE '%$search' HAVING price <= '$price' ORDER BY dateListed DESC";
 	}
 	elseif(isset($_GET['category']))
 	{
 		$category = $_GET['category'];
 
-		$query = "SELECT * FROM Listings WHERE category='$category' and title or description LIKE '%$search%'";
+		$query = "SELECT * FROM Listings WHERE category='$category' and title or description LIKE '%$search%' ORDER BY dateListed DESC";
 	}
 	elseif(isset($_GET['price']))
 	{
 		$price = $_GET['price'];
 		
-		$query = "SELECT * FROM Listings WHERE price <= '$price' and title or description LIKE '%$search%'";		
+		$query = "SELECT * FROM Listings WHERE price <= '$price' and title or description LIKE '%$search%' ORDER BY dateListed DESC";		
 	}
 	else
 	{
-		$query = "SELECT * FROM Listings WHERE title or description LIKE '%$search%'";
+		$query = "SELECT * FROM Listings WHERE title or description LIKE '%$search%' ORDER BY dateListed DESC";
 	}
 		
 		
