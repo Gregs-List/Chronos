@@ -10,30 +10,35 @@
 		or die("Unable to select database:" . mysql_error());
 
 	
+	#WRITE SEARCH FOR CATEGORY GREGBAR
+	#WRITE SEARCH FOR 5 MOST RECENT FOR HOME PAGE
 	#Full text index??
 	$search = $_GET['search'];
+
+	#if(!empty($_POST['category']))
+	#$category = $_POST['category'];
 
 	if(isset ($_GET['category'] && $_GET['price'])
 	{
 		$category = $_GET['category']; 
 		$price = $_GET['price'];
-		$query = "SELECT * FROM Listings WHERE category='$category' and title or description LIKE '%iPhone 4%' HAVING price <= '$price'";
+		$query = "SELECT * FROM Listings WHERE category='$category' and title or description LIKE '%$search' HAVING price <= '$price'";
 	}
 	elseif($_GET['category'])
 	{
 		$category = $_GET['category'];
 
-		$query = "SELECT * FROM Listings WHERE category='$category' and title or description LIKE '%iPhone 4%'";
+		$query = "SELECT * FROM Listings WHERE category='$category' and title or description LIKE '%$search%'";
 	}
 	elseif($_GET['price'])
 	{
 		$price = $_GET['price'];
 		
-		$query = "SELECT * FROM Listings WHERE price <= '$price' and title or description LIKE '%iPhone 4%'";		
+		$query = "SELECT * FROM Listings WHERE price <= '$price' and title or description LIKE '%$search%'";		
 	}
 	else
 	{
-		$query = "SELECT * FROM Listings WHERE title or description LIKE '%iPhone 4%'";
+		$query = "SELECT * FROM Listings WHERE title or description LIKE '%$search%'";
 	}
 		
 		
