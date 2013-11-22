@@ -102,9 +102,31 @@ else
   }
 }
 
-	$query = "START TRANSACTION;\n";
-	$query.=$listQuery . '\n';
+	// begin insert transaction
+	mysql_query("SET AUTOCOMMIT=0");
+	mysql_query("START TRANSACTION");
+
+	// insert into Listings
+	$query.=mysql_query($listQuery);
+	$ins=mysql_query($query);
+	if(!$ins)
+	{
+		$message = 'Database insert failed: ' . mysql_error() . "\n";
+    $message .= 'Whole statement: ' . $query;
+    die($message);
+	}
+
+	// insert into [category]
 	$query.=$catQuery . '\n';
+	$ins=mysql_query($query);
+	if(!$ins)
+	{
+		$message = 'Database insert failed: ' . mysql_error() . "\n";
+    $message .= 'Whole statement: ' . $query;
+    die($message);
+	}
+
+	// commit changes
 	$query.="\nCOMMIT;"
 	$ins=mysql_query($query);
 	if(!$ins)
