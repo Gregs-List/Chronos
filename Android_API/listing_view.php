@@ -8,7 +8,7 @@ $con = mysql_connect("localhost", "listAdmin", "hermes");
 		or die("Unable to select database:" . mysql_error());
 
 $category = $_GET['category'];
-$category = "Electronics";
+//$category = "Electronics";
 
 $listingID = $_ListingID['listingID'];
 //$listingID = 55;
