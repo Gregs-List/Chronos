@@ -28,11 +28,11 @@
 			<form name="newListing" action="insertListing.php" method="post">
 				<label for="category">Category</label>
 				<select id="category" required>
-					<option value="Miscellaneous">Miscellaneous</option>
-					<option value="Books">Books</option>
-					<option value="Furniture">Furniture</option>
-					<option value="Electronics">Electronics</option>
-					<option value="Bikes">Bikes</option>
+					<option>Misellanious</option>
+					<option>Books</option>
+					<option>Furniture</option>
+					<option>Electronics</option>
+					<option>Bikes</option>
 				</select><br>
 
 
