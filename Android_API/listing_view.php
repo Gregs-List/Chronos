@@ -8,13 +8,9 @@ $con = mysql_connect("localhost", "listAdmin", "hermes");
 		or die("Unable to select database:" . mysql_error());
 
 $category = $_GET['category'];
-//$category = "Electronics";
 $listingID = $_GET['listingID'];
-//$listingID = 55;
-
 
 if ($category == "Bikes") {
-	echo "This item is a bike";
 			$query_bikes = "Select * from Bikes where listingID = $listingID";
 		    $result = mysql_query($query_bikes);
             $info = array();
@@ -37,7 +33,6 @@ if ($category == "Bikes") {
 
 
 else if ($category == "Books") {
-	echo "This item is a book";
 			$query_books = "Select * from Books where listingID = $listingID";
 		    $result3 = mysql_query($query_books);
             $info = array();
@@ -68,7 +63,6 @@ else if ($category == "Books") {
 		}
 
 else if ($category == "Electronics") {
-	echo "This item is an electronic";
 			$query_electronics = "Select * from Electronics where listingID = $listingID";
 		    $result5 = mysql_query($query_electronics);
             $info = array();
@@ -93,7 +87,6 @@ else if ($category == "Electronics") {
 		
 
 else if ($category == "Furniture") {
-	echo "This item is furniture";
 			$query_furniture = "Select * from Furniture where listingID = $listingID";
 		    $result6 = mysql_query($query_furniture);
             $info = array();
@@ -121,7 +114,6 @@ else if ($category == "Furniture") {
 		}
 
 else if ($category == "Meetups") {
-	echo "This item is a meetup";
 			$query_meetups = "Select * from Meetups where listingID = $listingID";
 		    $result9 = mysql_query($query_meetups);
             $info = array();
@@ -147,7 +139,6 @@ else if ($category == "Meetups") {
 		}
 
 else if ($category == "Miscellaneous") {
-	echo "This item is miscellaneous";
 			$query_misc = "Select * from Miscellaneous where listingID = $listingID";
 		    $result11 = mysql_query($query_misc);
             $info = array();
@@ -162,7 +153,6 @@ else if ($category == "Miscellaneous") {
 		}
 
 else if ($category == "Rides") {
-	echo "This item is a ride";
 			$query_rides = "Select * from Rides where listingID = $listingID";
 		    $result12 = mysql_query($query_rides);
             $info = array();
