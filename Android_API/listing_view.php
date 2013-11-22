@@ -81,7 +81,7 @@ else if ($category == "Electronics") {
 			}
 
 			$query_electronicsType = "Select * from ElectronicsType where electronicsTypeID = $electronicsTypeID";
-			$result6 = mysql_query($query_electronics);
+			$result6 = mysql_query($query_electronicsType);
 			while ($row = mysql_fetch_assoc($result6)){
 				$electronicsType = $row['electronicsType'];
 			}
