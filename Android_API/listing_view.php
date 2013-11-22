@@ -9,10 +9,10 @@ $con = mysql_connect("localhost", "listAdmin", "hermes");
 
 $category = $_GET['category'];
 //$category = "Electronics";
-
+echo $category . $listingID;
 $listingID = $_GET['listingID'];
 //$listingID = 55;
-
+/*
 
 if ($category == "Bikes") {
 	echo "This item is a bike";
@@ -180,6 +180,6 @@ else if ($category == "Rides") {
 			$info = array("leavingFrom"=>$leavingFrom, "goingTo"=>$goingTo, "departureTime"=>$departureTime, "departureDate"=>$departureDate, "returnTime"=>$returnTime, "returnDate"=>$returnDate);
 			$json = json_encode($info);
 			echo $json;
-		}
+		}*/
 
 ?>
