@@ -16,7 +16,7 @@ session_start();
 	$itemName = $_POST['itemName'];
 	$price = $_POST['price'];
 
-	echo $category;
+	echo $description . "<br>";
 	
 	$last = mysql_query("SELECT photoID FROM Photos ORDER BY DESC LIMIT 1"); 
 	$lastPhoto = mysql_fetch_array($last, MYSQL_ASSOC); 		
@@ -114,7 +114,7 @@ else
 	$ins=mysql_query($query);
 	if(!$ins)
 	{
-		$message = 'Insert into Listings table failed: ' . mysql_error() . '\n';
+		$message = 'Insert into Listings table failed: ' . mysql_error() . '<br>';
     $message .= 'Whole statement: ' . $query;
     die($message);
 	}
@@ -124,7 +124,7 @@ else
 	$ins=mysql_query($query);
 	if(!$ins)
 	{
-		$message = "Insert into $category failed: " . mysql_error() . '\n';
+		$message = "Insert into $category failed: " . mysql_error() . '<br>';
     $message .= 'Whole statement: ' . $query;
     die($message);
 	}
@@ -134,7 +134,7 @@ else
 	$ins=mysql_query($query);
 	if(!$ins)
 	{
-		$message = 'Transaction failed: ' . mysql_error() . '\n';
+		$message = 'Transaction failed: ' . mysql_error() . '<br>';
     $message .= 'Whole statement: ' . $query;
     die($message);
 	}
