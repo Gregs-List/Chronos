@@ -76,7 +76,7 @@ else if ($category == "Books") {
 			$json = json_encode($info);
 			echo $json;
 		}
-
+/*
 else if ($category == "Electronics") {
 	echo "This item is an electronic";
 			$query_electronics = "Select * from Electronics where listingID = $listingID";
@@ -213,5 +213,5 @@ else if ($category == "Rides") {
 			$json = json_encode($info);
 			echo $json;
 		}
-
+*/
 ?>
