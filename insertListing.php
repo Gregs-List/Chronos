@@ -107,7 +107,7 @@ else
 	mysql_query("START TRANSACTION");
 
 	// insert into Listings
-	$query.=mysql_query($listQuery);
+	$query=$listQuery;
 	$ins=mysql_query($query);
 	if(!$ins)
 	{
@@ -117,7 +117,7 @@ else
 	}
 
 	// insert into [category]
-	$query.=$catQuery . '\n';
+	$query=$catQuery;
 	$ins=mysql_query($query);
 	if(!$ins)
 	{
@@ -127,7 +127,7 @@ else
 	}
 
 	// commit changes
-	$query.="\nCOMMIT;"
+	$query="COMMIT";
 	$ins=mysql_query($query);
 	if(!$ins)
 	{
@@ -135,5 +135,5 @@ else
     $message .= 'Whole statement: ' . $query;
     die($message);
 	}
-	header('Location: index.html');
+	header('Location: home.html');
 ?>
