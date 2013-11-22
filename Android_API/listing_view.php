@@ -27,10 +27,6 @@ if ($category == "Bikes") {
             	$model = $row['model'];
 			}
 
-			echo $bikeTypeID;
-			echo $make;
-			echo $model;
-
 			$query_bikeType = "Select * from BikeType where bikeTypeID = $bikeTypeID";
 			$result2 = mysql_query($query_bikeType);
 			while ($row = mysql_fetch_assoc($result2)){
@@ -42,10 +38,8 @@ if ($category == "Bikes") {
 			echo $json;
 		}
 
-/*
 
-
-if ($category == "Books") {
+else if ($category == "Books") {
 	echo "This item is a book";
 			$query_books = "Select * from Books where listingID = $listingID";
 		    $result3 = mysql_query($query_books);
@@ -83,7 +77,7 @@ if ($category == "Books") {
 			echo $json;
 		}
 
-if ($category == "Electronics") {
+else if ($category == "Electronics") {
 	echo "This item is an electronic";
 			$query_electronics = "Select * from Electronics where listingID = $listingID";
 		    $result5 = mysql_query($query_electronics);
@@ -112,7 +106,7 @@ if ($category == "Electronics") {
 			echo $json;
 		}
 
-if ($category == "Furniture") {
+else if ($category == "Furniture") {
 	echo "This item is furniture";
 			$query_furniture = "Select * from Furniture where listingID = $listingID";
 		    $result6 = mysql_query($query_furniture);
@@ -147,7 +141,7 @@ if ($category == "Furniture") {
 			echo $json;
 		}
 
-if ($category == "Meetups") {
+else if ($category == "Meetups") {
 	echo "This item is a meetup";
 			$query_meetups = "Select * from Meetups where listingID = $listingID";
 		    $result9 = mysql_query($query_meetups);
@@ -177,7 +171,7 @@ if ($category == "Meetups") {
 			echo $json;
 		}
 
-if ($category == "Miscellaneous") {
+else if ($category == "Miscellaneous") {
 	echo "This item is miscellaneous";
 			$query_misc = "Select * from Miscellaneous where listingID = $listingID";
 		    $result11 = mysql_query($query_misc);
@@ -193,7 +187,7 @@ if ($category == "Miscellaneous") {
 			echo $json;
 		}
 
-if ($category == "Rides") {
+else if ($category == "Rides") {
 	echo "This item is a ride";
 			$query_rides = "Select * from Rides where listingID = $listingID";
 		    $result12 = mysql_query($query_rides);
@@ -220,5 +214,4 @@ if ($category == "Rides") {
 			echo $json;
 		}
 
-*/
 ?>
