@@ -15,7 +15,7 @@ echo $category;
 $listingID = 58;
 echo $listingID;
 
-
+/*
 
 if ($category == "Bikes") {
 	echo "This item is a bike";
@@ -219,5 +219,5 @@ if ($category == "Rides") {
 			echo $json;
 		}
 
-
+*/
 ?>
