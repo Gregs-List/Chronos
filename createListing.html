@@ -27,7 +27,7 @@
 		<div id="listing">
 			<form name="newListing" action="insertListing.php" method="post">
 				<label for="category">Category</label>
-				<select id="category" required>
+				<select id="category" name="category" required>
 					<option value="Miscellaneous">Miscellaneous</option>
 					<option value="Books">Books</option>
 					<option value="Furniture">Furniture</option>
@@ -46,7 +46,7 @@
 
 				<div id="bookFields"  style="display:none">
 					<label for="BookType">Book Type</label>
-					<select id="BookType" required>
+					<select id="BookType" name="bookTypeID" required>
 						<option value="1">Textbook</option>
 						<option value="2">Literature</option>
 						<option value="3">Poetry</option>
@@ -57,7 +57,7 @@
 					</select><br>
 
 					<label for="bookCondition">Book Codition</label>
-					<select id="bookCondition" required>
+					<select id="bookCondition" name="bookCondition" required>
 						<option value="1">New</option>
 						<option value="2">Excellent</option>
 						<option value="3">Light Wear</option>
@@ -73,12 +73,12 @@
 					<label for="isbn">ISBN</label>
 					<input type="text" name="isbn" id="isbn" required><br>
 					<label for="course">Assigned Course</label>
-					<input type="text" name="course" id="course"><br>
+					<input type="text" name="assingedCourse" id="course"><br>
 				</div>
 
 				<div id="furnitureFields" style="display:none" >
 					<label for="FurnitureType">Furniture Type</label>
-					<select id="FurnitureType" required>
+					<select id="FurnitureType" name="furnitureTypeID" required>
 						<option value="1">Couch</option>
 						<option value="2">Bed</option>
 						<option value="3">Chair</option>
@@ -89,7 +89,7 @@
 					</select><br>
 
 					<label for="furnitureCondition">Furniture Codition</label>
-					<select id="furnitureCondition" required>
+					<select id="furnitureCondition" name="furnitureCondition" required>
 						<option value="1">New</option>
 						<option value="2">Excellent</option>
 						<option value="3">Light Wear</option>
@@ -101,7 +101,7 @@
 
 				<div id="electronicFields" style="display:none" >
 					<label for="ElectronicType">Electronic Type</label>
-					<select id="ElectronicType" required>
+					<select id="ElectronicType" name="electronicsTypeID" required>
 						<option value="1">TV</option>
 						<option value="2">Computer</option>
 						<option value="3">Portable Music Player</option>
@@ -117,7 +117,7 @@
 
 				<div id="bikeFields" style="display:none" >
 					<label for="BikeType">Bike Type</label>
-					<select id="BikeType" required>
+					<select id="BikeType" name="bikeTypeID" required>
 						<option value="1">Road</option>
 						<option value="2">City</option>
 						<option value="3">Mountain</option>
@@ -133,7 +133,7 @@
 					<input type="text" name="bModel" id="bModel"><br>
 				</div>
 
-				<textarea rows="5" cols="40" id="description">
+				<textarea rows="5" cols="40" id="description" name="description">
 					Add an extra description here.
 				</textarea><br>
 				<label for="photos">Photos</label>
