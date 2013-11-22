@@ -7,14 +7,12 @@ $con = mysql_connect("localhost", "listAdmin", "hermes");
 	mysql_select_db("GregsList", $con)
 		or die("Unable to select database:" . mysql_error());
 
-//$category = $_GET['category'];
-$category = "Bikes";
-echo $category;
-
-//$listingID = $_ListingID['listingID'];
-$listingID = 58;
-echo $listingID;
-
+$category = $_GET['category'];
+//$category = "Electronics";
+echo $category . $listingID;
+$listingID = $_GET['listingID'];
+//$listingID = 55;
+/*
 
 if ($category == "Bikes") {
 	echo "This item is a bike";
@@ -53,13 +51,6 @@ else if ($category == "Books") {
             	$conditionID= $row['conditionID'];
 			}
 
-			echo $bookTypeID;
-			echo $title;
-			echo $author;
-			echo $isbn;
-			echo $assignedCourse;
-			echo $conditionID;
-
 			$query_bookType = "Select * from BookType where bookTypeID = $bookTypeID";
 			$result3 = mysql_query($query_bookType);
 			while ($row = mysql_fetch_assoc($result3)){
@@ -89,13 +80,8 @@ else if ($category == "Electronics") {
             	$size = $row['size'];
 			}
 
-			echo $electronicsTypeID;
-			echo $make;
-			echo $model;
-			echo $size;
-
 			$query_electronicsType = "Select * from ElectronicsType where electronicsTypeID = $electronicsTypeID";
-			$result6 = mysql_query($query_electronics);
+			$result6 = mysql_query($query_electronicsType);
 			while ($row = mysql_fetch_assoc($result6)){
 				$electronicsType = $row['electronicsType'];
 			}
@@ -117,16 +103,11 @@ else if ($category == "Furniture") {
             	$conditionID = $row['conditionID'];
 			}
 
-			echo $furnitureTypeID;
-			echo $conditionID;
-
 			$query_furnitureType = "Select * from FurnitureType where furnitureTypeID = $furnitureTypeID";
 			$result7 = mysql_query($query_furnitureType);
 			while ($row = mysql_fetch_assoc($result7)){
 				$furnitureType = $row['furnitureType'];
 			}
-
-			echo $furnitureType;
 
 			$query_furnitureCondition = "Select * from ConditionLookup where conditionID = $conditionID";
 			$result8 = mysql_query($query_bookCondition);
@@ -134,8 +115,6 @@ else if ($category == "Furniture") {
 				$furnitureCondition = $row['itemCondition'];
 			}
 
-
-			echo $furnitureCondition; 
 
 			$info = array("type"=>$furnitureType,"condition"=>$furnitureCondition);
 			$json = json_encode($info);
@@ -154,10 +133,6 @@ else if ($category == "Meetups") {
             	$time = $row['time'];
 			}
 
-			echo $meetupTypeID;
-			echo $location;
-			echo $date;
-			echo $time;
 
 			$query_meetupType = "Select * from MeetupType where meetupTypeID = $meetupTypeID";
 			$result10 = mysql_query($query_meetupType);
@@ -165,13 +140,13 @@ else if ($category == "Meetups") {
 				$meetupType= $row['meetupType'];
 			}
 
-			echo $meetupType;
+
 
 			$info = array("type"=>$meetupType,"location"=>$location, "date"=>$date, "time"=>$time);
 			$json = json_encode($info);
 			echo $json;
 		}
-/*
+
 else if ($category == "Miscellaneous") {
 	echo "This item is miscellaneous";
 			$query_misc = "Select * from Miscellaneous where listingID = $listingID";
@@ -181,7 +156,6 @@ else if ($category == "Miscellaneous") {
             	$itemName= $row['itemName'];
 			}
 
-			echo $itemName;
 
 			$info = array("name"=>$itemName);
 			$json = json_encode($info);
@@ -202,17 +176,10 @@ else if ($category == "Rides") {
             	$returnTime = $row['returnTime'];
             				}
 
-			echo $leavingFrom;
-			echo $goingTo;
-			echo $departureTime;
-			echo $departureDate;
-			echo $returnTime;
-			echo $returnDate;
-
 
 			$info = array("leavingFrom"=>$leavingFrom, "goingTo"=>$goingTo, "departureTime"=>$departureTime, "departureDate"=>$departureDate, "returnTime"=>$returnTime, "returnDate"=>$returnDate);
 			$json = json_encode($info);
 			echo $json;
-		}
-*/
+		}*/
+
 ?>
