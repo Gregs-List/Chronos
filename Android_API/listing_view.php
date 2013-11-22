@@ -135,7 +135,7 @@ else if ($category == "Furniture") {
 			}
 
 
-			echo $furnitureCondition;
+			echo $furnitureCondition; 
 
 			$info = array("type"=>$furnitureType,"condition"=>$furnitureCondition);
 			$json = json_encode($info);
