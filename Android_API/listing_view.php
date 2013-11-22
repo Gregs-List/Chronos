@@ -9,8 +9,8 @@ $con = mysql_connect("localhost", "listAdmin", "hermes");
 
 $category = $_GET['category'];
 //$category = "Electronics";
-echo $category . $listingID;
 $listingID = $_GET['listingID'];
+echo $category . $listingID;
 //$listingID = 55;
 /*
 
