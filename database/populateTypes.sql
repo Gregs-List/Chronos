@@ -32,9 +32,9 @@ INSERT INTO BookType(bookTypeID, bookType) VALUES (6, 'graphic novel');
 INSERT INTO ElectronicsType(electronicsTypeID, electronicsType) VALUES (0, 'other');
 INSERT INTO ElectronicsType(electronicsTypeID, electronicsType) VALUES (1, 'TV');
 INSERT INTO ElectronicsType(electronicsTypeID, electronicsType) VALUES (2, 'computer');
-INSERT INTO ElectronicsType(electronicsTypeID, electronicsType) VALUES (3, 'portable music player');
-INSERT INTO ElectronicsType(electronicsTypeID, electronicsType) VALUES (4, 'stereo');
-INSERT INTO ElectronicsType(electronicsTypeID, electronicsType) VALUES (5, 'media player');
+INSERT INTO ElectronicsType(electronicsTypeID, electronicsType) VALUES (3, 'phone');
+INSERT INTO ElectronicsType(electronicsTypeID, electronicsType) VALUES (4, 'speakers');
+INSERT INTO ElectronicsType(electronicsTypeID, electronicsType) VALUES (5, 'iPod');
 
 # populate the FurnitureType table
 INSERT INTO FurnitureType(furnitureTypeID, furnitureType) VALUES (0, 'other');
