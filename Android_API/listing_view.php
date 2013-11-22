@@ -7,11 +7,13 @@ $con = mysql_connect("localhost", "listAdmin", "hermes");
 	mysql_select_db("GregsList", $con)
 		or die("Unable to select database:" . mysql_error());
 
-		$category = $_GET['category'];
-		echo $category;
+//$category = $_GET['category'];
+$category = "Bikes";
+echo $category;
 
 //$listingID = $_ListingID['listingID'];
 $listingID = 58;
+echo $listingID;
 
 
 
