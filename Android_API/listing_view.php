@@ -41,7 +41,7 @@ else if ($category == "Books") {
 			$query_books = "Select * from Books where listingID = $listingID";
 		    $result3 = mysql_query($query_books);
             $info = array();
-            while ($row = mysql_fetch_assoc($result)){
+            while ($row = mysql_fetch_assoc($result3)){
             	$bookTypeID = $row['bookTypeID'];
             	$title = $row['title'];
             	$author = $row['author'];
