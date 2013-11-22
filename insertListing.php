@@ -21,7 +21,7 @@ session_start();
 	$lastPhotoID = $lastPhoto['photoID'];
 	$photoID = $lastPhotoID + 1;
 
-	$listQuery = "INSERT INTO Listings VALUES(NULL, '$userID', '$title',NULL, '$category', '$price', '$desciption')";
+	$listQuery = "INSERT INTO Listings VALUES(NULL, '$userID', '$title',NULL, '$category', '$price', '$description')";
 
 
 	if($category=="Bikes")
