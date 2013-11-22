@@ -26,7 +26,7 @@ if ($category == "Bikes") {
 				$bikeType = $row['bikeType'];
 			}
 
-			$info = array("make"=>$make, "model"=>$model, "type"=>$bikeType);
+			$info = array("make"=>$make, "model"=>$model, "type"=>$bikeType, "category"=>$category);
 			$json = json_encode($info);
 			echo $json;
 		}
@@ -57,7 +57,7 @@ else if ($category == "Books") {
 				$bookCondition = $row['itemCondition'];
 			}
 
-			$info = array("title"=>$title, "author"=>$author, "isbn"=>$isbn, "assignedCourse"=>$assignedCourse, "type"=>$bookType, "condition"=>$bookCondition);
+			$info = array("title"=>$title, "author"=>$author, "isbn"=>$isbn, "assignedCourse"=>$assignedCourse, "type"=>$bookType, "condition"=>$bookCondition, "category"=>$category);
 			$json = json_encode($info);
 			echo $json;
 		}
@@ -80,7 +80,7 @@ else if ($category == "Electronics") {
 			}
 
 
-			$info = array("make"=>$make,"model"=>$model,"size"=>$size,"type"=>$electronicsType);
+			$info = array("make"=>$make,"model"=>$model,"size"=>$size,"type"=>$electronicsType, "category"=>$category);
 			$json = json_encode($info);
 			echo $json;
 		}
@@ -108,7 +108,7 @@ else if ($category == "Furniture") {
 			}
 
 
-			$info = array("type"=>$furnitureType,"condition"=>$furnitureCondition);
+			$info = array("type"=>$furnitureType,"condition"=>$furnitureCondition, "category"=>$category);
 			$json = json_encode($info);
 			echo $json;
 		}
@@ -133,7 +133,7 @@ else if ($category == "Meetups") {
 
 
 
-			$info = array("type"=>$meetupType,"location"=>$location, "date"=>$date, "time"=>$time);
+			$info = array("type"=>$meetupType,"location"=>$location, "date"=>$date, "time"=>$time, "category"=>$category);
 			$json = json_encode($info);
 			echo $json;
 		}
@@ -166,7 +166,7 @@ else if ($category == "Rides") {
             				}
 
 
-			$info = array("leavingFrom"=>$leavingFrom, "goingTo"=>$goingTo, "departureTime"=>$departureTime, "departureDate"=>$departureDate, "returnTime"=>$returnTime, "returnDate"=>$returnDate);
+			$info = array("leavingFrom"=>$leavingFrom, "goingTo"=>$goingTo, "departureTime"=>$departureTime, "departureDate"=>$departureDate, "returnTime"=>$returnTime, "returnDate"=>$returnDate, "category"=>$category);
 			$json = json_encode($info);
 			echo $json;
 		}
