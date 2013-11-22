@@ -1,8 +1,6 @@
 <?PHP
 
 #inserts into Listings and <Category> table. Receives values from JavaScript
-function insertIntoAll() 
-{
 	$con = mysql_connect("localhost", "listAdmin", "hermes");
 	if(!$con)
 	{
@@ -114,6 +112,5 @@ else
     $message .= 'Whole statement: ' . $query;
     die($message);
 	}
-}
 
 ?>
