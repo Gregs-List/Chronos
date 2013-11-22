@@ -9,31 +9,32 @@
 	mysql_select_db("GregsList", $con)
 		or die("Unable to select database:" . mysql_error());
 
-	
-	#Full text index??
 	$search = $_GET['search'];
 
-	if(isset ($_GET['category'] && $_GET['price'])
+	#if(!empty($_POST['category']))
+	#$category = $_POST['category'];
+
+	if(isset ($_GET['category'] && $_GET['price']))
 	{
 		$category = $_GET['category']; 
 		$price = $_GET['price'];
-		$query = "SELECT * FROM Listings WHERE category='$category' and title or description LIKE '%iPhone 4%' HAVING price <= '$price'";
+		$query = "SELECT * FROM Listings WHERE category='$category' and title or description LIKE '%$search' HAVING price <= '$price'";
 	}
-	elseif($_GET['category'])
+	elseif(isset($_GET['category']))
 	{
 		$category = $_GET['category'];
 
-		$query = "SELECT * FROM Listings WHERE category='$category' and title or description LIKE '%iPhone 4%'";
+		$query = "SELECT * FROM Listings WHERE category='$category' and title or description LIKE '%$search%'";
 	}
-	elseif($_GET['price'])
+	elseif(isset($_GET['price']))
 	{
 		$price = $_GET['price'];
 		
-		$query = "SELECT * FROM Listings WHERE price <= '$price' and title or description LIKE '%iPhone 4%'";		
+		$query = "SELECT * FROM Listings WHERE price <= '$price' and title or description LIKE '%$search%'";		
 	}
 	else
 	{
-		$query = "SELECT * FROM Listings WHERE title or description LIKE '%iPhone 4%'";
+		$query = "SELECT * FROM Listings WHERE title or description LIKE '%$search%'";
 	}
 		
 		
