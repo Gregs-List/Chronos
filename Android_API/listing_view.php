@@ -14,9 +14,7 @@ echo $category;
 //$listingID = $_ListingID['listingID'];
 $listingID = 58;
 echo $listingID;
-echo "meow";
 
-/*
 
 if ($category == "Bikes") {
 	echo "This item is a bike";
@@ -43,6 +41,8 @@ if ($category == "Bikes") {
 			$json = json_encode($info);
 			echo $json;
 		}
+
+/*
 
 
 if ($category == "Books") {
