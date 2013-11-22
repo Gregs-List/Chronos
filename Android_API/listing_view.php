@@ -10,7 +10,7 @@ $con = mysql_connect("localhost", "listAdmin", "hermes");
 $category = $_GET['category'];
 //$category = "Electronics";
 
-$listingID = $_ListingID['listingID'];
+$listingID = $_GET['listingID'];
 //$listingID = 55;
 
 
