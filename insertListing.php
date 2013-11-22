@@ -60,34 +60,40 @@ function insertIntoAll()
 	}
 
 
-	if($_FILES["file"]["name"] != NULL){
+	if($_FILES["photos"]["name"] != NULL){
 	$allowedExts = array("gif", "jpeg", "jpg", "png");
-	$temp = explode(".", $_FILES["file"]["name"]);
+	$temp = explode(".", $_FILES["photos"]["name"]);
 	$extension = end($temp);
-	if ((($_FILES["file"]["type"] == "image/gif")
-	|| ($_FILES["file"]["type"] == "image/jpeg")
-	|| ($_FILES["file"]["type"] == "image/jpg")
-	|| ($_FILES["file"]["type"] == "image/pjpeg")
-	|| ($_FILES["file"]["type"] == "image/x-png")
-	|| ($_FILES["file"]["type"] == "image/png"))
-	&& ($_FILES["file"]["size"] < 20000)
+	if ((($_FILES["photos"]["type"] == "image/gif")
+	|| ($_FILES["photos"]["type"] == "image/jpeg")
+	|| ($_FILES["photos"]["type"] == "image/jpg")
+	|| ($_FILES["photos"]["type"] == "image/pjpeg")
+	|| ($_FILES["photos"]["type"] == "image/x-png")
+	|| ($_FILES["photos"]["type"] == "image/png"))
+	&& ($_FILES["photos"]["size"] < 20000)
 	&& in_array($extension, $allowedExts))
   {
-  if ($_FILES["file"]["error"] > 0)
+	$last = mysql_query("SELECT photoID FROM Photos ORDER BY DESC 		LIMIT 1;"); 
+	$lastPhoto = mysql_fetch_array($last, MYSQL_ASSOC); 		$lastPhotoID = $lastPhoto['photoID'];
+	$photoID = $lastPhotoID + 1;
+  if ($_FILES["photos"]["error"] > 0)
     {
-    echo "Return Code: " . $_FILES["file"]["error"] . "<br>";
+    echo "Return Code: " . $_FILES["photos"]["error"] . "<br>";
     }
   else
     {
     if (file_exists("upload/" . $photoID))
       {
-      echo $_FILES["file"]["name"] . " already exists. ";
+      echo $_FILES["photos"]["name"] . " already exists. ";
       }
     else
       {
-      move_uploaded_file($_FILES["file"]["tmp_name"],
-      "userUploads/" . $photoID);
-      echo "Stored in: " . "userUploads/" . $photoID;
+	$photoUrl = $photoID . $_FILES["photos"]["type"];
+      move_uploaded_file($_FILES["photos"]["tmp_name"],
+      "userUploads/" . $photoUrl);
+	$fileQuery = "INSERT INTO Photos VALUES (last_insert_id(), 		'$photoID', '$photoUrl')";
+	mysql_query($fileQuery);
+      echo "Stored in: " . "userUploads/" . $photoUrl;
       }
     }
   }
