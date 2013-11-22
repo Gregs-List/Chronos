@@ -135,13 +135,12 @@ else if ($category == "Furniture") {
 			}
 
 
-			echo $furnitureCondition
+			echo $furnitureCondition; 
 
 			$info = array("type"=>$furnitureType,"condition"=>$furnitureCondition);
 			$json = json_encode($info);
 			echo $json;
 		}
-		/*
 
 else if ($category == "Meetups") {
 	echo "This item is a meetup";
@@ -172,7 +171,7 @@ else if ($category == "Meetups") {
 			$json = json_encode($info);
 			echo $json;
 		}
-
+/*
 else if ($category == "Miscellaneous") {
 	echo "This item is miscellaneous";
 			$query_misc = "Select * from Miscellaneous where listingID = $listingID";
