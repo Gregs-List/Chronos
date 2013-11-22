@@ -112,7 +112,7 @@ else
 	$ins=mysql_query($query);
 	if(!$ins)
 	{
-		$message = 'Database insert failed: ' . mysql_error() . "\n";
+		$message = 'Insert into Listings table failed: ' . mysql_error() . '\n';
     $message .= 'Whole statement: ' . $query;
     die($message);
 	}
@@ -122,7 +122,7 @@ else
 	$ins=mysql_query($query);
 	if(!$ins)
 	{
-		$message = 'Database insert failed: ' . mysql_error() . "\n";
+		$message = "Insert into $category failed: " . mysql_error() . '\n';
     $message .= 'Whole statement: ' . $query;
     die($message);
 	}
@@ -132,7 +132,7 @@ else
 	$ins=mysql_query($query);
 	if(!$ins)
 	{
-		$message = 'Database insert failed: ' . mysql_error() . "\n";
+		$message = 'Transaction failed: ' . mysql_error() . '\n';
     $message .= 'Whole statement: ' . $query;
     die($message);
 	}
