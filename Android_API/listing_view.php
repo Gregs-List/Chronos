@@ -105,7 +105,7 @@ else if ($category == "Electronics") {
 			$json = json_encode($info);
 			echo $json;
 		}
-		/*
+		
 
 else if ($category == "Furniture") {
 	echo "This item is furniture";
@@ -141,6 +141,7 @@ else if ($category == "Furniture") {
 			$json = json_encode($info);
 			echo $json;
 		}
+		/*
 
 else if ($category == "Meetups") {
 	echo "This item is a meetup";
