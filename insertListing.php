@@ -1,7 +1,5 @@
 <?PHP
-
-echo "ECHO! Echo! echo! echo...";
-
+session_start();
 #inserts into Listings and <Category> table. Receives values from JavaScript
 	$con = mysql_connect("localhost", "listAdmin", "hermes");
 	if(!$con)
@@ -137,5 +135,5 @@ else
     $message .= 'Whole statement: ' . $query;
     die($message);
 	}
-
+	header('Location: index.html');
 ?>
