@@ -1,5 +1,7 @@
 <?PHP
 
+echo "ECHO! Echo! echo! echo...";
+
 #inserts into Listings and <Category> table. Receives values from JavaScript
 	$con = mysql_connect("localhost", "listAdmin", "hermes");
 	if(!$con)
