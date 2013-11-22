@@ -1,10 +1,5 @@
 $(document).ready(function(){
-	/*$('#newListing').click(function(e){
-		var xmlHttp = getXMLHttp();
-		xmlHttp.open("GET", "phpAPI.php", true);
-		xmlHttp.send('$_GET[userID]', '$_GET[title]', '$_GET[category]',
-			'$_GET[description]', '$_GET[itemName]')
-	});*/
+
 
 	$('#category').change(function(e){
 		var text = $('#category :selected').text();
@@ -29,6 +24,16 @@ $(document).ready(function(){
 		}
 	});
 
+	$('#newListing').click(function(e){
+		if($('#price').val() > 9999.99){
+			e.preventDefault();
+			alert("Price cannot exceed $9999.99");
+		}
+		else{
+			alert("Listing created. You will be redirected to the home page.");
+			window.location = "home.html";
+		}
+	});
 
 });
 
