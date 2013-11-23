@@ -31,7 +31,7 @@ $(document).ready(function(){
 		}
 		else{
 			alert("Listing created. You will be redirected to the home page.");
-			window.location = "home.html";
+			//window.location = "home.html";
 		}
 	});
 

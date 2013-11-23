@@ -13,13 +13,12 @@ session_start();
 	$title = $_POST['title'];
 	$category = $_POST['category'];
 	$description = $_POST['description'];
-	$itemName = $_POST['itemName'];
 	$price = $_POST['price'];
 	
-	$last = mysql_query("SELECT photoID FROM Photos ORDER BY DESC LIMIT 1"); 
-	$lastPhoto = mysql_fetch_array($last, MYSQL_ASSOC); 		
-	$lastPhotoID = $lastPhoto['photoID'];
-	$photoID = $lastPhotoID + 1;
+	//$last = mysql_query("SELECT photoID FROM Photos ORDER BY DESC LIMIT 1"); 
+	//$lastPhoto = mysql_fetch_array($last, MYSQL_ASSOC); 		
+	//$lastPhotoID = $lastPhoto['photoID'];
+	//$photoID = $lastPhotoID + 1;
 
 	$listQuery = "INSERT INTO Listings VALUES(NULL, '$userID', '$title',NULL, '$category', '$price', '$description')";
 
@@ -41,7 +40,7 @@ session_start();
 
 	if($category=="Furniture")
 	{
-		$catQuery = "INSERT INTO Bikes VALUES(last_insert_id(), '$_POST[furnitureTypeID]', '$_POST[furnitureCondition]')";
+		$catQuery = "INSERT INTO Furniture VALUES(last_insert_id(), '$_POST[furnitureTypeID]', '$_POST[furnitureCondition]')";
 	}
 
 	if($category=="Meetups")
@@ -51,7 +50,7 @@ session_start();
 
 	if($category=="Miscellaneous")
 	{
-		$catQuery = "INSERT INTO Miscellaneous VALUES(last_insert_id())";
+		$catQuery = "INSERT INTO Miscellaneous VALUES(last_insert_id(),NULL)";
 	}
 
 	if($category=="Rides")
@@ -59,7 +58,7 @@ session_start();
 		$catQuery = "INSERT INTO Rides VALUES(last_insert_id(), '$_POST[leavingFrom]', '$_POST[goingTo]', '$_POST[departureDate]', '$_POST[departureTime]', '$_POST[returnDate]', '$_POST[returnTime]')";
 	}
 
-
+/*
 	if($_FILES["photos"]["name"] != NULL){
 	$allowedExts = array("gif", "jpeg", "jpg", "png");
 	$temp = explode(".", $_FILES["photos"]["name"]);
@@ -102,7 +101,7 @@ else
   echo "Invalid file";
   }
 }
-
+*/
 	// begin insert transaction
 	mysql_query("SET AUTOCOMMIT=0");
 	mysql_query("START TRANSACTION");
