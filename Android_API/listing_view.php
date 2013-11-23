@@ -8,14 +8,9 @@ $con = mysql_connect("localhost", "listAdmin", "hermes");
 		or die("Unable to select database:" . mysql_error());
 
 $category = $_GET['category'];
-//$category = "Electronics";
 $listingID = $_GET['listingID'];
-echo $category . $listingID;
-//$listingID = 55;
-/*
 
 if ($category == "Bikes") {
-	echo "This item is a bike";
 			$query_bikes = "Select * from Bikes where listingID = $listingID";
 		    $result = mysql_query($query_bikes);
             $info = array();
@@ -31,18 +26,17 @@ if ($category == "Bikes") {
 				$bikeType = $row['bikeType'];
 			}
 
-			$info = array("make"=>$make, "model"=>$model, "type"=>$bikeType);
+			$info = array("make"=>$make, "model"=>$model, "type"=>$bikeType, "category"=>$category);
 			$json = json_encode($info);
 			echo $json;
 		}
 
 
 else if ($category == "Books") {
-	echo "This item is a book";
 			$query_books = "Select * from Books where listingID = $listingID";
 		    $result3 = mysql_query($query_books);
             $info = array();
-            while ($row = mysql_fetch_assoc($result)){
+            while ($row = mysql_fetch_assoc($result3)){
             	$bookTypeID = $row['bookTypeID'];
             	$title = $row['title'];
             	$author = $row['author'];
@@ -63,13 +57,12 @@ else if ($category == "Books") {
 				$bookCondition = $row['itemCondition'];
 			}
 
-			$info = array("title"=>$title, "author"=>$author, "isbn"=>$isbn, "assignedCourse"=>$assignedCourse, "type"=>$bookType, "condition"=>$bookCondition);
+			$info = array("title"=>$title, "author"=>$author, "isbn"=>$isbn, "assignedCourse"=>$assignedCourse, "type"=>$bookType, "condition"=>$bookCondition, "category"=>$category);
 			$json = json_encode($info);
 			echo $json;
 		}
 
 else if ($category == "Electronics") {
-	echo "This item is an electronic";
 			$query_electronics = "Select * from Electronics where listingID = $listingID";
 		    $result5 = mysql_query($query_electronics);
             $info = array();
@@ -87,14 +80,13 @@ else if ($category == "Electronics") {
 			}
 
 
-			$info = array("make"=>$make,"model"=>$model,"size"=>$size,"type"=>$electronicsType);
+			$info = array("make"=>$make,"model"=>$model,"size"=>$size,"type"=>$electronicsType, "category"=>$category);
 			$json = json_encode($info);
 			echo $json;
 		}
 		
 
 else if ($category == "Furniture") {
-	echo "This item is furniture";
 			$query_furniture = "Select * from Furniture where listingID = $listingID";
 		    $result6 = mysql_query($query_furniture);
             $info = array();
@@ -116,13 +108,12 @@ else if ($category == "Furniture") {
 			}
 
 
-			$info = array("type"=>$furnitureType,"condition"=>$furnitureCondition);
+			$info = array("type"=>$furnitureType,"condition"=>$furnitureCondition, "category"=>$category);
 			$json = json_encode($info);
 			echo $json;
 		}
 
 else if ($category == "Meetups") {
-	echo "This item is a meetup";
 			$query_meetups = "Select * from Meetups where listingID = $listingID";
 		    $result9 = mysql_query($query_meetups);
             $info = array();
@@ -142,13 +133,12 @@ else if ($category == "Meetups") {
 
 
 
-			$info = array("type"=>$meetupType,"location"=>$location, "date"=>$date, "time"=>$time);
+			$info = array("type"=>$meetupType,"location"=>$location, "date"=>$date, "time"=>$time, "category"=>$category);
 			$json = json_encode($info);
 			echo $json;
 		}
 
 else if ($category == "Miscellaneous") {
-	echo "This item is miscellaneous";
 			$query_misc = "Select * from Miscellaneous where listingID = $listingID";
 		    $result11 = mysql_query($query_misc);
             $info = array();
@@ -163,7 +153,6 @@ else if ($category == "Miscellaneous") {
 		}
 
 else if ($category == "Rides") {
-	echo "This item is a ride";
 			$query_rides = "Select * from Rides where listingID = $listingID";
 		    $result12 = mysql_query($query_rides);
             $info = array();
@@ -177,9 +166,9 @@ else if ($category == "Rides") {
             				}
 
 
-			$info = array("leavingFrom"=>$leavingFrom, "goingTo"=>$goingTo, "departureTime"=>$departureTime, "departureDate"=>$departureDate, "returnTime"=>$returnTime, "returnDate"=>$returnDate);
+			$info = array("leavingFrom"=>$leavingFrom, "goingTo"=>$goingTo, "departureTime"=>$departureTime, "departureDate"=>$departureDate, "returnTime"=>$returnTime, "returnDate"=>$returnDate, "category"=>$category);
 			$json = json_encode($info);
 			echo $json;
-		}*/
+		}
 
 ?>
