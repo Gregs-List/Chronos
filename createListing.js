@@ -19,7 +19,7 @@ $(document).ready(function(){
 			hideFields();
 			$('#bikeFields').css('display','Block');
 		}
-		else if (text == 'Misellanious'){
+		else if (text == 'Miscellaneous'){
 			hideFields();
 		}
 	});
@@ -31,7 +31,6 @@ $(document).ready(function(){
 		}
 		else{
 			alert("Listing created. You will be redirected to the home page.");
-			//window.location = "home.html";
 		}
 	});
 

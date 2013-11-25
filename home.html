@@ -2,32 +2,56 @@
 <html lang="en">
 	<head>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>
+		<script src="home.js" ></script>
 		<link rel="stylesheet" type="text/css" href="navBar.css">
 		<link rel="stylesheet" type="text/css" href="categoryBar.css">
+		<link rel="stylesheet" type="text/css" href="home.css">
 		<script type="text/javascript" src="index.js"></script>
 		<title>Greg's List Home</title>
 	</head>
 
 	<body>
 
-	<nav id = "navBar"> 
-			<a href="home.html">Home</a>
-			<a href="myAccount.php">My Account</a>
-			<a href="createListing.html">Create Listing</a>
-			<a href="index.html">Logout</a>
-	</nav>
+		<nav id = "navBar"> 
+				<a href="home.html">Home</a>
+				<a href="myAccount.php">My Account</a>
+				<a href="createListing.html">Create Listing</a>
+				<a href="index.html">Logout</a>
 
-	<nav id = "categoryBar">
-		<h4>Categories</h4>
-			<a>Books</a>
-			<a>Furniture</a>
-			<a>Electronics</a>
-			<a>Bikes</a>
-	</nav>
+				<form id="searchBar" name="searchBar" action="" method="get">
+					<input type="text" value="" id="requestText">
+					<input type="submit" value="Search" id="searchButton">
+				</form>
+		</nav>
 
-	<h1>Greg's List</h1>
-	<button type="button">Create Listing</button>
-	<div id = "slideShow">
-	</div>
+		<nav id = "categoryBar">
+			<h4>Categories</h4>
+				<a>Books</a>
+				<a>Furniture</a>
+				<a>Electronics</a>
+				<a>Bikes</a>
+		</nav>
+
+		<h1>Greg's List</h1>
+
+		<div id="photoBooth">
+	    	<p class="banner">Slide Show</p>
+		    <div id="slideShow">
+		      <div class="photoHolder">
+		        <img class="thumbnail topPhoto" src="http://lyle.smu.edu/~craley/3345/img/italy/SAM_0944.JPG" alt="Gallery Image"/>
+		        <img class="thumbnail bottomPhoto" src="http://lyle.smu.edu/~craley/3345/img/italy/SAM_0023.JPG" alt="Gallery Image"/>
+		      </div>
+		      <img class="moreIndicator rot90" src="more.png" alt="More Content"/>   
+		      <div id="nav">
+		        <img id="prevPhoto" class='rot180' src="arrow.png" alt="Previous Photo"/>
+		        <img id="nextPhoto" src="arrow.png" alt="Next Photo"/>
+		      </div>
+		      <div class="details">
+		        <p class="location">Location: Tom</p>
+		        <p class="description">Description: raw</p>
+		        <p class="date">Date: Paul</p>
+		      </div>
+		    </div>
+		</div>
 	</body>
 </html>
