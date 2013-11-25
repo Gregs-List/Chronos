@@ -43,10 +43,5 @@
 			<h3>Watched Listing</h3>
 			<h4> Not implemented yet</h4>
 		</div>
-
-
-
-
-
 	</body>
 </html>

@@ -6,15 +6,15 @@ session_start();
 	{
 		die('Could not connect: ' . mysql_error());
 	}
-	
 	mysql_select_db("GregsList", $con)
 		or die("Unable to select database:" . mysql_error());
+		echo $_SESSION['userID'];
 	$userID = $_SESSION['userID'];
 	$title = $_POST['title'];
 	$category = $_POST['category'];
 	$description = $_POST['description'];
 	$price = $_POST['price'];
-	
+
 	//$last = mysql_query("SELECT photoID FROM Photos ORDER BY DESC LIMIT 1"); 
 	//$lastPhoto = mysql_fetch_array($last, MYSQL_ASSOC); 		
 	//$lastPhotoID = $lastPhoto['photoID'];
