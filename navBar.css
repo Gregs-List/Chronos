@@ -2,11 +2,13 @@
 	width:97%;
 	border: solid 2px;
 	display: block;
+	overflow: hidden;
 }
 a {
 	margin-right: 20px;
 	color: blue;
 }
-a:last-child{
-	margin-right: 0px;
+
+#searchBar{
+	float:right;
 }

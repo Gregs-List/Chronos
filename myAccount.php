@@ -3,24 +3,22 @@
 	<head>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>
 		<!--<script type="text/javascript" src="myAccount.js"></script>-->
-		<link rel="stylesheet" type="text/css" href="navBar.css">
 		<link rel="stylesheet" type="text/css" href="myAccount.css">
+		<link rel="stylesheet" type="text/css" href="navBar.css">
 		<title>My Account</title>
 	</head>
 
 	<body>
 		<nav id = "navBar"> 
-			<a href="index.html">Logout</a>
+			<a href="home.html">Home</a>
 			<a href="myAccount.php">My Account</a>
 			<a href="createListing.html">Create Listing</a>
-			<a href="home.html">Home</a>
-		</nav>
+			<a href="index.html">Logout</a>
 
-		<nav id="accountNav">
-			<h4>My Account Links</h4>
-			<a href="#contactInfo">Contact Info</a>
-			<a href="#myListings">My Listings</a>
-			<a href="#watchedListings">Watched Listings</a>
+			<form id="searchBar" name="searchBar" action="" method="get">
+				<input type="text" value="" id="requestText">
+				<input type="submit" value="Search" id="searchButton">
+			</form>
 		</nav>
 
 		<div id="contactInfo">
@@ -38,13 +36,6 @@
 			<h3>My Listings</h3>
 			<?php include 'getListing.php';?>
 		</div>
-
-		<div id="watchedListings">
-			<h3>Watched Listing</h3>
-			<h4> Not implemented yet</h4>
-		</div>
-
-
 
 
 
