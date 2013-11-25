@@ -38,7 +38,7 @@ function swapPhoto() {
 	//Access the child img element and replace its source
 	//with a new image from your images array which is loaded 
 	//from the JSON string
-	var len = mImages.length;
+	/*var len = mImages.length;
 	if(counter === len-1){
 		counter = 0;
 	}
@@ -49,7 +49,7 @@ function swapPhoto() {
 	$('.details p').eq(2).html("Date:" + mImages[counter+1].date);
 	counter++;
 	console.log(src);
-	console.log('swap photo');
+	console.log('swap photo');*/
 }
 
 
@@ -60,27 +60,29 @@ var mCurrentIndex = 0;
 var request = new XMLHttpRequest();
 var mImages = [];
 var json;
-var url = "http://lyle.smu.edu/~cdewey/3345/a7/htmlPhotoGallery-master/images.json";
+var url = "fiveMostRecent.php";
 request.open("GET", url, true);
+request.send();
 request.onreadystatechange = function(e)
 {
-	if(request.readyState == 4){
-		json = JSON.parse(request.responseText);
-		
-		for(var x = 0; x < json.images.length; x++){
+	if(request.readyState == 4 || request.readyState == 2){
+		console.log(request.responseText);
+		//json = JSON.parse(request.responseText);
+		//console.log(json);
+		/*for(var x = 0; x < json.length; x++){
 			var gImage = new GalleryImage();
-			gImage.location = json.images[x].imgLocation;
-			gImage.date = json.images[x].date;
-			gImage.description = json.images[x].description;
+			gImage.title = json[x].title;
+			gImage.price = json[x].price;
+			gImage.description = json[x].description;
 			gImage.img = new Image();
 			gImage.img.src = json.images[x].imgPath;
 			makeGalleryImageOnloadCallback(gImage);
 			mImages.push(gImage);
-		}	
+		}*/
 	}
 	console.log(mImages);
 }
-request.send();
+
 
 
 
@@ -96,9 +98,9 @@ function makeGalleryImageOnloadCallback(galleryImage) {
 }
 
 function GalleryImage(){
-	var location;
+	var title;
+	var price;
 	var description;
-	var date;
 	var img;
 }
 

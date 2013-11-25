@@ -37,14 +37,5 @@
 			<?php include 'getListing.php';?>
 		</div>
 
-<<<<<<< HEAD
-		<div id="watchedListings">
-			<h3>Watched Listing</h3>
-			<h4> Not implemented yet</h4>
-		</div>
-=======
-
-
->>>>>>> e86d804fdd4cd550b5d9735b2ecc1a6966f857f8
 	</body>
 </html>

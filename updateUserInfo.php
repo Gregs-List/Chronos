@@ -42,5 +42,5 @@
 	}
 */
 	mysql_close($con);
-Header('Location:myAccount.html');
+Header('Location:myAccount.php');
 ?>
