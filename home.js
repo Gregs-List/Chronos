@@ -31,25 +31,25 @@ function animate() {
 }
 
 /************* DO NOT TOUCH CODE ABOVE THIS LINE ***************/
-var counter = 3; //set to the current image
+var counter = 0; //set to the current image
 
 function swapPhoto() {
 	//Add code here to access the #slideShow element.
 	//Access the child img element and replace its source
 	//with a new image from your images array which is loaded 
 	//from the JSON string
-	/*var len = mImages.length;
+	var len = mImages.length;
 	if(counter === len-1){
-		counter = 0;
+		counter = -1;
 	}
-	var src = mImages[counter+1].img.src;
-	$('#slideShow img').eq(0).attr('src',src);
-	$('.details p').eq(0).html("Location:" + mImages[counter+1].location);
-	$('.details p').eq(1).html("Description:" + mImages[counter+1].description);
-	$('.details p').eq(2).html("Date:" + mImages[counter+1].date);
+	//var src = mImages[counter+1].img.src;
+	//$('#slideShow img').eq(0).attr('src',src);
+	$('.details p').eq(0).html("Title:" + mImages[counter+1].title);
+	$('.details p').eq(1).html("Price:" + mImages[counter+1].price);
+	$('.details p').eq(2).html("Description:"+ mImages[counter+1].description);
 	counter++;
-	console.log(src);
-	console.log('swap photo');*/
+	//console.log(src);
+	console.log('swap photo');
 }
 
 
@@ -62,27 +62,27 @@ var mImages = [];
 var json;
 var url = "fiveMostRecent.php";
 request.open("GET", url, true);
-request.send();
+
 request.onreadystatechange = function(e)
 {
-	if(request.readyState == 4 || request.readyState == 2){
+	if(request.readyState == 4){
 		console.log(request.responseText);
-		//json = JSON.parse(request.responseText);
-		//console.log(json);
-		/*for(var x = 0; x < json.length; x++){
+		json = JSON.parse(request.responseText);
+		console.log(json);
+		for(var x = 0; x < json.length; x++){
 			var gImage = new GalleryImage();
 			gImage.title = json[x].title;
 			gImage.price = json[x].price;
 			gImage.description = json[x].description;
-			gImage.img = new Image();
-			gImage.img.src = json.images[x].imgPath;
-			makeGalleryImageOnloadCallback(gImage);
+			//gImage.img = new Image();
+			//gImage.img.src = json.images[x].imgPath;
+			//makeGalleryImageOnloadCallback(gImage);
 			mImages.push(gImage);
-		}*/
+		}
 	}
 	console.log(mImages);
 }
-
+request.send();
 
 
 
@@ -107,27 +107,6 @@ function GalleryImage(){
 
 
 
-/*function testClosureExample() {
-	for (var i = 0; i < 4; i++) {
-		var input = document.createElement("input");
-		input.type = "button";
-		input.value = "Button " + i;
-		//trying to access the value i like the click listener is doing will lead to bad results.
-		input.onclick = function(e) {
-			console.log("The variable i will always equal 4. i = " + i);
-		}
-		
-		//using a closure to fight a closure gives us what we would expect.
-		input.onmouseup = testClosureExampleMouseUpHandler(i);
-		document.body.appendChild(input);
-	}
-}
-
-function testClosureExampleMouseUpHandler(i) {
-	return function(e) {
-		console.log("The variable is will be what you expect, and match the value the button has. i = " + i);
-	}
-}*/
 
 $(document).ready( function() {
 	$('.details').eq(0).hide();
@@ -155,22 +134,21 @@ $(document).ready( function() {
 		//alert( "Handler for .click() called." );
 		var len = mImages.length;
 		if(counter === len-1){
-			counter = 0;
+			counter = -1;
 		}
-		var src = mImages[counter+1].img.src;
-		$('.bottomPhoto').eq(0).attr('src',src);
-		$('.details p').eq(0).html("Location:" + mImages[counter+1].location);
-		$('.details p').eq(1).html("Description:" + mImages[counter+1].description);
-		$('.details p').eq(2).html("Date:" + mImages[counter+1].date);
-
-		if($('#slideShow img').eq(0).hasClass("topPhoto")){
+		//var src = mImages[counter+1].img.src;
+		//$('.bottomPhoto').eq(0).attr('src',src);
+	$('.details p').eq(0).html("Title:" + mImages[counter+1].title);
+	$('.details p').eq(1).html("Price:" + mImages[counter+1].price);
+	$('.details p').eq(2).html("Description:"+ mImages[counter+1].description);
+		/*if($('#slideShow img').eq(0).hasClass("topPhoto")){
 			var opacity = $('#slideShow img').eq(0).css('opacity');
 			$('#slideShow img').eq(0).animate({opacity: (opacity==1?0:1)});
 		}
 		else{
 			var opacity = $('#slideShow img').eq(1).css('opacity');
 			$('#slideShow img').eq(1).animate({opacity: (opacity==1?0:1)});
-		}
+		}*/
 
 		counter++;
 	});
@@ -178,24 +156,24 @@ $(document).ready( function() {
 		//alert( "Handler for .click() called." );
 		var len = mImages.length;
 		if(counter === 0){
-			counter = len-1;
+			counter = len;
 		}
-		var src = mImages[counter-1].img.src;
-		$('.bottomPhoto').eq(0).attr('src',src);
-		$('.details p').eq(0).html("Location:" + mImages[counter-1].location);
-		$('.details p').eq(1).html("Description:" + mImages[counter-1].description);
-		$('.details p').eq(2).html("Date:" + mImages[counter-1].date);
+		//var src = mImages[counter-1].img.src;
+		//$('.bottomPhoto').eq(0).attr('src',src);
+	$('.details p').eq(0).html("Title:" + mImages[counter-1].title);
+	$('.details p').eq(1).html("Price:" + mImages[counter-1].price);
+	$('.details p').eq(2).html("Description:"+ mImages[counter-1].description);
 		//$('#slideShow img').eq(1).fadeIn();
 		//$('#slideShow img').eq(0).fadeOut();
 		
-		if($('#slideShow img').eq(0).hasClass("topPhoto")){
+		/*if($('#slideShow img').eq(0).hasClass("topPhoto")){
 			var opacity = $('#slideShow img').eq(0).css('opacity');
 			$('#slideShow img').eq(0).animate({opacity: (opacity==1?0:1)});
 		}
 		else{
 			var opacity = $('#slideShow img').eq(1).css('opacity');
 			$('#slideShow img').eq(1).animate({opacity: (opacity==1?0:1)});
-		}
+		}*/
 		counter--;
 	});
 });

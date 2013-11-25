@@ -3,6 +3,8 @@
 	<head>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>
 		<script src="home.js" ></script>
+		<script src="categoryBar.js" ></script>
+		<script src="searchBar.js" ></script>
 		<link rel="stylesheet" type="text/css" href="navBar.css">
 		<link rel="stylesheet" type="text/css" href="categoryBar.css">
 		<link rel="stylesheet" type="text/css" href="home.css">
@@ -18,10 +20,10 @@
 				<a href="createListing.html">Create Listing</a>
 				<a href="index.html">Logout</a>
 
-				<form id="searchBar" name="searchBar" action="" method="get">
-					<input type="text" value="" id="requestText">
+				<div id="searchBar" name="searchBar">
+					<input type="text" value="search" id="requestText">
 					<input type="submit" value="Search" id="searchButton">
-				</form>
+				</div>
 		</nav>
 
 		<nav id = "categoryBar">
@@ -47,9 +49,10 @@
 		        <img id="nextPhoto" src="arrow.png" alt="Next Photo"/>
 		      </div>
 		      <div class="details">
-		        <p class="location">Location: Tom</p>
-		        <p class="description">Description: raw</p>
-		        <p class="date">Date: Paul</p>
+		        <p class="title">Title: Title</p>
+		        <p class="price">Price: Price</p>
+		        <p class="description">Description: Description</p>
+		        
 		      </div>
 		    </div>
 		</div>

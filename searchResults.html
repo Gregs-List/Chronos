@@ -2,9 +2,11 @@
 <html lang="en">
 	<head>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>
+		<script src="searchResults.js" ></script>
+		<script src="categoryBar.js" ></script>
+		<script src="searchBar.js" ></script>
 		<link rel="stylesheet" type="text/css" href="navBar.css">
 		<link rel="stylesheet" type="text/css" href="categoryBar.css">
-		<script type="text/javascript" src="index.js"></script>
 		<title>Greg's List Search</title>
 	</head>
 
@@ -15,6 +17,11 @@
 				<a href="myAccount.php">My Account</a>
 				<a href="createListing.html">Create Listing</a>
 				<a href="index.html">Logout</a>
+
+				<div id="searchBar" name="searchBar">
+					<input type="text" value="search" id="requestText">
+					<input type="submit" value="Search" id="searchButton">
+				</div>
 		</nav>
 
 		<nav id = "categoryBar">
@@ -31,16 +38,17 @@
 		</header>
 
 		<div id = "filterButtons">
-			<input type="radio" name ="category" id="bookFilter">Books
-			<input type="radio" name ="category" id="furnitureFilter">Furniture
-			<input type="radio" name ="category" id="electronicsFilter">Electronics
-			<input type="radio" name ="category" id="bikesFilter">Bikes
+			<input type="radio" name ="Books" value="Books" id="bookFilter">Books
+			<input type="radio" name ="Furniture" value="Furniture" id="furnitureFilter">Furniture
+			<input type="radio" name ="Electronics" value="Electronics" id="electronicsFilter">Electronics
+			<input type="radio" name ="Bikes" value="Bikes" id="bikesFilter">Bikes
+		</div>
 
-		<table>
+		<table id="listingTable">
 			<tr>
-				<td>Category</td>
 				<td>Title</td>
 				<td>Price</td>
+				<td>Description</td>
 			</tr>
 		</table>
 

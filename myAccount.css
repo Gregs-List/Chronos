@@ -1,4 +1,4 @@
-div {
+body > div {
 	border-width:5px;
 	border-style:solid;
 	margin-top: 10px;

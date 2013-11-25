@@ -20,7 +20,7 @@
     		$rows[] = $r;
 	}
 
-	#print json_encode($rows);
-	return json_encode($rows);
+	echo json_encode($rows);
+	#return json_encode($rows);
 	
 ?>

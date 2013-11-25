@@ -2,9 +2,12 @@
 <html lang="en">
 	<head>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>
+		<script src="categoryBar.js" ></script>
+		<script src="searchBar.js" ></script>
 		<!--<script type="text/javascript" src="myAccount.js"></script>-->
 		<link rel="stylesheet" type="text/css" href="myAccount.css">
 		<link rel="stylesheet" type="text/css" href="navBar.css">
+		<link rel="stylesheet" type="text/css" href="categoryBar.css">
 		<title>My Account</title>
 	</head>
 
@@ -15,10 +18,18 @@
 			<a href="createListing.html">Create Listing</a>
 			<a href="index.html">Logout</a>
 
-			<form id="searchBar" name="searchBar" action="" method="get">
-				<input type="text" value="" id="requestText">
-				<input type="submit" value="Search" id="searchButton">
-			</form>
+			<div id="searchBar" name="searchBar">
+					<input type="text" value="search" id="requestText">
+					<input type="submit" value="Search" id="searchButton">
+			</div>
+		</nav>
+
+		<nav id = "categoryBar">
+			<h4>Categories</h4>
+			<a>Books</a>
+			<a>Furniture</a>
+			<a>Electronics</a>
+			<a>Bikes</a>
 		</nav>
 
 		<div id="contactInfo">

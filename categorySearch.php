@@ -10,7 +10,6 @@
 		or die("Unable to select database:" . mysql_error());
 
 	$category = $_GET['category']; 
-
 	$query = "SELECT title, description, price FROM Listings WHERE category = '$category' ORDER BY dateListed DESC";
 		
 	$result = mysql_query($query);
@@ -22,7 +21,7 @@
     		$rows[] = $r;
 	}
 
-	print json_encode($rows);
+	echo json_encode($rows);
 	#return json_encode($rows);
 	
 ?>
