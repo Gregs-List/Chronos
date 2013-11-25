@@ -8,18 +8,17 @@ session_start();
 	}
 	mysql_select_db("GregsList", $con)
 		or die("Unable to select database:" . mysql_error());
-		echo $_SESSION['userID'];
 	$userID = $_SESSION['userID'];
 	$title = $_POST['title'];
 	$category = $_POST['category'];
 	$description = $_POST['description'];
 	$price = $_POST['price'];
 
-	//$last = mysql_query("SELECT photoID FROM Photos ORDER BY DESC LIMIT 1"); 
-	//$lastPhoto = mysql_fetch_array($last, MYSQL_ASSOC); 		
-	//$lastPhotoID = $lastPhoto['photoID'];
-	//$photoID = $lastPhotoID + 1;
-
+/*	$last = mysql_query("SELECT photoID FROM Photos ORDER BY DESC LIMIT 1"); 
+	$lastPhoto = mysql_fetch_array($last, MYSQL_ASSOC); 		
+	$lastPhotoID = $lastPhoto['photoID'];
+	$photoID = $lastPhotoID + 1;
+*/
 	$listQuery = "INSERT INTO Listings VALUES(NULL, '$userID', '$title',NULL, '$category', '$price', '$description')";
 
 
@@ -58,39 +57,39 @@ session_start();
 		$catQuery = "INSERT INTO Rides VALUES(last_insert_id(), '$_POST[leavingFrom]', '$_POST[goingTo]', '$_POST[departureDate]', '$_POST[departureTime]', '$_POST[returnDate]', '$_POST[returnTime]')";
 	}
 
-/*
-	if($_FILES["photos"]["name"] != NULL){
-	$allowedExts = array("gif", "jpeg", "jpg", "png");
-	$temp = explode(".", $_FILES["photos"]["name"]);
+
+	/*$allowedExts = array("gif", "jpeg", "jpg", "png");
+	$temp = explode(".", $_FILES["file"]["name"]);
 	$extension = end($temp);
-	if ((($_FILES["photos"]["type"] == "image/gif")
-	|| ($_FILES["photos"]["type"] == "image/jpeg")
-	|| ($_FILES["photos"]["type"] == "image/jpg")
-	|| ($_FILES["photos"]["type"] == "image/pjpeg")
-	|| ($_FILES["photos"]["type"] == "image/x-png")
-	|| ($_FILES["photos"]["type"] == "image/png"))
-	&& ($_FILES["photos"]["size"] < 20000)
+	if(!empty($_FILES["file"])){
+	echo 'test';
+}
+	if ((($_FILES["file"]["type"] == "image/gif")
+	|| ($_FILES["file"]["type"] == "image/jpeg")
+	|| ($_FILES["file"]["type"] == "image/jpg")
+	|| ($_FILES["file"]["type"] == "image/pjpeg")
+	|| ($_FILES["file"]["type"] == "image/x-png")
+	|| ($_FILES["file"]["type"] == "image/png"))
+	&& ($_FILES["file"]["size"] < 200000)
 	&& in_array($extension, $allowedExts))
-  {
-	$last = mysql_query("SELECT photoID FROM Photos ORDER BY DESC 		LIMIT 1;"); 
-	$lastPhoto = mysql_fetch_array($last, MYSQL_ASSOC); 		$lastPhotoID = $lastPhoto['photoID'];
-	$photoID = $lastPhotoID + 1;
-  if ($_FILES["photos"]["error"] > 0)
+  {	
+  	echo 'test';
+  if ($_FILES["file"]["error"] > 0)
     {
-    echo "Return Code: " . $_FILES["photos"]["error"] . "<br>";
+    echo "Return Code: " . $_FILES["file"]["error"] . "<br>";
     }
   else
     {
     if (file_exists("upload/" . $photoID))
       {
-      echo $_FILES["photos"]["name"] . " already exists. ";
+      echo $_FILES["file"]["name"] . " already exists. ";
       }
     else
       {
-	$photoUrl = $photoID . $_FILES["photos"]["type"];
-      move_uploaded_file($_FILES["photos"]["tmp_name"],
+	$photoUrl = $photoID . $_FILES["file"]["type"];
+      move_uploaded_file($_FILES["file"]["tmp_name"],
       "userUploads/" . $photoUrl);
-	$fileQuery = "INSERT INTO Photos VALUES (last_insert_id(), 		'$photoID', '$photoUrl')";
+	$fileQuery = "INSERT INTO Photos VALUES (last_insert_id(), '$photoID', '$photoUrl')";
 	mysql_query($fileQuery);
       echo "Stored in: " . "userUploads/" . $photoUrl;
       }
@@ -100,7 +99,6 @@ else
   {
   echo "Invalid file";
   }
-}
 */
 	// begin insert transaction
 	mysql_query("SET AUTOCOMMIT=0");
@@ -135,5 +133,5 @@ else
     $message .= 'Whole statement: ' . $query;
     die($message);
 	}
-	header('Location: home.html');
+	//header('Location: home.html');
 ?>
