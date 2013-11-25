@@ -1,0 +1,17 @@
+Iteration_2_Release
+
+1) Features not completed(Or in partial states of completion):
+Full search Functionality
+Photo uploading
+View Full Listing
+
+2) Android APK
+https://github.com/Gregs-List/Chronos/tree/master/gregsList
+
+3) Website Link:
+http://ec2-50-112-191-198.us-west-2.compute.amazonaws.com/GregsList/
+
+4) Login Credentials
+(create an account. If account creation fails, use:)
+UN: jdoe@lyle.smu.edu
+PW: doeadeere
