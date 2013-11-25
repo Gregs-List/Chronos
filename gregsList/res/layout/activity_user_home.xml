@@ -50,7 +50,7 @@
           android:text="@string/home_heading"
           android:textStyle="bold"
           android:textColor= "#10294f"
-          android:paddingRight="70dp"
+          android:paddingRight="10dp"
           />
           <EditText
               android:layout_height = "wrap_content"

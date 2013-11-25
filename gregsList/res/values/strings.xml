@@ -40,5 +40,6 @@
     <string name="title_activity_listing">View Listing</string>
     <string name="title_activity_search">Search Results</string>
     <string name="all">All</string>
+    <string name="listings_header">Listing Details</string>
 
 </resources>

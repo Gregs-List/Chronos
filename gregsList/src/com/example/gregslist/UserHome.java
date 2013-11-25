@@ -182,6 +182,9 @@ public class DownloadFilesTask extends AsyncTask<String, Void, String> {
 		        	  b.putString("user", listings.get(position).getUserID());
 		        	  b.putString("title", listings.get(position).getTitle());
 		        	  b.putString("loggedIn", String.valueOf(value));
+		        	  b.putString("price", listings.get(position).getPrice());
+		        	  b.putString("description", listings.get(position).getDescription());
+		        	  b.putString("dateListed", listings.get(position).getDateListed());
 		        	  i.putExtras(b);
     	              startActivity(i);
     	            }
