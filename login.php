@@ -10,7 +10,7 @@
         or die("Unable to select database:" . mysql_error());
 
     //Function to check the log in of a user
-    $query = "select userID from Users where email ='$_GET[email]'";
+    $query = "select userID from Users where email ='$_POST[email]'";
     $result = mysql_query($query);
     while ($row = mysql_fetch_assoc($result)){
         $id = $row['userID'];
@@ -22,7 +22,7 @@
     while ($row = mysql_fetch_assoc($result)){
         $database_password = $row ['pword'];
     }
-    if($_GET['password'] != $database_password){
+    if($_POST['password'] != $database_password){
 
         echo "<script type='text/javascript'>alert('Invalid username or Password. If you do not have an account, 
             register below.');</script>";
