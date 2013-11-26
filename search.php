@@ -33,11 +33,14 @@
 		
 		$query = "SELECT title, description, price FROM Listings WHERE price <= '$price' and title or description LIKE '%$search%' ORDER BY dateListed DESC";		
 	}
-	else
+	elseif(isset($_GET['search']))
 	{
 		$query = "SELECT title, description, price FROM Listings WHERE title or description LIKE '%$search$' ORDER BY dateListed DESC";
 	}
-		
+	else
+	{
+		$query = "SELECT title, description, price FROM Listings ORDER BY dateListed DESC";
+	}	
 
 	$result = mysql_query($query);
 		
