@@ -35,7 +35,7 @@
 	}
 	elseif(isset($_GET['search']))
 	{
-		$query = "SELECT title, description, price FROM Listings WHERE title or description LIKE '%$search$' ORDER BY dateListed DESC";
+		$query = "SELECT title, description, price FROM Listings WHERE title or description LIKE '%$search%' ORDER BY dateListed DESC";
 	}
 	else
 	{
