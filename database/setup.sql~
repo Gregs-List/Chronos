@@ -143,6 +143,7 @@ FOREIGN KEY (listingID) REFERENCES Listings(listingID)
 #create the Photos table
 create table if not exists Photos(
 listingID INT,
-photoURL VARCHAR(20),
+photoID INT primary key,
+photoURL VARCHAR(20) NOT NULL UNIQUE,
 FOREIGN KEY (listingID) REFERENCES Listings(listingID)
 ) engine = innodb;
