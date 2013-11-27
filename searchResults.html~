@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>
+		<script src="searchResults.js" ></script>
+		<script src="categoryBar.js" ></script>
+		<script src="searchBar.js" ></script>
+		<link rel="stylesheet" type="text/css" href="navBar.css">
+		<link rel="stylesheet" type="text/css" href="categoryBar.css">
+		<title>Greg's List Search</title>
+	</head>
+
+	<body>
+
+		<nav id = "navBar"> 
+				<a href="home.html">Home</a>
+				<a href="myAccount.php">My Account</a>
+				<a href="createListing.html">Create Listing</a>
+				<a href="index.html">Logout</a>
+
+				<div id="searchBar" name="searchBar">
+					<input type="text" value="search" id="requestText">
+					<input type="submit" value="Search" id="searchButton">
+				</div>
+		</nav>
+
+		<nav id = "categoryBar">
+			<h4>Categories</h4>
+				<a>Books</a>
+				<a>Furniture</a>
+				<a>Electronics</a>
+				<a>Bikes</a>
+		</nav>
+
+		<header>
+			<h1> Greg's List</h1>
+			<h3>Results</h3>
+		</header>
+
+		<div id = "filterButtons">
+			<input type="radio" name ="filter" value="Books" id="bookFilter">Books
+			<input type="radio" name ="filter" value="Furniture" id="furnitureFilter">Furniture
+			<input type="radio" name ="filter" value="Electronics" id="electronicsFilter">Electronics
+			<input type="radio" name ="filter" value="Bikes" id="bikesFilter">Bikes
+		</div>
+
+		<table id="listingTable">
+			<tr>
+				<td>Title</td>
+				<td>Price</td>
+				<td>Description</td>
+			</tr>
+		</table>
+
+
+	</body>
+</html>
