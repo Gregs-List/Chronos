@@ -26,7 +26,7 @@ dateListed TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 category VARCHAR(20),
 price DECIMAL(7,2),
 description VARCHAR(500),
-FOREIGN KEY (userID) REFERENCES Users(userID)
+CONSTRAINT fk_user FOREIGN KEY (userID) REFERENCES Users(userID) ON DELETE CASCADE
 ) engine = innodb;
 
 # create the ConditionLookup table
@@ -47,8 +47,8 @@ listingID INT primary key,
 bikeTypeID INT,
 make VARCHAR(20),
 model VARCHAR(20),
-FOREIGN KEY (listingID) REFERENCES Listings(listingID),
-FOREIGN KEY (bikeTypeID) REFERENCES BikeType(bikeTypeID)
+CONSTRAINT fk_bikeListing FOREIGN KEY (listingID) REFERENCES Listings(listingID) ON DELETE CASCADE,
+CONSTRAINT fk_bikeType FOREIGN KEY (bikeTypeID) REFERENCES BikeType(bikeTypeID)
 ) engine = innodb;
 
 # create the BookType table
@@ -66,9 +66,9 @@ author VARCHAR(100),
 isbn VARCHAR(20),
 assignedCourse VARCHAR(40),
 conditionID INT,
-FOREIGN KEY (listingID) REFERENCES Listings(listingID),
-FOREIGN KEY (bookTypeID) REFERENCES BookType(bookTypeID),
-FOREIGN KEY (conditionID) REFERENCES ConditionLookup(conditionID)
+CONSTRAINT fk_bookListing FOREIGN KEY (listingID) REFERENCES Listings(listingID) ON DELETE CASCADE,
+CONSTRAINT fk_bookType FOREIGN KEY (bookTypeID) REFERENCES BookType(bookTypeID),
+CONSTRAINT fk_bookCondition FOREIGN KEY (conditionID) REFERENCES ConditionLookup(conditionID)
 ) engine = innodb;
 
 # create the ElectronicsType table
@@ -84,8 +84,8 @@ electronicsTypeID INT,
 make VARCHAR(20),
 model VARCHAR(20),
 size VARCHAR(20),
-FOREIGN KEY (listingID) REFERENCES Listings(listingID),
-FOREIGN KEY (electronicsTypeID) REFERENCES ElectronicsType(electronicsTypeID)
+CONSTRAINT fk_elecListing FOREIGN KEY (listingID) REFERENCES Listings(listingID) ON DELETE CASCADE,
+CONSTRAINT fk_elecType FOREIGN KEY (electronicsTypeID) REFERENCES ElectronicsType(electronicsTypeID)
 ) engine = innodb;
 
 # create the FurnitureType table
@@ -99,9 +99,9 @@ create table if not exists Furniture(
 listingID INT primary key,
 furnitureTypeID INT,
 conditionID INT,
-FOREIGN KEY (listingID) REFERENCES Listings(listingID),
-FOREIGN KEY (furnitureTypeID) REFERENCES FurnitureType(furnitureTypeID),
-FOREIGN KEY (conditionID) REFERENCES ConditionLookup(conditionID)
+CONSTRAINT fk_furnListing FOREIGN KEY (listingID) REFERENCES Listings(listingID) ON DELETE CASCADE,
+CONSTRAINT fk_furnType FOREIGN KEY (furnitureTypeID) REFERENCES FurnitureType(furnitureTypeID),
+CONSTRAINT fk_furnCondition FOREIGN KEY (conditionID) REFERENCES ConditionLookup(conditionID)
 ) engine = innodb;
 
 # create the MeetupType table
@@ -117,15 +117,15 @@ meetupTypeID INT,
 location VARCHAR(50),
 date DATE,
 time TIME,
-FOREIGN KEY (listingID) REFERENCES Listings(listingID),
-FOREIGN KEY (meetupTypeID) REFERENCES MeetupType(meetupTypeID)
+CONSTRAINT fk_meetListing FOREIGN KEY (listingID) REFERENCES Listings(listingID) ON DELETE CASCADE,
+CONSTRAINT fk_meetType FOREIGN KEY (meetupTypeID) REFERENCES MeetupType(meetupTypeID)
 ) engine = innodb;
 
 # create the Miscellaneous table
 create table if not exists Miscellaneous(
 listingID INT primary key,
 itemName VARCHAR(30),
-FOREIGN KEY (listingID) REFERENCES Listings(listingID)
+CONSTRAINT fk_miscListing FOREIGN KEY (listingID) REFERENCES Listings(listingID) ON DELETE CASCADE
 ) engine = innodb;
 
 # create the Rides table
@@ -137,7 +137,7 @@ departureDate DATE,
 departureTime TIME,
 returnDate DATE,
 returnTime TIME,
-FOREIGN KEY (listingID) REFERENCES Listings(listingID)
+CONSTRAINT fk_rideListing FOREIGN KEY (listingID) REFERENCES Listings(listingID) ON DELETE CASCADE
 ) engine = innodb;
 
 #create the Photos table
@@ -145,7 +145,7 @@ create table if not exists Photos(
 listingID INT,
 photoID INT primary key,
 photoURL VARCHAR(20) NOT NULL UNIQUE,
-FOREIGN KEY (listingID) REFERENCES Listings(listingID)
+CONSTRAINT fk_photoListing FOREIGN KEY (listingID) REFERENCES Listings(listingID) ON DELETE CASCADE
 ) engine = innodb;
 
 

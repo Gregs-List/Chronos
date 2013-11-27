@@ -9,11 +9,9 @@
 	mysql_select_db("GregsList", $con)
 		or die("Unable to select database:" . mysql_error());
 
-
-	$search = $_GET['search'];
-	
 	#if(!empty($_POST['category']))
 	#$category = $_POST['category'];
+	$search = $_GET['search'];
 
 	if(isset($_GET['category']) && isset($_GET['price']))
 	{
@@ -33,14 +31,14 @@
 		
 		$query = "SELECT title, description, price FROM Listings WHERE price <= '$price' and title or description LIKE '%$search%' ORDER BY dateListed DESC";		
 	}
-	elseif($search!='')
+	elseif($search==null)
 	{
-		$query = "SELECT title, description, price FROM Listings WHERE title or description LIKE '%$search%' ORDER BY dateListed DESC";
+		$query = "SELECT title, description, price FROM Listings ORDER BY dateListed DESC";
 	}
 	else
 	{
-		$query = "SELECT title, description, price FROM Listings ORDER BY dateListed DESC";
-	}	
+		$query = "SELECT title, description, price FROM Listings WHERE title or description LIKE '%$search%' ORDER BY dateListed DESC";
+	}
 
 	$result = mysql_query($query);
 		
