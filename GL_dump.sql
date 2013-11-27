@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.5.32, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.13  Distrib 5.5.34, for debian-linux-gnu (x86_64)
 --
 -- Host: localhost    Database: GregsList
 -- ------------------------------------------------------
--- Server version	5.5.32-0ubuntu0.12.04.1
+-- Server version	5.5.34-0ubuntu0.12.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -60,9 +60,9 @@ CREATE TABLE `Bikes` (
   `make` varchar(20) DEFAULT NULL,
   `model` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`listingID`),
-  KEY `bikeTypeID` (`bikeTypeID`),
-  CONSTRAINT `Bikes_ibfk_1` FOREIGN KEY (`listingID`) REFERENCES `Listings` (`listingID`),
-  CONSTRAINT `Bikes_ibfk_2` FOREIGN KEY (`bikeTypeID`) REFERENCES `BikeType` (`bikeTypeID`)
+  KEY `fk_bikeType` (`bikeTypeID`),
+  CONSTRAINT `fk_bikeListing` FOREIGN KEY (`listingID`) REFERENCES `Listings` (`listingID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_bikeType` FOREIGN KEY (`bikeTypeID`) REFERENCES `BikeType` (`bikeTypeID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -72,7 +72,6 @@ CREATE TABLE `Bikes` (
 
 LOCK TABLES `Bikes` WRITE;
 /*!40000 ALTER TABLE `Bikes` DISABLE KEYS */;
-INSERT INTO `Bikes` VALUES (58,0,'Harley Davidson','Cruiser'),(86,4,'Schwinning!','Chuckles'),(87,4,'Schwinning!','Chuckles');
 /*!40000 ALTER TABLE `Bikes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -116,11 +115,11 @@ CREATE TABLE `Books` (
   `assignedCourse` varchar(40) DEFAULT NULL,
   `conditionID` int(11) DEFAULT NULL,
   PRIMARY KEY (`listingID`),
-  KEY `bookTypeID` (`bookTypeID`),
-  KEY `conditionID` (`conditionID`),
-  CONSTRAINT `Books_ibfk_1` FOREIGN KEY (`listingID`) REFERENCES `Listings` (`listingID`),
-  CONSTRAINT `Books_ibfk_2` FOREIGN KEY (`bookTypeID`) REFERENCES `BookType` (`bookTypeID`),
-  CONSTRAINT `Books_ibfk_3` FOREIGN KEY (`conditionID`) REFERENCES `ConditionLookup` (`conditionID`)
+  KEY `fk_bookType` (`bookTypeID`),
+  KEY `fk_bookCondition` (`conditionID`),
+  CONSTRAINT `fk_bookListing` FOREIGN KEY (`listingID`) REFERENCES `Listings` (`listingID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_bookType` FOREIGN KEY (`bookTypeID`) REFERENCES `BookType` (`bookTypeID`),
+  CONSTRAINT `fk_bookCondition` FOREIGN KEY (`conditionID`) REFERENCES `ConditionLookup` (`conditionID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -130,7 +129,10 @@ CREATE TABLE `Books` (
 
 LOCK TABLES `Books` WRITE;
 /*!40000 ALTER TABLE `Books` DISABLE KEYS */;
+<<<<<<< HEAD
 INSERT INTO `Books` VALUES (56,2,'At First Sight','Nicholas Sparks','12345678','Personal Reading',4),(57,3,'The Notebook','Nicholas Sparks','87654321','Personal Reading',0),(63,5,'Game of Thrones 1','George Marin','11111111','Book Group',5),(64,5,'Game of Thrones 2','George Marin','22222222','Book Group',5),(74,1,'test','test','test','',1),(75,1,'test2','test2','test2','',1),(76,1,'test3','test3','test3','',1),(77,1,'test','test','test','',1),(78,1,'test','test','test','',1),(80,1,'test','test','test','',1),(81,1,'test','test','test','',1),(91,1,'cxzkvxzclkvj','as;ldkjf','1234567890','',1);
+=======
+>>>>>>> aedb7cdc93eece188d2450ea2a21f1b56a449c21
 /*!40000 ALTER TABLE `Books` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -172,9 +174,9 @@ CREATE TABLE `Electronics` (
   `model` varchar(20) DEFAULT NULL,
   `size` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`listingID`),
-  KEY `electronicsTypeID` (`electronicsTypeID`),
-  CONSTRAINT `Electronics_ibfk_1` FOREIGN KEY (`listingID`) REFERENCES `Listings` (`listingID`),
-  CONSTRAINT `Electronics_ibfk_2` FOREIGN KEY (`electronicsTypeID`) REFERENCES `ElectronicsType` (`electronicsTypeID`)
+  KEY `fk_elecType` (`electronicsTypeID`),
+  CONSTRAINT `fk_elecListing` FOREIGN KEY (`listingID`) REFERENCES `Listings` (`listingID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_elecType` FOREIGN KEY (`electronicsTypeID`) REFERENCES `ElectronicsType` (`electronicsTypeID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -184,7 +186,6 @@ CREATE TABLE `Electronics` (
 
 LOCK TABLES `Electronics` WRITE;
 /*!40000 ALTER TABLE `Electronics` DISABLE KEYS */;
-INSERT INTO `Electronics` VALUES (55,3,'Apple','iPhone 5s','small'),(59,1,'LG','High-Def Model','large'),(60,2,'Apple','MacBook pro','15 inch'),(84,0,'','',NULL);
 /*!40000 ALTER TABLE `Electronics` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -224,11 +225,11 @@ CREATE TABLE `Furniture` (
   `furnitureTypeID` int(11) DEFAULT NULL,
   `conditionID` int(11) DEFAULT NULL,
   PRIMARY KEY (`listingID`),
-  KEY `furnitureTypeID` (`furnitureTypeID`),
-  KEY `conditionID` (`conditionID`),
-  CONSTRAINT `Furniture_ibfk_1` FOREIGN KEY (`listingID`) REFERENCES `Listings` (`listingID`),
-  CONSTRAINT `Furniture_ibfk_2` FOREIGN KEY (`furnitureTypeID`) REFERENCES `FurnitureType` (`furnitureTypeID`),
-  CONSTRAINT `Furniture_ibfk_3` FOREIGN KEY (`conditionID`) REFERENCES `ConditionLookup` (`conditionID`)
+  KEY `fk_furnType` (`furnitureTypeID`),
+  KEY `fk_furnCondition` (`conditionID`),
+  CONSTRAINT `fk_furnListing` FOREIGN KEY (`listingID`) REFERENCES `Listings` (`listingID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_furnType` FOREIGN KEY (`furnitureTypeID`) REFERENCES `FurnitureType` (`furnitureTypeID`),
+  CONSTRAINT `fk_furnCondition` FOREIGN KEY (`conditionID`) REFERENCES `ConditionLookup` (`conditionID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -281,9 +282,15 @@ CREATE TABLE `Listings` (
   `price` decimal(7,2) DEFAULT NULL,
   `description` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`listingID`),
+<<<<<<< HEAD
   KEY `userID` (`userID`),
   CONSTRAINT `Listings_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `Users` (`userID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=92 DEFAULT CHARSET=latin1;
+=======
+  KEY `fk_user` (`userID`),
+  CONSTRAINT `fk_user` FOREIGN KEY (`userID`) REFERENCES `Users` (`userID`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+>>>>>>> aedb7cdc93eece188d2450ea2a21f1b56a449c21
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -292,7 +299,10 @@ CREATE TABLE `Listings` (
 
 LOCK TABLES `Listings` WRITE;
 /*!40000 ALTER TABLE `Listings` DISABLE KEYS */;
+<<<<<<< HEAD
 INSERT INTO `Listings` VALUES (1,9,'Dildo','2013-11-04 06:02:27','Dildos',NULL,'I love dildos. - Bobby'),(2,9,'hey','2013-11-04 06:18:54','up',NULL,'dude'),(3,13,'If','2013-11-04 06:27:22','Works',NULL,'then what'),(4,10,'','2013-11-04 06:58:30','',NULL,''),(5,14,'','2013-11-04 07:01:44','',NULL,''),(6,16,'','2013-11-04 07:05:04','',NULL,''),(7,16,'','2013-11-04 07:08:08','',NULL,''),(8,9,'','2013-11-04 07:09:24','',NULL,''),(9,9,'I','2013-11-04 07:11:45','a boobs',NULL,'guy'),(10,16,'See','2013-11-04 07:12:54','It',NULL,'work'),(11,8,'','2013-11-04 19:23:19','',NULL,''),(13,13,'','2013-11-04 19:28:07','',NULL,''),(14,13,'Test','2013-11-04 19:31:47','Test',NULL,'Test'),(15,21,'Thingy','2013-11-04 19:44:55','something',NULL,'A very nice thingy'),(16,22,'This New very cool ITEMZ','2013-11-04 21:04:49','phone',NULL,'shiny phone'),(17,1,'Listing','2013-11-05 17:01:53','category',NULL,'fnskdjfnsjkdhvakjsfbkja'),(18,26,'nothing','2013-11-06 06:36:41','nothing',NULL,'nothing'),(19,26,'adfasdf','2013-11-06 06:37:07','adsfadsf',NULL,'asdfasdf'),(20,26,'trial','2013-11-06 06:37:32','',NULL,''),(21,26,'test','2013-11-06 06:38:12','test',NULL,'test'),(22,26,'test','2013-11-06 06:38:24','test',NULL,'test'),(23,27,'first','2013-11-06 06:40:41','first',NULL,'first'),(24,27,'first','2013-11-06 06:42:45','first',NULL,'first'),(25,27,'one two','2013-11-06 06:43:53','one',NULL,'one'),(26,27,'one','2013-11-06 06:44:09','one',NULL,'one'),(27,27,'two','2013-11-06 06:44:28','two one',NULL,'two'),(28,27,'three','2013-11-06 06:44:46','three',NULL,'three four'),(29,27,' four','2013-11-06 06:45:11',' four',NULL,' four'),(30,27,'lets test some words','2013-11-06 06:46:04','no',NULL,'no'),(31,27,'/','2013-11-06 06:47:07','/',NULL,'/'),(32,27,'1','2013-11-06 06:50:07','',NULL,''),(33,27,'1','2013-11-06 06:50:09','',NULL,''),(34,27,'1','2013-11-06 06:50:11','',NULL,''),(35,27,'1','2013-11-06 06:50:14','',NULL,''),(36,27,'1','2013-11-06 06:50:16','',NULL,''),(37,27,'1','2013-11-06 06:50:18','',NULL,''),(38,27,'1','2013-11-06 06:50:20','',NULL,''),(39,27,'1','2013-11-06 06:50:23','',NULL,''),(40,27,'1','2013-11-06 06:50:25','',NULL,''),(41,27,'1','2013-11-06 06:50:28','',NULL,''),(42,27,'1','2013-11-06 06:50:30','',NULL,''),(43,27,'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa','2013-11-06 06:51:10','',NULL,''),(44,27,'http://ec2-50-112-191-198.us-w','2013-11-06 06:52:48','',NULL,''),(45,27,'Greg’s List is ','2013-11-06 06:53:30','',NULL,''),(46,27,'’','2013-11-06 06:54:33','',NULL,''),(47,29,'Test','2013-11-06 21:33:34','books',NULL,'i dont like this book'),(48,21,'asdf','2013-11-06 21:35:41','',NULL,''),(49,21,'as','2013-11-06 21:35:57','',NULL,''),(50,21,'','2013-11-06 21:36:02','',NULL,''),(51,21,'','2013-11-06 21:36:08','as',NULL,''),(52,21,'','2013-11-06 21:36:13','',NULL,'as'),(53,29,'cant','2013-11-06 21:41:07','',NULL,''),(54,30,'kkkkkkkkkkkkkkkkkkkkkkkkkkkkkk','2013-11-07 02:00:16','kkkkkkkkkkkkkkkkkkkk',NULL,'kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk'),(55,1,'Test Title 1','2013-11-18 20:20:32','Electronics',NULL,'Description 1'),(56,36,'Test Title 2','2013-11-18 20:21:51','Books',NULL,'Description 2'),(57,36,'Test Title 3','2013-11-18 20:22:03','Books',NULL,'Description 3'),(58,1,'Test Title 4','2013-11-18 20:22:23','Bikes',NULL,'Description 4'),(59,1,'Test Title 5','2013-11-18 20:22:38','Electronics',NULL,'Description 5'),(60,1,'Test Title 6','2013-11-18 20:22:51','Electronics',NULL,'Description 6'),(61,1,'Test Title 7','2013-11-18 20:23:07','Meetups',NULL,'Description 7'),(62,1,'Test Title 8','2013-11-18 20:23:19','Meetups',NULL,'Description 8'),(63,36,'Test Title 9','2013-11-18 20:23:38','Books',NULL,'Description 9'),(64,36,'Test Title 10','2013-11-18 20:23:53','Books',NULL,'Description 10'),(74,13,'test','2013-11-22 22:38:46','Books',100.00,''),(75,13,'test2','2013-11-22 22:40:21','Books',102.00,''),(76,13,'test3','2013-11-22 22:46:35','Books',10000.00,'test description'),(77,13,'test4','2013-11-22 22:50:33','Books',10000.00,'test description'),(78,13,'test','2013-11-22 22:50:54','Books',10000.00,'					Add an extra description here.\r\n				'),(80,13,'Test','2013-11-22 23:15:17','Books',1000.00,'test					Add an extra description here.\r\n				'),(81,13,'Test','2013-11-22 23:17:15','Books',1000.00,'test					Add an extra description here.\r\n				'),(84,21,'','2013-11-25 19:25:21','Electronics',0.00,''),(85,21,'','2013-11-25 19:26:28','Miscellaneous',0.00,''),(86,10,'Sweet Ride','2013-11-25 19:47:45','Bikes',123.00,'So I have this awesome book--totally not broken--but I want to buy this other thing, so please buy it from me for my completely reasonable asking price.'),(87,10,'Sweet Ride','2013-11-25 19:48:14','Bikes',999.99,'So I have this awesome book--totally not broken--but I want to buy this other thing, so please buy it from me for my completely reasonable asking price.'),(89,42,'adfasdf','2013-11-26 20:08:37','Miscellaneous',999.00,'adfadfasdfasdf'),(90,42,'My new very cool item','2013-11-26 23:01:29','Miscellaneous',1.00,'adfa;ldsfkja'),(91,43,'x.,cm','2013-11-27 20:53:27','Books',123.00,'jkhkjhkjh');
+=======
+>>>>>>> aedb7cdc93eece188d2450ea2a21f1b56a449c21
 /*!40000 ALTER TABLE `Listings` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -334,9 +344,9 @@ CREATE TABLE `Meetups` (
   `date` date DEFAULT NULL,
   `time` time DEFAULT NULL,
   PRIMARY KEY (`listingID`),
-  KEY `meetupTypeID` (`meetupTypeID`),
-  CONSTRAINT `Meetups_ibfk_1` FOREIGN KEY (`listingID`) REFERENCES `Listings` (`listingID`),
-  CONSTRAINT `Meetups_ibfk_2` FOREIGN KEY (`meetupTypeID`) REFERENCES `MeetupType` (`meetupTypeID`)
+  KEY `fk_meetType` (`meetupTypeID`),
+  CONSTRAINT `fk_meetListing` FOREIGN KEY (`listingID`) REFERENCES `Listings` (`listingID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_meetType` FOREIGN KEY (`meetupTypeID`) REFERENCES `MeetupType` (`meetupTypeID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -346,7 +356,6 @@ CREATE TABLE `Meetups` (
 
 LOCK TABLES `Meetups` WRITE;
 /*!40000 ALTER TABLE `Meetups` DISABLE KEYS */;
-INSERT INTO `Meetups` VALUES (61,1,'Caruth','2013-11-25','05:30:00'),(62,3,'Einsteins','2013-11-23','09:00:00');
 /*!40000 ALTER TABLE `Meetups` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -361,7 +370,7 @@ CREATE TABLE `Miscellaneous` (
   `listingID` int(11) NOT NULL,
   `itemName` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`listingID`),
-  CONSTRAINT `Miscellaneous_ibfk_1` FOREIGN KEY (`listingID`) REFERENCES `Listings` (`listingID`)
+  CONSTRAINT `fk_miscListing` FOREIGN KEY (`listingID`) REFERENCES `Listings` (`listingID`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -371,7 +380,6 @@ CREATE TABLE `Miscellaneous` (
 
 LOCK TABLES `Miscellaneous` WRITE;
 /*!40000 ALTER TABLE `Miscellaneous` DISABLE KEYS */;
-INSERT INTO `Miscellaneous` VALUES (1,'This id a Dildo'),(2,'whats'),(3,'This'),(4,''),(5,''),(6,''),(7,''),(8,''),(9,'am'),(10,'looks'),(11,''),(13,''),(14,''),(15,''),(16,''),(17,''),(18,''),(19,''),(20,''),(21,''),(22,''),(23,''),(24,''),(25,''),(26,''),(27,''),(28,''),(29,''),(30,''),(31,''),(32,''),(33,''),(34,''),(35,''),(36,''),(37,''),(38,''),(39,''),(40,''),(41,''),(42,''),(43,''),(44,''),(45,''),(46,''),(47,''),(48,''),(49,''),(50,''),(51,''),(52,''),(53,''),(54,''),(85,NULL),(89,NULL),(90,NULL);
 /*!40000 ALTER TABLE `Miscellaneous` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -388,8 +396,8 @@ CREATE TABLE `Photos` (
   `photoURL` varchar(20) NOT NULL,
   PRIMARY KEY (`photoID`),
   UNIQUE KEY `photoURL` (`photoURL`),
-  KEY `listingID` (`listingID`),
-  CONSTRAINT `Photos_ibfk_1` FOREIGN KEY (`listingID`) REFERENCES `Listings` (`listingID`)
+  KEY `fk_photoListing` (`listingID`),
+  CONSTRAINT `fk_photoListing` FOREIGN KEY (`listingID`) REFERENCES `Listings` (`listingID`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -399,7 +407,6 @@ CREATE TABLE `Photos` (
 
 LOCK TABLES `Photos` WRITE;
 /*!40000 ALTER TABLE `Photos` DISABLE KEYS */;
-INSERT INTO `Photos` VALUES (1,0,'notaphoto.jpg');
 /*!40000 ALTER TABLE `Photos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -419,7 +426,7 @@ CREATE TABLE `Rides` (
   `returnDate` date DEFAULT NULL,
   `returnTime` time DEFAULT NULL,
   PRIMARY KEY (`listingID`),
-  CONSTRAINT `Rides_ibfk_1` FOREIGN KEY (`listingID`) REFERENCES `Listings` (`listingID`)
+  CONSTRAINT `fk_rideListing` FOREIGN KEY (`listingID`) REFERENCES `Listings` (`listingID`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -472,4 +479,8 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
+<<<<<<< HEAD
 -- Dump completed on 2013-11-27 22:55:33
+=======
+-- Dump completed on 2013-11-27 16:51:59
+>>>>>>> aedb7cdc93eece188d2450ea2a21f1b56a449c21
