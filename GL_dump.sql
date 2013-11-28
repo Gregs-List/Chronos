@@ -282,7 +282,7 @@ CREATE TABLE `Listings` (
   `description` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`listingID`),
   KEY `userID` (`userID`),
-  CONSTRAINT `fk_user` (`userID`) REFERENCES `Users` (`userID`) ON DELETE CASCADE
+  CONSTRAINT `fk_user` FOREIGN KEY (`userID`) REFERENCES `Users` (`userID`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=91 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
