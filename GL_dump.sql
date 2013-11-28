@@ -61,8 +61,8 @@ CREATE TABLE `Bikes` (
   `model` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`listingID`),
   KEY `bikeTypeID` (`bikeTypeID`),
-  CONSTRAINT `Bikes_ibfk_1` FOREIGN KEY (`listingID`) REFERENCES `Listings` (`listingID`),
-  CONSTRAINT `Bikes_ibfk_2` FOREIGN KEY (`bikeTypeID`) REFERENCES `BikeType` (`bikeTypeID`)
+  CONSTRAINT `fk_bikeListing` FOREIGN KEY (`listingID`) REFERENCES `Listings` (`listingID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_bikeType` FOREIGN KEY (`bikeTypeID`) REFERENCES `BikeType` (`bikeTypeID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -118,9 +118,9 @@ CREATE TABLE `Books` (
   PRIMARY KEY (`listingID`),
   KEY `bookTypeID` (`bookTypeID`),
   KEY `conditionID` (`conditionID`),
-  CONSTRAINT `Books_ibfk_1` FOREIGN KEY (`listingID`) REFERENCES `Listings` (`listingID`),
-  CONSTRAINT `Books_ibfk_2` FOREIGN KEY (`bookTypeID`) REFERENCES `BookType` (`bookTypeID`),
-  CONSTRAINT `Books_ibfk_3` FOREIGN KEY (`conditionID`) REFERENCES `ConditionLookup` (`conditionID`)
+  CONSTRAINT `fk_bookListing` FOREIGN KEY (`listingID`) REFERENCES `Listings` (`listingID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_bookType` FOREIGN KEY (`bookTypeID`) REFERENCES `BookType` (`bookTypeID`),
+  CONSTRAINT `fk_bookCondition` FOREIGN KEY (`conditionID`) REFERENCES `ConditionLookup` (`conditionID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -173,8 +173,8 @@ CREATE TABLE `Electronics` (
   `size` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`listingID`),
   KEY `electronicsTypeID` (`electronicsTypeID`),
-  CONSTRAINT `Electronics_ibfk_1` FOREIGN KEY (`listingID`) REFERENCES `Listings` (`listingID`),
-  CONSTRAINT `Electronics_ibfk_2` FOREIGN KEY (`electronicsTypeID`) REFERENCES `ElectronicsType` (`electronicsTypeID`)
+  CONSTRAINT `fk_elecListing` FOREIGN KEY (`listingID`) REFERENCES `Listings` (`listingID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_elecType` FOREIGN KEY (`electronicsTypeID`) REFERENCES `ElectronicsType` (`electronicsTypeID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -226,9 +226,9 @@ CREATE TABLE `Furniture` (
   PRIMARY KEY (`listingID`),
   KEY `furnitureTypeID` (`furnitureTypeID`),
   KEY `conditionID` (`conditionID`),
-  CONSTRAINT `Furniture_ibfk_1` FOREIGN KEY (`listingID`) REFERENCES `Listings` (`listingID`),
-  CONSTRAINT `Furniture_ibfk_2` FOREIGN KEY (`furnitureTypeID`) REFERENCES `FurnitureType` (`furnitureTypeID`),
-  CONSTRAINT `Furniture_ibfk_3` FOREIGN KEY (`conditionID`) REFERENCES `ConditionLookup` (`conditionID`)
+  CONSTRAINT `fk_furnListing` FOREIGN KEY (`listingID`) REFERENCES `Listings` (`listingID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_furnType` FOREIGN KEY (`furnitureTypeID`) REFERENCES `FurnitureType` (`furnitureTypeID`),
+  CONSTRAINT `fk_furnCondition` FOREIGN KEY (`conditionID`) REFERENCES `ConditionLookup` (`conditionID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -282,7 +282,7 @@ CREATE TABLE `Listings` (
   `description` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`listingID`),
   KEY `userID` (`userID`),
-  CONSTRAINT `Listings_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `Users` (`userID`)
+  CONSTRAINT `fk_user` (`userID`) REFERENCES `Users` (`userID`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=91 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -335,8 +335,8 @@ CREATE TABLE `Meetups` (
   `time` time DEFAULT NULL,
   PRIMARY KEY (`listingID`),
   KEY `meetupTypeID` (`meetupTypeID`),
-  CONSTRAINT `Meetups_ibfk_1` FOREIGN KEY (`listingID`) REFERENCES `Listings` (`listingID`),
-  CONSTRAINT `Meetups_ibfk_2` FOREIGN KEY (`meetupTypeID`) REFERENCES `MeetupType` (`meetupTypeID`)
+  CONSTRAINT `fk_meetListing` FOREIGN KEY (`listingID`) REFERENCES `Listings` (`listingID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_meetType` FOREIGN KEY (`meetupTypeID`) REFERENCES `MeetupType` (`meetupTypeID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -361,7 +361,7 @@ CREATE TABLE `Miscellaneous` (
   `listingID` int(11) NOT NULL,
   `itemName` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`listingID`),
-  CONSTRAINT `Miscellaneous_ibfk_1` FOREIGN KEY (`listingID`) REFERENCES `Listings` (`listingID`)
+  CONSTRAINT `fk_miscListing` FOREIGN KEY (`listingID`) REFERENCES `Listings` (`listingID`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -389,7 +389,7 @@ CREATE TABLE `Photos` (
   PRIMARY KEY (`photoID`),
   UNIQUE KEY `photoURL` (`photoURL`),
   KEY `listingID` (`listingID`),
-  CONSTRAINT `Photos_ibfk_1` FOREIGN KEY (`listingID`) REFERENCES `Listings` (`listingID`)
+  CONSTRAINT `fk_photListing` FOREIGN KEY (`listingID`) REFERENCES `Listings` (`listingID`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -419,7 +419,7 @@ CREATE TABLE `Rides` (
   `returnDate` date DEFAULT NULL,
   `returnTime` time DEFAULT NULL,
   PRIMARY KEY (`listingID`),
-  CONSTRAINT `Rides_ibfk_1` FOREIGN KEY (`listingID`) REFERENCES `Listings` (`listingID`)
+  CONSTRAINT `fk_rideListing` FOREIGN KEY (`listingID`) REFERENCES `Listings` (`listingID`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
