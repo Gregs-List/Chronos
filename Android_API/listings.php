@@ -15,7 +15,7 @@
     $info = array();
     $counter = 0;
     while ($row = mysql_fetch_assoc($result)){
-        if ($counter < 10) {
+        if ($counter < 30) {
         $listingID = $row['listingID'];
         $userListingID = $row['userID'];
         $title = $row['title'];
