@@ -1,0 +1,67 @@
+<?PHP
+
+	$con = mysql_connect("localhost", "listAdmin", "hermes");
+	if(!$con)
+	{
+		die('Could not connect: ' . mysql_error());
+	}
+	mysql_select_db("GregsList", $con)
+		or die("Unable to select database:" . mysql_error() . "<br>");
+/*	$userID = $_SESSION['userID'];
+	$title = $_POST['title'];
+	$category = $_POST['category'];
+	$description = $_POST['description'];
+	$price = $_POST['price'];*/
+
+	$last = mysql_query("SELECT photoID FROM Photos ORDER BY photoID DESC LIMIT 1"); 
+	if(!$last){
+		echo 'SELECT photoID failed. <br> ';}
+	$lastPhoto = mysql_fetch_array($last, MYSQL_ASSOC); 		
+	$lastPhotoID = $lastPhoto['photoID'];
+	$photoID = $lastPhotoID + 1;
+
+
+	$allowedExts = array("gif", "jpeg", "jpg", "png");
+	$temp = explode(".", $_FILES["file"]["name"]);
+	$extension = end($temp);
+	if(!empty($_FILES["file"])){
+	echo 'test: if(!empty($$_FILES[\"file\"]))<br> ';
+}
+	if ((($_FILES["file"]["type"] == "image/gif")
+	|| ($_FILES["file"]["type"] == "image/jpeg")
+	|| ($_FILES["file"]["type"] == "image/jpg")
+	|| ($_FILES["file"]["type"] == "image/pjpeg")
+	|| ($_FILES["file"]["type"] == "image/x-png")
+	|| ($_FILES["file"]["type"] == "image/png"))
+	&& ($_FILES["file"]["size"] < 5000000)
+	&& in_array($extension, $allowedExts))
+  {	
+  	echo 'test: if image is of allowed type and size<br> ';
+  if ($_FILES["file"]["error"] > 0)
+    {
+    echo "Return Code: " . $_FILES["file"]["error"] . "<br> ";
+    }
+  else
+    {
+    if (file_exists("upload/" . $photoID))
+      {
+      echo $_FILES["file"]["name"] . " already exists. <br> ";
+      }
+    else
+      {
+	$photoUrl = $photoID . $_FILES["file"]["type"];
+      move_uploaded_file($_FILES["file"]["tmp_name"],
+      "userUploads/" . $photoUrl);
+	$fileQuery = "INSERT INTO Photos VALUES (last_insert_id(), '$photoID', '$photoUrl')";
+	mysql_query($fileQuery);
+      echo "Stored in: " . "userUploads/" . $photoUrl . "<br> ";
+      }
+    }
+  }
+else
+  {
+  echo "Invalid file<br>\n";
+  }
+
+
+?>
