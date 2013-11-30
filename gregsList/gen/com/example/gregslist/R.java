@@ -24,17 +24,23 @@ public final class R {
         public static final int actionbar_background=0x7f020000;
         public static final int background=0x7f020001;
         public static final int background2=0x7f020002;
-        public static final int booklauncher=0x7f020003;
-        public static final int greg_launcher=0x7f020004;
-        public static final int ic_launcher=0x7f020005;
-        public static final int login=0x7f020006;
-        public static final int login2=0x7f020007;
-        public static final int logo=0x7f020008;
-        public static final int new_launcher=0x7f020009;
-        public static final int outline=0x7f02000a;
-        public static final int search=0x7f02000b;
-        public static final int sign_in=0x7f02000c;
-        public static final int signup=0x7f02000d;
+        public static final int banner_account=0x7f020003;
+        public static final int banner_home=0x7f020004;
+        public static final int banner_listing=0x7f020005;
+        public static final int banner_login=0x7f020006;
+        public static final int banner_signup=0x7f020007;
+        public static final int booklauncher=0x7f020008;
+        public static final int greg_launcher=0x7f020009;
+        public static final int ic_launcher=0x7f02000a;
+        public static final int launcher=0x7f02000b;
+        public static final int login=0x7f02000c;
+        public static final int login2=0x7f02000d;
+        public static final int logo=0x7f02000e;
+        public static final int new_launcher=0x7f02000f;
+        public static final int outline=0x7f020010;
+        public static final int search=0x7f020011;
+        public static final int sign_in=0x7f020012;
+        public static final int signup=0x7f020013;
     }
     public static final class id {
         public static final int SMU_email=0x7f08002b;

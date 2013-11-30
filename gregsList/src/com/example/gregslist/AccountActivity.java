@@ -21,6 +21,7 @@ import com.example.gregslist.LoginActivity.DownloadFilesTask;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -49,6 +50,11 @@ public class AccountActivity extends Activity {
 		
 		Typeface typeFace = Typeface.createFromAsset(this.getAssets(),"fonts/SuperClarendon.ttc");
 		Typeface bold = Typeface.createFromAsset(this.getAssets(), "fonts/CLARENDO.TTF");
+		
+		ActionBar actionbar = getActionBar();
+		actionbar.setBackgroundDrawable(getResources().getDrawable(R.drawable.banner_account));
+		actionbar.setDisplayShowHomeEnabled(false);
+		actionbar.setDisplayShowTitleEnabled(false);
 		
 		TextView title = (TextView) findViewById(R.id.title);
 		TextView category = (TextView) findViewById(R.id.category);

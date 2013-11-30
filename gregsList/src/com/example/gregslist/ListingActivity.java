@@ -17,6 +17,7 @@ import com.example.gregslist.UserHome.DownloadFilesTask;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -45,6 +46,11 @@ public class ListingActivity extends Activity {
 		
 		TextView contact = (TextView) findViewById(R.id.contact);
 		contact.setTypeface(bold);
+		
+		ActionBar actionbar = getActionBar();
+		actionbar.setBackgroundDrawable(getResources().getDrawable(R.drawable.banner_listing));
+		actionbar.setDisplayShowHomeEnabled(false);
+		actionbar.setDisplayShowTitleEnabled(false);
 		
 		TextView header = (TextView) findViewById(R.id.listings_header);
 		header.setTypeface(bold);

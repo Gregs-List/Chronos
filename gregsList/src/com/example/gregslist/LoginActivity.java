@@ -22,6 +22,7 @@ import org.apache.http.util.EntityUtils;
 import android.R.string;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -43,6 +44,11 @@ public class LoginActivity extends Activity {
     	EditText password = (EditText)findViewById(R.id.password);
     	password.setTypeface(typeFace);
         email.setTypeface(typeFace);
+        
+        ActionBar actionbar = getActionBar();
+		actionbar.setBackgroundDrawable(getResources().getDrawable(R.drawable.banner_login));
+		actionbar.setDisplayShowHomeEnabled(false);
+		actionbar.setDisplayShowTitleEnabled(false);
     }
 
 

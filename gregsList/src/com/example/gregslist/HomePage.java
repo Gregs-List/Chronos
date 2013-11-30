@@ -27,6 +27,9 @@ public class HomePage extends Activity {
 		}
 	});
 	
+	ActionBar actionbar = getActionBar();
+	actionbar.hide();
+	
 	Button signup = (Button) findViewById(R.id.signup);
 	signup.setOnClickListener(new View.OnClickListener() {
 		
