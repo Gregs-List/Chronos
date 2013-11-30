@@ -24,6 +24,7 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.Menu;
@@ -49,6 +50,25 @@ public class UserHome extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_user_home);
 		getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+		
+		Typeface typeFace = Typeface.createFromAsset(this.getAssets(),"fonts/SuperClarendon.ttc");
+		Typeface bold = Typeface.createFromAsset(this.getAssets(), "fonts/CLARENDO.TTF");
+		
+		Button home = (Button) findViewById(R.id.nav1);
+		home.setTypeface(typeFace);
+		
+		TextView heading = (TextView) findViewById(R.id.user_activity);
+		heading.setTypeface(bold);
+		
+		TextView title = (TextView) findViewById(R.id.title);
+		TextView category = (TextView) findViewById(R.id.category);
+		title.setTypeface(bold);
+		category.setTypeface(bold);
+		
+		EditText search_hint = (EditText) findViewById(R.id.search_text);
+		
+		search_hint.setTypeface(typeFace);
+		
 		Bundle b = getIntent().getExtras();
 		final int value = b.getInt("id");
 		//TextView id = (TextView) findViewById(R.id.user);
@@ -60,6 +80,7 @@ public class UserHome extends Activity {
 		new DownloadFilesTask().execute("http://ec2-50-112-191-198.us-west-2.compute.amazonaws.com/GregsList/Android_API/listings.php");
 		
 		Button account = (Button) findViewById(R.id.account);
+		account.setTypeface(typeFace);
 		account.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -73,6 +94,7 @@ public class UserHome extends Activity {
 		});
 		
 		Button logout = (Button) findViewById(R.id.logout);
+		logout.setTypeface(typeFace);
 		logout.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -138,7 +160,7 @@ public class DownloadFilesTask extends AsyncTask<String, Void, String> {
         	try {
     			JSONObject j = new JSONObject(result);
     			JSONArray jsonPerson = j.getJSONArray("listings");
-    			for (int counter = 0; counter < 10; counter++) {
+    			for (int counter = 0; counter < jsonPerson.length(); counter++) {
         			String listing_id = ((JSONObject)jsonPerson.get(counter)).getString("listingID");
         			String user_id = ((JSONObject)jsonPerson.get(counter)).getString("userListingID");
         			String title = ((JSONObject)jsonPerson.get(counter)).getString("title");

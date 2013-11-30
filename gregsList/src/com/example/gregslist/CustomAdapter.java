@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -34,8 +35,11 @@ public class CustomAdapter extends ArrayAdapter<String> {
 	    if (rowView == null) {
 	    rowView = inflater.inflate(R.layout.row_layout, parent, false);
 	    }
+	    Typeface typeFace = Typeface.createFromAsset(context.getAssets(),"fonts/CLARENDO.TTF");
 	    TextView textView = (TextView) rowView.findViewById(R.id.title);
+	    textView.setTypeface(typeFace);
 	    TextView textView2= (TextView) rowView.findViewById(R.id.category);
+	    textView2.setTypeface(typeFace);
 	    textView.setText(titles.get(position));
 	    textView2.setText(categories.get(position));
 	    return rowView;

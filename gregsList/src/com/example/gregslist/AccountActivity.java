@@ -24,6 +24,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -46,7 +47,32 @@ public class AccountActivity extends Activity {
 		//TextView id = (TextView) findViewById(R.id.user_id);
 		//id.setText(String.valueOf(value));
 		
+		Typeface typeFace = Typeface.createFromAsset(this.getAssets(),"fonts/SuperClarendon.ttc");
+		Typeface bold = Typeface.createFromAsset(this.getAssets(), "fonts/CLARENDO.TTF");
+		
+		TextView title = (TextView) findViewById(R.id.title);
+		TextView category = (TextView) findViewById(R.id.category);
+		title.setTypeface(bold);
+		category.setTypeface(bold);
+		
+		TextView account_heading = (TextView) findViewById(R.id.contact);
+		account_heading.setTypeface(bold);
+		
+		TextView email_account = (TextView) findViewById(R.id.email_account);
+		email_account.setTypeface(typeFace);
+		
+		TextView phone_account = (TextView) findViewById(R.id.phone);
+		phone_account.setTypeface(typeFace);
+		
+		TextView my_listings = (TextView) findViewById(R.id.mylisting);
+		my_listings.setTypeface(bold);
+		
+		
+		Button account = (Button) findViewById(R.id.account);
+		account.setTypeface(typeFace);
+		
 		Button logout = (Button) findViewById(R.id.logout);
+		logout.setTypeface(typeFace);
 		logout.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -60,6 +86,7 @@ public class AccountActivity extends Activity {
 		});
 		
 		Button home = (Button) findViewById(R.id.home);
+		home.setTypeface(typeFace);
 		home.setOnClickListener(new View.OnClickListener() {
 			
 			@Override

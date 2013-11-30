@@ -25,6 +25,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -37,6 +38,11 @@ public class LoginActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        EditText email = (EditText)findViewById(R.id.email);
+    	Typeface typeFace = Typeface.createFromAsset(this.getAssets(),"fonts/SuperClarendon.ttc");
+    	EditText password = (EditText)findViewById(R.id.password);
+    	password.setTypeface(typeFace);
+        email.setTypeface(typeFace);
     }
 
 
