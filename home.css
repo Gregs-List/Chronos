@@ -1,3 +1,21 @@
+.logo{
+    display: block;
+    margin-left: auto;
+    margin-right: auto; 
+    width:70%;
+    height:70%;
+    padding-top:20px;
+}
+
+#navBar {
+	width:70%;
+	margin-left: auto;
+    margin-right: auto; 
+    border:none;
+    background-color: #161a3f;
+    height:30px;
+}
+
 #photoBooth {
 	margin-top: .2em;
 	padding: 10px;
@@ -7,6 +25,15 @@
 		background-color: white;
 	border-radius: 2px;
 }	
+
+.nav_item {
+	color:white;
+	margin-left:10px;
+}
+
+#searchBar {
+	margin-right:10px;
+}
 
 #slideShow {	
 	position: relative; /*to contain position: absolute children*/
@@ -42,10 +69,13 @@
 /*This class should be used for the Gallery Photo that is on bottom*/
 .bottomPhoto {z-index: 1;}
 
-.banner {
+h2 {
+	margin-right:auto;
+	margin-left:auto;
 	text-align: center;
-	font-size: 1.25em;
+
 }
+
 #nav {
 	padding-top: 1em;
 	clear: both;
