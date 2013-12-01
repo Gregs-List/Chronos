@@ -1,23 +1,55 @@
-@font-face {
-	font-family:"Custom Font";
-	src:  url(SuperClarendon.ttc);
-}
-
 body {
-	font-family:"Custom Font";
+	font-family: "Cantata One";
+	font-weight: bold;
+	color: #161a3f;
 }
 
-#login, #createAccount{
+#login{
 	width:50%;
 	margin-left: auto;
 	margin-right: auto;
 }
 
-#logo{
+#description {
+	display:inline;
+	float:left;
+	margin-left:230px;
+	border:solid 1px;
+	padding:20px;
+	width:350px;
+	height:260px;
+}
+
+#createAccount {
+	display:inline-block;
+	float:left;
+	margin-left:20px;
+	border:solid 1px;
+	padding:20px;
+	width:350px;
+	height:260px;
+}
+
+#login {
+	margin-top: 20px;
+}
+
+.logo{
     display: block;
     margin-left: auto;
     margin-right: auto; 
     width:70%;
     height:70%;
+    padding-top:20px;
+}
+
+.info {
+	float:right;
+	clear:both;
+	position:relative;
+	padding-bottom: 6px;
+	padding-right:0em;
+	height:8px;
+	margin-right:5px;
 }
 
