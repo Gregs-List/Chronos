@@ -18,3 +18,13 @@ body > div {
 #accountNav a{
 	display: block;
 }
+
+#categoryBar {
+	margin-left:190px;
+	margin-top:15px;
+	padding-left:30px;
+	padding-right:30px;
+	border:solid 10px;
+	color: #161a3f;
+	padding-bottom:140px;
+}
