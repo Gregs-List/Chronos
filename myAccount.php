@@ -13,10 +13,10 @@
 
 	<body>
 		<nav id = "navBar"> 
-			<a href="home.html">Home</a>
-			<a href="myAccount.php">My Account</a>
-			<a href="createListing.html">Create Listing</a>
-			<a href="index.html">Logout</a>
+			<a class = "nav_item" href="home.html">Home</a>
+			<a class = "nav_item" href="myAccount.php">My Account</a>
+			<a class = "nav_item" href="createListing.html">Create Listing</a>
+			<a class = "nav_item" href="index.html">Logout</a>
 
 			<div id="searchBar" name="searchBar">
 					<input type="text" value="search" id="requestText">

@@ -28,3 +28,12 @@ body > div {
 	color: #161a3f;
 	padding-bottom:140px;
 }
+
+.logo{
+    display: block;
+    margin-left: auto;
+    margin-right: auto; 
+    width:70%;
+    height:70%;
+    padding-top:20px;
+}
