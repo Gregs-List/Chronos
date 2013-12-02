@@ -8,9 +8,37 @@ h1{
 	border: solid 2px;
 }
 
+#categoryBar {
+	margin-left:190px;
+	padding-left:30px;
+	padding-right:30px;
+	border:solid 10px;
+	color: #161a3f;
+	padding-bottom:74px;
+}
+
+.category {
+	color: #161a3f;
+}
+
+.category:hover {
+	color: blue;
+}
+
 #listing *{
 	float:none;
 	text-align: center;
+}
+
+#listing {
+	float:right;
+	margin-right: 190px;
+	border: solid 10px;
+	padding-left:20px;
+	padding-right:20px;
+    padding-top:10px;
+	padding-bottom:10px;
+	color: #161a3f;
 }
 
 .nav_item {

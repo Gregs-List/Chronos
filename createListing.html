@@ -26,12 +26,13 @@
 		<img src = "create_banner.png" alt= "create_banner" class="logo2"/>
 		<br>
 		<nav id = "categoryBar">
-			<h4>Categories</h4>
-				<a>Books</a>
-				<a>Furniture</a>
-				<a>Electronics</a>
-				<a>Bikes</a>
+			<h3>Categories</h3><h4>
+				<a class = "category" >Books</a>
+				<a class = "category">Furniture</a>
+				<a class = "category">Electronics</a>
+				<a class = "category">Bikes</a></h4>
 		</nav>
+		<div id ="containing">
 		<div id="listing">
 			<form name="newListing" action="insertListing.php" method="post" enctype="multipart/form-data">
 				<label for="category">Category</label>
@@ -146,9 +147,10 @@
 					Add an extra description here.
 				"></textarea><br>
 				<label for="photos">Photos</label>
-				<input type="file" name="photos" id="photos" multiple><br>
+				<input type="file" name="photos" id="photos" multiple><br><br>
 				<input type="submit" value="Create Listing" id="newListing" class="center">
 			</form>
+		</div>
 		</div>
 		<img src = "bottom_banner.png" alt= "Greg's List" class="logo"/>
 	</body>
