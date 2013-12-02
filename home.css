@@ -1,3 +1,19 @@
+#categoryBar {
+	margin-left:220px;
+	margin-top:95px;
+	padding:7px;
+	border:solid 6px;
+	color: #161a3f;
+}
+
+.category {
+	color: #161a3f;
+}
+
+.category:hover {
+	color: red;
+}
+
 .logo{
     display: block;
     margin-left: auto;
@@ -69,10 +85,11 @@
 /*This class should be used for the Gallery Photo that is on bottom*/
 .bottomPhoto {z-index: 1;}
 
-h2 {
+h1 {
 	margin-right:auto;
 	margin-left:auto;
 	text-align: center;  
+	color: #161a3f;
 
 }
 
