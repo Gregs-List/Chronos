@@ -1,9 +1,11 @@
 #categoryBar {
-	margin-left:220px;
+	margin-left:190px;
 	margin-top:15px;
-	padding:7px;
-	border:solid 6px;
+	padding-left:30px;
+	padding-right:30px;
+	border:solid 10px;
 	color: #161a3f;
+	padding-bottom:140px;
 }
 
 .category {
@@ -11,7 +13,7 @@
 }
 
 .category:hover {
-	color: red;
+	color: blue;
 }
 
 .logo{
@@ -45,8 +47,8 @@
 	margin-top: .2em;
 	padding: 10px;
 	width: 650px;
-	margin-left: auto;
-	margin-right: auto;
+	float:right;
+	margin-right:205px;
 		background-color: white;
 	border-radius: 2px;
 }	
