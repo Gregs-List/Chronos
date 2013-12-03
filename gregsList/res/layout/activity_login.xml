@@ -41,7 +41,6 @@
       android:layout_below="@id/password"
       android:layout_centerHorizontal="true"
       android:layout_marginTop="40dp"
-      android:onClick="sendMessage"
       android:background = "@drawable/login"
        />
         
