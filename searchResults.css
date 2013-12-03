@@ -7,7 +7,7 @@
 }
 
 #categoryBar {
-	margin-left:190px;
+	float:left;
 	padding-left:30px;
 	padding-right:30px;
 	border:solid 10px;
@@ -58,4 +58,8 @@
 #searchBar {
 	float:right;
 	margin-right:10px;
+}
+
+#results {
+	margin-top: 20px;
 }
