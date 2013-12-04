@@ -12,6 +12,7 @@
 	</head>
 
 	<body>
+	    <img src = "site_banner.png" alt= "Greg's List" class="logo"/>
 		<nav id = "navBar"> 
 			<a class = "nav_item" href="home.html">Home</a>
 			<a class = "nav_item" href="myAccount.php">My Account</a>
@@ -26,10 +27,10 @@
 
 		<nav id = "categoryBar">
 			<h4>Categories</h4>
-			<a>Books</a>
-			<a>Furniture</a>
-			<a>Electronics</a>
-			<a>Bikes</a>
+			<a class = "category">Books</a>
+			<a class = "category">Furniture</a>
+			<a class = "category">Electronics</a>
+			<a class = "category">Bikes</a>
 		</nav>
 
 		<div id="contactInfo">

@@ -37,3 +37,38 @@ body > div {
     height:70%;
     padding-top:20px;
 }
+
+.category {
+	color: #161a3f;
+}
+
+.category:hover {
+	color: blue;
+}
+
+.logo2{ 
+	display:block;
+    margin-left: auto;
+    margin-right: auto; 
+    width:70%;
+    height:70%;
+}
+
+#navBar {
+	display:block;
+	width:70%;
+	margin-left: auto;
+    margin-right: auto; 
+    border:none;
+    background-color: #161a3f;
+    height:30px;
+}
+
+.nav_item {
+	color:white;
+	margin-left:10px;
+}
+
+#searchBar {
+	margin-right:10px;
+}
