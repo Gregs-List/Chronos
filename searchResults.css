@@ -13,7 +13,8 @@
 	border:solid 10px;
 	color: #161a3f;
 	padding-bottom:74px;
-	margin-top: 30px;
+	margin-top: 15px;
+	margin-left: 190px;
 }
 
 .category {
@@ -38,14 +39,6 @@
     height:30px;
 }
 
-.logo2{ 
-	display:block;
-    margin-left: auto;
-    margin-right: auto; 
-    width:70%;
-    height:70%;
-}
-
 .logo{
     display: block;
     margin-left: auto;
@@ -53,6 +46,15 @@
     width:70%;
     height:70%;
     padding-top:20px;
+}
+
+.logo2{ 
+	margin-top:0px;
+	display:block;
+    margin-left: auto;
+    margin-right: auto; 
+    width:70%;
+    height:70%;
 }
 
 #searchBar {
