@@ -57,11 +57,37 @@
     height:70%;
 }
 
+.logo3{ 
+	margin-top:200px;
+	display:block;
+    margin-left: auto;
+    margin-right: auto; 
+    width:70%;
+    height:70%;
+    float:bottom;
+}
+
 #searchBar {
 	float:right;
 	margin-right:10px;
 }
 
 #results {
-	margin-top: 20px;
+	display:inline-block;
+	margin-top: 15px;
+	border:solid 10px;
+	color: #161a3f;
+    margin-left: 15px;
+    padding:10px;
+    padding-left:165px;
+    padding-right:165px;
+}
+
+#listingTable {
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#filterButtons {
+	display:inline;
 }
