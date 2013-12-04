@@ -22,7 +22,7 @@
 					<input type="submit" value="Search" id="searchButton">
 			</div>
 		</nav>
-
+		<img src = "account.png" alt= "Greg's List" class="logo"/>
 		<nav id = "categoryBar">
 			<h4>Categories</h4>
 			<a class = "category">Books</a>
