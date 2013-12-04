@@ -24,6 +24,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -101,7 +102,14 @@ public class LoginActivity extends Activity {
 		
     
     public class DownloadFilesTask extends AsyncTask<String, Void, String> {
-        
+    	ProgressDialog pd; 
+    	
+    	@Override
+    	protected void onPreExecute() {
+    		super.onPreExecute();
+    		pd=ProgressDialog.show(LoginActivity.this,"","Logging in...",false); 
+    	}
+    	
     	protected String doInBackground(String... urls) {
     		String url = urls[0];
     		String result = " ";
@@ -123,6 +131,7 @@ public class LoginActivity extends Activity {
         }
 
         protected void onPostExecute(String result) {
+        	pd.dismiss();
         	Context context = getApplicationContext();
         	Toast toast;
         	int duration = Toast.LENGTH_SHORT;

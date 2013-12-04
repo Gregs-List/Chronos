@@ -23,6 +23,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -123,7 +124,13 @@ public class SignUp extends Activity {
 	
 
     private class DownloadFilesTask extends AsyncTask<String, Void, String> {
+        ProgressDialog pd;
         
+        @Override
+        protected void onPreExecute() {
+        	super.onPreExecute();
+        	pd=ProgressDialog.show(SignUp.this,"","Signing Up...",false);
+        }
     	protected String doInBackground(String... urls) {
     		Log.d("ALD","Made it to async task");
     		EditText fname = (EditText) findViewById(R.id.fname);
@@ -163,6 +170,7 @@ public class SignUp extends Activity {
         }
 
         protected void onPostExecute(String result) {
+        	pd.dismiss();
         	int duration = Toast.LENGTH_SHORT;
         	Context context = getApplicationContext();
         	if (result.equals("error")) {

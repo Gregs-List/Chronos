@@ -23,6 +23,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -125,7 +126,14 @@ public class AccountActivity extends Activity {
 		return true;
 	}
 public class DownloadFilesTask extends AsyncTask<String, Void, String> {
+        ProgressDialog pd;
         
+        @Override
+        protected void onPreExecute() {
+        // TODO Auto-generated method stub
+        super.onPreExecute();
+        pd=ProgressDialog.show(AccountActivity.this,"","Loading Your Listings...",false);
+        }
     	protected String doInBackground(String... urls) {
     		String url = urls[0];
     		String url2 = urls[1]; 
@@ -248,6 +256,8 @@ public class DownloadFilesTask extends AsyncTask<String, Void, String> {
     		} catch (JSONException e) {
     			e.printStackTrace();
     		}
+        	
+        	pd.dismiss();
     }
 }
 }

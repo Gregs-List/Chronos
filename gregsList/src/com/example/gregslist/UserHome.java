@@ -22,6 +22,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -83,7 +84,6 @@ public class UserHome extends Activity {
 
 		    
 		new DownloadFilesTask().execute("http://ec2-50-112-191-198.us-west-2.compute.amazonaws.com/GregsList/Android_API/listings.php");
-		
 		Button account = (Button) findViewById(R.id.account);
 		account.setTypeface(typeFace);
 		account.setOnClickListener(new View.OnClickListener() {
@@ -139,7 +139,14 @@ public class UserHome extends Activity {
 	}
 	
 public class DownloadFilesTask extends AsyncTask<String, Void, String> {
-
+	    ProgressDialog pd;
+	    
+	    @Override
+	    protected void onPreExecute() {
+	    super.onPreExecute();
+	    pd=ProgressDialog.show(UserHome.this,"","Loading Listings...",false);
+	    }
+	    
     	protected String doInBackground(String... urls) {
     		String url = urls[0];
     		Log.d("ALD",url);
@@ -191,6 +198,7 @@ public class DownloadFilesTask extends AsyncTask<String, Void, String> {
     	        final ArrayAdapter adapter;
     		    adapter = new CustomAdapter(UserHome.this,titles,categories);
     	        listview.setAdapter(adapter);
+    	        pd.dismiss();
     	        
     	        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
