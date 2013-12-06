@@ -14,11 +14,19 @@ function listingLink(){
 }
 
 function radioFilter(e){
+
+		var data = window.location.search;
+
+	
+		if (data.substring(0, 1) == '?') {
+	    	data = data.substring(1);
+	  	}	
+
 		var request = new XMLHttpRequest();
 		var json;
 		links = [];
-		var data = e.target.value;
-		var url = "categorySearch.php?category="+data;
+		var cat = e.target.value;
+		var url = "catTermSearch.php?search="+data+"&category="+cat;
 		request.open("GET", url, true);
 
 		request.onreadystatechange = function(e)
@@ -97,7 +105,7 @@ function addRows(){
 	$('#listingTable').append('<tr><td>Title</td><td>Price</td><td>Description</td></tr>');
 	var len = links.length;
 	for(var x = 0; x < len; x++){
-		var row = '<tr><td>'+links[x].title+'</td><td>'+links[x].price+'</td><td>'+links[x].description+'</td></tr>';
+		var row = '<tr><td><a href="listing.html">'+links[x].title+'</a></td><td>'+links[x].price+'</td><td>'+links[x].description+'</td></tr>';
 		$('#listingTable').append(row);
 	}
 }
@@ -110,6 +118,8 @@ $(document).ready( function() {
 	$('input:radio').change(radioFilter);
 
 	var data = window.location.search;
+
+	
 	if (data.substring(0, 1) == '?') {
     	data = data.substring(1);
     	if(data == "Books" || data == "Furniture" || data == "Electronics" || data == "Bikes"){
