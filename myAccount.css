@@ -17,6 +17,7 @@
 	border:solid 10px;
 	color: #161a3f;
 	padding-bottom:140px;
+	float:left;
 }
 
 .logo{
@@ -60,5 +61,31 @@
 }
 
 #searchBar {
+	float:right;
 	margin-right:10px;
+}
+
+#contactInfo {
+	display:inline-block;
+	margin-top: 15px;
+	margin-left: 15px;
+    border:solid 10px;
+    padding:10px;
+    padding-top:0px;
+    padding-bottom: 0px;
+    width:663px;
+	color: #161a3f;
+}
+
+#myListings {
+	display:inline-block;
+	margin-top: 15px;
+	margin-left: 15px;
+    border:solid 10px;
+    padding:10px;
+    padding-top:0px;
+    padding-bottom: 0px;
+    width:663px;
+	color: #161a3f;
+	margin-bottom:80px;
 }
