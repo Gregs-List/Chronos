@@ -17,27 +17,27 @@
 	{
 		$category = $_GET['category']; 
 		$price = $_GET['price'];
-		$query = "SELECT title, description, price FROM Listings WHERE category='$category' and (title LIKE '%$search%' or description LIKE '%$search%') HAVING price <= '$price' ORDER BY dateListed DESC";
+		$query = "SELECT title, description, price, listingID FROM Listings WHERE category='$category' and (title LIKE '%$search%' or description LIKE '%$search%') HAVING price <= '$price' ORDER BY dateListed DESC";
 	}
 	elseif(isset($_GET['category']))
 	{
 		$category = $_GET['category'];
 
-		$query = "SELECT title, description, price FROM Listings WHERE category='$category' and (title LIKE '%$search%' or description LIKE '%$search%') ORDER BY dateListed DESC";
+		$query = "SELECT title, description, price, listingID FROM Listings WHERE category='$category' and (title LIKE '%$search%' or description LIKE '%$search%') ORDER BY dateListed DESC";
 	}
 	elseif(isset($_GET['price']))
 	{
 		$price = $_GET['price'];
 		
-		$query = "SELECT title, description, price FROM Listings WHERE price <= '$price' and (title LIKE '%$search%' or description LIKE '%$search%') ORDER BY dateListed DESC";		
+		$query = "SELECT title, description, price, listingID FROM Listings WHERE price <= '$price' and (title LIKE '%$search%' or description LIKE '%$search%') ORDER BY dateListed DESC";		
 	}
 	elseif($search==null)
 	{
-		$query = "SELECT title, description, price FROM Listings ORDER BY dateListed DESC";
+		$query = "SELECT title, description, price, listingID FROM Listings ORDER BY dateListed DESC";
 	}
 	else
 	{
-		$query = "SELECT title, description, price FROM Listings WHERE title LIKE '%$search%' or description LIKE '%$search%' ORDER BY dateListed DESC";
+		$query = "SELECT title, description, price, listingID FROM Listings WHERE title LIKE '%$search%' or description LIKE '%$search%' ORDER BY dateListed DESC";
 	}
 
 	$result = mysql_query($query);

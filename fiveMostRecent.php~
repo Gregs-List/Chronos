@@ -9,12 +9,7 @@
 	mysql_select_db("GregsList", $con)
 		or die("Unable to select database:" . mysql_error());
 
-	
-	#WRITE SEARCH FOR CATEGORY GREGBAR
-	#WRITE SEARCH FOR 5 MOST RECENT FOR HOME PAGE
-	#Full text index??
-
-	$query = "SELECT * FROM Listings ORDER BY dateListed DESC LIMIT 5;
+	$query = "SELECT title, description, price FROM Listings ORDER BY dateListed DESC LIMIT 5";
 		
 	$result = mysql_query($query);
 		
@@ -25,7 +20,7 @@
     		$rows[] = $r;
 	}
 
-	#print json_encode($rows);
-	return json_encode($rows);
+	echo json_encode($rows);
+	#return json_encode($rows);
 	
 ?>
