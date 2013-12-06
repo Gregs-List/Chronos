@@ -21,9 +21,12 @@ import com.example.gregslist.LoginActivity.DownloadFilesTask;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.app.ActionBar;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -46,7 +49,37 @@ public class AccountActivity extends Activity {
 		//TextView id = (TextView) findViewById(R.id.user_id);
 		//id.setText(String.valueOf(value));
 		
+		Typeface typeFace = Typeface.createFromAsset(this.getAssets(),"fonts/SuperClarendon.ttc");
+		Typeface bold = Typeface.createFromAsset(this.getAssets(), "fonts/CLARENDO.TTF");
+		
+		ActionBar actionbar = getActionBar();
+		actionbar.setBackgroundDrawable(getResources().getDrawable(R.drawable.banner_account));
+		actionbar.setDisplayShowHomeEnabled(false);
+		actionbar.setDisplayShowTitleEnabled(false);
+		
+		TextView title = (TextView) findViewById(R.id.title);
+		TextView category = (TextView) findViewById(R.id.category);
+		title.setTypeface(bold);
+		category.setTypeface(bold);
+		
+		TextView account_heading = (TextView) findViewById(R.id.contact);
+		account_heading.setTypeface(bold);
+		
+		TextView email_account = (TextView) findViewById(R.id.email_account);
+		email_account.setTypeface(typeFace);
+		
+		TextView phone_account = (TextView) findViewById(R.id.phone);
+		phone_account.setTypeface(typeFace);
+		
+		TextView my_listings = (TextView) findViewById(R.id.mylisting);
+		my_listings.setTypeface(bold);
+		
+		
+		Button account = (Button) findViewById(R.id.account);
+		account.setTypeface(typeFace);
+		
 		Button logout = (Button) findViewById(R.id.logout);
+		logout.setTypeface(typeFace);
 		logout.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -60,6 +93,7 @@ public class AccountActivity extends Activity {
 		});
 		
 		Button home = (Button) findViewById(R.id.home);
+		home.setTypeface(typeFace);
 		home.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -92,7 +126,14 @@ public class AccountActivity extends Activity {
 		return true;
 	}
 public class DownloadFilesTask extends AsyncTask<String, Void, String> {
+        ProgressDialog pd;
         
+        @Override
+        protected void onPreExecute() {
+        // TODO Auto-generated method stub
+        super.onPreExecute();
+        pd=ProgressDialog.show(AccountActivity.this,"","Loading Your Listings...",false);
+        }
     	protected String doInBackground(String... urls) {
     		String url = urls[0];
     		String url2 = urls[1]; 
@@ -215,6 +256,8 @@ public class DownloadFilesTask extends AsyncTask<String, Void, String> {
     		} catch (JSONException e) {
     			e.printStackTrace();
     		}
+        	
+        	pd.dismiss();
     }
 }
 }

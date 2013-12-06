@@ -21,14 +21,19 @@ import com.example.gregslist.LoginActivity.DownloadFilesTask;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.app.ActionBar;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class SignUp extends Activity {
@@ -44,6 +49,23 @@ public class SignUp extends Activity {
 		final EditText password2 = (EditText) findViewById(R.id.password_signup_two);
     	final int duration = Toast.LENGTH_SHORT;
 		final Context context = getApplicationContext();
+		
+		ActionBar actionbar = getActionBar();
+		actionbar.setBackgroundDrawable(getResources().getDrawable(R.drawable.banner_signup));
+		actionbar.setDisplayShowHomeEnabled(false);
+		actionbar.setDisplayShowTitleEnabled(false);
+		
+		Typeface typeFace = Typeface.createFromAsset(this.getAssets(),"fonts/SuperClarendon.ttc");
+		Typeface bold = Typeface.createFromAsset(this.getAssets(), "fonts/CLARENDO.TTF");
+		
+		TextView header = (TextView) findViewById(R.id.signup_text);
+		header.setTypeface(bold);
+		
+		fname.setTypeface(typeFace);
+		lname.setTypeface(typeFace);
+		email.setTypeface(typeFace);
+		password.setTypeface(typeFace);
+		password2.setTypeface(typeFace);
 		
 		final Button sign_in = (Button) findViewById(R.id.sign_up_button);
 		
@@ -102,7 +124,13 @@ public class SignUp extends Activity {
 	
 
     private class DownloadFilesTask extends AsyncTask<String, Void, String> {
+        ProgressDialog pd;
         
+        @Override
+        protected void onPreExecute() {
+        	super.onPreExecute();
+        	pd=ProgressDialog.show(SignUp.this,"","Signing Up...",false);
+        }
     	protected String doInBackground(String... urls) {
     		Log.d("ALD","Made it to async task");
     		EditText fname = (EditText) findViewById(R.id.fname);
@@ -142,6 +170,7 @@ public class SignUp extends Activity {
         }
 
         protected void onPostExecute(String result) {
+        	pd.dismiss();
         	int duration = Toast.LENGTH_SHORT;
         	Context context = getApplicationContext();
         	if (result.equals("error")) {

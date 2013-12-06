@@ -15,8 +15,6 @@ session_start();
 	$description = $_POST['description'];
 	$itemName = $_POST['itemName'];
 	$price = $_POST['price'];
-
-	echo $_POST['description'] . "<br>";
 	
 	$last = mysql_query("SELECT photoID FROM Photos ORDER BY DESC LIMIT 1"); 
 	$lastPhoto = mysql_fetch_array($last, MYSQL_ASSOC); 		
@@ -28,22 +26,22 @@ session_start();
 
 	if($category=="Bikes")
 	{
-		$catQuery = "INSERT INTO Bikes VALUES(last_insert_id(), '$_POST[bikeTypeID]', '$_POST[make]', '$_POST[model]')";
+		$catQuery = "INSERT INTO Bikes VALUES(last_insert_id(), '$_POST[bikeTypeID]', '$_POST[bMake]', '$_POST[bModel]')";
 	}
 	
 	if($category=="Books")
 	{
-		$catQuery = "INSERT INTO Books VALUES(last_insert_id(), '$_POST[bookTypeID]', '$_POST[title]', '$_POST[author]', '$_POST[isbn]', '$_POST[assignedCourse]', '$_POST[conditionID]')";
+		$catQuery = "INSERT INTO Books VALUES(last_insert_id(), '$_POST[bookTypeID]', '$_POST[bookTitle]', '$_POST[author]', '$_POST[isbn]', '$_POST[assignedCourse]', '$_POST[bookCondition]')";
 	}
 
 	if($category=="Electronics")
 	{
-		$catQuery = "INSERT INTO Electronics VALUES(last_insert_id(), '$_POST[electronicsTypeID]', '$_POST[make]', '$_POST[model]', '$_POST[size]')";
+		$catQuery = "INSERT INTO Electronics VALUES(last_insert_id(), '$_POST[electronicsTypeID]', '$_POST[eMake]', '$_POST[eModel]', NULL)";
 	}
 
 	if($category=="Furniture")
 	{
-		$catQuery = "INSERT INTO Bikes VALUES(last_insert_id(), '$_POST[furnitureTypeID]', '$_POST[conditionID]')";
+		$catQuery = "INSERT INTO Bikes VALUES(last_insert_id(), '$_POST[furnitureTypeID]', '$_POST[furnitureCondition]')";
 	}
 
 	if($category=="Meetups")

@@ -8,7 +8,7 @@
 	</head>
 
 	<body>
-		<img src = "logo.jpg" alt= "Greg's List" id="logo"/>
+		<img src = "site_banner.png" alt= "Greg's List" class="logo"/>
 		<div id = "login">
 			<form name="login" action="login.php" method="post" >
 				<label  for="email">SMU Email Address:</label>
@@ -19,21 +19,26 @@
 			</form>
 		</div>
 		<br>
+		<div id = "description">
+		<h3><center>Welcome to Greg's List!</center></h3>
+		<h4>
+		Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. and scrambled it to make a type</h4></div>
 		<div id = "createAccount">
-			<h3>New to Greg's List? Sign up here!</h3>
+			<h3><center>New to Greg's List? Sign up here!</center></h3>
 			<form name="info" action="GregRegister.php" method="post">
 				<label  for="fName">First Name:</label>
-				<input type="text" name="fname" id="fName" pattern = "[a-zA-Z]+" class = "info" title="Alphabetic characters only" required><br>
-				<label  for="lName">Last Name:</label>
-				<input type="text" name="lname" id="lName" pattern = "[a-zA-Z]+" class = "info" title="Alphabetic characters only" required><br>
+				<input type="text" name="fname" id="fName" pattern = "[a-zA-Z]+" class = "info" title="Alphabetic characters only" required>
+				<br><br><label  for="lName">Last Name:</label>
+				<input type="text" name="lname" id="lName" pattern = "[a-zA-Z]+" class = "info" title="Alphabetic characters only" required><br><br>
 				<label  for="newEmail">SMU Email Address:</label>
-				<input type="text" name="email" id="newEmail" pattern = ".+\@.+\..+" class = "info" title="Enter a valid SMU email" required><br>
+				<input type="text" name="email" id="newEmail" pattern = ".+\@.+\..+" class = "info" title="Enter a valid SMU email" required><br><br>
 				<label  for="newPassword">Password:</label>
-				<input type="password" name="password" id="newPassword" class = "info" pattern = ".{8,}" title = "Enter at least 8 characters" placeholder="8 or more characters" required><br>
+				<input type="password" name="password" id="newPassword" class = "info" pattern = ".{8,}" title = "Enter at least 8 characters" placeholder="8 or more characters" required><br><br>
 				<label  for="reEnterPassword">Re-enter Password:</label>
 				<input type="password" name="reEnterPassword" id="reEnterPassword" class= "info" pattern = ".{8,}" title = "Reenter your password" required><br>
-				<input type="submit" value="Sign Up" id="signUp">
+				<br><center><input type="submit" value="Sign Up" id="signUp"></center>
 			</form>
 		</div>
+    <img src = "bottom_banner.png" alt= "Greg's List" class="logo"/>
 	</body>
 </html>

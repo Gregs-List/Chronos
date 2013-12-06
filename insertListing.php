@@ -9,32 +9,43 @@ session_start();
 	mysql_select_db("GregsList", $con)
 		or die("Unable to select database:" . mysql_error());
 	$userID = $_SESSION['userID'];
-	$title = $_POST['title'];
+	$title = addslashes($_POST['title']);
 	$category = $_POST['category'];
-	$description = $_POST['description'];
+	$description = addslashes($_POST['description']);
 	$price = $_POST['price'];
 
-/*	$last = mysql_query("SELECT photoID FROM Photos ORDER BY DESC LIMIT 1"); 
+	$last = mysql_query("SELECT photoID FROM Photos ORDER BY photoID DESC LIMIT 1"); 
+	if(!$last){
+		echo 'SELECT photoID failed. <br> ';}
 	$lastPhoto = mysql_fetch_array($last, MYSQL_ASSOC); 		
 	$lastPhotoID = $lastPhoto['photoID'];
 	$photoID = $lastPhotoID + 1;
-*/
+	echo "Last photo ID: " . $lastPhotoID . "<br>";
+	echo "New photo ID: " . $photoID . "<br>";
+
 	$listQuery = "INSERT INTO Listings VALUES(NULL, '$userID', '$title',NULL, '$category', '$price', '$description')";
 
 
 	if($category=="Bikes")
 	{
-		$catQuery = "INSERT INTO Bikes VALUES(last_insert_id(), '$_POST[bikeTypeID]', '$_POST[bMake]', '$_POST[bModel]')";
+		$make = addslashes($_POST['bMake']);
+		$model = addslashes($_POST['bModel']);
+		$catQuery = "INSERT INTO Bikes VALUES(last_insert_id(), '$_POST[bikeTypeID]', '$make', '$model')";
 	}
 	
 	if($category=="Books")
 	{
-		$catQuery = "INSERT INTO Books VALUES(last_insert_id(), '$_POST[bookTypeID]', '$_POST[bookTitle]', '$_POST[author]', '$_POST[isbn]', '$_POST[assignedCourse]', '$_POST[bookCondition]')";
+		$title = addslashes($_POST['bookTitle']);
+		$author = addslashes($_POST['author']);
+		$course = addslashes($_POST['assignedCourse']);
+		$catQuery = "INSERT INTO Books VALUES(last_insert_id(), '$_POST[bookTypeID]', '$title', '$author', '$_POST[isbn]', '$course', '$_POST[bookCondition]')";
 	}
 
 	if($category=="Electronics")
 	{
-		$catQuery = "INSERT INTO Electronics VALUES(last_insert_id(), '$_POST[electronicsTypeID]', '$_POST[eMake]', '$_POST[eModel]', NULL)";
+		$make = addslashes($_POST['eMake']);
+		$model = addslashes($_POST['eModel']);
+		$catQuery = "INSERT INTO Electronics VALUES(last_insert_id(), '$_POST[electronicsTypeID]', '$make', '$model', NULL)";
 	}
 
 	if($category=="Furniture")
@@ -44,7 +55,8 @@ session_start();
 
 	if($category=="Meetups")
 	{
-		$catQuery = "INSERT INTO Meetups VALUES(last_insert_id(), '$_POST[meetupTypeID]', '$_POST[location]', '$_POST[date]', '$_POST[time]')";
+		$location = addslashes($_POST['location']);
+		$catQuery = "INSERT INTO Meetups VALUES(last_insert_id(), '$_POST[meetupTypeID]', '$location', '$_POST[date]', '$_POST[time]')";
 	}
 
 	if($category=="Miscellaneous")
@@ -58,48 +70,54 @@ session_start();
 	}
 
 
-	/*$allowedExts = array("gif", "jpeg", "jpg", "png");
-	$temp = explode(".", $_FILES["file"]["name"]);
+	$allowedExts = array("gif", "jpeg", "jpg", "png");
+	$temp = explode(".", $_FILES["photos"]["name"]);
 	$extension = end($temp);
-	if(!empty($_FILES["file"])){
-	echo 'test';
-}
-	if ((($_FILES["file"]["type"] == "image/gif")
-	|| ($_FILES["file"]["type"] == "image/jpeg")
-	|| ($_FILES["file"]["type"] == "image/jpg")
-	|| ($_FILES["file"]["type"] == "image/pjpeg")
-	|| ($_FILES["file"]["type"] == "image/x-png")
-	|| ($_FILES["file"]["type"] == "image/png"))
-	&& ($_FILES["file"]["size"] < 200000)
+	if(empty($_FILES["photos"])){echo 'No photo to upload.<br> ';}
+	
+	elseif ((($_FILES["photos"]["type"] == "image/gif")
+	|| ($_FILES["photos"]["type"] == "image/jpeg")
+	|| ($_FILES["photos"]["type"] == "image/jpg")
+	|| ($_FILES["photos"]["type"] == "image/pjpeg")
+	|| ($_FILES["photos"]["type"] == "image/x-png")
+	|| ($_FILES["photos"]["type"] == "image/png"))
+	&& ($_FILES["photos"]["size"] < 5000000)
 	&& in_array($extension, $allowedExts))
   {	
-  	echo 'test';
-  if ($_FILES["file"]["error"] > 0)
-    {
-    echo "Return Code: " . $_FILES["file"]["error"] . "<br>";
-    }
-  else
-    {
-    if (file_exists("upload/" . $photoID))
-      {
-      echo $_FILES["file"]["name"] . " already exists. ";
-      }
-    else
-      {
-	$photoUrl = $photoID . $_FILES["file"]["type"];
-      move_uploaded_file($_FILES["file"]["tmp_name"],
-      "userUploads/" . $photoUrl);
-	$fileQuery = "INSERT INTO Photos VALUES (last_insert_id(), '$photoID', '$photoUrl')";
-	mysql_query($fileQuery);
-      echo "Stored in: " . "userUploads/" . $photoUrl;
-      }
-    }
+	 	echo 'Image is of allowed type and size.<br> ';
+		if ($_FILES["photos"]["error"] > 0)
+		  {
+		  echo "Return Code: " . $_FILES["photos"]["error"] . "<br> ";
+		  }
+		else
+		  {
+			$photoUrl = $photoID . "." . $extension;
+		  if (file_exists("User_Photos/" . $photoURL))
+		    {
+		    echo $_FILES["photos"]["name"] . " already exists. <br> ";
+		    }
+		  else
+		  {
+				echo $photoUrl . "<br>";
+						move_uploaded_file($_FILES["photos"]["tmp_name"],
+						"User_Photos/" . $photoUrl);
+				$fileQuery = "INSERT INTO Photos VALUES (last_insert_id(), '$photoID', '$photoUrl')";
+				$ins=mysql_query($fileQuery);
+				if(!$ins)
+				{
+					$message = 'Insert into Photos table failed: ' . mysql_error() . '<br>';
+					$message .= 'Whole statement: ' . $fileQuery;
+				}
+				else {echo "Stored in: " . "User_Photos/" . $photoUrl . "<br> ";}				 
+		  }
+		}
   }
 else
   {
-  echo "Invalid file";
+  echo "Invalid file<br>\n";
   }
-*/
+
+
 	// begin insert transaction
 	mysql_query("SET AUTOCOMMIT=0");
 	mysql_query("START TRANSACTION");
@@ -123,6 +141,15 @@ else
     $message .= 'Whole statement: ' . $query;
     die($message);
 	}
+
+/*	// insert into Photos
+	$fileQuery = "INSERT INTO Photos VALUES (last_insert_id(), '$photoID', '$photoUrl')";
+	mysql_query($fileQuery);
+	if(!$fileQuery)
+	{
+		$message = 'Insert into Photos table failed: ' . mysql_error() . '<br>';
+		$message .= 'Whole statement: ' . $query;
+	}*/
 
 	// commit changes
 	$query="COMMIT";

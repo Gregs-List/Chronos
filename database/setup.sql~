@@ -26,7 +26,7 @@ dateListed TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 category VARCHAR(20),
 price DECIMAL(7,2),
 description VARCHAR(500),
-FOREIGN KEY (userID) REFERENCES Users(userID)
+CONSTRAINT fk_user FOREIGN KEY (userID) REFERENCES Users(userID) ON DELETE CASCADE
 ) engine = innodb;
 
 # create the ConditionLookup table
@@ -47,8 +47,8 @@ listingID INT primary key,
 bikeTypeID INT,
 make VARCHAR(20),
 model VARCHAR(20),
-FOREIGN KEY (listingID) REFERENCES Listings(listingID),
-FOREIGN KEY (bikeTypeID) REFERENCES BikeType(bikeTypeID)
+CONSTRAINT fk_bikeListing FOREIGN KEY (listingID) REFERENCES Listings(listingID) ON DELETE CASCADE,
+CONSTRAINT fk_bikeType FOREIGN KEY (bikeTypeID) REFERENCES BikeType(bikeTypeID)
 ) engine = innodb;
 
 # create the BookType table
@@ -66,9 +66,9 @@ author VARCHAR(100),
 isbn VARCHAR(20),
 assignedCourse VARCHAR(40),
 conditionID INT,
-FOREIGN KEY (listingID) REFERENCES Listings(listingID),
-FOREIGN KEY (bookTypeID) REFERENCES BookType(bookTypeID),
-FOREIGN KEY (conditionID) REFERENCES ConditionLookup(conditionID)
+CONSTRAINT fk_bookListing FOREIGN KEY (listingID) REFERENCES Listings(listingID) ON DELETE CASCADE,
+CONSTRAINT fk_bookType FOREIGN KEY (bookTypeID) REFERENCES BookType(bookTypeID),
+CONSTRAIN fk_bookCondition FOREIGN KEY (conditionID) REFERENCES ConditionLookup(conditionID)
 ) engine = innodb;
 
 # create the ElectronicsType table
@@ -84,8 +84,8 @@ electronicsTypeID INT,
 make VARCHAR(20),
 model VARCHAR(20),
 size VARCHAR(20),
-FOREIGN KEY (listingID) REFERENCES Listings(listingID),
-FOREIGN KEY (electronicsTypeID) REFERENCES ElectronicsType(electronicsTypeID)
+CONSTRAINT fk_elecListing FOREIGN KEY (listingID) REFERENCES Listings(listingID) ON DELETE CASCADE,
+CONSTRAINT fk_elecType FOREIGN KEY (electronicsTypeID) REFERENCES ElectronicsType(electronicsTypeID)
 ) engine = innodb;
 
 # create the FurnitureType table
@@ -99,9 +99,9 @@ create table if not exists Furniture(
 listingID INT primary key,
 furnitureTypeID INT,
 conditionID INT,
-FOREIGN KEY (listingID) REFERENCES Listings(listingID),
-FOREIGN KEY (furnitureTypeID) REFERENCES FurnitureType(furnitureTypeID),
-FOREIGN KEY (conditionID) REFERENCES ConditionLookup(conditionID)
+CONSTRAINT fk_furnListing FOREIGN KEY (listingID) REFERENCES Listings(listingID) ON DELETE CASCADE,
+CONSTRAINT fk_furnType FOREIGN KEY (furnitureTypeID) REFERENCES FurnitureType(furnitureTypeID),
+CONSTRAINT fk_furnCondition FOREIGN KEY (conditionID) REFERENCES ConditionLookup(conditionID)
 ) engine = innodb;
 
 # create the MeetupType table
@@ -117,15 +117,15 @@ meetupTypeID INT,
 location VARCHAR(50),
 date DATE,
 time TIME,
-FOREIGN KEY (listingID) REFERENCES Listings(listingID),
-FOREIGN KEY (meetupTypeID) REFERENCES MeetupType(meetupTypeID)
+CONSTRAINT fk_meetListing FOREIGN KEY (listingID) REFERENCES Listings(listingID) ON DELETE CASCADE,
+CONSTRAINT fk_meetType FOREIGN KEY (meetupTypeID) REFERENCES MeetupType(meetupTypeID)
 ) engine = innodb;
 
 # create the Miscellaneous table
 create table if not exists Miscellaneous(
 listingID INT primary key,
 itemName VARCHAR(30),
-FOREIGN KEY (listingID) REFERENCES Listings(listingID)
+CONSTRAINT fk_miscListing FOREIGN KEY (listingID) REFERENCES Listings(listingID) ON DELETE CASCADE
 ) engine = innodb;
 
 # create the Rides table
@@ -137,12 +137,68 @@ departureDate DATE,
 departureTime TIME,
 returnDate DATE,
 returnTime TIME,
-FOREIGN KEY (listingID) REFERENCES Listings(listingID)
+CONSTRAINT fk_rideListing FOREIGN KEY (listingID) REFERENCES Listings(listingID) ON DELETE CASCADE
 ) engine = innodb;
 
 #create the Photos table
 create table if not exists Photos(
 listingID INT,
-photoURL VARCHAR(20),
-FOREIGN KEY (listingID) REFERENCES Listings(listingID)
+photoID INT primary key,
+photoURL VARCHAR(20) NOT NULL UNIQUE,
+CONSTRAINT fk_photoListing FOREIGN KEY (listingID) REFERENCES Listings(listingID) ON DELETE CASCADE
 ) engine = innodb;
+
+
+# populate the lookup tables
+# mysql -u root -p --local-infile GregsList
+use GregsList;
+
+# populate the ConditionLookup table
+INSERT INTO ConditionLookup(conditionID, itemCondition) VALUES (0, 'unspecified');
+INSERT INTO ConditionLookup(conditionID, itemCondition) VALUES (1, 'new');
+INSERT INTO ConditionLookup(conditionID, itemCondition) VALUES (2, 'excellent');
+INSERT INTO ConditionLookup(conditionID, itemCondition) VALUES (3, 'light wear');
+INSERT INTO ConditionLookup(conditionID, itemCondition) VALUES (4, 'normal wear');
+INSERT INTO ConditionLookup(conditionID, itemCondition) VALUES (5, 'damaged');
+
+# populate the BikeType table
+INSERT INTO BikeType(bikeTypeID, bikeType) VALUES (0, 'other');
+INSERT INTO BikeType(bikeTypeID, bikeType) VALUES (1, 'road');
+INSERT INTO BikeType(bikeTypeID, bikeType) VALUES (2, 'city');
+INSERT INTO BikeType(bikeTypeID, bikeType) VALUES (3, 'mountain');
+INSERT INTO BikeType(bikeTypeID, bikeType) VALUES (4, 'cruiser');
+INSERT INTO BikeType(bikeTypeID, bikeType) VALUES (5, 'hybrid');
+INSERT INTO BikeType(bikeTypeID, bikeType) VALUES (6, 'unicycle');
+INSERT INTO BikeType(bikeTypeID, bikeType) VALUES (7, 'electric');
+
+# populate the BookType table
+INSERT INTO BookType(bookTypeID, bookType) VALUES (0, 'other');
+INSERT INTO BookType(bookTypeID, bookType) VALUES (1, 'textbook');
+INSERT INTO BookType(bookTypeID, bookType) VALUES (2, 'literature');
+INSERT INTO BookType(bookTypeID, bookType) VALUES (3, 'poetry');
+INSERT INTO BookType(bookTypeID, bookType) VALUES (4, 'reference');
+INSERT INTO BookType(bookTypeID, bookType) VALUES (5, 'nonfiction');
+INSERT INTO BookType(bookTypeID, bookType) VALUES (6, 'graphic novel');
+
+# populate the ElectronicsType table
+INSERT INTO ElectronicsType(electronicsTypeID, electronicsType) VALUES (0, 'other');
+INSERT INTO ElectronicsType(electronicsTypeID, electronicsType) VALUES (1, 'TV');
+INSERT INTO ElectronicsType(electronicsTypeID, electronicsType) VALUES (2, 'computer');
+INSERT INTO ElectronicsType(electronicsTypeID, electronicsType) VALUES (3, 'phone');
+INSERT INTO ElectronicsType(electronicsTypeID, electronicsType) VALUES (4, 'speakers');
+INSERT INTO ElectronicsType(electronicsTypeID, electronicsType) VALUES (5, 'iPod');
+
+# populate the FurnitureType table
+INSERT INTO FurnitureType(furnitureTypeID, furnitureType) VALUES (0, 'other');
+INSERT INTO FurnitureType(furnitureTypeID, furnitureType) VALUES (1, 'couch');
+INSERT INTO FurnitureType(furnitureTypeID, furnitureType) VALUES (2, 'bed');
+INSERT INTO FurnitureType(furnitureTypeID, furnitureType) VALUES (3, 'chair');
+INSERT INTO FurnitureType(furnitureTypeID, furnitureType) VALUES (4, 'table');
+INSERT INTO FurnitureType(furnitureTypeID, furnitureType) VALUES (5, 'futon');
+INSERT INTO FurnitureType(furnitureTypeID, furnitureType) VALUES (6, 'shelves');
+
+# populate MeetupType table
+INSERT INTO MeetupType(meetupTypeID, meetupType) VALUES (0, 'other');
+INSERT INTO MeetupType(meetupTypeID, meetupType) VALUES (1, 'study group');
+INSERT INTO MeetupType(meetupTypeID, meetupType) VALUES (2, 'social');
+INSERT INTO MeetupType(meetupTypeID, meetupType) VALUES (3, 'group meeting');

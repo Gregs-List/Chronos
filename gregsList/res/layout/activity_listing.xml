@@ -5,34 +5,38 @@
     tools:context=".AccountActivity"
     android:id ="@+id/listing_view" 
     android:orientation = "vertical"
-    android:gravity = "center_horizontal">
+    android:gravity = "center_horizontal"
+    android:background="#161a3f">
            <LinearLayout
         android:layout_height = "wrap_content" 
         android:layout_width = "wrap_content"
         android:orientation = "horizontal"
         android:id = "@+id/listing_navbar">
-    <Button 
+ 	<Button 
         android:id="@+id/home"
         android:layout_height = "35dp"
         android:layout_width = "112dp"
         android:text = "@string/nav1"
         android:textSize = "12dp"
-        android:layout_marginRight="-9dp"/>
-    
+        android:layout_marginRight="-9dp"
+    	android:textColor="#ffffffff"/> 
      <Button 
         android:id="@+id/account"
         android:layout_height = "35dp"
         android:layout_width = "114dp"
         android:text = "@string/nav2"
         android:textSize = "12dp"
-        android:layout_marginRight="-9dp"/>
+        android:layout_marginRight="-9dp"
+        android:textColor="#ffffffff"/>
      
       <Button 
         android:id= "@+id/logout"
         android:layout_height = "35dp"
         android:layout_width = "112dp"
         android:text = "@string/nav3"
-        android:textSize = "12dp"/>
+        android:textSize = "12dp"
+        android:textColor="#ffffffff"
+        android:textStyle = "bold"/>
     </LinearLayout>
 
   <LinearLayout
@@ -48,7 +52,9 @@
        android:layout_width="wrap_content"
        android:layout_height = "wrap_content"
        android:text= "@string/contact"
+       android:id="@+id/contact"
        android:textStyle="bold"
+       android:textSize = "17sp"
        android:textColor= "#10294f"
        />
        
@@ -91,6 +97,8 @@
          android:layout_width = "wrap_content"
          android:layout_height = "wrap_content"
          android:text = "@string/listings_header"
+         android:id = "@+id/listings_header"
+         android:textSize = "17sp"
          android:textStyle="bold"
          android:textColor= "#10294f"/>
     </LinearLayout>

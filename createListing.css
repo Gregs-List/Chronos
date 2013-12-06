@@ -8,7 +8,71 @@ h1{
 	border: solid 2px;
 }
 
+#categoryBar {
+	margin-left:190px;
+	padding-left:30px;
+	padding-right:30px;
+	border:solid 10px;
+	color: #161a3f;
+	padding-bottom:74px;
+}
+
+.category {
+	color: #161a3f;
+}
+
+.category:hover {
+	color: blue;
+}
+
 #listing *{
 	float:none;
 	text-align: center;
+}
+
+#listing {
+	float:right;
+	margin-right: 190px;
+	border: solid 10px;
+	padding-left:20px;
+	padding-right:20px;
+    padding-top:10px;
+	padding-bottom:10px;
+	color: #161a3f;
+}
+
+.nav_item {
+	color:white;
+	margin-left:10px;
+}
+
+#navBar {
+	display:block;
+	width:70%;
+	margin-left: auto;
+    margin-right: auto; 
+    border:none;
+    background-color: #161a3f;
+    height:30px;
+}
+
+.logo2{ 
+	display:block;
+    margin-left: auto;
+    margin-right: auto; 
+    width:70%;
+    height:70%;
+}
+
+.logo{
+    display: block;
+    margin-left: auto;
+    margin-right: auto; 
+    width:70%;
+    height:70%;
+    padding-top:20px;
+}
+
+#searchBar {
+	margin-right:10px;
 }

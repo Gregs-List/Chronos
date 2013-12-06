@@ -17,9 +17,14 @@ import com.example.gregslist.UserHome.DownloadFilesTask;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.app.ActionBar;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -36,6 +41,21 @@ public class ListingActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_listing);
+		
+		Typeface typeFace = Typeface.createFromAsset(this.getAssets(),"fonts/SuperClarendon.ttc");
+		Typeface bold = Typeface.createFromAsset(this.getAssets(), "fonts/CLARENDO.TTF");
+		
+		TextView contact = (TextView) findViewById(R.id.contact);
+		contact.setTypeface(bold);
+		
+		ActionBar actionbar = getActionBar();
+		actionbar.setBackgroundDrawable(getResources().getDrawable(R.drawable.banner_listing));
+		actionbar.setDisplayShowHomeEnabled(false);
+		actionbar.setDisplayShowTitleEnabled(false);
+		
+		TextView header = (TextView) findViewById(R.id.listings_header);
+		header.setTypeface(bold);
+		
 		Bundle b = getIntent().getExtras();
 		final String listingID = b.getString("id");
 		final String category = b.getString("category");
@@ -53,18 +73,23 @@ public class ListingActivity extends Activity {
 		LinearLayout listLayout= (LinearLayout) findViewById(R.id.details);
 		final TextView title_textview = new TextView(this);
 		title_textview.setText(full_title);
+		title_textview.setTypeface(typeFace);
 		listLayout.addView(title_textview);
 		final TextView description_textview = new TextView(this);
 		description_textview.setText(full_description);
+		description_textview.setTypeface(typeFace);
 		listLayout.addView(description_textview);
 		final TextView price_textview = new TextView(this);
 		price_textview.setText(full_price);
+		price_textview.setTypeface(typeFace);
 		listLayout.addView(price_textview);
 		final TextView date_textview = new TextView(this);
 		date_textview.setText(full_date);
+		date_textview.setTypeface(typeFace);
 		listLayout.addView(date_textview);
 		
         Button account = (Button) findViewById(R.id.account);
+		account.setTypeface(typeFace);
         account.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -78,6 +103,7 @@ public class ListingActivity extends Activity {
 		});
         
         Button home = (Button) findViewById(R.id.home);
+		home.setTypeface(typeFace);
         home.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -91,6 +117,7 @@ public class ListingActivity extends Activity {
 		});
         
         Button logout = (Button) findViewById(R.id.logout);
+		logout.setTypeface(typeFace);
         logout.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -118,13 +145,22 @@ public class ListingActivity extends Activity {
 		getMenuInflater().inflate(R.menu.listing, menu);
 		return true;
 	}
+	
 public class DownloadFilesTask extends AsyncTask<String, Void, String> {
-        
+	    ProgressDialog pd;
+	    
+	    @Override
+	    protected void onPreExecute() {
+	    super.onPreExecute();
+	    pd=ProgressDialog.show(ListingActivity.this,"","Loading Listing Details...",false);
+	    }
+	    
     	protected String doInBackground(String... urls) {
     		String url = urls[0];
     		String url2 = urls[1];
     		String result = " ";
     		String result2 = " ";
+    		
         	HttpClient client = new DefaultHttpClient();
         	HttpGet get = new HttpGet(url);
         	HttpGet get2 = new HttpGet(url2);
@@ -151,6 +187,7 @@ public class DownloadFilesTask extends AsyncTask<String, Void, String> {
         	} catch (IOException e) {
         		e.printStackTrace();
         	}
+        	
            return result + "#" + result2;
         }
 
@@ -159,6 +196,8 @@ public class DownloadFilesTask extends AsyncTask<String, Void, String> {
         	String result1 = separated[0];
         	String result2 = separated[1];
         	JSONObject object;
+        	final Typeface typeFace = Typeface.createFromAsset(getApplicationContext().getAssets(),"fonts/SuperClarendon.ttc");
+    		final Typeface bold = Typeface.createFromAsset(getApplicationContext().getAssets(), "fonts/CLARENDO.TTF");
 			try {
 				object = new JSONObject(result1);
 	        	String name = object.getString("name");
@@ -167,12 +206,15 @@ public class DownloadFilesTask extends AsyncTask<String, Void, String> {
 	        	String phone = object.getString("phoneNumber");
 	        	
 	        	TextView listing_name = (TextView) findViewById(R.id.listing_name);
+	        	listing_name.setTypeface(typeFace);
 	        	StringBuilder name_field = new StringBuilder().append("Name: ").append(name);
 	        	listing_name.setText(name_field.toString());
 	        	TextView listing_email = (TextView) findViewById(R.id.listing_email);
+	        	listing_email.setTypeface(typeFace);
 	        	StringBuilder email_field = new StringBuilder().append("Email: ").append(email);
 	        	listing_email.setText(email_field.toString());
 	        	TextView listing_location = (TextView) findViewById(R.id.listing_location);
+	        	listing_location.setTypeface(typeFace);
 	        	StringBuilder location_field;
 	        	if (location.equals("null")) {
 	        		 location_field = new StringBuilder().append("Location: No location");
@@ -182,6 +224,7 @@ public class DownloadFilesTask extends AsyncTask<String, Void, String> {
 	        	listing_location.setText(location_field.toString());
 	        	
 	        	TextView listing_phone = (TextView) findViewById(R.id.listing_phone);
+	        	listing_phone.setTypeface(typeFace);
 	        	StringBuilder phone_field;
 	        	if (phone.equals("null")) {
 	        		 phone_field = new StringBuilder().append("Phone Number: No phone number");
@@ -209,17 +252,20 @@ public class DownloadFilesTask extends AsyncTask<String, Void, String> {
 	        		
 	        		TextView make_textview = new TextView(ListingActivity.this);
 	        		StringBuilder full_make_textview = new StringBuilder().append("Make: ").append(make);
-	        		make_textview.setText(full_make_textview.toString());	        	
+	        		make_textview.setText(full_make_textview.toString());	   
+	        		make_textview.setTypeface(typeFace);
 	        		listLayout.addView(make_textview); 
 	        		
 	        		TextView model_textview = new TextView(ListingActivity.this);
 	        		StringBuilder full_model_textview = new StringBuilder().append("Model: ").append(model);
 	        		model_textview.setText(full_model_textview);
+	        		model_textview.setTypeface(typeFace);
 	        		listLayout.addView(model_textview);
 	        		
 	        		TextView type_textview = new TextView(ListingActivity.this);
 	        		StringBuilder full_type_textview = new StringBuilder().append("Type: ").append(type);
 	        		type_textview.setText(full_type_textview);
+	        		type_textview.setTypeface(typeFace);
 	        		listLayout.addView(type_textview);
 	        		
 	        	} else if (category.equals("Books")) {
@@ -232,32 +278,38 @@ public class DownloadFilesTask extends AsyncTask<String, Void, String> {
 	        		
 	        		TextView title_textview = new TextView(ListingActivity.this);
 	        		StringBuilder full_title_textview = new StringBuilder().append("Book Title: ").append(title);
-	        		title_textview.setText(full_title_textview.toString());	        	
+	        		title_textview.setText(full_title_textview.toString());	
+	        		title_textview.setTypeface(typeFace);
 	        		listLayout.addView(title_textview); 
 	        		
 	        		TextView author_textview = new TextView(ListingActivity.this);
 	        		StringBuilder full_author_textview = new StringBuilder().append("Author: ").append(author);
-	        		author_textview.setText(full_author_textview.toString());	        	
+	        		author_textview.setText(full_author_textview.toString());	
+	        		author_textview.setTypeface(typeFace);
 	        		listLayout.addView(author_textview); 
 	        		
 	        		TextView isbn_textview = new TextView(ListingActivity.this);
 	        		StringBuilder full_isbn_textview = new StringBuilder().append("ISBN: ").append(isbn);
-	        		isbn_textview.setText(full_isbn_textview.toString());	        	
+	        		isbn_textview.setText(full_isbn_textview.toString());	      
+	        		isbn_textview.setTypeface(typeFace);
 	        		listLayout.addView(isbn_textview); 
 	        		
 	        		TextView course_textview = new TextView(ListingActivity.this);
 	        		StringBuilder full_course_textview = new StringBuilder().append("Assigned Course: ").append(assignedCourse);
-	        	    course_textview.setText(full_course_textview.toString());	        	
+	        	    course_textview.setText(full_course_textview.toString());	    
+	        	    course_textview.setTypeface(typeFace);
 	        		listLayout.addView(course_textview); 
 	        		
 	        		TextView type_textview = new TextView(ListingActivity.this);
 	        		StringBuilder full_type_textview = new StringBuilder().append("Type: ").append(type);
-	        		type_textview.setText(full_type_textview.toString());	        	
+	        		type_textview.setText(full_type_textview.toString());	
+	        		type_textview.setTypeface(typeFace);
 	        		listLayout.addView(type_textview); 
 	        		
 	        		TextView condition_textview = new TextView(ListingActivity.this);
 	        		StringBuilder full_condition_textview = new StringBuilder().append("Condition: ").append(condition);
-	        		condition_textview.setText(full_condition_textview.toString());	        	
+	        		condition_textview.setText(full_condition_textview.toString());	 
+	        		condition_textview.setTypeface(typeFace);
 	        		listLayout.addView(condition_textview); 
 	        		
 	        	} else if (category.equals("Electronics")) {
@@ -268,22 +320,26 @@ public class DownloadFilesTask extends AsyncTask<String, Void, String> {
 	        		
 	        		TextView make_textview = new TextView(ListingActivity.this);
 	        		StringBuilder full_make_textview = new StringBuilder().append("Make: ").append(make);
-	        		make_textview.setText(full_make_textview.toString());	        	
+	        		make_textview.setText(full_make_textview.toString());	     
+	        		make_textview.setTypeface(typeFace);
 	        		listLayout.addView(make_textview); 
 	        		
 	        		TextView model_textview = new TextView(ListingActivity.this);
 	        		StringBuilder full_model_textview = new StringBuilder().append("Model: ").append(model);
 	        		model_textview.setText(full_model_textview);
+	        		model_textview.setTypeface(typeFace);
 	        		listLayout.addView(model_textview);
 	        		
 	        		TextView type_textview = new TextView(ListingActivity.this);
 	        		StringBuilder full_type_textview = new StringBuilder().append("Type: ").append(type);
 	        		type_textview.setText(full_type_textview);
+	        		type_textview.setTypeface(typeFace);
 	        		listLayout.addView(type_textview);
 	        		
 	        		TextView size_textview = new TextView(ListingActivity.this);
 	        		StringBuilder full_size_textview = new StringBuilder().append("Size: ").append(size);
 	        		size_textview.setText(full_size_textview);
+	        		size_textview.setTypeface(typeFace);
 	        		listLayout.addView(size_textview);
 	        		
 	        	} else if (category.equals("Furniture")) {
@@ -294,11 +350,13 @@ public class DownloadFilesTask extends AsyncTask<String, Void, String> {
 	        		TextView type_textview = new TextView(ListingActivity.this);
 	        		StringBuilder full_type_textview = new StringBuilder().append("Type: ").append(type);
 	        		type_textview.setText(full_type_textview);
+	        		type_textview.setTypeface(typeFace);
 	        		listLayout.addView(type_textview);
 	        		
 	        		TextView condition_textview = new TextView(ListingActivity.this);
 	        		StringBuilder full_condition_textview = new StringBuilder().append("Condition: ").append(condition);
-	        		condition_textview.setText(full_condition_textview.toString());	        	
+	        		condition_textview.setText(full_condition_textview.toString());	
+	        		condition_textview.setTypeface(typeFace);
 	        		listLayout.addView(condition_textview); 
 	        	
 	        	} else if (category.equals("Meetups")) {
@@ -311,21 +369,25 @@ public class DownloadFilesTask extends AsyncTask<String, Void, String> {
 	        		TextView type_textview = new TextView(ListingActivity.this);
 	        		StringBuilder full_type_textview = new StringBuilder().append("Type: ").append(type);
 	        		type_textview.setText(full_type_textview);
+	        		type_textview.setTypeface(typeFace);
 	        		listLayout.addView(type_textview);
 	        		
 	        		TextView location_textview = new TextView(ListingActivity.this);
 	        		StringBuilder full_location_textview = new StringBuilder().append("Location: ").append(location);
 	        		location_textview.setText(full_location_textview);
+	        		location_textview.setTypeface(typeFace);
 	        		listLayout.addView(location_textview);
 	        		
 	        		TextView date_textview = new TextView(ListingActivity.this);
 	        		StringBuilder full_date_textview = new StringBuilder().append("Date: ").append(date);
 	        		date_textview.setText(full_date_textview);
+	        		date_textview.setTypeface(typeFace);
 	        		listLayout.addView(date_textview);
 	        		
 	        		TextView time_textview = new TextView(ListingActivity.this);
 	        		StringBuilder full_time_textview = new StringBuilder().append("Time: ").append(time);
 	        		time_textview.setText(full_time_textview);
+	        		time_textview.setTypeface(typeFace);
 	        		listLayout.addView(time_textview);
 	        		
 	        	} else if (category.equals("Miscellaneous")) {
@@ -335,6 +397,7 @@ public class DownloadFilesTask extends AsyncTask<String, Void, String> {
 	        		TextView name_textview = new TextView(ListingActivity.this);
 	        		StringBuilder full_name_textview = new StringBuilder().append("Item Name: ").append(name);
 	        		name_textview.setText(full_name_textview);
+	        		name_textview.setTypeface(typeFace);
 	        		listLayout.addView(name_textview);
 	        		
 	        	} else if (category.equals("Rides")) {
@@ -349,66 +412,40 @@ public class DownloadFilesTask extends AsyncTask<String, Void, String> {
 	        		TextView leavingFrom_textview = new TextView(ListingActivity.this);
 	        		StringBuilder full_leavingFrom_textview = new StringBuilder().append("Leaving From: ").append(leavingFrom);
 	        		leavingFrom_textview.setText(full_leavingFrom_textview);
+	        		leavingFrom_textview.setTypeface(typeFace);
 	        		listLayout.addView(leavingFrom_textview);
 	        		
 	        		TextView goingTo_textview = new TextView(ListingActivity.this);
 	        		StringBuilder full_goingTo_textview = new StringBuilder().append("Going To: ").append(goingTo);
 	        		goingTo_textview.setText(full_goingTo_textview);
+	        		goingTo_textview.setTypeface(typeFace);
 	        		listLayout.addView(goingTo_textview);
 	        		
 	        		TextView departureDate_textview = new TextView(ListingActivity.this);
 	        		StringBuilder full_departureDate_textview = new StringBuilder().append("Departure Date: ").append(departureDate);
 	        		departureDate_textview.setText(full_departureDate_textview);
+	        		departureDate_textview.setTypeface(typeFace);
 	        		listLayout.addView(departureDate_textview);
 	        		
 	        		TextView returnDate_textview = new TextView(ListingActivity.this);
 	        		StringBuilder full_returnDate_textview = new StringBuilder().append("Return Date: ").append(returnDate);
 	        		returnDate_textview.setText(full_returnDate_textview);
+	        		returnDate_textview.setTypeface(typeFace);
 	        		listLayout.addView(returnDate_textview);
 	        		
 	        		TextView returnTime_textview = new TextView(ListingActivity.this);
 	        		StringBuilder full_returnTime_textview = new StringBuilder().append("Return Time: ").append(returnTime);
 	        		returnTime_textview.setText(full_returnTime_textview);
+	        		returnTime_textview.setTypeface(typeFace);
 	        		listLayout.addView(returnTime_textview);
 	        	}
-	        		
-	        	/*
-				String name = object2.getString("name");
-	        	String email = object2.getString("email");
-	        	String location = object2.getString("location");
-	        	String phone = object2.getString("phoneNumber");
-	        	
-	        	TextView listing_name = (TextView) findViewById(R.id.listing_name);
-	        	StringBuilder name_field = new StringBuilder().append("Name: ").append(name);
-	        	listing_name.setText(name_field.toString());
-	        	TextView listing_email = (TextView) findViewById(R.id.listing_email);
-	        	StringBuilder email_field = new StringBuilder().append("Email: ").append(email);
-	        	listing_email.setText(email_field.toString());
-	        	TextView listing_location = (TextView) findViewById(R.id.listing_location);
-	        	StringBuilder location_field;
-	        	if (location.equals("null")) {
-	        		 location_field = new StringBuilder().append("Location: No location");
-	        	} else {
-	        		location_field = new StringBuilder().append("Location: ").append(location);
-	        	}
-	        	listing_location.setText(location_field.toString());
-	        	
-	        	TextView listing_phone = (TextView) findViewById(R.id.listing_phone);
-	        	StringBuilder phone_field;
-	        	if (phone.equals("null")) {
-	        		 phone_field = new StringBuilder().append("Phone Number: No phone number");
-	        	} else {
-	        		phone_field = new StringBuilder().append("Phone Number: ").append(phone);
-	        	}
-	        	listing_phone.setText(phone_field.toString());
-	        	*/
-	        	
-	        	
+
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
 			
+		   pd.dismiss();
         }
-    }
- 
+        }
+        
 }
