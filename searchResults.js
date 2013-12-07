@@ -126,7 +126,7 @@ $(document).ready( function() {
 	
 	if (data.substring(0, 1) == '?') {
     	data = data.substring(1);
-    	if(data == "Books" || data == "Furniture" || data == "Electronics" || data == "Bikes"){
+    	if(data == "Books" || data == "Furniture" || data == "Electronics" || data == "Bikes" || data == "Miscellaneous"){
     		categoryFilter(data);
     	}
     	else{

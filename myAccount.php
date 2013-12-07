@@ -12,13 +12,13 @@
 	<body>
 	    <img src = "header.png" alt= "Greg's List" class="logo"/>
 		<nav id = "navBar"> 
-			<a class = "nav_item" href="home.html">Home</a>
+			<a class = "nav_item" href="home.php">Home</a>
 			<a class = "nav_item" href="myAccount.php">My Account</a>
 			<a class = "nav_item" href="createListing.html">Create Listing</a>
 			<a class = "nav_item" href="index.html">Logout</a>
 
 			<span id="search" name="searchBar">
-					<input type="text" value="search" id="requestText">
+					<input type="text" placeholder="search" id="requestText">
 					<input type="submit" value="" id="searchButton">
 			</span>
 		</nav>
@@ -27,7 +27,8 @@
 			<a class = "category">Books</a>
 			<a class = "category">Furniture</a>
 			<a class = "category">Electronics</a>
-			<a class = "category">Bikes</a></h4>
+			<a class = "category">Bikes</a>
+			<a class = "category">Miscellaneous</a></h4>
 		</nav>
 
 		<div id="contactInfo">
@@ -43,9 +44,8 @@
 
 		<div id="myListings">
 			<h3>My Listings</h3>
-			<?php 
+			<?php
 			session_start();
-			echo '<div> $_SESSION['userID']</div>';
 			include 'getListing.php';?>
 		</div>
 

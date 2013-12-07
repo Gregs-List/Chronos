@@ -1,5 +1,4 @@
 <?php
-	session_start();
 	$con = mysql_connect("localhost", "listAdmin", "hermes");
 	if(!$con)
 	{
@@ -9,7 +8,12 @@
 	mysql_select_db("GregsList", $con)
 		or die("Unable to select database:" . mysql_error());
 
-	$result = mysql_query("SELECT * FROM Listings WHERE userID = '$_SESSION[userID]' ORDER BY dateListed DESC");
+	session_start();
+	$session = $_SESSION['userID'];	
+	echo $session;
+
+
+	$result = mysql_query("SELECT * FROM Listings WHERE userID = '$session' ORDER BY dateListed DESC");
 	
 	#converts to json
 	$rows = array();
@@ -22,5 +26,5 @@
 
 	#If you want to see if correct json is printing use ---> print json_encode($rows);
 	
-	//return json_encode($rows);
+	//return json_encode($rows);*/
 ?>
