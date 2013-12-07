@@ -1,6 +1,6 @@
 <?PHP
 session_start();
-#edits existing listing in Listings and <Category> tables. Receives values from JavaScript
+#inserts into Listings and <Category> table. Receives values from JavaScript
 	$con = mysql_connect("localhost", "listAdmin", "hermes");
 	if(!$con)
 	{
@@ -13,7 +13,6 @@ session_start();
 	$category = $_POST['category'];
 	$description = addslashes($_POST['description']);
 	$price = $_POST['price'];
-	$listingID = $_POST['listingID'];
 
 	$last = mysql_query("SELECT photoID FROM Photos ORDER BY photoID DESC LIMIT 1"); 
 	if(!$last){
@@ -24,14 +23,14 @@ session_start();
 	echo "Last photo ID: " . $lastPhotoID . "<br>";
 	echo "New photo ID: " . $photoID . "<br>";
 
-	$listQuery = "REPLACE INTO Listings VALUES($listingID, '$userID', '$title',NULL, '$category', '$price', '$description')";
+	$listQuery = "INSERT INTO Listings VALUES(NULL, '$userID', '$title',NULL, '$category', '$price', '$description')";
 
 
 	if($category=="Bikes")
 	{
 		$make = addslashes($_POST['bMake']);
 		$model = addslashes($_POST['bModel']);
-		$catQuery = "REPLACE INTO Bikes VALUES('$listingID', '$_POST[bikeTypeID]', '$make', '$model')";
+		$catQuery = "INSERT INTO Bikes VALUES(last_insert_id(), '$_POST[bikeTypeID]', '$make', '$model')";
 	}
 	
 	if($category=="Books")
@@ -39,35 +38,35 @@ session_start();
 		$title = addslashes($_POST['bookTitle']);
 		$author = addslashes($_POST['author']);
 		$course = addslashes($_POST['assignedCourse']);
-		$catQuery = "REPLACE INTO Books VALUES('$listingID', '$_POST[bookTypeID]', '$title', '$author', '$_POST[isbn]', '$course', '$_POST[bookCondition]')";
+		$catQuery = "INSERT INTO Books VALUES(last_insert_id(), '$_POST[bookTypeID]', '$title', '$author', '$_POST[isbn]', '$course', '$_POST[bookCondition]')";
 	}
 
 	if($category=="Electronics")
 	{
 		$make = addslashes($_POST['eMake']);
 		$model = addslashes($_POST['eModel']);
-		$catQuery = "REPLACE INTO Electronics VALUES('$listingID', '$_POST[electronicsTypeID]', '$make', '$model', NULL)";
+		$catQuery = "INSERT INTO Electronics VALUES(last_insert_id(), '$_POST[electronicsTypeID]', '$make', '$model', NULL)";
 	}
 
 	if($category=="Furniture")
 	{
-		$catQuery = "REPLACE INTO Furniture VALUES('$listingID', '$_POST[furnitureTypeID]', '$_POST[furnitureCondition]')";
+		$catQuery = "INSERT INTO Furniture VALUES(last_insert_id(), '$_POST[furnitureTypeID]', '$_POST[furnitureCondition]')";
 	}
 
 	if($category=="Meetups")
 	{
 		$location = addslashes($_POST['location']);
-		$catQuery = "REPLACE INTO Meetups VALUES('$listingID', '$_POST[meetupTypeID]', '$location', '$_POST[date]', '$_POST[time]')";
+		$catQuery = "INSERT INTO Meetups VALUES(last_insert_id(), '$_POST[meetupTypeID]', '$location', '$_POST[date]', '$_POST[time]')";
 	}
 
 	if($category=="Miscellaneous")
 	{
-		$catQuery = "REPLACE INTO Miscellaneous VALUES('$listingID',NULL)";
+		$catQuery = "INSERT INTO Miscellaneous VALUES(last_insert_id(),NULL)";
 	}
 
 	if($category=="Rides")
 	{
-		$catQuery = "REPLACE INTO Rides VALUES('$listingID', '$_POST[leavingFrom]', '$_POST[goingTo]', '$_POST[departureDate]', '$_POST[departureTime]', '$_POST[returnDate]', '$_POST[returnTime]')";
+		$catQuery = "INSERT INTO Rides VALUES(last_insert_id(), '$_POST[leavingFrom]', '$_POST[goingTo]', '$_POST[departureDate]', '$_POST[departureTime]', '$_POST[returnDate]', '$_POST[returnTime]')";
 	}
 
 
@@ -102,11 +101,11 @@ session_start();
 				echo $photoUrl . "<br>";
 						move_uploaded_file($_FILES["photos"]["tmp_name"],
 						"User_Photos/" . $photoUrl);
-				$fileQuery = "REPLACE INTO Photos VALUES ('$listingID', '$photoID', '$photoUrl')";
+				$fileQuery = "INSERT INTO Photos VALUES (last_insert_id(), '$photoID', '$photoUrl')";
 				$ins=mysql_query($fileQuery);
 				if(!$ins)
 				{
-					$message = 'REPLACE into Photos table failed: ' . mysql_error() . '<br>';
+					$message = 'Insert into Photos table failed: ' . mysql_error() . '<br>';
 					$message .= 'Whole statement: ' . $fileQuery;
 				}
 				else {echo "Stored in: " . "User_Photos/" . $photoUrl . "<br> ";}				 
@@ -119,37 +118,38 @@ else
   }
 
 
-	// begin replace transaction
+	// begin insert transaction
 	mysql_query("SET AUTOCOMMIT=0");
 	mysql_query("START TRANSACTION");
 
-	// replace into Listings
+	// insert into Listings
 	$query=$listQuery;
 	$ins=mysql_query($query);
 	if(!$ins)
 	{
-		$message = 'Replace into Listings table failed: ' . mysql_error() . '<br>';
+		$message = 'Insert into Listings table failed: ' . mysql_error() . '<br>';
     $message .= 'Whole statement: ' . $query;
     die($message);
 	}
 
-	// replace into [category]
+	// insert into [category]
 	$query=$catQuery;
 	$ins=mysql_query($query);
 	if(!$ins)
 	{
-		$message = "Replace into $category failed: " . mysql_error() . '<br>';
+		$message = "Insert into $category failed: " . mysql_error() . '<br>';
     $message .= 'Whole statement: ' . $query;
     die($message);
 	}
 
-	// replace into Photos
-	$fileQuery = "REPLACE INTO Photos VALUES ('$listingID', '$photoID', '$photoUrl')";
+/*	// insert into Photos
+	$fileQuery = "INSERT INTO Photos VALUES (last_insert_id(), '$photoID', '$photoUrl')";
 	mysql_query($fileQuery);
 	if(!$fileQuery)
 	{
-		$message = 'Replace into Photos table failed: ' . mysql_error() . '<br>';
+		$message = 'Insert into Photos table failed: ' . mysql_error() . '<br>';
 		$message .= 'Whole statement: ' . $query;
+	}*/
 
 	// commit changes
 	$query="COMMIT";
