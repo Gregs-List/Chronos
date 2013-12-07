@@ -24,8 +24,10 @@
     }
     if($_POST['password'] != $database_password){
 
-        echo "<script type='text/javascript'>alert('Invalid username or Password. If you do not have an account, 
-            register below.');</script>";
+        echo '<script type="text/javascript">
+                window.location = "index.html";
+                alert("Invalid Username or Password.");
+              </script>';
     }
     else{
         header('Location: home.html');//Enter webpage to show if login credentials are valid

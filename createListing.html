@@ -49,14 +49,14 @@
 				<label for="title">Title</label>
 				<input type="text" name="title" id="title" required><br>
 				<label for="price">Price $</label>
-				<input type="text" name="price" id="price" placeholder="<$10,000.00" required><br>
+				<input type="text" name="price" id="price" placeholder="<$10,000.00" patter="/^\$?\d+(,\d{3})*(\.\d*)?$/"required><br>
 
 				
 
 
 				<div id="bookFields"  style="display:none">
 					<label for="BookType">Book Type</label>
-					<select id="BookType" name="bookTypeID">
+					<select id="BookType" name="bookTypeID" required>
 						<option value="1" selected="selected">Textbook</option>
 						<option value="2">Literature</option>
 						<option value="3">Poetry</option>
@@ -67,7 +67,7 @@
 					</select><br>
 
 					<label for="bookCondition">Book Codition</label>
-					<select id="bookCondition" name="bookCondition">
+					<select id="bookCondition" name="bookCondition" required>
 						<option value="1" selected="selected">New</option>
 						<option value="2">Excellent</option>
 						<option value="3">Light Wear</option>
@@ -77,7 +77,7 @@
 					</select><br> 
 
 					<label for="bookTitle">Book Title</label>
-					<input type="text" name="bookTitle" id="bookTitle"><br>
+					<input type="text" name="bookTitle" id="bookTitle" required><br>
 					<label for="author">Author</label>
 					<input type="text" name="author" id="author"><br>
 					<label for="isbn">ISBN</label>
@@ -88,7 +88,7 @@
 
 				<div id="furnitureFields" style="display:none" >
 					<label for="FurnitureType">Furniture Type</label>
-					<select id="FurnitureType" name="furnitureTypeID">
+					<select id="FurnitureType" name="furnitureTypeID" required>
 						<option value="1" selected="selected">Couch</option>
 						<option value="2">Bed</option>
 						<option value="3">Chair</option>
@@ -99,7 +99,7 @@
 					</select><br>
 
 					<label for="furnitureCondition">Furniture Codition</label>
-					<select id="furnitureCondition" name="furnitureCondition">
+					<select id="furnitureCondition" name="furnitureCondition" required>
 						<option value="1" selected="selected">New</option>
 						<option value="2">Excellent</option>
 						<option value="3">Light Wear</option>
@@ -111,7 +111,7 @@
 
 				<div id="electronicFields" style="display:none" >
 					<label for="ElectronicType">Electronic Type</label>
-					<select id="ElectronicType" name="electronicsTypeID">
+					<select id="ElectronicType" name="electronicsTypeID" required>
 						<option value="1" selected="selected">TV</option>
 						<option value="2">Computer</option>
 						<option value="3">Phone</option>
@@ -119,15 +119,15 @@
 						<option value="5">iPod</option>
 						<option value="0">Other</option>
 					</select><br>
-					<label for="eMake">Make</label>
+					<label for="eMake" required>Make</label>
 					<input type="text" name="eMake" id="eMake"><br>
-					<label for="eModel">Model</label>
+					<label for="eModel" required>Model</label>
 					<input type="text" name="eModel" id="eModel"><br>
 				</div>
 
 				<div id="bikeFields" style="display:none" >
 					<label for="BikeType">Bike Type</label>
-					<select id="BikeType" name="bikeTypeID">
+					<select id="BikeType" name="bikeTypeID" required>
 						<option value="1" selected="selected">Road</option>
 						<option value="2">City</option>
 						<option value="3">Mountain</option>
@@ -138,9 +138,9 @@
 						<option value="0">Other</option>
 					</select><br>
 					<label for="bMake">Make</label>
-					<input type="text" name="bMake" id="bMake"><br>
+					<input type="text" name="bMake" id="bMake" required><br>
 					<label for="bModel">Model</label>
-					<input type="text" name="bModel" id="bModel"><br>
+					<input type="text" name="bModel" id="bModel"required><br>
 				</div>
 
 				<textarea rows="5" cols="40" id="description" name="description" placeholder="
