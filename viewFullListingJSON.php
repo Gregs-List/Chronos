@@ -2,185 +2,181 @@
 
 # retreive information from Listings and <Category> tables.
 
-function retrieveFromAll() 
+$con = mysql_connect("localhost", "listAdmin", "hermes");
+if(!$con)
 {
-	$con = mysql_connect("localhost", "listAdmin", "hermes");
-	if(!$con)
-	{
-		die('Could not connect: ' . mysql_error());
-	}
-	
-	mysql_select_db("GregsList", $con)
-		or die("Unable to select database:" . mysql_error());
-	$userID = $_SESSION['userID'];
-	$listingID = $_GET['listingID'];
+	die('Could not connect: ' . mysql_error());
+}
 
-// Query database for User information
-	$temp1 = mysql_query("SELECT fullName, email, phoneNumber FROM Users WHERE userID = $userID;");
-	$user = mysql_fetch_array($temp1, MYSQL_ASSOC);
+mysql_select_db("GregsList", $con)
+	or die("Unable to select database:" . mysql_error());
+$userID = $_SESSION['userID'];
+$listingID = $_GET['listingID'];
 
 // Query database for Listing information
-	$listQuery = "SELECT title, dateListed, price, description FROM Listings";
-	$result1 = mysql_query($listQuery);
-	if(!$result1)
-	{
-		$message = 'Database query failed: ' . mysql_error() . "\n";
-    $message .= 'Query: ' . $listQuery;
-    die($message);
-	}
+$listQuery = "SELECT title, dateListed, price, description FROM Listings WHERE listingID='$listingID'";
+$result1 = mysql_query($listQuery);
+if(!$result1)
+{
+	$message = 'Database query failed: ' . mysql_error() . "\n";
+  $message .= 'Query: ' . $listQuery;
+  die($message);
+}
 // store results in an array
-	$listing = mysql_fetch_array($result1, MYSQL_ASSOC);	
-	$category = $listing['category'];
+$listing = mysql_fetch_array($result1, MYSQL_ASSOC);	
+$category = $listing['category'];
+
+// Query database for User information
+$temp1 = mysql_query("SELECT fullName, email, phoneNumber FROM Users WHERE userID = {$listing['userID']};");
+$user = mysql_fetch_array($temp1, MYSQL_ASSOC);
 
 // Retrieve Bike information, if Bike
-	if($category=="Bikes")
-	{
-	$catQuery = "SELECT bikeTypeID, make, model FROM Bikes WHERE listingID = '$listingID'";
-	$result2 = mysql_query($catQuery);
+if($category=="Bikes")
+{
+$catQuery = "SELECT bikeTypeID, make, model FROM Bikes WHERE listingID = '$listingID'";
+$result2 = mysql_query($catQuery);
 //  error if query fails
-	if(!$result2)
-	{
-		$message = 'Database query failed: ' . mysql_error() . "\n";
-    $message .= 'Query: ' . $catQuery;
-    die($message);
-	}
+if(!$result2)
+{
+	$message = 'Database query failed: ' . mysql_error() . "\n";
+  $message .= 'Query: ' . $catQuery;
+  die($message);
+}
 // Convert to array and store
-	$cat = mysql_fetch_array($result2, MYSQL_ASSOC);
-	$temp1 = mysql_query("SELECT bikeType from BikeType where bikeTypeID = {$cat['bikeTypeID']};");
-	$temp2 = mysql_fetch_array($temp1, MYSQL_ASSOC);
-	$bikeType = $temp2['bikeType'];
+$cat = mysql_fetch_array($result2, MYSQL_ASSOC);
+$temp1 = mysql_query("SELECT bikeType from BikeType where bikeTypeID = {$cat['bikeTypeID']};");
+$temp2 = mysql_fetch_array($temp1, MYSQL_ASSOC);
+$bikeType = $temp2['bikeType'];
 
-	$fullListing = array array_merge (array $listing, array $cat, array $temp2);
-	}
+$fullListing = array_merge($listing, $cat, $temp2);
+}
 
 
 // Retrieve Book information, if Book	
-	if($category=="Books")
-	{
-	$catQuery = "SELECT bookTypeID, title, author, isbn, assignedCourse, conditionID from Books WHERE listingID = $listingID;";
-	$result2 = mysql_query($catQuery);
+if($category=="Books")
+{
+$catQuery = "SELECT bookTypeID, title, author, isbn, assignedCourse, conditionID from Books WHERE listingID = $listingID;";
+$result2 = mysql_query($catQuery);
 //  error if query fails
-	if(!$result2)
-	{
-		$message = 'Database query failed: ' . mysql_error() . "\n";
-    $message .= 'Query: ' . $catQuery;
-    die($message);
-	}
+if(!$result2)
+{
+	$message = 'Database query failed: ' . mysql_error() . "\n";
+  $message .= 'Query: ' . $catQuery;
+  die($message);
+}
 // convert to array and store
-	$cat = mysql_fetch_array($result2, MYSQL_ASSOC);
-	$temp1 = mysql_query("SELECT bookType from BookType where bookTypeID = {$cat['bookTypeID']};");
-	$temp2 = mysql_fetch_array($temp1, MYSQL_ASSOC);
-	$bookType = $temp2['bookType'];
-	$temp1 = mysql_query("SELECT itemCondition FROM ConditionLookup where conditionID = {$cat['conditionID']};");
-	$temp3 = mysql_fetch_array($temp1, MYSQL_ASSOC);
-	$condition = $temp2['condition'];
+$cat = mysql_fetch_array($result2, MYSQL_ASSOC);
+$temp1 = mysql_query("SELECT bookType from BookType where bookTypeID = {$cat['bookTypeID']};");
+$temp2 = mysql_fetch_array($temp1, MYSQL_ASSOC);
+$bookType = $temp2['bookType'];
+$temp1 = mysql_query("SELECT itemCondition FROM ConditionLookup where conditionID = {$cat['conditionID']};");
+$temp3 = mysql_fetch_array($temp1, MYSQL_ASSOC);
+$condition = $temp2['condition'];
 
-	$fullListing = array array_merge (array $listing, array $cat, array $temp2, array $temp3);
-	}
+$fullListing = array_merge($listing, $cat, $temp2, $temp3);
+}
 
 
 // Retrieve Electronics information, if Electronics
-	if($category=="Electronics")
-	{
-		$catQuery = "SELECT electronicsTypeID, make, model, size FROM Electronics WHERE listingID = '$listingID'";
-	$result2 = mysql_query($catQuery);
+if($category=="Electronics")
+{
+	$catQuery = "SELECT electronicsTypeID, make, model, size FROM Electronics WHERE listingID = '$listingID'";
+$result2 = mysql_query($catQuery);
 //  error if query fails
-	if(!$result2)
-	{
-		$message = 'Database query failed: ' . mysql_error() . "\n";
-    $message .= 'Query: ' . $catQuery;
-    die($message);
-	}
+if(!$result2)
+{
+	$message = 'Database query failed: ' . mysql_error() . "\n";
+  $message .= 'Query: ' . $catQuery;
+  die($message);
+}
 // convert to array and store
-	$cat = mysql_fetch_array($result2, MYSQL_ASSOC);
-	$temp1 = mysql_query("SELECT electronicsType FROM ElectronicsType WHERE electronicsTypeID = {$cat['electronicsType']};");
-	$temp2 = mysql_fetch_array($temp1, MYSQL_ASSOC);
-	$electronicsType = $temp2['electronicsType'];
+$cat = mysql_fetch_array($result2, MYSQL_ASSOC);
+$temp1 = mysql_query("SELECT electronicsType FROM ElectronicsType WHERE electronicsTypeID = {$cat['electronicsType']};");
+$temp2 = mysql_fetch_array($temp1, MYSQL_ASSOC);
+$electronicsType = $temp2['electronicsType'];
 
-	$fullListing = array array_merge (array $listing, array $cat, array $temp2);
-	}
+$fullListing = array_merge($listing, $cat, $temp2);
+}
 
 
 // Retrieve Furniture, if furniture
-	if($category=="Furniture")
-	{
-		$catQuery = "SELECT furnitureTypeID, conditionID FROM Furniture WHERE listingID = '$listingID'";
-	$result2 = mysql_query($catQuery);
+if($category=="Furniture")
+{
+	$catQuery = "SELECT furnitureTypeID, conditionID FROM Furniture WHERE listingID = '$listingID'";
+$result2 = mysql_query($catQuery);
 //  error if query fails
-	if(!$result2)
-	{
-		$message = 'Database query failed: ' . mysql_error() . "\n";
-    $message .= 'Query: ' . $catQuery;
-    die($message);
-	}
+if(!$result2)
+{
+	$message = 'Database query failed: ' . mysql_error() . "\n";
+  $message .= 'Query: ' . $catQuery;
+  die($message);
+}
 // convert to array and store
-	$cat = mysql_fetch_array($result2, MYSQL_ASSOC);
-	$temp1 = mysql_query("SELECT furnitureType FROM FurnitureType WHERE furnitureTypeID = {$cat['furnitureTypeID']};");
-	$temp2 = mysql_fetch_array($temp1, MYSQL_ASSOC);
-	$furnitureType = $temp2['furnitureType'];
-	$temp1 = mysql_query("SELECT itemCondition FROM ConditionLookup where conditionID = {$cat['conditionID']};");
-	$temp3 = mysql_fetch_array($temp1, MYSQL_ASSOC);
-	$condition = $temp2['condition'];
-	$fullListing = array array_merge (array $listing, array $cat, array $temp2, array $temp3);
-	}
+$cat = mysql_fetch_array($result2, MYSQL_ASSOC);
+$temp1 = mysql_query("SELECT furnitureType FROM FurnitureType WHERE furnitureTypeID = {$cat['furnitureTypeID']};");
+$temp2 = mysql_fetch_array($temp1, MYSQL_ASSOC);
+$furnitureType = $temp2['furnitureType'];
+$temp1 = mysql_query("SELECT itemCondition FROM ConditionLookup where conditionID = {$cat['conditionID']};");
+$temp3 = mysql_fetch_array($temp1, MYSQL_ASSOC);
+$condition = $temp2['condition'];
+$fullListing = array_merge($listing, $cat, $temp2, $temp3);
+}
 
 
 // Retrieve Meetups information, if Meetup
-	if($category=="Meetups")
-	{
-	$catQuery = "SELECT meetupTypeID, location, date, time FROM Meetups WHERE listingID = '$listingID'";
-	$result2 = mysql_query($catQuery);
+if($category=="Meetups")
+{
+$catQuery = "SELECT meetupTypeID, location, date, time FROM Meetups WHERE listingID = '$listingID'";
+$result2 = mysql_query($catQuery);
 //  error if query fails
-	if(!$result2)
-	{
-		$message = 'Database query failed: ' . mysql_error() . "\n";
-    $message .= 'Query: ' . $catQuery;
-    die($message);
-	}
+if(!$result2)
+{
+	$message = 'Database query failed: ' . mysql_error() . "\n";
+  $message .= 'Query: ' . $catQuery;
+  die($message);
+}
 // convert to array and print
-	$cat = mysql_fetch_array($result2, MYSQL_ASSOC);
-	$temp1 = mysql_query("SELECT meetupType FROM MeetupType WHERE meetupTypeID = {$cat['meetupTypeID']};");
-	$temp2 = mysql_fetch_array($temp1, MYSQL_ASSOC);
-	$meetupType = $temp2['meetupType'];
-	$fullListing = array array_merge (array $listing, array $cat, array $temp2);
-	}
+$cat = mysql_fetch_array($result2, MYSQL_ASSOC);
+$temp1 = mysql_query("SELECT meetupType FROM MeetupType WHERE meetupTypeID = {$cat['meetupTypeID']};");
+$temp2 = mysql_fetch_array($temp1, MYSQL_ASSOC);
+$meetupType = $temp2['meetupType'];
+$fullListing = array_merge($listing, $cat, $temp2);
+}
 
 
 // if Miscellaneous, do nothing
-	if($category=="Miscellaneous")
-	{
-		$fullListing = $listing;
-	}
+if($category=="Miscellaneous")
+{
+	$fullListing = $listing;
+}
 
 // if Rides
-	if($category=="Rides")
-	{
-	$catQuery = "SELECT leavingFrom, goingTo, departureDate, departureTime, returnDate, returnTime FROM Rides WHERE listingID = '$listingID'";
-	$result2 = mysql_query($catQuery);
+if($category=="Rides")
+{
+$catQuery = "SELECT leavingFrom, goingTo, departureDate, departureTime, returnDate, returnTime FROM Rides WHERE listingID = '$listingID'";
+$result2 = mysql_query($catQuery);
 //  error if query fails
-	if(!$result2)
-	{
-		$message = 'Database query failed: ' . mysql_error() . "\n";
-    $message .= 'Query: ' . $catQuery;
-    die($message);
-	}
-// convert to array and store
-	$cat = mysql_fetch_array($result2, MYSQL_ASSOC);
-$fullListing = array array_merge (array $listing, array $cat);
-	}
-
-
-	$success = json_encode($fullListing);
-	if (!$success)
-	{
-		echo "Failed to return full listing.";
-	}
-	else
-	{
-		echo $success;
-	}
-	}
-	
+if(!$result2)
+{
+	$message = 'Database query failed: ' . mysql_error() . "\n";
+  $message .= 'Query: ' . $catQuery;
+  die($message);
 }
+// convert to array and store
+$cat = mysql_fetch_array($result2, MYSQL_ASSOC);
+$fullListing = array_merge($listing, $cat);
+}
+
+
+$success = json_encode($fullListing);
+if (!$success)
+{
+	echo "Failed to return full listing.";
+}
+else
+{
+	echo $success;
+}
+
 
 ?>
