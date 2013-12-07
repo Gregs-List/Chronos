@@ -42,7 +42,8 @@
               </script>';
     }
     else{
-   		echo $id;
+        header('Location:home.html');
+   		//echo $id;
         }
     mysql_close($con);
     ?>
