@@ -32,6 +32,7 @@ h3 {
 
 .category:hover {
 	background:#41738e;
+	cursor:pointer;
 }
 
 #navBar {
