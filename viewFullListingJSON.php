@@ -50,7 +50,7 @@ function retrieveFromAll()
 	$temp2 = mysql_fetch_array($temp1, MYSQL_ASSOC);
 	$bikeType = $temp2['bikeType'];
 
-	$fullListing = array array_merge (array $listing, array $cat, array $temp2);
+	$fullListing = array_merge ($listing, $cat, $temp2);
 	}
 
 
