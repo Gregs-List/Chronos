@@ -9,7 +9,7 @@
 		or die("Unable to select database:" . mysql_error());
 
 	session_start();
-	$session = $_SESSION['user_id'];	
+	$session = $_SESSION['userID'];	
 	echo $session;
 
 	/*
