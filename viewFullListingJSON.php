@@ -14,7 +14,7 @@ $userID = $_SESSION['userID'];
 $listingID = $_GET['listingID'];
 
 // Query database for Listing information
-$listQuery = "SELECT title, dateListed, price, description FROM Listings WHERE listingID='$listingID'";
+$listQuery = "SELECT * FROM Listings WHERE listingID='$listingID'";
 $result1 = mysql_query($listQuery);
 if(!$result1)
 {
