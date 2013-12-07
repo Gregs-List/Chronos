@@ -19,8 +19,9 @@
 		{
 			$userExists = mysql_fetch_array($userCheck, MYSQL_ASSOC);
 			session_start();
+			echo $userExists['userID'];
 			$_SESSION['userID'] = $userExists['userID'];
-			echo $_SESSION['userID'];
+			//echo $_SESSION['userID'];
 			//header('Location: home.html');
 		}
 		else
