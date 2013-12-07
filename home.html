@@ -13,25 +13,25 @@
 	</head>
 
 	<body>
-		<img src = "site_banner.png" alt= "Greg's List" class="logo"/>
+		<img src = "header.png" alt= "Greg's List" class="logo"/>
 		<nav id = "navBar"> 
 				<a class ="nav_item" href="home.html">Home</a>
 				<a class ="nav_item" href="myAccount.php">My Account</a>
 				<a class ="nav_item" href="createListing.html">Create Listing</a>
 				<a class ="nav_item" href="index.html">Logout</a>
-
-				<div id="searchBar" name="searchBar">
+				<span id = "search">
 					<input type="text" placeholder="search" id="requestText">
-					<input type="submit" value="Search" id="searchButton">
-				</div>
+					<input type="submit" value="" id="searchButton">
+					</span>
+					
 		</nav>
-		<img src = "banner-home.png" alt= "home_banner" class="logo2"/>
+		
 		<nav id = "categoryBar">
-			<h3>Categories</h3>
-				<h4><a class ="category">Books</a><br>
-				<a class ="category">Furniture</a><br>
-				<a class ="category">Electronics</a><br>
-				<a class ="category">Bikes</a></h4><br>
+				<h4><a class ="category">Books</a>
+				<a class ="category">Furniture</a>
+				<a class ="category">Electronics</a>
+				<a class ="category">Bikes</a></h4>
+				<a class = "category">Miscellaneous</a></h4>
 		</nav>
 
 		<div id="photoBooth">
@@ -40,10 +40,10 @@
 		        <img class="thumbnail topPhoto" src="http://lyle.smu.edu/~craley/3345/img/italy/SAM_0944.JPG" alt="Gallery Image"/>
 		        <img class="thumbnail bottomPhoto" src="http://lyle.smu.edu/~craley/3345/img/italy/SAM_0023.JPG" alt="Gallery Image"/>
 		      </div>
-		      <img class="moreIndicator rot90" src="more.png" alt="More Content"/>   
+		      <img class="moreIndicator rot90" src="arrow1.png" alt="More Content"/>   
 		      <div id="nav">
-		        <img id="prevPhoto" class='rot180' src="arrow.png" alt="Previous Photo"/>
-		        <img id="nextPhoto" src="arrow.png" alt="Next Photo"/>
+		        <img id="prevPhoto" class='rot180' src="right.png" alt="Previous Photo"/>
+		        <img id="nextPhoto" src="right.png" alt="Next Photo"/>
 		      </div>
 		      <div class="details">
 		        <p class="title">Title: Title</p>
@@ -53,6 +53,5 @@
 		      </div>
 		    </div>
 		</div>
-		<img src = "bottom_banner.png" alt= "Greg's List" class="logo"/>
 	</body>
 </html>

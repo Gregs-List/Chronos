@@ -20,8 +20,8 @@ session_start();
 	$lastPhoto = mysql_fetch_array($last, MYSQL_ASSOC); 		
 	$lastPhotoID = $lastPhoto['photoID'];
 	$photoID = $lastPhotoID + 1;
-	echo "Last photo ID: " . $lastPhotoID . "<br>";
-	echo "New photo ID: " . $photoID . "<br>";
+//	echo "Last photo ID: " . $lastPhotoID . "<br>";
+//	echo "New photo ID: " . $photoID . "<br>";
 
 	$listQuery = "INSERT INTO Listings VALUES(NULL, '$userID', '$title',NULL, '$category', '$price', '$description')";
 
@@ -73,6 +73,8 @@ session_start();
 	$allowedExts = array("gif", "jpeg", "jpg", "png");
 	$temp = explode(".", $_FILES["photos"]["name"]);
 	$extension = end($temp);
+	$photoUrl = $photoID . "." . $extension;
+	$photoInserted=false;
 	if(empty($_FILES["photos"])){echo 'No photo to upload.<br> ';}
 	
 	elseif ((($_FILES["photos"]["type"] == "image/gif")
@@ -84,32 +86,25 @@ session_start();
 	&& ($_FILES["photos"]["size"] < 5000000)
 	&& in_array($extension, $allowedExts))
   {	
-	 	echo 'Image is of allowed type and size.<br> ';
+//	 	echo 'Image is of allowed type and size.<br> ';
 		if ($_FILES["photos"]["error"] > 0)
 		  {
 		  echo "Return Code: " . $_FILES["photos"]["error"] . "<br> ";
 		  }
 		else
 		  {
-			$photoUrl = $photoID . "." . $extension;
-		  if (file_exists("User_Photos/" . $photoURL))
-		    {
-		    echo $_FILES["photos"]["name"] . " already exists. <br> ";
-		    }
-		  else
-		  {
 				echo $photoUrl . "<br>";
-						move_uploaded_file($_FILES["photos"]["tmp_name"],
-						"User_Photos/" . $photoUrl);
+				move_uploaded_file($_FILES["photos"]["tmp_name"],
+				"User_Photos/" . $photoUrl);
 				$fileQuery = "INSERT INTO Photos VALUES (last_insert_id(), '$photoID', '$photoUrl')";
-				$ins=mysql_query($fileQuery);
-				if(!$ins)
+				$photoInserted=mysql_query($fileQuery);
+				if(!$photoInserted)
 				{
 					$message = 'Insert into Photos table failed: ' . mysql_error() . '<br>';
 					$message .= 'Whole statement: ' . $fileQuery;
 				}
-				else {echo "Stored in: " . "User_Photos/" . $photoUrl . "<br> ";}				 
-		  }
+//				else {echo "Stored in: " . "User_Photos/" . $photoUrl . "<br> ";}				 
+		  
 		}
   }
 else
@@ -142,14 +137,17 @@ else
     die($message);
 	}
 
-/*	// insert into Photos
-	$fileQuery = "INSERT INTO Photos VALUES (last_insert_id(), '$photoID', '$photoUrl')";
-	mysql_query($fileQuery);
-	if(!$fileQuery)
-	{
-		$message = 'Insert into Photos table failed: ' . mysql_error() . '<br>';
-		$message .= 'Whole statement: ' . $query;
-	}*/
+	// insert into Photos
+	if($photoInserted)
+	{	
+		$fileQuery = "INSERT INTO Photos VALUES (last_insert_id(), '$photoID', '$photoUrl')";
+		mysql_query($fileQuery);
+		if(!$fileQuery)
+		{
+			$message = 'Insert into Photos table failed: ' . mysql_error() . '<br>';
+			$message .= 'Whole statement: ' . $query;
+		}
+	}
 
 	// commit changes
 	$query="COMMIT";
@@ -157,8 +155,7 @@ else
 	if(!$ins)
 	{
 		$message = 'Transaction failed: ' . mysql_error() . '<br>';
-    $message .= 'Whole statement: ' . $query;
     die($message);
 	}
-	//header('Location: home.html');
+	else{header('Location: home.html');}
 ?>

@@ -13,7 +13,7 @@
 
 // example code from mr doob : http://mrdoob.com/lab/javascript/requestanimationframe/
 
-animate();
+animate(); 
 
 var mLastFrameTime = 0;
 var mWaitTime = 5000; //time in ms

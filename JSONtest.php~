@@ -14,7 +14,7 @@ $userID = 10;
 $listingID = 115;
 
 // Query database for Listing information
-$listQuery = "SELECT title, dateListed, price, description, category FROM Listings where listingID = '$listingID'";
+$listQuery = "SELECT title, dateListed, price, description, category, userID FROM Listings where listingID = '$listingID'";
 $result1 = mysql_query($listQuery);
 if(!$result1)
 {
