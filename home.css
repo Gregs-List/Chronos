@@ -30,11 +30,9 @@ h3 {
 	padding-left:10px;
 }
 
-.nav_item:hover { 
-	background:#41738e;
-}
 .category:hover {
 	background:#41738e;
+	cursor:pointer;
 }
 
 #navBar {
@@ -42,10 +40,10 @@ h3 {
 	position:absolute;
 	border:none;
     display:block;
-    background:#062c3f;
     width:70%;
     height:40px;
     margin-left:180px;
+    background:#062c3f;
 }
 
 #search {
