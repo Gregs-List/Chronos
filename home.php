@@ -54,8 +54,8 @@
 		</div>
 	</body>
 </html>
-
+<!--
 	<?php 
 if ($_SESSION['userID'] == '') {
     header('Location:index.html');
-} ?>
+} ?>-->
