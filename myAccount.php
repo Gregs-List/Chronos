@@ -18,7 +18,7 @@
 			<a class = "nav_item" href="index.html">Logout</a>
 
 			<span id="search" name="searchBar">
-					<input type="text" value="search" id="requestText">
+					<input type="text" placeholder="search" id="requestText">
 					<input type="submit" value="" id="searchButton">
 			</span>
 		</nav>
@@ -28,6 +28,7 @@
 			<a class = "category">Furniture</a>
 			<a class = "category">Electronics</a>
 			<a class = "category">Bikes</a></h4>
+			<a class = "category">Miscellaneous</a></h4>
 		</nav>
 
 		<div id="contactInfo">
