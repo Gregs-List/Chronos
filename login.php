@@ -9,8 +9,8 @@
     mysql_select_db("GregsList", $con) 
         or die("Unable to select database:" . mysql_error());
 
-    $password = $_GET['password'];
-    $email = $_GET['email'];
+    $password = $_POST['password'];
+    $email = $_POST['email'];
 
     echo $password;
     echo $email;
