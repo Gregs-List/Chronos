@@ -1,6 +1,5 @@
 $(document).ready( function() {
 
-	$('input:radio').change(radioFilter);
 
 	var data = window.location.search;
 
@@ -12,12 +11,7 @@ $(document).ready( function() {
 	
 });
 
-var listing = new listing();
-var contact = new contact();
-var book = new book();
-var furniture = new furniture();
-var electronic = new electronic();
-var bike = new bike();
+
 
 function listing(){
     var title;
@@ -69,8 +63,16 @@ function fillListing(data){
     request.onreadystatechange = function(e)
     {
         if(request.readyState == 4){
+            console.log(request.responseText);
             json = JSON.parse(request.responseText);
             console.log(json);
+
+            var listing = new listing();
+            var contact = new contact();
+            var book = new book();
+            var furniture = new furniture();
+            var electronic = new electronic();
+            var bike = new bike();
 
             contact.name = json.fullName;
             contact.email = json.email;
@@ -107,7 +109,6 @@ function fillListing(data){
                 bike.nodel = json.model;
             }
         }
-        console.log();
         addContact();
         addListing();
     }

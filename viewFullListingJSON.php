@@ -14,7 +14,7 @@ $userID = $_SESSION['userID'];
 $listingID = $_GET['listingID'];
 
 // Query database for Listing information
-$listQuery = "SELECT title, dateListed, price, description FROM Listings WHERE listingID='$listingID'";
+$listQuery = "SELECT * FROM Listings WHERE listingID='$listingID'";
 $result1 = mysql_query($listQuery);
 if(!$result1)
 {
@@ -29,6 +29,10 @@ $category = $listing['category'];
 // Query database for User information
 $temp1 = mysql_query("SELECT fullName, email, phoneNumber FROM Users WHERE userID = {$listing['userID']};");
 $user = mysql_fetch_array($temp1, MYSQL_ASSOC);
+
+// Find photo url
+$temp1 = mysql_query("SELECT photoURL FROM Photos WHERE listingID = '$listingID'");
+$photo = mysql_fetch_array($temp1, MYSQL_ASSOC);
 
 // Retrieve Bike information, if Bike
 if($category=="Bikes")
@@ -48,7 +52,7 @@ $temp1 = mysql_query("SELECT bikeType from BikeType where bikeTypeID = {$cat['bi
 $temp2 = mysql_fetch_array($temp1, MYSQL_ASSOC);
 $bikeType = $temp2['bikeType'];
 
-$fullListing = array_merge($listing, $cat, $temp2);
+$fullListing = array_merge($user, $listing, $cat, $temp2);
 }
 
 
@@ -71,9 +75,9 @@ $temp2 = mysql_fetch_array($temp1, MYSQL_ASSOC);
 $bookType = $temp2['bookType'];
 $temp1 = mysql_query("SELECT itemCondition FROM ConditionLookup where conditionID = {$cat['conditionID']};");
 $temp3 = mysql_fetch_array($temp1, MYSQL_ASSOC);
-$condition = $temp2['condition'];
+$condition = $temp3['itemCondition'];
 
-$fullListing = array_merge($listing, $cat, $temp2, $temp3);
+$fullListing = array_merge($user, $listing, $cat, $temp2, $temp3);
 }
 
 
@@ -95,7 +99,7 @@ $temp1 = mysql_query("SELECT electronicsType FROM ElectronicsType WHERE electron
 $temp2 = mysql_fetch_array($temp1, MYSQL_ASSOC);
 $electronicsType = $temp2['electronicsType'];
 
-$fullListing = array_merge($listing, $cat, $temp2);
+$fullListing = array_merge($user, $listing, $cat, $temp2);
 }
 
 
@@ -118,8 +122,8 @@ $temp2 = mysql_fetch_array($temp1, MYSQL_ASSOC);
 $furnitureType = $temp2['furnitureType'];
 $temp1 = mysql_query("SELECT itemCondition FROM ConditionLookup where conditionID = {$cat['conditionID']};");
 $temp3 = mysql_fetch_array($temp1, MYSQL_ASSOC);
-$condition = $temp2['condition'];
-$fullListing = array_merge($listing, $cat, $temp2, $temp3);
+$condition = $temp3['condition'];
+$fullListing = array_merge($user, $listing, $cat, $temp2, $temp3);
 }
 
 
@@ -140,14 +144,14 @@ $cat = mysql_fetch_array($result2, MYSQL_ASSOC);
 $temp1 = mysql_query("SELECT meetupType FROM MeetupType WHERE meetupTypeID = {$cat['meetupTypeID']};");
 $temp2 = mysql_fetch_array($temp1, MYSQL_ASSOC);
 $meetupType = $temp2['meetupType'];
-$fullListing = array_merge($listing, $cat, $temp2);
+$fullListing = array_merge($user, $listing, $cat, $temp2);
 }
 
 
 // if Miscellaneous, do nothing
 if($category=="Miscellaneous")
 {
-	$fullListing = $listing;
+	$fullListing = array_merge($user, $listing);
 }
 
 // if Rides
@@ -164,7 +168,7 @@ if(!$result2)
 }
 // convert to array and store
 $cat = mysql_fetch_array($result2, MYSQL_ASSOC);
-$fullListing = array_merge($listing, $cat);
+$fullListing = array_merge($user, $listing, $cat);
 }
 
 
