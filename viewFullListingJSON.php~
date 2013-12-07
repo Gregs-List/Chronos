@@ -50,7 +50,7 @@ function retrieveFromAll()
 	$temp2 = mysql_fetch_array($temp1, MYSQL_ASSOC);
 	$bikeType = $temp2['bikeType'];
 
-	$fullListing = array array_merge (array $listing, array $cat, array $temp2);
+	$fullListing = array_merge($listing, $cat, $temp2);
 	}
 
 
@@ -75,7 +75,7 @@ function retrieveFromAll()
 	$temp3 = mysql_fetch_array($temp1, MYSQL_ASSOC);
 	$condition = $temp2['condition'];
 
-	$fullListing = array array_merge (array $listing, array $cat, array $temp2, array $temp3);
+	$fullListing = array_merge ($listing, $cat, $temp2, $temp3);
 	}
 
 
@@ -97,7 +97,7 @@ function retrieveFromAll()
 	$temp2 = mysql_fetch_array($temp1, MYSQL_ASSOC);
 	$electronicsType = $temp2['electronicsType'];
 
-	$fullListing = array array_merge (array $listing, array $cat, array $temp2);
+	$fullListing = array_merge($listing, $cat, $temp2);
 	}
 
 
@@ -121,7 +121,7 @@ function retrieveFromAll()
 	$temp1 = mysql_query("SELECT itemCondition FROM ConditionLookup where conditionID = {$cat['conditionID']};");
 	$temp3 = mysql_fetch_array($temp1, MYSQL_ASSOC);
 	$condition = $temp2['condition'];
-	$fullListing = array array_merge (array $listing, array $cat, array $temp2, array $temp3);
+	$fullListing = array_merge($listing, $cat, $temp2, $temp3);
 	}
 
 
@@ -142,7 +142,7 @@ function retrieveFromAll()
 	$temp1 = mysql_query("SELECT meetupType FROM MeetupType WHERE meetupTypeID = {$cat['meetupTypeID']};");
 	$temp2 = mysql_fetch_array($temp1, MYSQL_ASSOC);
 	$meetupType = $temp2['meetupType'];
-	$fullListing = array array_merge (array $listing, array $cat, array $temp2);
+	$fullListing = array_merge($listing, $cat, $temp2);
 	}
 
 
@@ -166,7 +166,7 @@ function retrieveFromAll()
 	}
 // convert to array and store
 	$cat = mysql_fetch_array($result2, MYSQL_ASSOC);
-$fullListing = array array_merge (array $listing, array $cat);
+$fullListing = array_merge($listing, $cat);
 	}
 
 
