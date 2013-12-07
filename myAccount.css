@@ -110,3 +110,6 @@ h3 {
     width:663px;
 	color: white;
 }
+
+#savePhone:focus {outline:none;} ::-moz-focus-inner {border:0;}
+#searchButton:focus {outline:none;} ::-moz-focus-inner {border:0;}
