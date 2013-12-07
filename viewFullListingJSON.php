@@ -1,5 +1,5 @@
 <?PHP
-
+session_start();
 # retreive information from Listings and <Category> tables.
 
 $con = mysql_connect("localhost", "listAdmin", "hermes");
@@ -75,7 +75,7 @@ $temp2 = mysql_fetch_array($temp1, MYSQL_ASSOC);
 $bookType = $temp2['bookType'];
 $temp1 = mysql_query("SELECT itemCondition FROM ConditionLookup where conditionID = {$cat['conditionID']};");
 $temp3 = mysql_fetch_array($temp1, MYSQL_ASSOC);
-$condition = $temp3['condition'];
+$condition = $temp3['itemCondition'];
 
 $fullListing = array_merge($user, $listing, $cat, $temp2, $temp3);
 }
@@ -122,7 +122,7 @@ $temp2 = mysql_fetch_array($temp1, MYSQL_ASSOC);
 $furnitureType = $temp2['furnitureType'];
 $temp1 = mysql_query("SELECT itemCondition FROM ConditionLookup where conditionID = {$cat['conditionID']};");
 $temp3 = mysql_fetch_array($temp1, MYSQL_ASSOC);
-$condition = $temp3['condition'];
+$condition = $temp3['itemCondition'];
 $fullListing = array_merge($user, $listing, $cat, $temp2, $temp3);
 }
 
