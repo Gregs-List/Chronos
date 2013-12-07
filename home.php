@@ -56,6 +56,6 @@
 </html>
 	<?php 
 	session_start();
-if (session_status() == PHP_SESSION_NONE) {
+if ($_SESSION['userID'] == '') {
     header('Location:index.html');
 } ?>
