@@ -10,24 +10,24 @@ if(!$con)
 
 mysql_select_db("GregsList", $con)
 	or die("Unable to select database:" . mysql_error());
-$userID = $_SESSION['userID'];
-$listingID = $_GET['listingID'];
+$userID = 10;
+$listingID = 115;
 
 // Query database for Listing information
-$listQuery = "SELECT title, dateListed, price, description FROM Listings";
+$listQuery = "SELECT title, dateListed, price, description, category, userID FROM Listings where listingID = '$listingID'";
 $result1 = mysql_query($listQuery);
 if(!$result1)
 {
-	$message = 'Database query failed: ' . mysql_error() . "\n";
+	$message = 'Database query failed: ' . mysql_error() . "<br>";
   $message .= 'Query: ' . $listQuery;
   die($message);
 }
 // store results in an array
-$listing = mysql_fetch_array($result1, MYSQL_ASSOC);	
+$listing = mysql_fetch_array($result1, MYSQL_ASSOC);
 $category = $listing['category'];
 
 // Query database for User information
-$temp1 = mysql_query("SELECT fullName, email, phoneNumber FROM Users WHERE userID = $listing['userID'];");
+$temp1 = mysql_query("SELECT fullName, email, phoneNumber FROM Users WHERE userID = {$listing['userID']}");
 $user = mysql_fetch_array($temp1, MYSQL_ASSOC);
 
 // Retrieve Bike information, if Bike

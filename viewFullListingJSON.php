@@ -13,12 +13,8 @@ mysql_select_db("GregsList", $con)
 $userID = $_SESSION['userID'];
 $listingID = $_GET['listingID'];
 
-// Query database for User information
-$temp1 = mysql_query("SELECT fullName, email, phoneNumber FROM Users WHERE userID = $userID;");
-$user = mysql_fetch_array($temp1, MYSQL_ASSOC);
-
 // Query database for Listing information
-$listQuery = "SELECT title, dateListed, price, description FROM Listings";
+$listQuery = "SELECT title, dateListed, price, description FROM Listings WHERE listingID='$listingID'";
 $result1 = mysql_query($listQuery);
 if(!$result1)
 {
@@ -29,6 +25,10 @@ if(!$result1)
 // store results in an array
 $listing = mysql_fetch_array($result1, MYSQL_ASSOC);	
 $category = $listing['category'];
+
+// Query database for User information
+$temp1 = mysql_query("SELECT fullName, email, phoneNumber FROM Users WHERE userID = {$listing['userID']};");
+$user = mysql_fetch_array($temp1, MYSQL_ASSOC);
 
 // Retrieve Bike information, if Bike
 if($category=="Bikes")
