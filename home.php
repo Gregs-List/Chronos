@@ -17,7 +17,7 @@
 				<a class ="nav_item" href="home.html">Home</a>
 				<a class ="nav_item" href="myAccount.php">My Account</a>
 				<a class ="nav_item" href="createListing.html">Create Listing</a>
-				<a class ="nav_item" href="index.html">Logout</a>
+				<a class ="nav_item" href="logout.php">Logout</a>
 				<span id = "search">
 					<input type="text" placeholder="search" id="requestText">
 					<input type="submit" value="" id="searchButton">
@@ -56,6 +56,6 @@
 </html>
 	<?php 
 	session_start();
-if ($_SESSION['userID'] == '') {
+if (session_status() == PHP_SESSION_NONE) {
     header('Location:index.html');
 } ?>
