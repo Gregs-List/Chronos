@@ -73,6 +73,8 @@ session_start();
 	$allowedExts = array("gif", "jpeg", "jpg", "png");
 	$temp = explode(".", $_FILES["photos"]["name"]);
 	$extension = end($temp);
+	$photoUrl = $photoID . "." . $extension;
+	$photoInserted=false;
 	if(empty($_FILES["photos"])){echo 'No photo to upload.<br> ';}
 	
 	elseif ((($_FILES["photos"]["type"] == "image/gif")
@@ -91,25 +93,18 @@ session_start();
 		  }
 		else
 		  {
-			$photoUrl = $photoID . "." . $extension;
-		  if (file_exists("User_Photos/" . $photoURL))
-		    {
-		    echo $_FILES["photos"]["name"] . " already exists. <br> ";
-		    }
-		  else
-		  {
 				echo $photoUrl . "<br>";
-						move_uploaded_file($_FILES["photos"]["tmp_name"],
-						"User_Photos/" . $photoUrl);
+				move_uploaded_file($_FILES["photos"]["tmp_name"],
+				"User_Photos/" . $photoUrl);
 				$fileQuery = "INSERT INTO Photos VALUES (last_insert_id(), '$photoID', '$photoUrl')";
-				$ins=mysql_query($fileQuery);
-				if(!$ins)
+				$photoInserted=mysql_query($fileQuery);
+				if(!$photoInserted)
 				{
 					$message = 'Insert into Photos table failed: ' . mysql_error() . '<br>';
 					$message .= 'Whole statement: ' . $fileQuery;
 				}
 				else {echo "Stored in: " . "User_Photos/" . $photoUrl . "<br> ";}				 
-		  }
+		  
 		}
   }
 else
@@ -142,14 +137,17 @@ else
     die($message);
 	}
 
-/*	// insert into Photos
-	$fileQuery = "INSERT INTO Photos VALUES (last_insert_id(), '$photoID', '$photoUrl')";
-	mysql_query($fileQuery);
-	if(!$fileQuery)
-	{
-		$message = 'Insert into Photos table failed: ' . mysql_error() . '<br>';
-		$message .= 'Whole statement: ' . $query;
-	}*/
+	// insert into Photos
+	if($photoInserted)
+	{	
+		$fileQuery = "INSERT INTO Photos VALUES (last_insert_id(), '$photoID', '$photoUrl')";
+		mysql_query($fileQuery);
+		if(!$fileQuery)
+		{
+			$message = 'Insert into Photos table failed: ' . mysql_error() . '<br>';
+			$message .= 'Whole statement: ' . $query;
+		}
+	}
 
 	// commit changes
 	$query="COMMIT";
@@ -157,8 +155,7 @@ else
 	if(!$ins)
 	{
 		$message = 'Transaction failed: ' . mysql_error() . '<br>';
-    $message .= 'Whole statement: ' . $query;
     die($message);
 	}
-	//header('Location: home.html');
+	else{header('Location: home.html');}
 ?>
