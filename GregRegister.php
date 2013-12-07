@@ -19,9 +19,14 @@
 <?php
 	}
 	else {
-	$query = "INSERT INTO Users(userID, email, pword, fullName) 
-		VALUES(NULL,'$_POST[email]','$_POST[password]','$_POST[fname]')";
-	mysql_query($query);	
-	header('Location: index.html');
+		$query = "INSERT INTO Users(userID, email, pword, fullName) 
+			VALUES(NULL,'$_POST[email]','$_POST[password]','$_POST[fname]')";
+		$ins=mysql_query($query);	
+		if(!ins)
+		{
+			$message = "User registration failed: " . mysql_error() . "<br>";
+		  $message .= 'Insert statement: ' . $query . "<br>";
+		}
+		else{header('Location: index.html');}
 	}
 ?>
