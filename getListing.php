@@ -12,8 +12,8 @@
 	$session = $_SESSION['userID'];	
 	echo $session;
 
-	/*
-	$result = mysql_query("SELECT * FROM Listings WHERE userID = '$_SESSION[userID]' ORDER BY dateListed DESC");
+
+	$result = mysql_query("SELECT * FROM Listings WHERE userID = '$session' ORDER BY dateListed DESC");
 	
 	#converts to json
 	$rows = array();
