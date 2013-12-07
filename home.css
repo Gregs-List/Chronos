@@ -18,7 +18,6 @@ html {
 	font-family:"Denk One";
 	padding:10px;
 	padding-left:20px;
-	border:2px #41738e solid;
 	margin-right:0px;
 	background:#062c3f;
 }
@@ -31,6 +30,9 @@ h3 {
 	padding-left:10px;
 }
 
+.nav_item:hover { 
+	background:#41738e;
+}
 .category:hover {
 	background:#41738e;
 }
