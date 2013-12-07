@@ -1,3 +1,7 @@
+html {
+	display:block;
+}
+
 #categoryBar {
 	margin-left:190px;
 	margin-top:15px;
