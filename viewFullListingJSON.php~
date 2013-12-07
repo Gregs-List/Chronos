@@ -75,7 +75,7 @@ function retrieveFromAll()
 	$temp3 = mysql_fetch_array($temp1, MYSQL_ASSOC);
 	$condition = $temp2['condition'];
 
-	$fullListing = array_merge ($listing, $cat, $temp2, $temp3);
+	$fullListing = array_merge($listing, $cat, $temp2, $temp3);
 	}
 
 
