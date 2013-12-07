@@ -43,7 +43,10 @@
 
 		<div id="myListings">
 			<h3>My Listings</h3>
-			<?php include 'getListing.php';?>
+			<?php 
+			sessionStart();
+			echo $_SESSION['userID'];
+			include 'getListing.php';?>
 		</div>
 
 	</body>
