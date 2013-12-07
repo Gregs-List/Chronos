@@ -31,7 +31,7 @@ $temp1 = mysql_query("SELECT fullName, email, phoneNumber FROM Users WHERE userI
 $user = mysql_fetch_array($temp1, MYSQL_ASSOC);
 
 // Find photo url
-$temp1 = mysql_query("SELECT photoURL FROM Photos WHERE listingID = '$listingID'";
+$temp1 = mysql_query("SELECT photoURL FROM Photos WHERE listingID = '$listingID'");
 $photo = mysql_fetch_array($temp1, MYSQL_ASSOC);
 
 // Retrieve Bike information, if Bike
@@ -95,7 +95,7 @@ if(!$result2)
 }
 // convert to array and store
 $cat = mysql_fetch_array($result2, MYSQL_ASSOC);
-$temp1 = mysql_query("SELECT electronicsType FROM ElectronicsType WHERE electronicsTypeID = {$cat['electronicsType']};");
+$temp1 = mysql_query("SELECT electronicsType FROM ElectronicsType WHERE electronicsTypeID = {$cat['electronicsTypeID']};");
 $temp2 = mysql_fetch_array($temp1, MYSQL_ASSOC);
 $electronicsType = $temp2['electronicsType'];
 

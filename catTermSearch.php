@@ -13,7 +13,7 @@
 	$search = $_GET['search'];
 	$category = $_GET['category']; 
 
-	$query = "SELECT title, description, price FROM Listings WHERE category='$category' and (title LIKE '%$search%' or description LIKE '%$search%') ORDER BY dateListed DESC";
+	$query = "SELECT title, description, price, listingID FROM Listings WHERE category='$category' and (title LIKE '%$search%' or description LIKE '%$search%') ORDER BY dateListed DESC";
 
 		
 	$result = mysql_query($query);

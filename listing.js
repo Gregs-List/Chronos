@@ -1,15 +1,3 @@
-$(document).ready( function() {
-
-
-	var data = window.location.search;
-
-	
-	if (data.substring(0, 1) == '?') {
-    	data = data.substring(1);
-        fillListing(data);
-  	}	
-	
-});
 
 
 
@@ -53,6 +41,13 @@ function bike(){
     var model;
 }
 
+var listing = new listing();
+var contact = new contact();
+var book = new book();
+var furniture = new furniture();
+var electronic = new electronic();
+var bike = new bike();
+
 function fillListing(data){
 
     var request = new XMLHttpRequest();
@@ -67,12 +62,7 @@ function fillListing(data){
             json = JSON.parse(request.responseText);
             console.log(json);
 
-            var listing = new listing();
-            var contact = new contact();
-            var book = new book();
-            var furniture = new furniture();
-            var electronic = new electronic();
-            var bike = new bike();
+            
 
             contact.name = json.fullName;
             contact.email = json.email;
@@ -83,27 +73,30 @@ function fillListing(data){
             listing.price = json.price;
             listing.description = json.description;
             listing.category = json.category;
+            console.log(listing);
 
-            if(listing.category == 'books'){
+            if(listing.category == 'Books'){
                 book.title = json.title;
                 book.author = json.author;
                 book.isbn = json.isbn;
                 book.course = json.assignedCourse;
-                book.condition = json.condition;
+                book.condition = json.itemCondition;
                 book.type = json.bookType;
             }
 
-            else if(listing.category == 'furniture'){
+            else if(listing.category == "Furniture"){
                 furniture.type = json.furnitureType;
-                furnitue.condition = json.condition;
+                furniture.condition = json.itemCondition;
 
             }
 
-            else if(listing.category == 'electronics'){
-                
+            else if(listing.category == 'Electronics'){
+                electronic.type = json.electronicsType;
+                electronic.make = json.make;
+                electronic.nodel = json.model;
             }
 
-            else if(listing.category == 'bikes'){
+            else if(listing.category == 'Bikes'){
                 bike.type = json.bikeType;
                 bike.make = json.make;
                 bike.nodel = json.model;
@@ -124,9 +117,10 @@ function addContact(){
 
 function addListing(){
     $('#title').html(listing.title);
-    $('#name').html('Price: ' + listing.price)
-    $('#description').append('<h5>'+listing.description+'</h5>');
-    if (listing.category == 'book'){
+    $('#price').html('Price: ' + listing.price)
+    $('#category').html('Category: ' + listing.category);
+    $('#description').html('Description: ' + listing.description);
+    if (listing.category == 'Books'){
         $('#dependantInfo').append('<h4> Title: '+book.title+'</h4>');
         $('#dependantInfo').append('<h4> Author: '+book.author+'</h4>');
         $('#dependantInfo').append('<h4> Type: '+book.type+'</h4>');
@@ -134,18 +128,31 @@ function addListing(){
         $('#dependantInfo').append('<h4> ISBN: '+book.isbn+'</h4>');
         $('#dependantInfo').append('<h4> Assigned Course: '+book.course+'</h4>');
     }
-    else if (listing.category == 'furniture'){
+    else if (listing.category == "Furniture"){
         $('#dependantInfo').append('<h4> Type: '+furniture.type+'</h4>');
-        $('#dependantInfo').append('<h4> condition: '+furniture.condition+'</h4>');
+        $('#dependantInfo').append('<h4> Condition: '+furniture.condition+'</h4>');
     }
-    else if (listing.category == 'electronics'){
+    else if (listing.category == 'Electronics'){
         $('#dependantInfo').append('<h4> Type: '+electronic.type+'</h4>');
         $('#dependantInfo').append('<h4> Make: '+electronic.make+'</h4>');
         $('#dependantInfo').append('<h4> Model: '+electronic.model+'</h4>');
     }
-    else if (listing.category == 'bikes'){
+    else if (listing.category == 'Bikes'){
         $('#dependantInfo').append('<h4> Type: '+bike.type+'</h4>');
         $('#dependantInfo').append('<h4> Make: '+bike.make+'</h4>');
         $('#dependantInfo').append('<h4> Model: '+bike.model+'</h4>');
     }
 }
+
+$(document).ready( function() {
+
+
+    var data = window.location.search;
+
+    
+    if (data.substring(0, 1) == '?') {
+        data = data.substring(1);
+        fillListing(data);
+    }   
+    
+});
