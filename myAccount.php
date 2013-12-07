@@ -43,7 +43,7 @@
 
 		<div id="myListings">
 			<h3>My Listings</h3>
-			<?php 
+			<?php
 			include 'getListing.php';?>
 		</div>
 
