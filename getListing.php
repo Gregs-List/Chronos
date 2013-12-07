@@ -10,7 +10,7 @@
 		or die("Unable to select database:" . mysql_error());
 
 	$result = mysql_query("SELECT * FROM Listings WHERE userID = '$_SESSION[userID]' ORDER BY dateListed DESC");
-
+	
 	#converts to json
 	$rows = array();
 	while($r = mysql_fetch_array($result)) 
