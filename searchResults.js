@@ -11,6 +11,7 @@ function listingLink(){
 	var title;
 	var price;
 	var description;
+	var id;
 }
 
 function radioFilter(e){
@@ -39,6 +40,7 @@ function radioFilter(e){
 					link.title = json[x].title;
 					link.price = json[x].price;
 					link.description = json[x].description;
+					link.id = json[x].listingID;
 					links.push(link);
 				}
 			}
@@ -65,6 +67,7 @@ function categoryFilter(data){
 					link.title = json[x].title;
 					link.price = json[x].price;
 					link.description = json[x].description;
+					link.id = json[x].listingID;
 					links.push(link);
 				}
 			}
@@ -91,6 +94,7 @@ function textResults(data){
 					link.title = json[x].title;
 					link.price = json[x].price;
 					link.description = json[x].description;
+					link.id = json[x].listingID;
 					links.push(link);
 				}
 			}
@@ -105,7 +109,7 @@ function addRows(){
 	$('#listingTable').append('<tr><td>Title</td><td>Price</td><td>Description</td></tr>');
 	var len = links.length;
 	for(var x = 0; x < len; x++){
-		var row = '<tr><td><a href="listing.html">'+links[x].title+'</a></td><td>'+links[x].price+'</td><td>'+links[x].description+'</td></tr>';
+		var row = '<tr><td><a href="listing.html?'+links[x].id+'">'+links[x].title+'</a></td><td>'+links[x].price+'</td><td>'+links[x].description+'</td></tr>';
 		$('#listingTable').append(row);
 	}
 }
