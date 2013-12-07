@@ -44,8 +44,6 @@
 		<div id="myListings">
 			<h3>My Listings</h3>
 			<?php 
-			session_start();
-			echo '<div> $_SESSION['userID']</div>';
 			include 'getListing.php';?>
 		</div>
 
