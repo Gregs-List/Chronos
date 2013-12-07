@@ -9,26 +9,24 @@
     mysql_select_db("GregsList", $con) 
         or die("Unable to select database:" . mysql_error());
 
-    //Function to check the log in of a user
-    $query = "select userID from Users where email ='$_POST[email]'";
-    $result = mysql_query($query);
-    while ($row = mysql_fetch_assoc($result)){
-        $id = $row['userID'];
-    }
-    session_start();
-    $_SESSION['userID']=$id;
-    $query = "select pword from Users where userID =$id";
-    $result = mysql_query($query);
-    while ($row = mysql_fetch_assoc($result)){
-        $database_password = $row ['pword'];
-    }
-    if($_POST['password'] != $database_password){
+		//Revised fntion to check login credentials
+		$user = mysql_real_escape_string($_POST['email']);
+		$pass = mysql_real_escape_string($_POST['password']);
+		$userCheck = mysql_query("SELECT * FROM Users WHERE email='$user' and pword='$pass'")
+    or die (mysql_error());
+		$userExists = mysql_fetch_array($userCheck, MYSQL_ASSOC);
+		if(mysql_num_rows($userCheck)==1)
+		{
+			$userExists = mysql_fetch_array($userCheck, MYSQL_ASSOC);
+			session_start();
+			$_SESSION['userID'] = $userExists['userID'];
+			header('Location: home.html');
+		}
+		else
+		{
+			echo "<META HTTP-EQUIV=REFRESH CONTENT='0; URL=index.html'><script type='text/javascript'>alert('Invalid username or password. If you do not have an account, register on the right.');</script>";
+		}
+		
 
-        echo "<script type='text/javascript'>alert('Invalid username or Password. If you do not have an account, 
-            register below.');</script>";
-    }
-    else{
-        header('Location: home.html');//Enter webpage to show if login credentials are valid
-        }
     mysql_close($con);
 ?>
