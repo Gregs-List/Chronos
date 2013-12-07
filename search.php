@@ -30,11 +30,11 @@
 	{
 		$price = $_GET['price'];
 		$query = "SELECT title, description, price FROM Listings WHERE price <= '$price' and (title LIKE '%$search%' or description LIKE '%$search%') ORDER BY dateListed DESC";		
-	}*/
+	}
 	if($search==null)
 		$query = "SELECT title, description, price, listingID FROM Listings WHERE price <= '$price' and (title LIKE '%$search%' or description LIKE '%$search%') ORDER BY dateListed DESC";		
-	}
-	elseif($search==null)
+	}*/
+	if($search==null)
 	{
 		$query = "SELECT title, description, price, listingID FROM Listings ORDER BY dateListed DESC";
 	}
