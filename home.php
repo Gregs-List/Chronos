@@ -1,11 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-
-	<?php 
-if ($_SESSION['userID'] == '') {
-    header('Location:index.html');
-} ?>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>
 		<script src="home.js" ></script>
 		<script src="categoryBar.js" ></script>
@@ -35,7 +30,7 @@ if ($_SESSION['userID'] == '') {
 				<h4><a class ="category">Books</a>
 				<a class ="category">Furniture</a>
 				<a class ="category">Electronics</a>
-				<a class ="category">Bikes</a>
+				<a class ="category">Bikes</a></h4>
 				<a class = "category">Miscellaneous</a></h4>
 		</nav>
 
@@ -60,3 +55,8 @@ if ($_SESSION['userID'] == '') {
 		</div>
 	</body>
 </html>
+
+	<?php 
+if ($_SESSION['userID'] == '') {
+    header('Location:index.html');
+} ?>
