@@ -12,7 +12,12 @@
     $password = $_GET['password'];
     $email = $_GET['email'];
 
+    echo $password;
+    echo $email;
+
     $query = "select * from Users where email = '$email'";
+    echo $query;
+    
 	$result = mysql_query($query);
 
 	while ($row = mysql_fetch_assoc($result)){
