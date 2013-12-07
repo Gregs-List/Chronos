@@ -9,8 +9,8 @@
 		or die("Unable to select database:" . mysql_error());
 
 	session_start();
-	//echo '$_SESSION['userID']';	
-	echo 'meow';
+	echo $_SESSION['userID'];	
+
 	/*
 	$result = mysql_query("SELECT * FROM Listings WHERE userID = '$_SESSION[userID]' ORDER BY dateListed DESC");
 	
