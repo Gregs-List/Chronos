@@ -16,6 +16,10 @@
 	 color:white;     
 }
 
+#category {
+	color:white;
+}
+
 #save {
 	background:url('save_changes.png') no-repeat;
 	position:absolute;
