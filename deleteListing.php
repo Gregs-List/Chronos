@@ -3,8 +3,6 @@
 // deletes from Listings and <Category> table. 
 // Note: Do we want to find the appropriate category table and delete from it only, or search and delete from all tables with the given listingID?
 
-function deleteListing($listingID) 
-{
 	$con = mysql_connect("localhost", "listAdmin", "hermes");
 	if(!$con)
 	{
@@ -13,22 +11,22 @@ function deleteListing($listingID)
 	
 	mysql_select_db("GregsList", $con)
 		or die("Unable to select database:" . mysql_error());
-	$userID = $_SESSION['userID'];
-	$category = mysql_query("SELECT category FROM Listings WHERE listingID = $listingID;");
-	$deletePhotos = "DELETE FROM Photos WHERE listingID = $listingID;";
-	$deleteCat = "DELETE FROM $category WHERE listingID = $listingID;";
-	$deleteList = "DELETE FROM Listings WHERE listingID = $listingID;";
+	$listingID =$_GET['listingID'];	
+	$category = mysql_query("SELECT category FROM Listings WHERE listingID = '$listingID'");
+	$cat = mysql_fetch_array($category,MYSQL_ASSOC);
+	$category=$cat['category'];
 
-	$deleteAll = "START TRANSACTION;\n" . $deletePhotos . '\n' . $deleteCat . '\n' . $deleteList . "\nCOMMIT;";
+	$deletePhotos = "DELETE FROM Photos WHERE listingID = '$listingID'";
+	$deleteCat = "DELETE FROM '$category' WHERE listingID = '$listingID'";
+	$deleteList = "DELETE FROM Listings WHERE listingID = '$listingID'";
+	mysql_query("START TRANSACTION");
+	mysql_query($deletePhotos);
+	mysql_query($deleteCat);
+	mysql_query($deleteList);
+	mysql_query("COMMIT");
 
-	$success=mysql_query($deleteAll);
-	if(!$success)
-	{
-		$message = 'Database insert failed: ' . mysql_error() . "\n";
-		$message .= 'on SQL statement: ' . $deleteAll;
-		die($message);
-	}
+	echo "Deleted";
+	#header('Location: myAccount.php');
 
-}
 
 ?>
