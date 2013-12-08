@@ -16,11 +16,6 @@
 	 color:white;     
 }
 
-header *{
-font-family: "Denk one";
-color: white;
-}
-
 #save {
 	background:url('save_changes.png') no-repeat;
 	position:absolute;
