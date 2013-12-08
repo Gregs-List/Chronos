@@ -33,15 +33,15 @@ h3 {
 	font-size: 18px;
 }
 
-a:link {
+td:link {
 	color:white;
 }
 
-a:hover {
+td:hover {
 	color:#41738e;
 }
 
-a:visited {
+td:visited {
 	color:#161a3f;
 }
  
