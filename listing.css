@@ -4,7 +4,7 @@
 	padding-left: 60px;
 	padding-right: 60px;
 	left: 480px;
-	top: 240px;
+	top: 250px;
 	color: white;
 	font-family: "Denk One";
 	text-align: center;
@@ -20,14 +20,15 @@ color: white;
 }
 
 #listing {
-	margin-left: 400px;
-	margin-top: 310px;
 	border: solid #41738e 3px;
 	position: absolute;
 	min-width: 430px;
 	text-align: center;
 	font-family: "Denk one";
 	color: white;
+	margin-left: 410px;
+	margin-top: 200px;
+	margin-bottom: 20px;
 } 
 
 
