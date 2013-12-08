@@ -9,8 +9,11 @@
 
 #listing *{
 	 text-align: center;
-     color:white;
      font-family:"Denk One";
+}
+
+#listing label {
+	 color:white;     
 }
 
 #newListing {
