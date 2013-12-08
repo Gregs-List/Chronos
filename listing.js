@@ -7,6 +7,7 @@ function listing(){
     var description;
     var category;
     var date;
+    var photo;
 }
 
 function contact(){
@@ -73,6 +74,7 @@ function fillListing(data){
             listing.price = json.price;
             listing.description = json.description;
             listing.category = json.category;
+            listing.photo = json.photoURL;
             console.log(listing);
 
             if(listing.category == 'Books'){
@@ -142,6 +144,14 @@ function addListing(){
         $('#dependantInfo').append('<h4> Make: '+bike.make+'</h4>');
         $('#dependantInfo').append('<h4> Model: '+bike.model+'</h4>');
     }
+
+    if(listing.photo == "No photo"){
+        $('#listPhoto').css("display", "none");
+    }
+    else{
+        $('#listPhoto').attr("src", "User_Photos/" + listing.photo);
+    }
+    
 }
 
 $(document).ready( function() {

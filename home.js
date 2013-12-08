@@ -42,8 +42,8 @@ function swapPhoto() {
 	if(counter === len-1){
 		counter = -1;
 	}
-	//var src = mImages[counter+1].img.src;
-	//$('#slideShow img').eq(0).attr('src',src);
+	var src = mImages[counter+1].img.src;
+	$('#slideShow img').eq(0).attr('src',src);
 	$('.details p').eq(0).html("Title:" + mImages[counter+1].title);
 	$('.details p').eq(1).html("Price:" + mImages[counter+1].price);
 	$('.details p').eq(2).html("Description:"+ mImages[counter+1].description);
@@ -74,9 +74,9 @@ request.onreadystatechange = function(e)
 			gImage.title = json[x].title;
 			gImage.price = json[x].price;
 			gImage.description = json[x].description;
-			//gImage.img = new Image();
-			//gImage.img.src = json.images[x].imgPath;
-			//makeGalleryImageOnloadCallback(gImage);
+			gImage.img = new Image();
+			gImage.img.src = json.images[x].imgPath;
+			makeGalleryImageOnloadCallback(gImage);
 			mImages.push(gImage);
 		}
 	}
@@ -136,19 +136,19 @@ $(document).ready( function() {
 		if(counter === len-1){
 			counter = -1;
 		}
-		//var src = mImages[counter+1].img.src;
-		//$('.bottomPhoto').eq(0).attr('src',src);
+		var src = mImages[counter+1].img.src;
+		$('.bottomPhoto').eq(0).attr('src',src);
 	$('.details p').eq(0).html("Title:" + mImages[counter+1].title);
 	$('.details p').eq(1).html("Price:" + mImages[counter+1].price);
 	$('.details p').eq(2).html("Description:"+ mImages[counter+1].description);
-		/*if($('#slideShow img').eq(0).hasClass("topPhoto")){
+		if($('#slideShow img').eq(0).hasClass("topPhoto")){
 			var opacity = $('#slideShow img').eq(0).css('opacity');
 			$('#slideShow img').eq(0).animate({opacity: (opacity==1?0:1)});
 		}
 		else{
 			var opacity = $('#slideShow img').eq(1).css('opacity');
 			$('#slideShow img').eq(1).animate({opacity: (opacity==1?0:1)});
-		}*/
+		}
 
 		counter++;
 	});
@@ -158,22 +158,22 @@ $(document).ready( function() {
 		if(counter === 0){
 			counter = len;
 		}
-		//var src = mImages[counter-1].img.src;
-		//$('.bottomPhoto').eq(0).attr('src',src);
+		var src = mImages[counter-1].img.src;
+		$('.bottomPhoto').eq(0).attr('src',src);
 	$('.details p').eq(0).html("Title:" + mImages[counter-1].title);
 	$('.details p').eq(1).html("Price:" + mImages[counter-1].price);
 	$('.details p').eq(2).html("Description:"+ mImages[counter-1].description);
 		//$('#slideShow img').eq(1).fadeIn();
 		//$('#slideShow img').eq(0).fadeOut();
 		
-		/*if($('#slideShow img').eq(0).hasClass("topPhoto")){
+		if($('#slideShow img').eq(0).hasClass("topPhoto")){
 			var opacity = $('#slideShow img').eq(0).css('opacity');
 			$('#slideShow img').eq(0).animate({opacity: (opacity==1?0:1)});
 		}
 		else{
 			var opacity = $('#slideShow img').eq(1).css('opacity');
 			$('#slideShow img').eq(1).animate({opacity: (opacity==1?0:1)});
-		}*/
+		}
 		counter--;
 	});
 });
@@ -183,7 +183,6 @@ $(document).ready( function() {
 
 window.addEventListener('load', function() {
 	//console.log('window loaded');
-	//testClosureExample();
 	var width = $('#nextPhoto').width()*2;
 	var parentW = $('#nextPhoto').parent().width();
 	var leftOffset = parentW - width - 5;
