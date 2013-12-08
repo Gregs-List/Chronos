@@ -33,8 +33,16 @@ h3 {
 	font-size: 18px;
 }
 
-h3:hover {
-	color: #161a3f;
+a:link {
+	color:white;
+}
+
+a:hover {
+	color:#41738e;
+}
+
+a:visited {
+	color:#161a3f;
 }
  
 #filterButtons {
