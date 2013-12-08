@@ -94,6 +94,7 @@ session_start();
 		else
 		{
 			echo $photoUrl . "<br>";
+			echo $_FILES["photos"]["tmp_name"];
 			$moved = move_uploaded_file($_FILES["photos"]["tmp_name"],
 			"User_Photos/" . $photoUrl);
 			$fileQuery = "INSERT INTO Photos VALUES (last_insert_id(), '$photoID', '$photoUrl')";
