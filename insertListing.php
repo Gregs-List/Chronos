@@ -133,7 +133,7 @@ else
 	}
 
 	// insert into Photos
-	if($photoInserted)
+	if($moved)
 	{	
 		$ins=mysql_query($fileQuery);
 		if(!$ins)
