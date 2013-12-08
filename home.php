@@ -37,7 +37,7 @@
 		</nav>
 
 		<div id="photoBooth">
-		    <div id="slideShow">
+		    <div id="slideShow" style="width:518px">
 		      <div class="photoHolder">
 		        <img class="thumbnail topPhoto" src="" width="518px" height="389px" alt="Gallery Image"/>
 		      </div>
