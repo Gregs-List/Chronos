@@ -7,6 +7,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".HomePage"
+    android:background="@drawable/home_background"
     android:orientation = "vertical"
 >
        <ImageView
@@ -15,14 +16,14 @@
 			android:layout_width ="250dp"
 			android:layout_height = "250dp"
 			android:src = "@drawable/logo"
-			android:layout_gravity="center_horizontal" 	
+			android:layout_gravity="center_horizontal"
         	/>  
        <Button
             android:layout_width = "wrap_content"
             android:layout_height = "wrap_content"
         	android:id="@+id/signup"
         	android:layout_gravity="center_horizontal" 
-        	android:layout_marginTop="20dp"
+        	android:layout_marginTop="30dp"
         	android:background="@drawable/signup"
             />
        

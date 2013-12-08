@@ -28,9 +28,11 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
@@ -41,6 +43,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 import android.widget.Toast;
 import com.example.gregslist.Listing;
 
@@ -48,6 +51,10 @@ public class UserHome extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		
+		Bundle b = getIntent().getExtras();
+		final int value = b.getInt("id");
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_user_home);
 		getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
@@ -72,11 +79,33 @@ public class UserHome extends Activity {
 		category.setTypeface(bold);
 		
 		EditText search_hint = (EditText) findViewById(R.id.search_text);
+		search_hint.setImeActionLabel("Search", KeyEvent.KEYCODE_ENTER);
+		search_hint.setOnEditorActionListener(new OnEditorActionListener() {
+			
+			@Override
+			public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+				if (event != null&& (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
+					EditText text = (EditText) findViewById(R.id.search_text);
+					if (text.getText().toString().trim().equals("")) {
+						final int duration = Toast.LENGTH_SHORT;
+						Toast toast1 = Toast.makeText(getApplicationContext(), "Enter a search term", duration);
+			        	toast1.show();
+					} else {
+						Intent i = new Intent(UserHome.this,SearchActivity.class);
+						Bundle d = new Bundle();
+			        	   d.putInt("id", value); //Your id
+			        	   d.putString("search_term", text.getText().toString());
+			        	   i.putExtras(d);
+						   startActivity(i);
+					}
+					
+				}
+				return false;
+			}
+		});
 		
 		search_hint.setTypeface(typeFace);
 		
-		Bundle b = getIntent().getExtras();
-		final int value = b.getInt("id");
 		//TextView id = (TextView) findViewById(R.id.user);
 		//id.setText(String.valueOf(value));
 		
