@@ -21,12 +21,14 @@ html {
 }
 
 #listingTable {
-	margin-right: auto;
-	margin-left: auto;
+position:absolute;
 }
 
 #filterButtons {
+	position:absolute;
 	display:block;
 	width:662px;
 	color:white;
 }
+
+#searchButton:focus {outline:none;} ::-moz-focus-inner {border:0;}
