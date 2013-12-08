@@ -2,29 +2,11 @@
 #listing {
 	margin-left: auto;
 	margin-right: auto;
-	width:50%;
+	position:absolute;
 	border: solid 2px;
 }
 
-#categoryBar {
-	margin-left:190px;
-	padding-left:30px;
-	padding-right:30px;
-	border:solid 10px;
-	color: #161a3f;
-	padding-bottom:74px;
-}
-
-.category {
-	color: #161a3f;
-}
-
-.category:hover {
-	color: blue;
-}
-
 #listing *{
-	float:none;
 	text-align: center;
 }
 
