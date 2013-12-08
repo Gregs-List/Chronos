@@ -1,84 +1,26 @@
 
+html {
+	font-family:"Denk One";
+}
+
 #listing {
-	margin-left: auto;
-	margin-right: auto;
 	width:50%;
+	margin-right:auto;
+	margin-left:auto;
 	border: solid 2px;
-}
-
-#categoryBar {
-	float:left;
-	padding-left:30px;
-	padding-right:30px;
-	border:solid 10px;
-	color: #161a3f;
-	padding-bottom:74px;
-	margin-top: 15px;
-	margin-left: 190px;
-}
-
-.category {
-	color: #161a3f;
-}
-
-.category:hover {
-	color: blue;
-}
-.nav_item {
 	color:white;
-	margin-left:10px;
-}
 
-#navBar {
-	display:block;
-	width:70%;
-	margin-left: auto;
-    margin-right: auto; 
-    border:none;
-    background-color: #161a3f;
-    height:30px;
-}
-
-.logo{
-    display: block;
-    margin-left: auto;
-    margin-right: auto; 
-    width:70%;
-    height:70%;
-    padding-top:20px;
-}
-
-.logo2{ 
-	margin-top:0px;
-	display:block;
-    margin-left: auto;
-    margin-right: auto; 
-    width:70%;
-    height:70%;
-}
-
-.logo3{ 
-	margin-top: 115px;
-	display:block;
-    margin-left: auto;
-    margin-right: auto; 
-    width:70%;
-    height:70%;
-    float:bottom;
-}
-
-#searchBar {
-	float:right;
-	margin-right:10px;
 }
 
 #results {
+	position:absolute;
 	display:inline-block;
-	margin-top: 15px;
-	border:solid 10px;
+	margin-top: 25px;
+	border:none;
 	color: #161a3f;
-    margin-left: 15px;
+    margin-left: 270px;
     padding:10px;
+    color:white;
 }
 
 #listingTable {
@@ -89,4 +31,5 @@
 #filterButtons {
 	display:block;
 	width:662px;
+	color:white;
 }
