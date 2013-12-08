@@ -25,7 +25,8 @@ html {
 position:absolute;
 margin-top:60px;
 margin-left:180px;
-    border:white 2px solid;
+border:white 2px solid;
+width:600px;
 }
 
 h3 {
