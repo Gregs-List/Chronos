@@ -24,14 +24,17 @@ html {
 #listingTable {
 position:absolute;
 margin-top:60px;
-margin-left:180px;
-border:white 2px solid;
+margin-left:100px;
 min-width:600px;
 }
 
 h3 {
 	margin-right:50px;
 	font-size: 18px;
+}
+
+h3:hover {
+	color: #161a3f;
 }
  
 #filterButtons {
