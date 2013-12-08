@@ -33,15 +33,15 @@ h3 {
 	font-size: 18px;
 }
 
-.data:link {
+h4:link {
 	color:white;
 }
 
-.data:hover {
+h4:hover {
 	color:#41738e;
 }
 
-.data:visited {
+h4:visited {
 	color:#161a3f;
 }
  

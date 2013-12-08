@@ -109,7 +109,7 @@ function addRows(){
 	$('#listingTable').append('<tr><td><h3>Title</h3></td><td><h3>Price</h3></td><td><h3>Description</h3></td></tr>');
 	var len = links.length;
 	for(var x = 0; x < len; x++){
-		var row = '<tr class = "data"><td><a href="listing.html?'+links[x].id+'">'+links[x].title+'</a></td><td>'+links[x].price+'</td><td>'+links[x].description+'</td></tr>';
+		var row = '<tr><td><h4><a href="listing.html?'+links[x].id+'">'+links[x].title+'</a></td><td>'+links[x].price+'</td><td>'+links[x].description+'</h4></td></tr>';
 		$('#listingTable').append(row);
 	}
 }
