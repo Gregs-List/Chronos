@@ -68,7 +68,7 @@ assignedCourse VARCHAR(40),
 conditionID INT,
 CONSTRAINT fk_bookListing FOREIGN KEY (listingID) REFERENCES Listings(listingID) ON DELETE CASCADE,
 CONSTRAINT fk_bookType FOREIGN KEY (bookTypeID) REFERENCES BookType(bookTypeID),
-CONSTRAIN fk_bookCondition FOREIGN KEY (conditionID) REFERENCES ConditionLookup(conditionID)
+CONSTRAINT fk_bookCondition FOREIGN KEY (conditionID) REFERENCES ConditionLookup(conditionID)
 ) engine = innodb;
 
 # create the ElectronicsType table
