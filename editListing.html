@@ -2,12 +2,13 @@
 <html lang="en">
 	<head>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-		<script type="text/javascript" src="editListing.js"></script>
 		<script src="categoryBar.js" ></script>
 		<script src="searchBar.js" ></script>
+		<script type="text/javascript" src="editListing.js"></script>
 		<link rel="stylesheet" type="text/css" href="navBar.css">
 		<link rel="stylesheet" type="text/css" href="categoryBar.css">
-		<link rel="stylesheet" type="text/css" href="createListing.css">
+		<link rel="stylesheet" type="text/css" href="editListing.css">
+
 		<title>Greg's List New Listing</title>
 	</head>
 	<body>
@@ -18,10 +19,10 @@
 			<a class = "nav_item" href="createListing.html">Create Listing</a>
 			<a class = "nav_item" href="index.html">Logout</a>
 
-			<div id="searchBar" name="searchBar">
+			<span id="search" name="searchBar">
 					<input type="text" placeholder="search" id="requestText">
 					<input type="submit" value="" id="searchButton">
-			</div>
+			</span>
 		</nav>
 		<br>
 		<nav id = "categoryBar">
@@ -33,20 +34,20 @@
 		</nav>
 		<div id ="containing">
 		<div id="listing">
-			<form name="newListing" action="insertListing.php" method="post" enctype="multipart/form-data">
+			<form name="newListing" action="editListing.php" method="post" enctype="multipart/form-data" id="newListing">
 				<h4 id="category">Category</h4>
 				
 				<label for="title">Title</label>
 				<input type="text" name="title" id="title" required><br>
 				<label for="price">Price $</label>
-				<input type="text" name="price" id="price" placeholder="<$10,000.00" pattern="/^\$?\d+(,\d{3})*(\.\d*)?$/"required><br>
+				<input type="number" step="any" min="0" name="price" id="price" placeholder="<$10,000.00" required><br>
 
 				
 
 
 				<div id="bookFields"  style="display:none">
 					<label for="BookType">Book Type</label>
-					<select id="BookType" name="bookTypeID" required>
+					<select id="BookType" name="bookTypeID">
 						<option value="1">Textbook</option>
 						<option value="2">Literature</option>
 						<option value="3">Poetry</option>
@@ -57,7 +58,7 @@
 					</select><br>
 
 					<label for="bookCondition">Book Codition</label>
-					<select id="bookCondition" name="bookCondition" required>
+					<select id="bookCondition" name="bookCondition">
 						<option value="1">New</option>
 						<option value="2">Excellent</option>
 						<option value="3">Light Wear</option>
@@ -67,7 +68,7 @@
 					</select><br> 
 
 					<label for="bookTitle">Book Title</label>
-					<input type="text" name="bookTitle" id="bookTitle" required><br>
+					<input type="text" name="bookTitle" id="bookTitle"><br>
 					<label for="author">Author</label>
 					<input type="text" name="author" id="author"><br>
 					<label for="isbn">ISBN</label>
@@ -78,7 +79,7 @@
 
 				<div id="furnitureFields" style="display:none" >
 					<label for="FurnitureType">Furniture Type</label>
-					<select id="FurnitureType" name="furnitureType" required>
+					<select id="FurnitureType" name="furnitureType">
 						<option value="1">Couch</option>
 						<option value="2">Bed</option>
 						<option value="3">Chair</option>
@@ -89,7 +90,7 @@
 					</select><br>
 
 					<label for="furnitureCondition">Furniture Codition</label>
-					<select id="furnitureCondition" name="furnitureCondition" required>
+					<select id="furnitureCondition" name="furnitureCondition">
 						<option value="1">New</option>
 						<option value="2">Excellent</option>
 						<option value="3">Light Wear</option>
@@ -101,7 +102,7 @@
 
 				<div id="electronicFields" style="display:none" >
 					<label for="ElectronicType">Electronic Type</label>
-					<select id="ElectronicType" name="electronicsType" required>
+					<select id="ElectronicType" name="electronicsType" >
 						<option value="1">TV</option>
 						<option value="2">Computer</option>
 						<option value="3">Phone</option>
@@ -109,15 +110,15 @@
 						<option value="5">iPod</option>
 						<option value="0">Other</option>
 					</select><br>
-					<label for="eMake" required>Make</label>
+					<label for="eMake">Make</label>
 					<input type="text" name="eMake" id="eMake"><br>
-					<label for="eModel" required>Model</label>
+					<label for="eModel">Model</label>
 					<input type="text" name="eModel" id="eModel"><br>
 				</div>
 
 				<div id="bikeFields" style="display:none" >
 					<label for="BikeType">Bike Type</label>
-					<select id="BikeType" name="bikeType" required>
+					<select id="BikeType" name="bikeType">
 						<option value="1">Road</option>
 						<option value="2">City</option>
 						<option value="3">Mountain</option>
@@ -128,16 +129,16 @@
 						<option value="0">Other</option>
 					</select><br>
 					<label for="bMake">Make</label>
-					<input type="text" name="bMake" id="bMake" required><br>
+					<input type="text" name="bMake" id="bMake"><br>
 					<label for="bModel">Model</label>
-					<input type="text" name="bModel" id="bModel"required><br>
+					<input type="text" name="bModel" id="bModel"><br>
 				</div>
 
 				<textarea rows="5" cols="40" id="description" name="description" placeholder="
 					Add an extra description here."></textarea><br>
 				<label for="photos">Photos</label>
 				<input type="file" name="photos" id="photos"><br><br>
-				<input type="submit" value="Save Changes" id="editListing" class="center">
+				<input type="submit" value="" id="save" class="center">
 			</form>
 		</div>
 		</div>

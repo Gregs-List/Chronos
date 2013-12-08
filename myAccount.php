@@ -1,5 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<?php 
+	session_start();
+	if ($_SESSION['userID'] == NULL) {
+    	header('Location:index.html');}
+?>
+
 	<head>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>
 		<script src="categoryBar.js" ></script>
@@ -15,7 +22,7 @@
 			<a class = "nav_item" href="home.php">Home</a>
 			<a class = "nav_item" href="myAccount.php">My Account</a>
 			<a class = "nav_item" href="createListing.html">Create Listing</a>
-			<a class = "nav_item" href="index.html">Logout</a>
+			<a class = "nav_item" href="logout.php">Logout</a>
 
 			<span id="search" name="searchBar">
 					<input type="text" placeholder="search" id="requestText">

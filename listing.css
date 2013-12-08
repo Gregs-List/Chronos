@@ -1,19 +1,37 @@
 #contactInfo{
-	position:absolute;
-	border: solid 2px;
-	top:190px;
-	left:550px;
-}
-
-header *{
+	position: absolute;
+	border: solid #41738e 3px;
+	padding-left: 60px;
+	padding-right: 60px;
+	left: 480px;
+	top: 250px;
+	color: white;
+	font-family: "Denk One";
 	text-align: center;
 }
 
-#listing {
-	margin-left:400px;
-	margin-top:200px;
-	border: solid 2px;
+header *{
+text-align: center;
+margin-left: -30px;
+margin-right: auto;
+margin-top: 70px;
+font-family: "Denk one";
+color: white;
 }
+
+#listing {
+	border: solid #41738e 3px;
+	position: absolute;
+	min-width: 430px;
+	text-align: center;
+	font-family: "Denk one";
+	color: white;
+	margin-left: 370px;
+	padding-left:5px;
+	padding-right:5px;
+	margin-top: 200px;
+	margin-bottom: 20px;
+} 
 
 
 #searchButton:focus {outline:none;} ::-moz-focus-inner {border:0;}

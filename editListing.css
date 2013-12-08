@@ -16,8 +16,8 @@
 	 color:white;     
 }
 
-#newListing {
-	background:url('create.png') no-repeat;
+#save {
+	background:url('save_changes.png') no-repeat;
 	position:absolute;
 	cursor:pointer;	
 	width: 200px;

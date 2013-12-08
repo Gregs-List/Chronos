@@ -66,7 +66,7 @@ function fillListing(data){
 
             contact.name = json.fullName;
             contact.email = json.email;
-            contact.phoneNumber = json.phoneNumber;
+            contact.phone = json.phoneNumber;
 
             listing.title = json.title;
             listing.date = json.dateListed;

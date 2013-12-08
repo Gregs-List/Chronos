@@ -1,5 +1,4 @@
 <?php
-	session_start();
 	$con = mysql_connect("localhost","listAdmin","hermes");
 	if (!$con)
 	{
