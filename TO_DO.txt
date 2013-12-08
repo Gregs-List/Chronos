@@ -1,6 +1,6 @@
 Unassigned:
-- prevent updating phone number from clearing all other data on page
-- validate phone numbers
+X prevent updating phone number from clearing all other data on page
+X validate phone numbers
 X change Category field to drop menu in Create Listing
 - format Date Listed from raw JSON (MM/DD/YYYY rather than YYYY/MM/DD and is time necessary?)
 X change login from GET to POST (why was it ever get?!)
@@ -19,9 +19,9 @@ Carter Dewey:
 X Signup page
 X re-update smu.edu e-mail checker
 X fix password match verification
-- create HTML for basically everything
+X create HTML for basically everything
 X update fields based on category
-- edit and display user info
+X edit and display user info
 X create sidebar (Gregbar)
 X create price field in Create Listing (DECIMAL(7,2))
 
@@ -34,8 +34,8 @@ X create alert for failed login, cancel redirect
 
 Bobby Santoski:
 X PHP: signup, login
-- function: display contact info
-- search bar for searching
+X function: display contact info
+X search bar for searching
 
 Greg Walters:
 X Create MySQL database setup script
