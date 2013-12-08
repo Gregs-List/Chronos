@@ -10,7 +10,7 @@
 
 	#session_start();
 	$session = $_SESSION['userID'];	
-	echo $session;
+	//echo $session;
 
 
 	$result = mysql_query("SELECT * FROM Listings WHERE userID = '$session' ORDER BY dateListed DESC");
