@@ -1,8 +1,5 @@
 <?PHP
 session_start();
-$id = $_SESSION['userID']; 
-echo $id;
-/*
 #inserts into Listings and <Category> table. Receives values from JavaScript
 	$con = mysql_connect("localhost", "listAdmin", "hermes");
 	if(!$con)
@@ -160,5 +157,5 @@ else
 		$message = 'Transaction failed: ' . mysql_error() . '<br>';
     die($message);
 	}
-	else{header('Location: home.html');}*/
+	else{header('Location: home.html');}
 ?>
