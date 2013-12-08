@@ -110,7 +110,7 @@ h3 {
     width:663px;
 	color: white;
 }
-
+/*
 #editButton {
 	background:url('edit.png') no-repeat;
 	cursor:pointer;	
@@ -125,7 +125,7 @@ h3 {
 	width: 300px;
 	height: 200px;
 	border: none;
-}
+}*/
 
 #savePhone:focus {outline:none;} ::-moz-focus-inner {border:0;}
 #searchButton:focus {outline:none;} ::-moz-focus-inner {border:0;}
