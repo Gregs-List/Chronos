@@ -32,18 +32,6 @@ h3 {
 	margin-right:50px;
 	font-size: 18px;
 }
-
-h4:link {
-	color:white;
-}
-
-h4:hover {
-	color:#41738e;
-}
-
-h4:visited {
-	color:#161a3f;
-}
  
 #filterButtons {
 	position:absolute;
