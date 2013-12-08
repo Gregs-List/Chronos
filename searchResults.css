@@ -24,7 +24,12 @@ html {
 #listingTable {
 position:absolute;
 margin-top:60px;
-margin-left:240px;
+margin-left:180px;
+}
+
+h3 {
+	margin-right:50px;
+	font-size: 18px;
 }
  
 #filterButtons {
