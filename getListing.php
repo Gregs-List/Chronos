@@ -10,7 +10,7 @@
 
 	#session_start();
 	$session = $_SESSION['userID'];	
-	echo $session;
+	//echo $session;
 
 
 	$result = mysql_query("SELECT * FROM Listings WHERE userID = '$session' ORDER BY dateListed DESC");
@@ -21,7 +21,11 @@
 	{
     		//$rows[] = $r;
 		echo "Title:" . '&nbsp;&nbsp;&nbsp;&nbsp;' . $r['title'] . '&nbsp;&nbsp;&nbsp;&nbsp;' . "Date Posted:" . '&nbsp;&nbsp;&nbsp;&nbsp;' . $r['dateListed'];
+
+		echo "<button class='editButton' type='button' value='{$r['listingID']}'>Edit</button>";
+
 		echo "<button id='editButton' type='button' value='{$r['listingID']}'></button>";
+		
 		echo "<br>";
 	}
 
