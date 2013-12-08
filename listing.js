@@ -95,13 +95,13 @@ function fillListing(data){
             else if(listing.category == 'Electronics'){
                 electronic.type = json.electronicsType;
                 electronic.make = json.make;
-                electronic.nodel = json.model;
+                electronic.model = json.model;
             }
 
             else if(listing.category == 'Bikes'){
                 bike.type = json.bikeType;
                 bike.make = json.make;
-                bike.nodel = json.model;
+                bike.model = json.model;
             }
         }
         addContact();
