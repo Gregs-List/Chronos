@@ -27,7 +27,7 @@ $(document).ready( function() {
 	$('#editButton').click(editRedirect);
 
 });
-
+/*
 window.onload=function(){
 $('#editButton').css("background","url('edit.png') no-repeat");
 $('#editButton').css("cursor","pointer");
@@ -35,4 +35,4 @@ $('#editButton').css("float","right");
 $('#editButton:focus').css("outline","none");
 $('#editButton').css("margin-top","30px");
 $('#editButton').css("border","1px white solid");
-};
+};*/
