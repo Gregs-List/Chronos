@@ -112,19 +112,21 @@ h3 {
 }
 
 #editButton {
-	background:url('edit.png') no-repeat;
-	cursor:pointer;	
-	width: 300px;
-	height: 200px;
+	background: url('edit.png') no-repeat;
+	cursor: pointer;
+	width: 70px;
+	height: 22px;
 	border: none;
+	margin-top: 30px;
 } 
 
 #deleteButton {
-	background:url('delete.png') no-repeat;
-	cursor:pointer;	
-	width: 300px;
-	height: 200px;
+	background: url('delete.png') no-repeat;
+	cursor: pointer;
+	width: 100px;
+	height: 22px;
 	border: none;
+	margin-left: -5px;
 }
 
 #savePhone:focus {outline:none;} ::-moz-focus-inner {border:0;}
