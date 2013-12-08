@@ -4,8 +4,6 @@
 		<script src="home.js" ></script>
 		<script src="categoryBar.js" ></script>
 		<script src="searchBar.js" ></script>
-		<link rel="stylesheet" type="text/css" href="navBar.css">
-		<link rel="stylesheet" type="text/css" href="categoryBar.css">
 		<link rel="stylesheet" type="text/css" href="home.css">
 		<script type="text/javascript" src="index.js"></script>
 		<title>Greg's List Home</title>
