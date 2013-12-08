@@ -92,6 +92,7 @@ request.onreadystatechange = function(e)
 			gImage.title = json[x].title;
 			gImage.price = json[x].price;
 			gImage.description = json[x].description;
+			gImage.id = json[x].listingID;
 			gImage.img = new Image();
 			gImage.img.src = "User_Photos/" + json[x].photoURL;
 			makeGalleryImageOnloadCallback(gImage);
@@ -120,6 +121,7 @@ function GalleryImage(){
 	var price;
 	var description;
 	var img;
+	var id;
 }
 
 
@@ -155,6 +157,10 @@ $(document).ready( function() {
 	$('#prevPhoto').click(function(){
 		//alert( "Handler for .click() called." );
 		swapPhotoBack();
+	});
+
+	$('#slideShow img').eq(0).click(function(){
+		window.location="listing.html?"+mImages[counter].id;
 	});
 });
 
