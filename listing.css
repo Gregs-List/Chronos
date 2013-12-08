@@ -1,8 +1,12 @@
 #contactInfo{
-	position:absolute;
-	border: solid 2px;
-	top:190px;
-	left:550px;
+	position: absolute;
+	border: solid #41738e 2px;
+	padding-left: 60px;
+	padding-right: 60px;
+	left: 483px;
+	top: 190px;
+	color: white;
+	font-family:"Denk One";
 }
 
 header *{
