@@ -16,7 +16,7 @@
 animate(); 
 
 var mLastFrameTime = 0;
-var mWaitTime = 5000; //time in ms
+var mWaitTime = 8000; //time in ms
 function animate() {
     requestAnimFrame( animate );
 	var currentTime = new Date().getTime();
@@ -42,16 +42,32 @@ function swapPhoto() {
 	if(counter === len-1){
 		counter = -1;
 	}
-	//var src = mImages[counter+1].img.src;
-	//$('#slideShow img').eq(0).attr('src',src);
-	$('.details p').eq(0).html("Title:" + mImages[counter+1].title);
-	$('.details p').eq(1).html("Price:" + mImages[counter+1].price);
-	$('.details p').eq(2).html("Description:"+ mImages[counter+1].description);
+	var src = mImages[counter+1].img.src;
+	$('#slideShow img').eq(0).attr('src',src);
+	$('.details p').eq(0).html("Title: " + mImages[counter+1].title);
+	$('.details p').eq(1).html("Price: " + mImages[counter+1].price);
+	$('.details p').eq(2).html("Description: "+ mImages[counter+1].description);
 	counter++;
 	//console.log(src);
 	console.log('swap photo');
 }
 
+function swapPhotoBack() {
+	//Add code here to access the #slideShow element.
+	//Access the child img element and replace its source
+	//with a new image from your images array which is loaded 
+	//from the JSON string
+	var len = mImages.length;
+		if(counter === 0){
+			counter = len;
+	}
+	var src = mImages[counter-1].img.src;
+	$('#slideShow img').eq(0).attr('src',src);
+	
+	counter--;
+	//console.log(src);
+	console.log('swap photo');
+}
 
 
 //Use this array to hold objects which contain the following:
@@ -74,9 +90,16 @@ request.onreadystatechange = function(e)
 			gImage.title = json[x].title;
 			gImage.price = json[x].price;
 			gImage.description = json[x].description;
-			//gImage.img = new Image();
-			//gImage.img.src = json.images[x].imgPath;
-			//makeGalleryImageOnloadCallback(gImage);
+			gImage.id = json[x].listingID;
+			gImage.img = new Image();
+			gImage.img.src = "User_Photos/" + json[x].photoURL;
+			if(x == 0){
+				$('#slideShow img').eq(0).attr('src',gImage.img.src);
+				$('.details p').eq(0).html("Title: " + gImage.title);
+				$('.details p').eq(1).html("Price: " + gImage.price);
+				$('.details p').eq(2).html("Description: "+ gImage.description);
+			}
+			makeGalleryImageOnloadCallback(gImage);
 			mImages.push(gImage);
 		}
 	}
@@ -102,6 +125,7 @@ function GalleryImage(){
 	var price;
 	var description;
 	var img;
+	var id;
 }
 
 
@@ -132,49 +156,15 @@ $(document).ready( function() {
 	});
 	$('#nextPhoto').click(function(){
 		//alert( "Handler for .click() called." );
-		var len = mImages.length;
-		if(counter === len-1){
-			counter = -1;
-		}
-		//var src = mImages[counter+1].img.src;
-		//$('.bottomPhoto').eq(0).attr('src',src);
-	$('.details p').eq(0).html("Title:" + mImages[counter+1].title);
-	$('.details p').eq(1).html("Price:" + mImages[counter+1].price);
-	$('.details p').eq(2).html("Description:"+ mImages[counter+1].description);
-		/*if($('#slideShow img').eq(0).hasClass("topPhoto")){
-			var opacity = $('#slideShow img').eq(0).css('opacity');
-			$('#slideShow img').eq(0).animate({opacity: (opacity==1?0:1)});
-		}
-		else{
-			var opacity = $('#slideShow img').eq(1).css('opacity');
-			$('#slideShow img').eq(1).animate({opacity: (opacity==1?0:1)});
-		}*/
-
-		counter++;
+		swapPhoto();
 	});
 	$('#prevPhoto').click(function(){
 		//alert( "Handler for .click() called." );
-		var len = mImages.length;
-		if(counter === 0){
-			counter = len;
-		}
-		//var src = mImages[counter-1].img.src;
-		//$('.bottomPhoto').eq(0).attr('src',src);
-	$('.details p').eq(0).html("Title:" + mImages[counter-1].title);
-	$('.details p').eq(1).html("Price:" + mImages[counter-1].price);
-	$('.details p').eq(2).html("Description:"+ mImages[counter-1].description);
-		//$('#slideShow img').eq(1).fadeIn();
-		//$('#slideShow img').eq(0).fadeOut();
-		
-		/*if($('#slideShow img').eq(0).hasClass("topPhoto")){
-			var opacity = $('#slideShow img').eq(0).css('opacity');
-			$('#slideShow img').eq(0).animate({opacity: (opacity==1?0:1)});
-		}
-		else{
-			var opacity = $('#slideShow img').eq(1).css('opacity');
-			$('#slideShow img').eq(1).animate({opacity: (opacity==1?0:1)});
-		}*/
-		counter--;
+		swapPhotoBack();
+	});
+
+	$('#slideShow img').eq(0).click(function(){
+		window.location="listing.html?"+mImages[counter].id;
 	});
 });
 
@@ -183,7 +173,6 @@ $(document).ready( function() {
 
 window.addEventListener('load', function() {
 	//console.log('window loaded');
-	//testClosureExample();
 	var width = $('#nextPhoto').width()*2;
 	var parentW = $('#nextPhoto').parent().width();
 	var leftOffset = parentW - width - 5;

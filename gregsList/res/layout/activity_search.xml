@@ -6,7 +6,8 @@
        <LinearLayout 
             android:layout_height = "wrap_content"
             android:layout_width = "wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="#161a3f">
             
         <LinearLayout
         android:layout_height = "wrap_content" 
@@ -19,7 +20,8 @@
         android:layout_width = "112dp"
         android:text = "@string/nav1"
         android:textSize = "12dp"
-        android:layout_marginRight="-9dp"/>
+        android:layout_marginRight="-9dp"
+        android:textColor="#ffffffff"/>
     
      <Button 
         android:id="@+id/account"
@@ -27,14 +29,16 @@
         android:layout_width = "114dp"
         android:text = "@string/nav2"
         android:textSize = "12dp"
-        android:layout_marginRight="-9dp"/>
+        android:layout_marginRight="-9dp"
+        android:textColor="#ffffffff"/>
      
       <Button 
         android:id= "@+id/logout"
         android:layout_height = "35dp"
         android:layout_width = "112dp"
         android:text = "@string/nav3"
-        android:textSize = "12dp"/>
+        android:textSize = "12dp"
+        android:textColor="#ffffffff"/>
     </LinearLayout>
     
     <LinearLayout
@@ -96,20 +100,6 @@
                 android:layout_height = "wrap_content"
                 android:text = "@string/furniture"
                 android:id="@+id/furniture"
-                android:textSize="10sp"/>
-              
-              <Button 
-                android:layout_width = "wrap_content"
-                android:layout_height = "wrap_content"
-                android:text = "@string/meetups"
-                android:id="@+id/meetups"
-                android:textSize="10sp"/>
-              
-              <Button 
-                android:layout_width = "wrap_content"
-                android:layout_height = "wrap_content"
-                android:text = "@string/rides"
-                android:id="@+id/rides"
                 android:textSize="10sp"/>
               
               <Button 

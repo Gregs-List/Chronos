@@ -151,5 +151,7 @@ else
     $message .= 'Whole statement: ' . $query;
     die($message);
 	}
+	else{
 	header('Location: myAccount.php');
+	}
 ?>

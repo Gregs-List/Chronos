@@ -22,9 +22,12 @@ import com.example.gregslist.ListingActivity.DownloadFilesTask;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
 import android.view.WindowManager;
@@ -36,6 +39,7 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.TextView.OnEditorActionListener;
 
 public class SearchActivity extends Activity {
 
@@ -47,6 +51,13 @@ public class SearchActivity extends Activity {
 		Bundle b = getIntent().getExtras();
 		final int value = b.getInt("id");
 		final String search_term = b.getString("search_term");
+
+		Typeface typeFace = Typeface.createFromAsset(this.getAssets(),"fonts/SuperClarendon.ttc");
+
+		 ActionBar actionbar = getActionBar();
+		 actionbar.setBackgroundDrawable(getResources().getDrawable(R.drawable.search_banner));
+		 actionbar.setDisplayShowHomeEnabled(false);
+		 actionbar.setDisplayShowTitleEnabled(false);
 		
 		String url = "http://ec2-50-112-191-198.us-west-2.compute.amazonaws.com/GregsList/Android_API/search.php";
 		StringBuilder full_url = new StringBuilder().append(url).append("?search_term=").append(search_term);
@@ -60,6 +71,33 @@ public class SearchActivity extends Activity {
 				e.printStackTrace();
 			}
 		
+			
+			EditText search_hint = (EditText) findViewById(R.id.search_text);
+			search_hint.setImeActionLabel("Search", KeyEvent.KEYCODE_ENTER);
+			search_hint.setOnEditorActionListener(new OnEditorActionListener() {
+				
+				@Override
+				public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+					if (event != null&& (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
+						EditText text = (EditText) findViewById(R.id.search_text);
+						if (text.getText().toString().trim().equals("")) {
+							final int duration = Toast.LENGTH_SHORT;
+							Toast toast1 = Toast.makeText(getApplicationContext(), "Enter a search term", duration);
+				        	toast1.show();
+						} else {
+							Intent i = new Intent(SearchActivity.this,SearchActivity.class);
+							Bundle d = new Bundle();
+				        	   d.putInt("id", value); //Your id
+				        	   d.putString("search_term", text.getText().toString());
+				        	   i.putExtras(d);
+							   startActivity(i);
+						}
+						
+					}
+					return false;
+				}
+			});
+			
 		ImageButton search = (ImageButton) findViewById(R.id.search);
 		search.setOnClickListener(new View.OnClickListener() {
 			
@@ -77,6 +115,7 @@ public class SearchActivity extends Activity {
 		});
 		
         Button account = (Button) findViewById(R.id.account);
+        account.setTypeface(typeFace);
         account.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -90,6 +129,7 @@ public class SearchActivity extends Activity {
 		});
         
         Button home = (Button) findViewById(R.id.home);
+        home.setTypeface(typeFace);
         home.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -103,6 +143,7 @@ public class SearchActivity extends Activity {
 		});
         
         Button logout = (Button) findViewById(R.id.logout);
+        logout.setTypeface(typeFace);
         logout.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -177,8 +218,6 @@ public class DownloadFilesTask extends AsyncTask<String, Void, String> {
     			Button books = (Button) findViewById(R.id.books);
     			Button electronics = (Button) findViewById(R.id.electronics);
     			Button furniture = (Button) findViewById(R.id.furniture);
-    			Button meetups = (Button) findViewById(R.id.meetups);
-    			Button rides = (Button) findViewById(R.id.rides);
     			Button misc = (Button) findViewById(R.id.misc);
     			Button all = (Button) findViewById(R.id.all);
     			
@@ -293,62 +332,6 @@ public class DownloadFilesTask extends AsyncTask<String, Void, String> {
     						}
     					}
     				});
-      			
-      			meetups.setOnClickListener(new View.OnClickListener() {
-					
-    					@Override
-    					public void onClick(View arg0) {
-    						ArrayList<String> titles_meetups = new ArrayList<String>();
-    		    			ArrayList<String> categories_meetups = new ArrayList<String>();
-    						for (int i = 0; i < listings.size(); i++) {
-    							if(listings.get(i).getCategory().equals("Meetups")) {
-    								titles_meetups.add(listings.get(i).getTitle());
-    			    				categories_meetups.add(listings.get(i).getCategory());
-    			    				final ListView listview = (ListView) findViewById(R.id.listview2);
-    			        	        final ArrayAdapter adapter;
-    			        		    adapter = new CustomAdapter(SearchActivity.this,titles_meetups,categories_meetups);
-    			        	        listview.setAdapter(adapter);
-    			        	        
-    			        	        TextView text = (TextView) findViewById(R.id.search_heading);
-    			        	        text.setText("Search Results - Meetups");
-    							}
-    						}
-    						
-    						if (titles_meetups.size() == 0) {
-    							final int duration = Toast.LENGTH_SHORT;
-    							Toast toast1 = Toast.makeText(getApplicationContext(), "There are no search results in the Meetups category", duration);
-    				        	toast1.show();
-    						}
-    					}
-    				});
-      			
-      			rides.setOnClickListener(new View.OnClickListener() {
-					
-    					@Override
-    					public void onClick(View arg0) {
-    						ArrayList<String> titles_rides = new ArrayList<String>();
-    		    			ArrayList<String> categories_rides = new ArrayList<String>();
-    						for (int i = 0; i < listings.size(); i++) {
-    							if(listings.get(i).getCategory().equals("Rides")) {
-    								titles_rides.add(listings.get(i).getTitle());
-    			    				categories_rides.add(listings.get(i).getCategory());
-    			    				final ListView listview = (ListView) findViewById(R.id.listview2);
-    			        	        final ArrayAdapter adapter;
-    			        		    adapter = new CustomAdapter(SearchActivity.this,titles_rides,categories_rides);
-    			        	        listview.setAdapter(adapter);
-    			        	        
-    			        	        TextView text = (TextView) findViewById(R.id.search_heading);
-    			        	        text.setText("Search Results - Rides");
-    							}
-    						}
-    						if (titles_rides.size() == 0) {
-    							final int duration = Toast.LENGTH_SHORT;
-    							Toast toast1 = Toast.makeText(getApplicationContext(), "There are no search results in the Rides category", duration);
-    				        	toast1.show();
-    						}
-    					}
-    				});
-      			
 
 
       			misc.setOnClickListener(new View.OnClickListener() {

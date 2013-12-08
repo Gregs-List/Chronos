@@ -11,14 +11,13 @@
 		<script src="categoryBar.js" ></script>
 		<script src="searchBar.js" ></script>
 		<link rel="stylesheet" type="text/css" href="home.css">
-		<script type="text/javascript" src="index.js"></script>
 		<title>Greg's List Home</title>
 	</head>
 
 	<body>
 		<img src = "header.png" alt= "Greg's List" class="logo"/>
 		<nav id = "navBar"> 
-				<a class ="nav_item" href="home.html">Home</a>
+				<a class ="nav_item" href="home.php">Home</a>
 				<a class ="nav_item" href="myAccount.php">My Account</a>
 				<a class ="nav_item" href="createListing.html">Create Listing</a>
 				<a class ="nav_item" href="logout.php">Logout</a>
@@ -38,10 +37,9 @@
 		</nav>
 
 		<div id="photoBooth">
-		    <div id="slideShow">
+		    <div id="slideShow" style="width:518px">
 		      <div class="photoHolder">
-		        <img class="thumbnail topPhoto" src="http://lyle.smu.edu/~craley/3345/img/italy/SAM_0944.JPG" alt="Gallery Image"/>
-		        <img class="thumbnail bottomPhoto" src="http://lyle.smu.edu/~craley/3345/img/italy/SAM_0023.JPG" alt="Gallery Image"/>
+		        <img class="thumbnail topPhoto" src="" width="518px" height="389px" alt="Gallery Image"/>
 		      </div>
 		      <img class="moreIndicator rot90" src="arrow1.png" alt="More Content"/>   
 		      <div id="nav">
