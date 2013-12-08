@@ -42,11 +42,11 @@ public class ListingActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_listing);
 		
-		Typeface typeFace = Typeface.createFromAsset(this.getAssets(),"fonts/SuperClarendon.ttc");
-		Typeface bold = Typeface.createFromAsset(this.getAssets(), "fonts/CLARENDO.TTF");
+		Typeface typeFace = Typeface.createFromAsset(this.getAssets(),"fonts/DenkOne-Regular.ttf");
+		//Typeface bold = Typeface.createFromAsset(this.getAssets(), "fonts/CLARENDO.TTF");
 		
 		TextView contact = (TextView) findViewById(R.id.contact);
-		contact.setTypeface(bold);
+		contact.setTypeface(typeFace);
 		
 		ActionBar actionbar = getActionBar();
 		actionbar.setBackgroundDrawable(getResources().getDrawable(R.drawable.banner_listing));
@@ -54,7 +54,7 @@ public class ListingActivity extends Activity {
 		actionbar.setDisplayShowTitleEnabled(false);
 		
 		TextView header = (TextView) findViewById(R.id.listings_header);
-		header.setTypeface(bold);
+		header.setTypeface(typeFace);
 		
 		Bundle b = getIntent().getExtras();
 		final String listingID = b.getString("id");
@@ -196,8 +196,8 @@ public class DownloadFilesTask extends AsyncTask<String, Void, String> {
         	String result1 = separated[0];
         	String result2 = separated[1];
         	JSONObject object;
-        	final Typeface typeFace = Typeface.createFromAsset(getApplicationContext().getAssets(),"fonts/SuperClarendon.ttc");
-    		final Typeface bold = Typeface.createFromAsset(getApplicationContext().getAssets(), "fonts/CLARENDO.TTF");
+        	final Typeface typeFace = Typeface.createFromAsset(getApplicationContext().getAssets(),"fonts/DenkOne-Regular.ttf");
+    		//final Typeface bold = Typeface.createFromAsset(getApplicationContext().getAssets(), "fonts/CLARENDO.TTF");
 			try {
 				object = new JSONObject(result1);
 	        	String name = object.getString("name");

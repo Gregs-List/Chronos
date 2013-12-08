@@ -64,19 +64,19 @@ public class UserHome extends Activity {
 		actionbar.setDisplayShowHomeEnabled(false);
 		actionbar.setDisplayShowTitleEnabled(false);
 		
-		Typeface typeFace = Typeface.createFromAsset(this.getAssets(),"fonts/SuperClarendon.ttc");
-		Typeface bold = Typeface.createFromAsset(this.getAssets(), "fonts/CLARENDO.TTF");
+		Typeface typeFace = Typeface.createFromAsset(this.getAssets(),"fonts/DenkOne-Regular.ttf");
+		//Typeface bold = Typeface.createFromAsset(this.getAssets(), "fonts/CLARENDO.TTF");
 		
 		Button home = (Button) findViewById(R.id.nav1);
 		home.setTypeface(typeFace);
 		
 		TextView heading = (TextView) findViewById(R.id.user_activity);
-		heading.setTypeface(bold);
+		heading.setTypeface(typeFace);
 		
 		TextView title = (TextView) findViewById(R.id.title);
 		TextView category = (TextView) findViewById(R.id.category);
-		title.setTypeface(bold);
-		category.setTypeface(bold);
+		title.setTypeface(typeFace);
+		category.setTypeface(typeFace);
 		
 		EditText search_hint = (EditText) findViewById(R.id.search_text);
 		search_hint.setImeActionLabel("Search", KeyEvent.KEYCODE_ENTER);

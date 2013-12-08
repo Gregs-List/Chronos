@@ -35,7 +35,7 @@ public class CustomAdapter extends ArrayAdapter<String> {
 	    if (rowView == null) {
 	    rowView = inflater.inflate(R.layout.row_layout, parent, false);
 	    }
-	    Typeface typeFace = Typeface.createFromAsset(context.getAssets(),"fonts/CLARENDO.TTF");
+	    Typeface typeFace = Typeface.createFromAsset(context.getAssets(),"fonts/DenkOne-Regular.ttf");
 	    TextView textView = (TextView) rowView.findViewById(R.id.title);
 	    textView.setTypeface(typeFace);
 	    TextView textView2= (TextView) rowView.findViewById(R.id.category);

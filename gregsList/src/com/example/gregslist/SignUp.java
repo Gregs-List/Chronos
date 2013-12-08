@@ -55,11 +55,11 @@ public class SignUp extends Activity {
 		actionbar.setDisplayShowHomeEnabled(false);
 		actionbar.setDisplayShowTitleEnabled(false);
 		
-		Typeface typeFace = Typeface.createFromAsset(this.getAssets(),"fonts/SuperClarendon.ttc");
+		Typeface typeFace = Typeface.createFromAsset(this.getAssets(),"fonts/DenkOne-Regular.ttf");
 		Typeface bold = Typeface.createFromAsset(this.getAssets(), "fonts/CLARENDO.TTF");
 		
 		TextView header = (TextView) findViewById(R.id.signup_text);
-		header.setTypeface(bold);
+		header.setTypeface(typeFace);
 		
 		fname.setTypeface(typeFace);
 		lname.setTypeface(typeFace);

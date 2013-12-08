@@ -49,8 +49,8 @@ public class AccountActivity extends Activity {
 		//TextView id = (TextView) findViewById(R.id.user_id);
 		//id.setText(String.valueOf(value));
 		
-		Typeface typeFace = Typeface.createFromAsset(this.getAssets(),"fonts/SuperClarendon.ttc");
-		Typeface bold = Typeface.createFromAsset(this.getAssets(), "fonts/CLARENDO.TTF");
+		Typeface typeFace = Typeface.createFromAsset(this.getAssets(),"fonts/DenkOne-Regular.ttf");
+		//Typeface bold = Typeface.createFromAsset(this.getAssets(), "fonts/CLARENDO.TTF");
 		
 		ActionBar actionbar = getActionBar();
 		actionbar.setBackgroundDrawable(getResources().getDrawable(R.drawable.banner_account));
@@ -59,11 +59,11 @@ public class AccountActivity extends Activity {
 		
 		TextView title = (TextView) findViewById(R.id.title);
 		TextView category = (TextView) findViewById(R.id.category);
-		title.setTypeface(bold);
-		category.setTypeface(bold);
+		title.setTypeface(typeFace);
+		category.setTypeface(typeFace);
 		
 		TextView account_heading = (TextView) findViewById(R.id.contact);
-		account_heading.setTypeface(bold);
+		account_heading.setTypeface(typeFace);
 		
 		TextView email_account = (TextView) findViewById(R.id.email_account);
 		email_account.setTypeface(typeFace);
@@ -72,7 +72,7 @@ public class AccountActivity extends Activity {
 		phone_account.setTypeface(typeFace);
 		
 		TextView my_listings = (TextView) findViewById(R.id.mylisting);
-		my_listings.setTypeface(bold);
+		my_listings.setTypeface(typeFace);
 		
 		
 		Button account = (Button) findViewById(R.id.account);

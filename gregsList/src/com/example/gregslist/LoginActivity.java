@@ -42,7 +42,7 @@ public class LoginActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         EditText email = (EditText)findViewById(R.id.email);
-    	Typeface typeFace = Typeface.createFromAsset(this.getAssets(),"fonts/SuperClarendon.ttc");
+    	Typeface typeFace = Typeface.createFromAsset(this.getAssets(),"fonts/DenkOne-Regular.ttf");
     	EditText password = (EditText)findViewById(R.id.password);
     	password.setTypeface(typeFace);
         email.setTypeface(typeFace);

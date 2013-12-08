@@ -6,7 +6,7 @@
     android:id ="@+id/listing_view" 
     android:orientation = "vertical"
     android:gravity = "center_horizontal"
-    android:background="#161a3f">
+    android:background="@drawable/other_background">
            <LinearLayout
         android:layout_height = "wrap_content" 
         android:layout_width = "wrap_content"
