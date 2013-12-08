@@ -106,7 +106,7 @@ function textResults(data){
 
 function addRows(){
 	$('#listingTable').empty();
-	$('#listingTable').append('<tr><td>Title</td><td>Price</td><td>Description</td></tr>');
+	$('#listingTable').append('<tr><td><h3>Title</h3></td><td><h3>Price</h3></td><td><h3>Description</h3></td></tr>');
 	var len = links.length;
 	for(var x = 0; x < len; x++){
 		var row = '<tr><td><a href="listing.html?'+links[x].id+'">'+links[x].title+'</a></td><td>'+links[x].price+'</td><td>'+links[x].description+'</td></tr>';
