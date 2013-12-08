@@ -45,7 +45,6 @@
 		<div id="myListings">
 			<h3>My Listings</h3>
 			<?php
-			session_start();
 			include 'getListing.php';?>
 		</div>
 
