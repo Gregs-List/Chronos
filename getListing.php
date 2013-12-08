@@ -8,7 +8,7 @@
 	mysql_select_db("GregsList", $con)
 		or die("Unable to select database:" . mysql_error());
 
-	session_start();
+	#session_start();
 	$session = $_SESSION['userID'];	
 	echo $session;
 
@@ -21,6 +21,7 @@
 	{
     		//$rows[] = $r;
 		echo "Title:" . '&nbsp;&nbsp;&nbsp;&nbsp;' . $r['title'] . '&nbsp;&nbsp;&nbsp;&nbsp;' . "Date Posted:" . '&nbsp;&nbsp;&nbsp;&nbsp;' . $r['dateListed'];
+		echo "<button id='editButton' type='button' value='{$r['listingID']}'>Edit</button>";
 		echo "<br>";
 	}
 

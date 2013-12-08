@@ -17,11 +17,14 @@ function getPhone(){
 
 }
 
-
-
+function editRedirect(e){
+	var text = e.target.value;
+	window.location = "editListing.html?" + text;
+}
 
 
 $(document).ready( function() {
 	getPhone();
-	
+	$('#editButton').click(editRedirect);
+
 });
