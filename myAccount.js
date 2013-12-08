@@ -29,5 +29,5 @@ $(document).ready( function() {
 });
 
 window.onload=function(){
-$('#editButton').css("background","url('edit.png')");
+$('#editButton').css("background","url('edit.png') no-repeat");
 };
