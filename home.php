@@ -39,8 +39,8 @@
 		<div id="photoBooth">
 		    <div id="slideShow">
 		      <div class="photoHolder">
-		        <img class="thumbnail topPhoto" src="http://lyle.smu.edu/~craley/3345/img/italy/SAM_0944.JPG" alt="Gallery Image"/>
-		        <img class="thumbnail bottomPhoto" src="http://lyle.smu.edu/~craley/3345/img/italy/SAM_0023.JPG" alt="Gallery Image"/>
+		        <img class="thumbnail topPhoto" src="stupid_morgan.jpg" width="518px" height="389px" alt="Gallery Image"/>
+		        <img class="thumbnail bottomPhoto" src="stupid_morgan.jpg" width="518px" height="389px" alt="Gallery Image"/>
 		      </div>
 		      <img class="moreIndicator rot90" src="arrow1.png" alt="More Content"/>   
 		      <div id="nav">
