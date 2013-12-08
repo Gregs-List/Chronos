@@ -17,6 +17,19 @@
 	
 	#converts to json
 	$rows = array();
+			echo '<style type="text/css">
+        		#editButton {
+				background:url('edit.png') no-repeat;
+				position:absolute;
+				cursor:pointer;	
+				width: 200px;
+				height: 100px;
+				border: none;
+				margin-top:-30px;
+				margin-left:20px;
+				}
+				#editButton:focus {outline:none;} ::-moz-focus-inner {border:0;}
+				</style>';
 	while($r = mysql_fetch_array($result)) 
 	{
     		//$rows[] = $r;
