@@ -13,6 +13,14 @@ html {
 	background:#062c3f;
 }
 
+#nextPhoto {
+	cursor:pointer;
+}
+
+#previousPhoto {
+	cursor:pointer;
+}
+
 #searchButton:focus {outline:none;} ::-moz-focus-inner {border:0;}
 
 .category {
@@ -102,11 +110,13 @@ h3 {
 	z-index: 3;
 	opacity: .8;
 	top: 0px;
+	cursor:pointer;
 }
 
 .thumbnail {
 	position: relative;
 	box-shadow: 1px 3px 20px 0px #062c3f;
+	cursor:pointer;
 }
 
 /*This make the 2nd image not take up any space and be beneath its previous sibling image*/
