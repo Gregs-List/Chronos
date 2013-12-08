@@ -136,9 +136,8 @@ else
 	}
 
 	// replace into Photos
-	$fileQuery = "REPLACE INTO Photos VALUES ('$listingID', '$photoID', '$photoUrl')";
-	mysql_query($fileQuery);
-	if(!$fileQuery)
+	$ins = mysql_query($fileQuery);
+	if(!$ins)
 	{
 		$message = 'Replace into Photos table failed: ' . mysql_error() . '<br>';
 		$message .= 'Whole statement: ' . $query;
