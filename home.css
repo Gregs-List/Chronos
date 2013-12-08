@@ -13,6 +13,8 @@ html {
 	background:#062c3f;
 }
 
+#searchButton:focus {outline:none;} ::-moz-focus-inner {border:0;}
+
 .category {
 	display:block; 
 	color: white;

@@ -14,6 +14,8 @@ feedbackRating INT,
 location varchar(20),
 phoneNumber varchar(20),
 admin BIT(1) DEFAULT 0,
+oauth_provider varchar(10),
+oauth_uid text,
 UNIQUE(email)
 );
 

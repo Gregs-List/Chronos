@@ -24,9 +24,8 @@ html {
 #listingTable {
 position:absolute;
 margin-top:60px;
-margin-left:180px;
-border:white 2px solid;
-width:800px;
+margin-left:100px;
+min-width:600px;
 }
 
 h3 {
