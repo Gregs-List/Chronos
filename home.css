@@ -14,7 +14,7 @@ html {
 }
 
 .category {
-	display:block;
+	display:block; 
 	color: white;
 	font-family:"Denk One";
 	padding:10px;
