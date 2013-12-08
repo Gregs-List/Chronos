@@ -4,10 +4,7 @@ html {
 }
 
 #listing {
-	width:50%;
-	margin-right:auto;
-	margin-left:auto;
-	border: solid 2px;
+	position:absolute;
 	color:white;
 
 }
