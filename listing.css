@@ -1,6 +1,8 @@
 #contactInfo{
-	float: right;
-	top:10%;
+	position:absolute;
+	border: solid 2px;
+	top:190px;
+	left:550px;
 }
 
 header *{
@@ -8,8 +10,11 @@ header *{
 }
 
 #listing {
-	margin-left: auto;
-	margin-right: auto;
-	width:50%;
+	position:absolute;
+	left:350px;
+	top:400px;
 	border: solid 2px;
 }
+
+
+#searchButton:focus {outline:none;} ::-moz-focus-inner {border:0;}
