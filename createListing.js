@@ -6,18 +6,54 @@ $(document).ready(function(){
 		if(text == 'Books'){
 			hideFields();
 			$('#bookFields').css('display','Block');
+			document.getElementById("BookType").required = true;
+			document.getElementById("bookCondition").required = true;
+			document.getElementById("bookTitle").required = true;
+			document.getElementById("FurnitureType").required = false;
+			document.getElementById("furnitureCondition").required = false;
+			document.getElementById("ElectronicType").required = false;
+			document.getElementById("BikeType").required = false;
+			document.getElementById("bMake").required = false;
+			document.getElementById("bModel").required = false;
 		}
 		else if (text == 'Furniture'){
 			hideFields();
 			$('#furnitureFields').css('display','Block');
+			document.getElementById("FurnitureType").required = true;
+			document.getElementById("furnitureCondition").required = true;
+			document.getElementById("BookType").required = false;
+			document.getElementById("bookCondition").required = false;
+			document.getElementById("bookTitle").required = false;
+			document.getElementById("ElectronicType").required = false;
+			document.getElementById("BikeType").required = false;
+			document.getElementById("bMake").required = false;
+			document.getElementById("bModel").required = false;
 		}
 		else if (text == 'Electronics'){
 			hideFields();
 			$('#electronicFields').css('display','Block');
+			document.getElementById("ElectronicType").required = true;
+			document.getElementById("BookType").required = false;
+			document.getElementById("bookCondition").required = false;
+			document.getElementById("bookTitle").required = false;
+			document.getElementById("FurnitureType").required = false;
+			document.getElementById("furnitureCondition").required = false;
+			document.getElementById("BikeType").required = false;
+			document.getElementById("bMake").required = false;
+			document.getElementById("bModel").required = false;
 		}
 		else if (text == 'Bikes'){
 			hideFields();
 			$('#bikeFields').css('display','Block');
+			document.getElementById("BikeType").required = true;
+			document.getElementById("bMake").required = true;
+			document.getElementById("bModel").required = true;
+			document.getElementById("BookType").required = false;
+			document.getElementById("bookCondition").required = false;
+			document.getElementById("bookTitle").required = false;
+			document.getElementById("FurnitureType").required = false;
+			document.getElementById("furnitureCondition").required = false;
+			document.getElementById("ElectronicType").required = false;
 		}
 		else if (text == 'Miscellaneous'){
 			hideFields();
