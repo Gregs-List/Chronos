@@ -22,13 +22,12 @@ function editRedirect(e){
 	window.location = "editListing.html?" + text;
 }
 
-
-window.onload=function(){
-console.log("meow");
-};
-
 $(document).ready( function() {
 	getPhone();
 	$('#editButton').click(editRedirect);
 
 });
+
+window.onload=function(){
+$('#editButton').css("background","url('edit.png')");
+};
