@@ -1,4 +1,10 @@
+<!DOCTYPE html>
 <html lang="en">
+<?php 
+	session_start();
+	if ($_SESSION['userID'] == NULL) {
+    	header('Location:index.html');}
+?>
 	<head>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>
 		<script src="home.js" ></script>
@@ -52,8 +58,4 @@
 		</div>
 	</body>
 </html>
-	<?php 
-	session_start();
-if (session_status() != PHP_SESSION_ACTIVE) {
-    header('Location:index.html');
-} ?>
+

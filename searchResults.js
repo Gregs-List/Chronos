@@ -1,6 +1,16 @@
 
 
+var request = new XMLHttpRequest();
+var url = "checkSession.php";
+request.open("GET", url, true);
+request.onreadystatechange = function(e)
+{
+	if(request.readyState == 4){
+		console.log(request.responseText);
+	}
 
+}
+request.send();
 
 //Use this array to hold objects which contain the following:
 //location, description, date and an actual Image element.
@@ -114,10 +124,14 @@ function addRows(){
 	}
 }
 
-
+function checkSession(){
+	
+}
 
 
 $(document).ready( function() {
+
+	checkSession();
 
 	$('input:radio').change(radioFilter);
 
@@ -134,7 +148,10 @@ $(document).ready( function() {
     		textResults(data);
     	}
     	
-  	}	
+  	}
+
+
+  	
 	
 });
 
