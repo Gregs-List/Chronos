@@ -1,8 +1,25 @@
-#categoryBar a{
-	display:block;
+#categoryBar {
+	position:absolute;
+	margin-top:100px;
+	color: white;
+	background:#062c3f;
+	border:none;
+	font-family:"Denk One";
+	margin-left:180px;
+	background:#062c3f;
 }
 
-#categoryBar{
-	float:left;
-	border: solid 2px;
+.category {
+	display:block;
+	color: white;
+	font-family:"Denk One";
+	padding:10px;
+	padding-left:20px;
+	margin-right:0px;
+	background:#062c3f;
+}
+
+.category:hover {
+	background:#41738e;
+	cursor:pointer;
 }
