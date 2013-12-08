@@ -1,0 +1,17 @@
+Software Features
+
+The software
+- Requires an SMU email address to register
+- Requires a registered SMU email address and password to log in
+- Adds new users to the database via a signup page
+- Redirects users to the home page after successful signup or login
+- Allows users to access their account page to edit personal information and listings they created
+- Allows users to create new listings
+- Select which fields to display in when creating a listing based on its category
+- Allows users to upload photos associated with their listings
+- Allows users to browse listings of a selected category
+- Allows users to search for relevant listings
+- Can filter search results by category
+- Displays the most recent listings in a slideshow on the home page
+- Lists the contact information of the user who posted the listing so that potential buyers can contact them
+- Allows users to log out of the site
