@@ -44,6 +44,14 @@ h3 {
 	padding-left:10px;
 }
 
+#myListings a{
+	color:white;
+}
+
+#myListings a:visited{
+	color:#062c3f;
+}
+
 .category:hover {
 	background:#41738e;
 	cursor:pointer;
@@ -134,10 +142,3 @@ h3 {
 #editButton:focus {outline:none;} ::-moz-focus-inner {border:0;}
 #deleteButton:focus {outline:none;} ::-moz-focus-inner {border:0;}
 
-table a{
-	color:white;
-}
-
-table a:visited{
-	color:#062c3f;
-}

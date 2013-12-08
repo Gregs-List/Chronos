@@ -27,5 +27,9 @@
 	margin-top: -35px;
 }
 
+#photos{
+	color:white;
+}
+
 #newListing:focus {outline:none;} ::-moz-focus-inner {border:0;}
 #searchButton:focus {outline:none;} ::-moz-focus-inner {border:0;}
