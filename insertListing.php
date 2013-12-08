@@ -157,5 +157,5 @@ else
 		$message = 'Transaction failed: ' . mysql_error() . '<br>';
     die($message);
 	}
-//	else{header('Location: home.html');}
+	else{header('Location: home.html');}
 ?>
