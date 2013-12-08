@@ -23,6 +23,9 @@ function editRedirect(e){
 }
 
 
+window.onload=function(){
+document.write('<link rel="stylesheet" type="text/css" href="myAccount">'); };
+
 $(document).ready( function() {
 	getPhone();
 	$('#editButton').click(editRedirect);

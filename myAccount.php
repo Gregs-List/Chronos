@@ -5,7 +5,7 @@
 		<script src="categoryBar.js" ></script>
 		<script src="searchBar.js" ></script>
 		<script type="text/javascript" src="myAccount.js"></script>
-		<link rel="stylesheet" type="text/css" href="myAccount.css">
+		<!--<link rel="stylesheet" type="text/css" href="myAccount.css">-->
 		<title>My Account</title>
 	</head>
 
