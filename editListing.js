@@ -10,7 +10,7 @@ $(document).ready(function(){
 
 	
 
-	$('#editListing').click(function(e){
+	$('#save').click(function(e){
 
 		var money = $('#price').val();
 		money = parseMoney(money);
