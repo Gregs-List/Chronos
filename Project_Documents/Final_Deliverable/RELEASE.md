@@ -17,6 +17,9 @@ GregsList is located at [http://ec2-50-112-191-198.us-west-2.compute.amazonaws.c
 ## Notes:
 After logging in, the NavBar at the top of the page will allow you to view your account information, create a new listing, go to the home page, search, or log out. The links in the side bar will take you to a list of the listings in that category from most to least recent.
 
+### Log In / Sign Up
+If you have an account, you may enter your SMU e-mail address and GregsList password into the login fields at the top to enter the site. If not, you may fill out the signup form on the right. First Name and Last Name must be filled out with alphabetical characters only. Passwords must be at least 8 characters. The SMU e-mail address must not already be registered.
+
 ### [Home][2]
 On this page, you will find the top navigation bar, the category bar on the side, the search bar, and a slide show of the 5 most recent listings. Click the arrow on the bottom center of the slide show to reveal the listing summary. Click the left and right arrows to go back and forth in the slideshow. The slideshow will progress on its own, otherwise.
 
@@ -37,6 +40,9 @@ On any page where listings are, well, listed, click the title of a listing to vi
 
 ### View Category
 In the navigation bar on the left you will find listing categories. Select any one of them to see all the listings in that category from most to least recent.
+
+### Logout
+The Logout link in the top navigation bar will end the user's session and take them back to the log in screen.
 
 [1]: http://ec2-50-112-191-198.us-west-2.compute.amazonaws.com/GregsList/index.html
 [2]: http://ec2-50-112-191-198.us-west-2.compute.amazonaws.com/GregsList/home.php
