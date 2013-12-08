@@ -24,7 +24,8 @@ function editRedirect(e){
 
 
 window.onload=function(){
-document.write('<link rel="stylesheet" type="text/css" href="myAccount.css">'); };
+console.log("meow");
+};
 
 $(document).ready( function() {
 	getPhone();
