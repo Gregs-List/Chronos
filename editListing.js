@@ -164,7 +164,7 @@ function fillListing(data){
     $('#newListing').attr("action", "editListing.php?category="+listing.category+"&listingID="+data);
     selectFields(listing.category);
 
-    $('#description').html('Description: ' + listing.description);
+    $('#description').html(listing.description);
     if (listing.category == 'Books'){
         $('#BookType').val(book.type);
         $('#bookCondition').find('option[value="'+book.condition+'"]').attr("selected",true);
