@@ -1,7 +1,7 @@
 
 #listing {
 	position:absolute;
-	left:440px;
+	left:480px;
 	top:220px;
 	border:none;
 	padding:10px;
@@ -24,6 +24,10 @@
 	height: 100px;
 	border: none;
 	margin-left:-65px;
+}
+
+#photos {
+	margin-left:20px;
 }
 
 #newListing:focus {outline:none;} ::-moz-focus-inner {border:0;}
