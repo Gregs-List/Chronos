@@ -133,3 +133,11 @@ h3 {
 #searchButton:focus {outline:none;} ::-moz-focus-inner {border:0;}
 #editButton:focus {outline:none;} ::-moz-focus-inner {border:0;}
 #deleteButton:focus {outline:none;} ::-moz-focus-inner {border:0;}
+
+table a{
+	color:white;
+}
+
+table a:visited{
+	color:#062c3f;
+}
