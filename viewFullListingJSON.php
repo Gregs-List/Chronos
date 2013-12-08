@@ -33,7 +33,7 @@ $user = mysql_fetch_array($temp1, MYSQL_ASSOC);
 // Find photo url
 $temp1 = mysql_query("SELECT photoURL FROM Photos WHERE listingID = '$listingID'");
 $photo = mysql_fetch_array($temp1, MYSQL_ASSOC);
-if (!$temp){
+if (!$temp1){
 	$photo['photoURL'] = 'No photo';
 }
 
