@@ -11,9 +11,10 @@ header *{
 
 #listing {
 	position:absolute;
-	left:350px;
+	left:450px;
 	top:400px;
 	border: solid 2px;
+	min-width:400px;
 }
 
 
