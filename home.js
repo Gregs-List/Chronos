@@ -63,9 +63,7 @@ function swapPhotoBack() {
 	}
 	var src = mImages[counter-1].img.src;
 	$('#slideShow img').eq(0).attr('src',src);
-	$('.details p').eq(0).html("Title: " + mImages[counter-1].title);
-	$('.details p').eq(1).html("Price: " + mImages[counter-1].price);
-	$('.details p').eq(2).html("Description: "+ mImages[counter-1].description);
+	
 	counter--;
 	//console.log(src);
 	console.log('swap photo');
@@ -95,6 +93,12 @@ request.onreadystatechange = function(e)
 			gImage.id = json[x].listingID;
 			gImage.img = new Image();
 			gImage.img.src = "User_Photos/" + json[x].photoURL;
+			if(x == 0){
+				$('#slideShow img').eq(0).attr('src',gImage.img.src);
+				$('.details p').eq(0).html("Title: " + gImage.title);
+				$('.details p').eq(1).html("Price: " + gImage.price);
+				$('.details p').eq(2).html("Description: "+ gImage.description);
+			}
 			makeGalleryImageOnloadCallback(gImage);
 			mImages.push(gImage);
 		}

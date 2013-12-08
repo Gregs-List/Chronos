@@ -39,7 +39,7 @@
 		<div id="photoBooth">
 		    <div id="slideShow">
 		      <div class="photoHolder">
-		        <img class="thumbnail topPhoto" src="stupid_morgan.jpg" width="518px" height="389px" alt="Gallery Image"/>
+		        <img class="thumbnail topPhoto" src="" width="518px" height="389px" alt="Gallery Image"/>
 		      </div>
 		      <img class="moreIndicator rot90" src="arrow1.png" alt="More Content"/>   
 		      <div id="nav">
