@@ -33,4 +33,5 @@ $('#editButton').css("background","url('edit.png') no-repeat");
 $('#editButton').css("cursor","pointer");
 $('#editButton').css("float","right");
 $('#editButton:focus').css("outline","none");
+$('#editButton').css("margin-top","30px");
 };
