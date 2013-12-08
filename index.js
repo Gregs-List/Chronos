@@ -1,4 +1,7 @@
 $(document).ready(function(){
+
+	
+
 	$('#signUp').click(function(e){
 
 		var email = $('#newEmail').val();
@@ -27,4 +30,13 @@ $(document).ready(function(){
 		}
 
 	});
+
+	var data = window.location.search;
+	if (data.substring(0, 1) == '?') {
+    	data = data.substring(1);
+    	if(data == "failed"){
+    		alert("Invalid Username or Password.");
+    	}
+    	window.location="index.html";
+    }
 });

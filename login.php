@@ -35,11 +35,7 @@
         $database_password = $row ['pword'];
     }
     if($password != $database_password){
-        header('Location:index.html');
-        echo '<script type="text/javascript">
-                window.location = "index.html";
-                alert("Invalid Username or Password.");
-              </script>';
+    	header('Location:index.html?failed');
     }
     else{
         header('Location:home.php');
