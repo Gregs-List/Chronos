@@ -1,4 +1,6 @@
 <?PHP
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 session_start();
 #inserts into Listings and <Category> table. Receives values from JavaScript
 	$con = mysql_connect("localhost", "listAdmin", "hermes");
