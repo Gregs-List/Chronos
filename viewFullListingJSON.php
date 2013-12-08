@@ -52,7 +52,7 @@ $temp1 = mysql_query("SELECT bikeType from BikeType where bikeTypeID = {$cat['bi
 $temp2 = mysql_fetch_array($temp1, MYSQL_ASSOC);
 $bikeType = $temp2['bikeType'];
 
-$fullListing = array_merge($user, $listing, $cat, $temp2);
+$fullListing = array_merge($user, $listing, $cat, $temp2, $photo);
 }
 
 
@@ -77,7 +77,7 @@ $temp1 = mysql_query("SELECT itemCondition FROM ConditionLookup where conditionI
 $temp3 = mysql_fetch_array($temp1, MYSQL_ASSOC);
 $condition = $temp3['itemCondition'];
 
-$fullListing = array_merge($user, $listing, $cat, $temp2, $temp3);
+$fullListing = array_merge($user, $listing, $cat, $temp2, $temp3, $photo);
 }
 
 
@@ -99,7 +99,7 @@ $temp1 = mysql_query("SELECT electronicsType FROM ElectronicsType WHERE electron
 $temp2 = mysql_fetch_array($temp1, MYSQL_ASSOC);
 $electronicsType = $temp2['electronicsType'];
 
-$fullListing = array_merge($user, $listing, $cat, $temp2);
+$fullListing = array_merge($user, $listing, $cat, $temp2, $photo);
 }
 
 
@@ -123,7 +123,7 @@ $furnitureType = $temp2['furnitureType'];
 $temp1 = mysql_query("SELECT itemCondition FROM ConditionLookup where conditionID = {$cat['conditionID']};");
 $temp3 = mysql_fetch_array($temp1, MYSQL_ASSOC);
 $condition = $temp3['itemCondition'];
-$fullListing = array_merge($user, $listing, $cat, $temp2, $temp3);
+$fullListing = array_merge($user, $listing, $cat, $temp2, $temp3, $photo);
 }
 
 
@@ -144,14 +144,14 @@ $cat = mysql_fetch_array($result2, MYSQL_ASSOC);
 $temp1 = mysql_query("SELECT meetupType FROM MeetupType WHERE meetupTypeID = {$cat['meetupTypeID']};");
 $temp2 = mysql_fetch_array($temp1, MYSQL_ASSOC);
 $meetupType = $temp2['meetupType'];
-$fullListing = array_merge($user, $listing, $cat, $temp2);
+$fullListing = array_merge($user, $listing, $cat, $temp2, $photo);
 }
 
 
 // if Miscellaneous, do nothing
 if($category=="Miscellaneous")
 {
-	$fullListing = array_merge($user, $listing);
+	$fullListing = array_merge($user, $listing, $photo);
 }
 
 // if Rides
@@ -168,7 +168,7 @@ if(!$result2)
 }
 // convert to array and store
 $cat = mysql_fetch_array($result2, MYSQL_ASSOC);
-$fullListing = array_merge($user, $listing, $cat);
+$fullListing = array_merge($user, $listing, $cat, $photo);
 }
 
 
