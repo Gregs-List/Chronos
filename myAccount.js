@@ -30,7 +30,6 @@ $(document).ready( function() {
 
 window.onload=function(){
 $('#editButton').css("background","url('edit.png') no-repeat");
-$('#editButton').css("position","absolute");
 $('#editButton').css("cursor","pointer");
 $('#editButton').css("float","right");
 $('#editButton:focus').css("outline","none");
