@@ -1,0 +1,265 @@
+Users:
+
+The Users table contains user login credentials, contact information, an ID for linking to listings, and OAuth information.
+
+- userID is an auto-incremented integer that serves as the primary key.
+- pword is the user's password
+- fullName is a single text value for the name the user wishes to display
+- feedbackRating is an integer meant to hold the user's feedback rating, but was not used.
+- email is a text value to hold the user's SMU e-mail address
+- location is a text field meant to describe which dorm or apartment complex the user lives in
+- phoneNumber is an integer for storing the phone number (if any) the user wishes to be contacted at in response to listings
+- admin is a single bit used to indicate if the user has administrator privileges or not. 1 indicates that the user has administrator privileges, 0 indicates a regular user and is the default value.
+- oauth_provider is a text value used to indicate which 3rd party authentication the oauth_uid belongs to.
+- oauth_uid is a text value used to store a 3rd party authentication ID.
+
+userID is the primary key. Users has no foreign key constraints, and 1 user may have 0 to many Listings.
+
+
+
+Listings:
+
+The Listings table contains descriptive information common to all listing types, a unique ID, and the ID of the user that created it.
+
+- listingID is an auto-incremented integer that serves as the primary key.
+- userID is a foreign key used to indicate the user that created it.
+- title is a text value meant to serve as a very short description of the item being listed
+- dateListed is a timestamp used to indicate the time created and sort returned listings.
+- category is a text value used to indicate what kind of listing it is for sorting purposes and for looking up the detailed information
+- price is a 7-place decimal to the hundreths place for storing the asking price for the item being offered
+- description is a large text value for describing the item being offered however the user chooses
+
+Listings has primary key listingID and foreign key userID. A user may have many Listings, and if a user is deleted, the child Listings are deleted as well. A listing may have 0 to many Photos, and must have one category (Bikes, Books, Furniture, Electronics, Meetups, or Miscellaneous).
+
+
+
+Bikes
+
+The Bikes table contains detailed listing information specific to bicycles.
+
+- listingID is an integer foreign key used to indicate which Listing the information belongs to. It also serves as the primary key.
+- bikeTypeID is an integer foreign key used to represent the type of bicycle and is used to look up a text value in BikeType. This forces the BikeType to be of a type specified by GregsList.
+- make is a text value to specify the brand of the bicycle.
+- model is a text value to specify the model of the bicyle.
+
+Bikes has primary key listingID and two foreign keys. A Bikes row belongs to a Listing and is bound by foreign key listingID. If the parent Listing is deleted, the Bikes row is also deleted. BikeType rows cannot be deleted unless they have no children in Bikes. A Bikes row belongs to one listing and has one BikeType.
+
+
+
+BikeType
+
+BikeType is a lookup table for getting text values for the different types of bicycles in GregsList.
+
+- bikeTypeID is the primary key, currently a value between 0 and 7.
+- bikeType is the text representation of a type of bike.
+
++------------+----------+
+| bikeTypeID | bikeType |
++------------+----------+
+|          0 | other    |
+|          1 | road     |
+|          2 | city     |
+|          3 | mountain |
+|          4 | cruiser  |
+|          5 | hybrid   |
+|          6 | unicycle |
+|          7 | electric |
++------------+----------+
+
+BikeType has primary key bikeTypeID and no foriegn keys. One BikeType may belong to many Bikes. A BikeType row cannot be deleted while a child Bike row exists.
+
+
+
+Books
+
+The Books table contains detailed listing information specific to Books.
+
+- listingID is an integer foreign key used to indicate which Listing the information belongs to. It also serves as the primary key.
+- bookTypeID is an integer foreign key used to represent the type of book and is used to look up a text value in BookType. This forces the BookType to be of a type specified by GregsList.
+- title is a text value for holding the title of the book being sold.
+- author is a text value for holding the author of the book being sold.
+- isbn is a text value for holding the isbn of the book being sold.
+- assignedCourse is a text value for holding the name of any SMU course that may be using the textbook
+- conditionID is an integer foreign key used to look up the condition of the book being sold.
+
+Books has primary key listingID and three foreign keys. One Books row belongs to one Listings row and has one bookType and one condition. If its parent Listing is deleted, it is also deleted.
+
+
+
+BookType
+
+BookType is a lookup table for the types of books available on GregsList.
+
+- bookTypeID is an integer primary key, currently a value between 0 and 6.
+- bookType is a text value describing the kind of book being sold.
+
++------------+---------------+
+| bookTypeID | bookType      |
++------------+---------------+
+|          0 | other         |
+|          1 | textbook      |
+|          2 | literature    |
+|          3 | poetry        |
+|          4 | reference     |
+|          5 | nonfiction    |
+|          6 | graphic novel |
++------------+---------------+
+
+BookType has primary key bookTypeID and no foriegn keys. One BookType may belong to many Books. A BookType row cannot be deleted while a child Book row exists.
+
+
+
+ConditionLookup
+
+ConditionLookup is a lookup table for the condition of used books and furniture.
+
+- conditionID is an integer primary key, currently a value between 0 and 5.
+- itemCondition is a text value describing the condition of the item being sold.
+
++-------------+---------------+
+| conditionID | itemCondition |
++-------------+---------------+
+|           0 | unspecified   |
+|           1 | new           |
+|           2 | excellent     |
+|           3 | light wear    |
+|           4 | normal wear   |
+|           5 | damaged       |
++-------------+---------------+
+
+ConditionLookup has primary key conditionID and no foreign keys. One conditionID may belong to many Books or Furniture rows. A ConditionLookup row cannot be deleted while a child Book or Furniture row exists.
+
+
+
+Electronics
+
+The Electronics table holds detailed listing information specific to electronics.
+
+- listingID is an integer foreign key used to indicate which Listing the information belongs to. It also serves as the primary key.
+- electronicsTypeID is an integer foreign key used to represent the type of device and is used to look up a text value in electronicsType. This forces the electronicsType to be of a type specified by GregsList.
+- make is a text value to specify the brand of the device.
+- model is a text value to specify the model of the device.
+- size is a text value to specify either physical dimensions, as might be the case with a television, or storage capacity, as might be the case with an mp3 player or hard drive.
+
+Electronics has primary key listingID and two foreign keys. One Electronics row belongs to one Listings row and has one electronicsType. If its parent Listing is deleted, it is also deleted.
+
+
+
+ElectronicsType
+
+ElectronicsType is a lookup table for the types of devices available on GregsList.
+
+- electronicsTypeID is an integer primary key, currently a value between 0 and 5.
+- electronicsType is a text value describing the kind of device being sold.
+
++-------------------+-----------------+
+| electronicsTypeID | electronicsType |
++-------------------+-----------------+
+|                 0 | other           |
+|                 1 | TV              |
+|                 2 | computer        |
+|                 3 | phone           |
+|                 4 | speakers        |
+|                 5 | iPod            |
++-------------------+-----------------+
+
+ElectronicsType has primary key electronicsTypeID and no foriegn keys. One ElectronicsType may belong to many Electronics. An ElectronicsType row cannot be deleted while a child Electronics row exists.
+
+
+
+Furniture
+
+The Furniture table holds detailed listing information specific to furniture.
+
+- listingID is an integer foreign key used to indicate which Listing the information belongs to. It also serves as the primary key.
+- furnitureTypeID is an integer foreign key used to represent the type of device and is used to look up a text value in FurnitureType. This forces the furnitureType to be of a type specified by GregsList.
+- conditionID is an integer foreign key used to look up the condition of the furniture being sold.
+
+Furniture has primary key listingID and three foreign keys. One Furniture row belongs to one Listings row and has one furnitureType. If its parent Listing is deleted, it is also deleted.
+
+
+
+FurnitureType
+
+FurnitureType is a lookup table for the types of furniture available on GregsList.
+
+- furnitureTypeID is an integer primary key, currently a value between 0 and 6.
+- furnitureType is a text value describing the kind of furniture being sold.
+
++-----------------+---------------+
+| furnitureTypeID | furnitureType |
++-----------------+---------------+
+|               0 | other         |
+|               1 | couch         |
+|               2 | bed           |
+|               3 | chair         |
+|               4 | table         |
+|               5 | futon         |
+|               6 | shelves       |
++-----------------+---------------+
+
+FurnitureType has primary key furnitureTypeID and no foriegn keys. One FurnitureType may belong to many Furniture rows. A FurnitureType row cannot be deleted while a child Furniture row exists.
+
+
+
+Meetups
+
+The Meetups table contains detailed listing information specific to a group meeting rather than the sale of an item.
+
+- listingID is an integer foreign key used to indicate which Listing the information belongs to. It also serves as the primary key.
+- meetupTypeID is an integer foreign key used to represent the type of gathering and is used to look up a text value in MeetupType. This forces the MeetupType to be of a type specified by GregsList.
+- location is a text value describing where the gathering will take place
+- date is a date value describing the day on which the gathering will take place
+- time is a time value describing the time at which the gathering will start
+
+Meetups has primary key listingID and foreign keys listingID and meetupTypeID. A Meetups row belongs to one Listings row and is deleted if the parent listing is deleted. A Meetups row has one MeetupType.
+
+
+
+MeetupType
+
+MeetupType is a lookup table linking a meetupTypeID to a text description of the kind of gathering.
+
+- meetupTypeID is an integer primary key, currently a value between 0 and 3.
+- meetupType is a text value describing the type of gathering
+
+MeetupType has primary key and foreign key meetupTypeID. One MeetupType belongs to one Meetups row. A MeetupType row cannot be deleted while a child Meetups row exists.
+
+
+
+Miscellaneous
+
+Miscellaneous is a table to serve as a catch-all for whatever listings do not fit another GregsList category.
+
+- listingID is an integer foreign key used to indicate which Listing the information belongs to. It also serves as the primary key.
+- itemName is a text field that can store a short descriptor for an item, but is not used in the final design.
+
+Miscellaneous has primary and foreign key listing ID. Miscellaneous rows each belong to one Listings row. If the parent Listings row is deleted, the child row is also deleted.
+
+
+
+Rides
+
+Rides contains detailed listing information for carpooling rather than the sale of an item.
+
+- listingID is an integer foreign key used to indicate which Listing the information belongs to. It also serves as the primary key.
+- leavingFrom is a text value describing the location from which the driver will leave
+- goingTo is a text value describing the destination to which the driver is going
+- departureDate is a date value describing the day on which the driver will leave
+- departureTime is a time value describing the time at which the driver will leave
+- returnDate is a date value describing the day on which the driver will return
+- returnTime is a time value describing the time at which the driver intends to return
+
+Rides has primary key and foreign key listingID. A Rides row belongs to one Listings row and is deleted if the parent listing is deleted.
+
+
+
+Photos
+
+Photos links listings to photos stored in the server.
+
+- listingID is an integer foreign key used to indicate which Listing the information belongs to.
+- photoID is an integer primary key used to order and keep track of the photos.
+- photoURL is a text value that holds the file name of the photo
+
+Photos has foreign key listingID and each Photos row belongs to one Listings row. A Listing may have more than one photo. If a parent Listing is deleted, all child Photos are deleted.
