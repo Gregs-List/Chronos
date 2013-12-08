@@ -29,7 +29,7 @@
 				<h4><a class ="category">Books</a>
 				<a class ="category">Furniture</a>
 				<a class ="category">Electronics</a>
-				<a class ="category">Bikes</a></h4>
+				<a class ="category">Bikes</a>
 				<a class = "category">Miscellaneous</a></h4>
 		</nav>
 
@@ -56,6 +56,6 @@
 </html>
 	<?php 
 	session_start();
-if ($_SESSION['userID'] == '') {
+if (session_status() != PHP_SESSION_ACTIVE) {
     header('Location:index.html');
 } ?>
