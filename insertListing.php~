@@ -1,5 +1,5 @@
 <?PHP
-//session_start();
+session_start();
 #inserts into Listings and <Category> table. Receives values from JavaScript
 	$con = mysql_connect("localhost", "listAdmin", "hermes");
 	if(!$con)
@@ -20,8 +20,8 @@
 	$lastPhoto = mysql_fetch_array($last, MYSQL_ASSOC); 		
 	$lastPhotoID = $lastPhoto['photoID'];
 	$photoID = $lastPhotoID + 1;
-	echo "Last photo ID: " . $lastPhotoID . "<br>";
-	echo "New photo ID: " . $photoID . "<br>";
+//	echo "Last photo ID: " . $lastPhotoID . "<br>";
+//	echo "New photo ID: " . $photoID . "<br>";
 
 	$listQuery = "INSERT INTO Listings VALUES(NULL, '$userID', '$title',NULL, '$category', '$price', '$description')";
 
@@ -86,7 +86,7 @@
 	&& ($_FILES["photos"]["size"] < 5000000)
 	&& in_array($extension, $allowedExts))
   {	
-	 	echo 'Image is of allowed type and size.<br> ';
+//	 	echo 'Image is of allowed type and size.<br> ';
 		if ($_FILES["photos"]["error"] > 0)
 		  {
 		  echo "Return Code: " . $_FILES["photos"]["error"] . "<br> ";
@@ -103,7 +103,7 @@
 					$message = 'Insert into Photos table failed: ' . mysql_error() . '<br>';
 					$message .= 'Whole statement: ' . $fileQuery;
 				}
-				else {echo "Stored in: " . "User_Photos/" . $photoUrl . "<br> ";}				 
+//				else {echo "Stored in: " . "User_Photos/" . $photoUrl . "<br> ";}				 
 		  
 		}
   }
