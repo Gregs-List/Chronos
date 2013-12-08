@@ -25,6 +25,6 @@ function editRedirect(e){
 
 $(document).ready( function() {
 	getPhone();
-	$('#editButton').click(editRedirect);
+	$('.editButton').click(editRedirect);
 
 });
