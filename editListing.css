@@ -1,0 +1,30 @@
+
+#listing {
+	position:absolute;
+	left:465px;
+	top:220px;
+	border:none;
+	padding:10px;
+}
+
+#listing *{
+	 text-align: center;
+     font-family:"Denk One";
+}
+
+#listing label {
+	 color:white;     
+}
+
+#save {
+	background:url('save_changes.png') no-repeat;
+	position:absolute;
+	cursor:pointer;	
+	width: 200px;
+	height: 100px;
+	border: none;
+	margin-left:-65px;
+	margin-top: -35px;
+}
+
+#newListing:focus {outline:none;} ::-moz-focus-inner {border:0;}
