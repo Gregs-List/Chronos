@@ -4,18 +4,24 @@
 	padding-left: 60px;
 	padding-right: 60px;
 	left: 480px;
-	top: 190px;
+	top: 240px;
 	color: white;
-	font-family:"Denk One";
+	font-family: "Denk One";
+	text-align: center;
 }
 
 header *{
 	text-align: center;
+	position: absolute;
+	left: 500px;
+	top: 170px;
+	font-family: "Denk one";
+	color: white;
 }
 
 #listing {
 	margin-left: 400px;
-	margin-top: 200px;
+	margin-top: 310px;
 	border: solid #41738e 3px;
 	position: absolute;
 	min-width: 430px;
