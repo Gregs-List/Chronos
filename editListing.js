@@ -144,7 +144,7 @@ function findListing(data){
             else if(listing.category == 'Bikes'){
                 bike.type = json.bikeType;
                 bike.make = json.make;
-                bike.nodel = json.model;
+                bike.model = json.model;
             }
 
             fillListing();
@@ -165,7 +165,7 @@ function fillListing(){
     $('#description').html('Description: ' + listing.description);
     if (listing.category == 'Books'){
         $('#BookType').val(book.type);
-        $('#bookCondition').val(book.condition);
+        $('#bookCondition').find('option[value="'+book.condition+'"]').attr("selected",true);
         $('#bookTitle').val(book.title);
         $('#author').val(book.author);
         $('#isbn').val(book.isbn);
