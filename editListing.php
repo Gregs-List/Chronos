@@ -9,11 +9,12 @@ session_start();
 	mysql_select_db("GregsList", $con)
 		or die("Unable to select database:" . mysql_error());
 	$userID = $_SESSION['userID'];
+	$listingID = $_GET['listingID'];
+	$category = $_GET['category'];
 	$title = addslashes($_POST['title']);
-	$category = $_POST['category'];
 	$description = addslashes($_POST['description']);
 	$price = $_POST['price'];
-	$listingID = $_POST['listingID'];
+	
 
 	$last = mysql_query("SELECT photoID FROM Photos ORDER BY photoID DESC LIMIT 1"); 
 	if(!$last){
@@ -34,7 +35,7 @@ session_start();
 		$catQuery = "REPLACE INTO Bikes VALUES('$listingID', '$_POST[bikeTypeID]', '$make', '$model')";
 	}
 	
-	if($category=="Books")
+	else if($category=="Books")
 	{
 		$title = addslashes($_POST['bookTitle']);
 		$author = addslashes($_POST['author']);
@@ -42,33 +43,24 @@ session_start();
 		$catQuery = "REPLACE INTO Books VALUES('$listingID', '$_POST[bookTypeID]', '$title', '$author', '$_POST[isbn]', '$course', '$_POST[bookCondition]')";
 	}
 
-	if($category=="Electronics")
+	else if($category=="Electronics")
 	{
 		$make = addslashes($_POST['eMake']);
 		$model = addslashes($_POST['eModel']);
 		$catQuery = "REPLACE INTO Electronics VALUES('$listingID', '$_POST[electronicsTypeID]', '$make', '$model', NULL)";
 	}
 
-	if($category=="Furniture")
+	else if($category=="Furniture")
 	{
 		$catQuery = "REPLACE INTO Furniture VALUES('$listingID', '$_POST[furnitureTypeID]', '$_POST[furnitureCondition]')";
 	}
 
-	if($category=="Meetups")
-	{
-		$location = addslashes($_POST['location']);
-		$catQuery = "REPLACE INTO Meetups VALUES('$listingID', '$_POST[meetupTypeID]', '$location', '$_POST[date]', '$_POST[time]')";
-	}
 
-	if($category=="Miscellaneous")
+	else if($category=="Miscellaneous")
 	{
 		$catQuery = "REPLACE INTO Miscellaneous VALUES('$listingID',NULL)";
 	}
 
-	if($category=="Rides")
-	{
-		$catQuery = "REPLACE INTO Rides VALUES('$listingID', '$_POST[leavingFrom]', '$_POST[goingTo]', '$_POST[departureDate]', '$_POST[departureTime]', '$_POST[returnDate]', '$_POST[returnTime]')";
-	}
 
 
 	$allowedExts = array("gif", "jpeg", "jpg", "png");
@@ -76,7 +68,7 @@ session_start();
 	$extension = end($temp);
 	if(empty($_FILES["photos"])){echo 'No photo to upload.<br> ';}
 	
-	elseif ((($_FILES["photos"]["type"] == "image/gif")
+	else if ((($_FILES["photos"]["type"] == "image/gif")
 	|| ($_FILES["photos"]["type"] == "image/jpeg")
 	|| ($_FILES["photos"]["type"] == "image/jpg")
 	|| ($_FILES["photos"]["type"] == "image/pjpeg")
@@ -150,7 +142,7 @@ else
 	{
 		$message = 'Replace into Photos table failed: ' . mysql_error() . '<br>';
 		$message .= 'Whole statement: ' . $query;
-
+	}
 	// commit changes
 	$query="COMMIT";
 	$ins=mysql_query($query);
@@ -160,5 +152,5 @@ else
     $message .= 'Whole statement: ' . $query;
     die($message);
 	}
-	//header('Location: home.html');
+	header('Location: myAccount.php');
 ?>

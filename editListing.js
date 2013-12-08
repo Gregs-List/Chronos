@@ -11,6 +11,7 @@ $(document).ready(function(){
 	
 
 	$('#editListing').click(function(e){
+
 		var money = $('#price').val();
 		money = parseMoney(money);
 
@@ -20,7 +21,7 @@ $(document).ready(function(){
 		}
 		else{
 			$('#price').val(money);
-			alert("Listing created. You will be redirected to the home page.");
+			alert("Changes Saved. You will be redirected to your account page.");
 		}
 	});
 
@@ -147,19 +148,20 @@ function findListing(data){
                 bike.model = json.model;
             }
 
-            fillListing();
+            fillListing(data);
         }
 
         
     }
-    request.send();
+    request.send(data);
 }
 
-function fillListing(){
+function fillListing(data){
 	console.log(listing);
     $('#title').val(listing.title);
     $('#price').val(listing.price)
     $('#category').html('Category: ' + listing.category);
+    $('#newListing').attr("action", "editListing.php?category="+listing.category+"&listingID="+data);
     selectFields(listing.category);
 
     $('#description').html('Description: ' + listing.description);
@@ -193,18 +195,54 @@ function selectFields(category){
 		if(category == 'Books'){
 			hideFields();
 			$('#bookFields').css('display','Block');
+			document.getElementById("BookType").required = true;
+			document.getElementById("bookCondition").required = true;
+			document.getElementById("bookTitle").required = true;
+			document.getElementById("FurnitureType").required = false;
+			document.getElementById("furnitureCondition").required = false;
+			document.getElementById("ElectronicType").required = false;
+			document.getElementById("BikeType").required = false;
+			document.getElementById("bMake").required = false;
+			document.getElementById("bModel").required = false;
 		}
 		else if (category == 'Furniture'){
 			hideFields();
 			$('#furnitureFields').css('display','Block');
+			document.getElementById("FurnitureType").required = true;
+			document.getElementById("furnitureCondition").required = true;
+			document.getElementById("BookType").required = false;
+			document.getElementById("bookCondition").required = false;
+			document.getElementById("bookTitle").required = false;
+			document.getElementById("ElectronicType").required = false;
+			document.getElementById("BikeType").required = false;
+			document.getElementById("bMake").required = false;
+			document.getElementById("bModel").required = false;
 		}
 		else if (category == 'Electronics'){
 			hideFields();
 			$('#electronicFields').css('display','Block');
+			document.getElementById("ElectronicType").required = true;
+			document.getElementById("BookType").required = false;
+			document.getElementById("bookCondition").required = false;
+			document.getElementById("bookTitle").required = false;
+			document.getElementById("FurnitureType").required = false;
+			document.getElementById("furnitureCondition").required = false;
+			document.getElementById("BikeType").required = false;
+			document.getElementById("bMake").required = false;
+			document.getElementById("bModel").required = false;
 		}
 		else if (category == 'Bikes'){
 			hideFields();
 			$('#bikeFields').css('display','Block');
+			document.getElementById("BikeType").required = true;
+			document.getElementById("bMake").required = true;
+			document.getElementById("bModel").required = true;
+			document.getElementById("BookType").required = false;
+			document.getElementById("bookCondition").required = false;
+			document.getElementById("bookTitle").required = false;
+			document.getElementById("FurnitureType").required = false;
+			document.getElementById("furnitureCondition").required = false;
+			document.getElementById("ElectronicType").required = false;
 		}
 		else if (category == 'Miscellaneous'){
 			hideFields();
