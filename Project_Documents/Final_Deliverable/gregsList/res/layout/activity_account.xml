@@ -1,0 +1,132 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AccountActivity"
+    android:layout_gravity = "center_horizontal"
+    android:background="@drawable/other_background">
+    <LinearLayout
+        android:layout_height = "wrap_content" 
+        android:layout_width = "wrap_content"
+        android:orientation = "horizontal"
+        android:id = "@+id/navbar">
+     <Button 
+        android:id="@+id/home"
+        android:layout_height = "35dp"
+        android:layout_width = "112dp"
+        android:text = "@string/nav1"
+        android:textSize = "12dp"
+        android:layout_marginRight="-9dp"
+    	android:textColor="#ffffffff"/> 
+     <Button 
+        android:id="@+id/account"
+        android:layout_height = "35dp"
+        android:layout_width = "114dp"
+        android:text = "@string/nav2"
+        android:textSize = "12dp"
+        android:layout_marginRight="-9dp"
+        android:textColor="#ffffffff"/>
+     
+      <Button 
+        android:id= "@+id/logout"
+        android:layout_height = "35dp"
+        android:layout_width = "112dp"
+        android:text = "@string/nav3"
+        android:textSize = "12dp"
+        android:textColor="#ffffffff"
+        android:textStyle = "bold"/>
+    </LinearLayout>
+
+  <LinearLayout
+        android:id="@+id/menu_ll"
+        android:layout_width="310dp" 
+        android:layout_height="wrap_content"
+        android:layout_below="@id/navbar"
+        android:orientation="vertical"
+        android:background="@drawable/outline"
+        android:layout_centerHorizontal="true">
+       
+       <TextView 
+       android:layout_width="wrap_content"
+       android:layout_height = "wrap_content"
+       android:text= "@string/contact"
+       android:textStyle="bold"
+       android:textColor= "#10294f"
+       android:textSize="20sp"
+       android:id= "@+id/contact"
+       />
+       
+        <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id = "@+id/email_account"
+        android:textColor= "#10294f"/>
+        
+        <TextView
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:id = "@+id/phone"
+            android:textColor= "#10294f"
+            /> 
+    </LinearLayout>
+    
+    <LinearLayout 
+        android:layout_width = "310dp"
+        android:layout_height = "wrap_content"
+        android:background="@drawable/outline"
+        android:layout_below="@id/menu_ll"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/listings" >       
+    <TextView
+        android:layout_height = "wrap_content"
+        android:layout_width = "wrap_content"
+        android:text="@string/mylisting"
+        android:textColor= "#10294f"
+        android:textStyle="bold"
+        android:id="@+id/mylisting"
+        />
+    </LinearLayout>
+    
+    <LinearLayout
+              android:layout_width = "310dp"
+              android:layout_height = "wrap_content"
+              android:background="@drawable/outline"
+              android:orientation="vertical"
+              android:layout_below="@id/listings"
+              android:layout_centerHorizontal="true"> 
+           <LinearLayout
+               android:layout_width = "310dp"
+               android:layout_height = "wrap_content"
+               android:orientation="horizontal"
+               >
+          <TextView 
+              android:layout_width = "wrap_content"
+              android:layout_height = "wrap_content"
+              android:text="@string/title"
+              android:paddingRight = "140dp"
+              android:textStyle="bold"
+              android:textColor= "#10294f"
+              android:textSize="20sp"
+              android:id="@+id/title"
+              />
+          
+          <TextView 
+              android:layout_width = "wrap_content"
+              android:layout_height = "wrap_content"
+              android:text="@string/category"
+              android:textStyle="bold"
+              android:textColor= "#10294f"
+              android:textSize="20sp"
+              android:id="@+id/category"/>
+          </LinearLayout>
+          
+          <ListView
+          android:id="@+id/listview"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content">
+          </ListView>
+          </LinearLayout>
+                
+
+
+</RelativeLayout>
